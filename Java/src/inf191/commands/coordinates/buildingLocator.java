@@ -1,7 +1,9 @@
+package inf191.commands.coordinates;
+
 import java.util.List;
 
 
-public class locateBuilding 
+public class buildingLocator
 {
 	public String getXCoord(List<List<String>> arrayCoordList, String bName)
 	{

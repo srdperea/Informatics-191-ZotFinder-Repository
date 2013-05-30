@@ -1,3 +1,5 @@
+package inf191.commands.coordinates;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class java1 
+public class mainPrompter
 { 
 	public static void main(String[] args)
     {       
 			distance distance = new distance();
-			locateBuilding locateBuilding = new locateBuilding();
+			buildingLocator locateBuilding = new buildingLocator();
        		List<List<String>> arrayCoordList = new ArrayList<List<String>>();
 			File file = new File("CoordinateTextFile");
 			BufferedReader reader = null;

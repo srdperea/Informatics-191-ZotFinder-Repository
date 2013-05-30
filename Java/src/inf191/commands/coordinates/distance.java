@@ -1,3 +1,5 @@
+package inf191.commands.coordinates;
+
 public class distance 
 {
 	public double calculateDistance(String coordX1, String coordY1, String coordX2, String coordY2)
