@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class mainPrompter
+public class MainPrompter
 { 
 	public static void main(String[] args)
     {       
-			distance distance = new distance();
-			buildingLocator locateBuilding = new buildingLocator();
+			Distance distance = new Distance();
+			BuildingLocator locateBuilding = new BuildingLocator();
        		List<List<String>> arrayCoordList = new ArrayList<List<String>>();
 			Parser parser = new Parser();
        		File file = new File("CoordinateTextFile");

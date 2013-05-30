@@ -3,7 +3,7 @@ package inf191.commands.coordinates;
 import java.util.List;
 
 
-public class buildingLocator
+public class BuildingLocator
 {
 	public String getXCoord(List<List<String>> arrayCoordList, String bName)
 	{
