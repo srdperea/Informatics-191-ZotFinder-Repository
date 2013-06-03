@@ -7,7 +7,7 @@ public class BuildingLocator
 {
 	public String getXCoord(List<List<String>> arrayCoordList, String bName)
 	{
-		String error = "error"; 
+		String wrongBuildingname = "wrongBuildingname"; 
 		for (int i = 0; i<arrayCoordList.size(); i++)
 		{
 			for (int j = 0; j<arrayCoordList.get(i).size(); j++)
@@ -18,11 +18,11 @@ public class BuildingLocator
 				}
 			}
 		}
-		return error;
+		return wrongBuildingname;
 	}
 	public String getYCoord(List<List<String>> arrayCoordList, String bName)
 	{
-		String error = "error"; 
+		String wrongBuildingname = "wrongBuildingname"; 
 		for (int i = 0; i<arrayCoordList.size(); i++)
 		{
 			for (int j = 0; j<arrayCoordList.get(i).size(); j++)
@@ -33,6 +33,6 @@ public class BuildingLocator
 				}
 			}
 		}
-		return error;
+		return wrongBuildingname;
 	}
 }
