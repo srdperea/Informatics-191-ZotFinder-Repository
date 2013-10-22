@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ZotFinder</string>
+    <string name="action_settings">Settings</string>
+    
+    <!--  Home Page -->
+    <string name="map_header">Map</string>
+
+    <!--  3 Links Bottom Page -->
+    <string name="map_link">Map</string>
+    <string name="emergency_link">Emergency</string>
+    <string name="dialer_link">Dialer</string>
+    
+    <!-- Emergency Info Home -->
+    <string name="emergency_info_header">Emergency Information</string>
+    
+    
+    <!-- Dialer Home -->
+    <string name="dialer_header">Emergency Dialer</string>
+</resources>
