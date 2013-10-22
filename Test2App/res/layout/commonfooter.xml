@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" 
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clickable="true" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,8 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:text="@string/map_link"
+            android:background="@drawable/map_icon"
+       
             android:textColor="@color/white"
             android:textSize="@dimen/button_text_size" />
 
@@ -25,8 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:background="@android:color/transparent"
-            android:text="@string/emergency_link"
+            android:background="@drawable/emergency_icon"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text_size" />
         	
@@ -35,8 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:text="@string/dialer_link"
+            android:background="@drawable/dialer_icon"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text_size" />
     </LinearLayout>

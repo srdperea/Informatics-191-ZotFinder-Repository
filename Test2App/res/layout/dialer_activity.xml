@@ -22,5 +22,7 @@
             android:textColor="@color/white" />
 
     </TableRow>
+
+    <include layout="@layout/commonfooter" />
     
 </TableLayout>
