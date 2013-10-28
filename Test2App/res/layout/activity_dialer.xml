@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/TableLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TableRow
+        android:id="@+id/e_tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/header_color_blue" >
+
+        <TextView
+            android:id="@+id/emergencyInfoHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/dialer_header"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size" />
+    </TableRow>
+    <TableRow android:layout_gravity="center" >
+
+        <Button
+            android:id="@+id/call911Button"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:paddingTop="10dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_button"
+            android:text="@string/call_911"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size" />
+ 	</TableRow>
+ 	
+
+    <ScrollView 
+	    android:layout_width="wrap_content"
+   		android:layout_height="340dp"
+   		android:paddingTop="10dip"
+   		android:paddingBottom="10dip"
+   		android:fillViewport="true"
+	    android:layout_gravity="center">
+        
+	    <TableLayout android:layout_gravity="center" 
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:stretchColumns="0,3">
+	        
+	        <TableRow android:layout_gravity="center">
+	            <TextView />
+	            <Button 
+	                android:layout_margin="15dp"
+	                android:layout_gravity="center_vertical"
+	                android:maxWidth="20dip" 
+	                android:maxHeight="20dip"
+	                android:background="@drawable/uci_police_dept" />
+	            
+	            <Button 
+	                android:layout_margin="15dp"
+	                android:layout_gravity="center_vertical" 
+	                android:maxWidth="20dip" 
+	                android:maxHeight="20dip"
+	                android:background="@drawable/emergency_mgmt" />
+	            
+	             <TextView />
+	        </TableRow>
+	
+	        <TableRow android:layout_gravity="center">
+	            <TextView />
+	            <Button 
+	                android:layout_margin="15dp"
+					android:layout_gravity="center_vertical"
+	                android:maxWidth="20dip" 
+	                android:maxHeight="20dip"
+	                android:background="@drawable/counseling_center" />
+	            
+	            <Button 
+	                android:layout_margin="15dp"
+					android:layout_gravity="center_vertical"
+	                android:maxWidth="20dip" 
+	                android:maxHeight="20dip"
+	                android:background="@drawable/student_health" />
+	            
+	            <TextView />
+	        </TableRow>
+	
+	        <TableRow android:layout_gravity="center">
+	            <TextView />
+                <Button 
+                    android:layout_margin="15dp"
+                	android:layout_gravity="center_vertical"
+                	android:maxWidth="20dip" 
+	                android:maxHeight="20dip"
+                	android:background="@drawable/emergency_health_and_safety" />
+	            <Button 
+	                android:layout_margin="15dp"
+	                android:layout_gravity="center_vertical"
+	                android:maxWidth="20dip" 
+	                android:maxHeight="20dip"
+	                android:background="@drawable/facilities_mgmt_service" />
+	      
+	            <TextView />
+	        </TableRow>
+	        <TableRow android:layout_gravity="center">
+	            <TextView />
+                <Button 
+                    android:layout_margin="15dp"
+                	android:layout_gravity="center_vertical"
+                	android:maxWidth="20dip" 
+	                android:maxHeight="20dip"
+                	android:background="@drawable/oit" />
+	            <Button 
+	                android:layout_margin="15dp"
+	                android:layout_gravity="center_vertical"
+	                android:maxWidth="20dip" 
+	                android:maxHeight="20dip"
+	                android:background="@drawable/uci_emergency_info_line" />
+	      
+	            <TextView />
+	        </TableRow>
+	    </TableLayout>
+	
+	</ScrollView>
+    <include
+        
+        layout="@layout/commonfooter" />
+
+</TableLayout>

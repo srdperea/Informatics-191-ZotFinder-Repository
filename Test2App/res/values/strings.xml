@@ -3,19 +3,32 @@
 
     <string name="app_name">ZotFinder</string>
     <string name="action_settings">Settings</string>
-    
-    <!--  Home Page -->
+
+    <!-- Home Page -->
     <string name="map_header">Map</string>
 
-    <!--  3 Links Bottom Page -->
+    <!-- 3 Links Bottom Page -->
     <string name="map_link">Map</string>
     <string name="emergency_link">Emergency</string>
     <string name="dialer_link">Dialer</string>
-    
+
     <!-- Emergency Info Home -->
     <string name="emergency_info_header">Emergency Information</string>
-    
-    
+    <string name="most_common_emergencies">Most Common Emergencies</string>
+    <string name="other_emergencies">Other Emergencies</string>
+    <string name="active_shooter">Active Shooter</string>
+    <string name="active_shooter_des">tap for information</string>
+    <string name="earthquake_des">tap for information</string>
+
     <!-- Dialer Home -->
     <string name="dialer_header">Emergency Dialer</string>
+    <string name="call_911">911</string>
+    <string name="uci_police_dept">UCI Police Dept</string>
+    <string name="emergency_mgmt">Emergency Mgmt</string>
+    <string name="counseling_center">Counseling Center</string>
+    <string name="student_health">Student Health</string>
+    <string name="title_activity_emergency_info">EmergencyInfoActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_dialer">DialerActivity</string>
+
 </resources>
