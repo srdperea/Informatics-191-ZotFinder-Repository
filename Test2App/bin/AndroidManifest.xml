@@ -8,6 +8,9 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/zotfindericon"
@@ -23,13 +26,71 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+       
+  
         <activity
             android:name="com.example.test2app.EmergencyInfoActivity"
-            android:label="@string/title_activity_emergency_info" >
+            android:label="@string/title_activity_emergency_info"
+            android:theme="@android:style/Theme.NoTitleBar" > >
         </activity>
         <activity
             android:name="com.example.test2app.DialerActivity"
-            android:label="@string/title_activity_dialer" >
+            android:label="@string/title_activity_dialer"
+            android:theme="@android:style/Theme.NoTitleBar" > >
+        </activity>
+        <activity
+            android:name="com.example.test2app.ActiveShooterActivity"
+            android:label="@string/title_activity_active_shooter"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.ViolenceActivity"
+            android:label="@string/title_activity_violence" 
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+            android:name="com.example.test2app.EvacuationDisabilitiesActivity"
+            android:label="@string/title_activity_evacuation_disabilities"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.SuspiciousPackageActivity"
+            android:label="@string/title_activity_suspicious_package" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.PowerOutageActivity"
+            android:label="@string/title_activity_power_outage"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.MedicalEmergencyActivity"
+            android:label="@string/title_activity_medical_emergency"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.BombThreatActivity"
+            android:label="@string/title_activity_bomb_threat"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.EvacuationActivity"
+            android:label="@string/title_activity_evacuation"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.HazardousMaterialActivity"
+            android:label="@string/title_activity_hazardous_material"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.HazardousMaterialShelterActivity"
+            android:label="@string/title_activity_hazardous_material_shelter" 
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+            android:name="com.example.test2app.EarthquakeActivity"
+            android:label="@string/title_activity_earthquake"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
     </application>
 

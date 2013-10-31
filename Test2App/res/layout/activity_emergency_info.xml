@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/TableLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="center" >
+    android:gravity="center" 
+    android:background="@color/holo_dark"
+    tools:context=".EmergencyInfoActivity">
 
     <TableRow
         android:id="@+id/e_tableRow1"
@@ -57,7 +60,8 @@
 	        android:layout_weight="2"
 	        android:background="@drawable/active_shooter"
 	        android:maxHeight="20dp"
-	        android:maxWidth="20dp" />
+	        android:maxWidth="20dp"
+	        android:onClick="goToActiveShooter" />
 
 	    <Button
 	        android:id="@+id/button2"
@@ -67,9 +71,44 @@
 	        android:background="@drawable/earthquake"
 	        android:gravity="center"
 	        android:maxHeight="20dip"
-	        android:maxWidth="20dip" />
+	        android:maxWidth="20dip" 
+	        android:onClick="goToEarthquake" />
 	    
-	</TableRow>    
+	</TableRow> 
+	
+			    <!--
+			    <Button
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
+			        android:layout_gravity="center_vertical"
+			        android:layout_margin="15dp"
+			        android:background="@drawable/persons_in_distress"
+			        android:maxHeight="20dp"
+			        android:maxWidth="20dp"
+			        android:onClick="goToPersonsInDistress" />
+			    
+			 
+			    
+		         <Button
+		             android:layout_width="match_parent"
+		             android:layout_height="match_parent"
+		             android:layout_gravity="center_vertical"
+		             android:layout_margin="15dp"
+		             android:background="@drawable/emergency_preparedness"
+		             android:maxHeight="20dp"
+		             android:maxWidth="20dp"
+		             android:onClick="goToEmergencyPreparedness" />
+		         
+		         <Button
+		             android:layout_width="match_parent"
+		             android:layout_gravity="center_vertical"
+		             android:layout_margin="15dp"
+		             android:background="@drawable/fire"
+		             android:maxHeight="20dp"
+		             android:maxWidth="20dp"
+		             android:onClick="goToFire" />
+			      -->
+			
     <TableRow 
         android:id="@+id/e_tableRow4"
         android:layout_gravity="center">
@@ -93,7 +132,7 @@
 	<ScrollView
 	    android:layout_width="fill_parent"
 	    android:layout_height="180dip"
-	    >
+	    android:background="@color/holo_dark">
         
 	    <TableLayout android:layout_gravity="center" 
 	        android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -110,21 +149,25 @@
 	                android:layout_gravity="center_vertical"
 	                android:maxWidth="20dip" 
 	                android:maxHeight="20dip"
-	                android:background="@drawable/bomb_threat" />
+	                android:background="@drawable/bomb_threat"
+	                android:onClick="goToBombThreat" />
 	            
 	            <Button 
 	                android:layout_margin="15dp"
 	                android:layout_gravity="center_vertical" 
 	                android:maxWidth="20dip" 
 	                android:maxHeight="20dip"
-	                android:background="@drawable/evacuation" />
+	                android:background="@drawable/evacuation"
+	                android:onClick="goToEvacuation" />
 	            
 	            <Button 
 	                android:layout_margin="15dp"
 	                android:layout_gravity="center_vertical" 
 	                android:maxWidth="20dip" 
 	                android:maxHeight="20dip"
-	                android:background="@drawable/hazardous_material" />
+	                android:background="@drawable/hazardous_material"
+	                android:onClick="goToHazardousMaterial" />
+	            	
 	            <TextView />
 	        </TableRow>
 	
@@ -137,21 +180,24 @@
 					android:layout_gravity="center_vertical"
 	                android:maxWidth="20dip" 
 	                android:maxHeight="20dip"
-	                android:background="@drawable/violence" />
+	                android:background="@drawable/violence"
+	                android:onClick="goToViolence"/>
 	            
 	            <Button 
 	                android:layout_margin="15dp"
 					android:layout_gravity="center_vertical"
 	                android:maxWidth="20dip" 
 	                android:maxHeight="20dip"
-	                android:background="@drawable/evacuation_disabilities" />
+	                android:background="@drawable/evacuation_disabilities"
+	                android:onClick="goToEvacuationDisabilities" />
 	            
 	            <Button 
 	                android:layout_margin="15dp"
 					android:layout_gravity="center_vertical"
 	                android:maxWidth="20dip" 
 	                android:maxHeight="20dip"
-	                android:background="@drawable/hazardous_material_shelter" />
+	                android:background="@drawable/hazardous_material_shelter"
+	                android:onClick="goToHazardousMaterialShelter" />
 	            <TextView />
 	        </TableRow>
 	
@@ -164,19 +210,22 @@
                 	android:layout_gravity="center_vertical"
                 	android:maxWidth="20dip" 
 	                android:maxHeight="20dip"
-                	android:background="@drawable/medical_emergency" />
+                	android:background="@drawable/medical_emergency" 
+                	android:onClick="goToMedicalEmergency"/>
 	            <Button 
 	                android:layout_margin="15dp"
 	                android:layout_gravity="center_vertical"
 	                android:maxWidth="20dip" 
 	                android:maxHeight="20dip"
-	                android:background="@drawable/utility_failure" />
+	                android:background="@drawable/utility_failure"
+	                android:onClick="goToPowerOutage" />
 	            <Button 
 	                android:layout_margin="15dp"
 	                android:layout_gravity="center_vertical"
 	                android:maxWidth="20dip" 
 	                android:maxHeight="20dip"
-	                android:background="@drawable/suspicious_package" />
+	                android:background="@drawable/suspicious_package"
+	                android:onClick="goToSuspiciousPackage" />
 	            
 	            <TextView />
 	        </TableRow>

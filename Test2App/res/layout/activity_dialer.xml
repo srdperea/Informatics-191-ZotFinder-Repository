@@ -2,7 +2,8 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/TableLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:background="@color/holo_dark">
 
     <TableRow
         android:id="@+id/e_tableRow1"
@@ -32,7 +33,11 @@
             android:background="@drawable/rounded_button"
             android:text="@string/call_911"
             android:textColor="@color/white"
-            android:textSize="@dimen/font_size" />
+            android:textSize="@dimen/font_size"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:onClick="call911"/>
+       
  	</TableRow>
  	
 
@@ -42,7 +47,8 @@
    		android:paddingTop="10dip"
    		android:paddingBottom="10dip"
    		android:fillViewport="true"
-	    android:layout_gravity="center">
+	    android:layout_gravity="center"
+	    android:background="@color/holo_dark">
         
 	    <TableLayout android:layout_gravity="center" 
 	        android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -51,37 +57,40 @@
 	        <TableRow android:layout_gravity="center">
 	            <TextView />
 	            <Button 
-	                android:layout_margin="15dp"
+	                android:layout_margin="5dp"
 	                android:layout_gravity="center_vertical"
-	                android:maxWidth="20dip" 
-	                android:maxHeight="20dip"
-	                android:background="@drawable/uci_police_dept" />
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/uci_police_dept"
+	                android:onClick="callUciPoliceDept" />
 	            
 	            <Button 
-	                android:layout_margin="15dp"
+	                android:layout_margin="5dp"
 	                android:layout_gravity="center_vertical" 
-	                android:maxWidth="20dip" 
-	                android:maxHeight="20dip"
-	                android:background="@drawable/emergency_mgmt" />
-	            
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/emergency_mgmt"
+	                android:onClick="callEmergencyMgmt" />
 	             <TextView />
 	        </TableRow>
 	
 	        <TableRow android:layout_gravity="center">
 	            <TextView />
 	            <Button 
-	                android:layout_margin="15dp"
+	                android:layout_margin="5dp"
 					android:layout_gravity="center_vertical"
-	                android:maxWidth="20dip" 
-	                android:maxHeight="20dip"
-	                android:background="@drawable/counseling_center" />
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/counseling_center"
+	                android:onClick="callCounselingCenter" />
 	            
 	            <Button 
-	                android:layout_margin="15dp"
+	                android:layout_margin="5dp"
 					android:layout_gravity="center_vertical"
-	                android:maxWidth="20dip" 
-	                android:maxHeight="20dip"
-	                android:background="@drawable/student_health" />
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/student_health"
+	                android:onClick="callStudentHealth" />
 	            
 	            <TextView />
 	        </TableRow>
@@ -89,34 +98,38 @@
 	        <TableRow android:layout_gravity="center">
 	            <TextView />
                 <Button 
-                    android:layout_margin="15dp"
+                    android:layout_margin="5dp"
                 	android:layout_gravity="center_vertical"
-                	android:maxWidth="20dip" 
-	                android:maxHeight="20dip"
-                	android:background="@drawable/emergency_health_and_safety" />
+                	android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+                	android:background="@drawable/emergency_health_and_safety"
+                	android:onClick="callEmergencyHealthAndSafety" />
 	            <Button 
-	                android:layout_margin="15dp"
+	                android:layout_margin="5dp"
 	                android:layout_gravity="center_vertical"
-	                android:maxWidth="20dip" 
-	                android:maxHeight="20dip"
-	                android:background="@drawable/facilities_mgmt_service" />
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/facilities_mgmt_service"
+	                android:onClick="callFacilitiesMgmtService" />
 	      
 	            <TextView />
 	        </TableRow>
 	        <TableRow android:layout_gravity="center">
 	            <TextView />
                 <Button 
-                    android:layout_margin="15dp"
+                    android:layout_margin="5dp"
                 	android:layout_gravity="center_vertical"
-                	android:maxWidth="20dip" 
-	                android:maxHeight="20dip"
-                	android:background="@drawable/oit" />
+                	android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+                	android:background="@drawable/oit"
+                	android:onClick="callOit" />
 	            <Button 
-	                android:layout_margin="15dp"
+	                android:layout_margin="5dp"
 	                android:layout_gravity="center_vertical"
-	                android:maxWidth="20dip" 
-	                android:maxHeight="20dip"
-	                android:background="@drawable/uci_emergency_info_line" />
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/uci_emergency_info_line"
+	                android:onClick="callEmergencyInfoLine" />
 	      
 	            <TextView />
 	        </TableRow>
