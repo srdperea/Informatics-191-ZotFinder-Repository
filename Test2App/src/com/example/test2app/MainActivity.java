@@ -5,13 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 
 
 public class MainActivity extends Activity {
-
+	private GoogleMap map;
+	static final LatLng UCI = new LatLng(33.6455843, -117.8419771);
 	 Button mapLinkButton;
 	 Button emergencyLinkButton;
 	 Button dialerLinkButton;
@@ -27,6 +33,15 @@ public class MainActivity extends Activity {
 	    emergencyLinkButton = (Button) findViewById(R.id.emergencyLinkButton);
 	    dialerLinkButton = (Button) findViewById(R.id.dialerLinkButton);
 	    
+	    //Initialize Map
+	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+	     
+	    //add uci marker and set zoom
+	     if (map!=null){
+	         Marker uci = map.addMarker(new MarkerOptions().position(UCI).title("UCI"));
+	         map.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
+	         map.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
+	     }
 	   
 	}
 
