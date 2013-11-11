@@ -6,27 +6,28 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 
 
-
-public class MainActivity extends Activity {
-	private GoogleMap map;
+public class MainActivity extends SlidingActivity{
+	private GoogleMap mMap;
 	static final LatLng UCI = new LatLng(33.6455843, -117.8419771);
 	 Button mapLinkButton;
 	 Button emergencyLinkButton;
 	 Button dialerLinkButton;
 	 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+		setBehindContentView(id);
 		
 		//Initialize Buttons
 	    mapLinkButton = (Button) findViewById(R.id.mapLinkButton);
@@ -34,13 +35,13 @@ public class MainActivity extends Activity {
 	    dialerLinkButton = (Button) findViewById(R.id.dialerLinkButton);
 	    
 	    //Initialize Map
-	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+	    mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 	     
 	    //add uci marker and set zoom
-	     if (map!=null){
-	         Marker uci = map.addMarker(new MarkerOptions().position(UCI).title("UCI"));
-	         map.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
-	         map.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
+	     if (mMap!=null){
+	         Marker uci = mMap.addMarker(new MarkerOptions().position(UCI).title("UCI"));
+	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
+	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
 	     }
 	   
 	}
