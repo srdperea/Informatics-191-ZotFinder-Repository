@@ -27,7 +27,9 @@ public class MainActivity extends SlidingActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		setBehindContentView(id);
+		setBehindContentView(R.layout.activity_menu);
+		
+		getSlidingMenu().setBehindOffset(100);
 		
 		//Initialize Buttons
 	    mapLinkButton = (Button) findViewById(R.id.mapLinkButton);
