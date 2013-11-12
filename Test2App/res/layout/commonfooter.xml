@@ -18,7 +18,6 @@
             android:layout_weight="1"
             android:background="@drawable/map_icon_pressed"
             android:onClick="goToMap"
-       
             android:textColor="@color/white"
             android:textSize="@dimen/button_text_size" />
 
