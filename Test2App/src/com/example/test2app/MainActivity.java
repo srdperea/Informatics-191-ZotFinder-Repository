@@ -106,14 +106,14 @@ public class MainActivity extends Activity {
 	public void toggleEaMarker(){
 		if(eaShow){
 			for(Marker m :emergencyArea){
-				m.setVisible(true);
+				m.setVisible(false);
 			}
 			eaShow = false;
 		}
 		else 
 		{
 			for( Marker m : emergencyArea){
-				m.setVisible(false);
+				m.setVisible(true);
 			}
 			eaShow = true;
 		}
@@ -122,14 +122,14 @@ public class MainActivity extends Activity {
 	public void toggleBpMarker(){
 		if(bpShow){
 			for (Marker m : bluePhone){
-				m.setVisible(true);
+				m.setVisible(false);
 			}
 			bpShow = false;
 		}
 		else
 		{
 			for (Marker m : bluePhone){
-				m.setVisible(false);
+				m.setVisible(true);
 			}
 			bpShow = true;
 		}
