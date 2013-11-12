@@ -12,14 +12,14 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="toggleMenu"
-            android:text="Button 1" />
+            android:onClick="toggleEaMarker"
+            android:text="Emergency Areas" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="toggleMenu"
-            android:text="Button 2" />
+            android:onClick="toggleBpMarker"
+            android:text="Blue Light Phones" />
 
         <Button
             android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.example.test2app;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import com.example.test2app.view.viewgroup.FlyOutContainer;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -21,6 +24,18 @@ public class MainActivity extends Activity {
 	private GoogleMap mMap;
 	FlyOutContainer root;
 	static final LatLng UCI = new LatLng(33.6455843, -117.8419771);
+	static final LatLng EA1 = new LatLng(33.644729, -117.842226);
+	static final LatLng EA2 = new LatLng(33.646716, -117.841561);
+	static final LatLng EA3 = new LatLng(33.644805, -117.840108);
+	static final LatLng BP1 = new LatLng(33.645876,-117.845483);
+	static final LatLng BP2 = new LatLng(33.648047, -117.843874);
+	static final LatLng BP3 = new LatLng(33.646073, -117.843166);
+	ArrayList<Marker> emergencyArea = new ArrayList<Marker>();
+	ArrayList<Marker> bluePhone = new ArrayList<Marker>();
+	public boolean eaShow=true;
+	public boolean bpShow=true;
+	
+	
 	Button mapLinkButton;
 	Button emergencyLinkButton;
 	Button dialerLinkButton;
@@ -45,10 +60,18 @@ public class MainActivity extends Activity {
 	    //add uci marker and set zoom
 	     if (mMap!=null){
 	         Marker uci = mMap.addMarker(new MarkerOptions().position(UCI).title("UCI").snippet("University of California Irvine"));
+	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA1).title("Emergency Area").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))));
+	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA2).title("Emergency Area").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))));
+	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA3).title("Emergency Area").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))));
+	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP1).title("Blue Light Phone").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
+	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP2).title("Blue Light Phone").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
+	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP3).title("Blue Light Phone").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
+	         	         
 	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
-	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
+	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+	         
 	     }
-	   
+	    
 	}
 
 	 
@@ -69,7 +92,6 @@ public class MainActivity extends Activity {
 	 
 	 
 	 
-	 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -79,6 +101,38 @@ public class MainActivity extends Activity {
 	
 	public void toggleMenu(View v){
 		this.root.toggleMenu();
+	}
+	
+	public void toggleEaMarker(){
+		if(eaShow){
+			for(Marker m :emergencyArea){
+				m.setVisible(true);
+			}
+			eaShow = false;
+		}
+		else 
+		{
+			for( Marker m : emergencyArea){
+				m.setVisible(false);
+			}
+			eaShow = true;
+		}
+	}
+	
+	public void toggleBpMarker(){
+		if(bpShow){
+			for (Marker m : bluePhone){
+				m.setVisible(true);
+			}
+			bpShow = false;
+		}
+		else
+		{
+			for (Marker m : bluePhone){
+				m.setVisible(false);
+			}
+			bpShow = true;
+		}
 	}
 
 }
