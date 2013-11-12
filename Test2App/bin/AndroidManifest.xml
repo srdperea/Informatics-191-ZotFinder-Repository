@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -37,7 +37,7 @@
         
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyC999GZhpX6W0cvvn3LRTvtP7Sgn6hEJrI" />
+            android:value="AIzaSyAcD-vS33MrY9DGGpf8Qp2ZnWbxB5vTTn0" />
         
         <activity
             android:name="com.example.test2app.MainActivity"

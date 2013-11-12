@@ -7,29 +7,32 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.test2app.view.viewgroup.FlyOutContainer;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 
 
-public class MainActivity extends SlidingActivity{
+
+public class MainActivity extends Activity {
 	private GoogleMap mMap;
+	FlyOutContainer root;
 	static final LatLng UCI = new LatLng(33.6455843, -117.8419771);
-	 Button mapLinkButton;
-	 Button emergencyLinkButton;
-	 Button dialerLinkButton;
+	Button mapLinkButton;
+	Button emergencyLinkButton;
+	Button dialerLinkButton;
 	 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		setBehindContentView(R.layout.activity_menu);
+		//setContentView(R.layout.activity_main);
 		
-		getSlidingMenu().setBehindOffset(100);
+		this.root = (FlyOutContainer) this.getLayoutInflater().inflate(R.layout.activity_main, null);
+		
+		this.setContentView(root);
 		
 		//Initialize Buttons
 	    mapLinkButton = (Button) findViewById(R.id.mapLinkButton);
@@ -41,7 +44,7 @@ public class MainActivity extends SlidingActivity{
 	     
 	    //add uci marker and set zoom
 	     if (mMap!=null){
-	         Marker uci = mMap.addMarker(new MarkerOptions().position(UCI).title("UCI"));
+	         Marker uci = mMap.addMarker(new MarkerOptions().position(UCI).title("UCI").snippet("University of California Irvine"));
 	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
 	     }
@@ -72,6 +75,10 @@ public class MainActivity extends SlidingActivity{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	public void toggleMenu(View v){
+		this.root.toggleMenu();
 	}
 
 }

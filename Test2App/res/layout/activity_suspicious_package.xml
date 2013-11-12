@@ -51,6 +51,6 @@
     </ScrollView>
     
   	 <include
-        
+
         layout="@layout/commonfooter" />
 </TableLayout>

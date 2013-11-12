@@ -1,63 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:clickable="true" >
-   
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@color/header_color_blue" >
+<com.example.test2app.view.viewgroup.FlyOutContainer xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#444488"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/mapHeaderTextView"
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/map_header"
-            android:textSize="@dimen/font_size"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"/>
-    </TableRow>
-    
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tableRow1"
-        android:background="@color/white" >
+            android:onClick="toggleMenu"
+            android:text="Button 1" />
 
-        <TextView
-            android:id="@+id/ActiveShooterTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </TableRow> 
-    
-    <Button
-            android:id="@+id/transparent_button"
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/map_icon_pressed"
-            android:alpha="0"
-            android:textColor="@color/white"
-            android:textSize="@dimen/button_text_size" />
+            android:onClick="toggleMenu"
+            android:text="Button 2" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="toggleMenu"
+            android:text="Button 3" />
+    </LinearLayout>
     
-    <include
-        layout="@layout/commonfooter" />
-    
-    <fragment
-	    android:id="@+id/map"
-	    android:name="com.google.android.gms.maps.MapFragment"
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/tableRow2"
-	    android:layout_above="@+id/transparent_button"
-	    android:layout_marginBottom="2dp"/>
+	    android:layout_height="fill_parent" >
+	   
+	    <TableRow
+	        android:id="@+id/tableRow1"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentTop="true"
+	        android:background="@color/header_color_blue" >
+	
+	        <TextView
+	            android:id="@+id/mapHeaderTextView"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/map_header"
+	            android:textSize="@dimen/font_size"
+	            android:textAppearance="?android:attr/textAppearanceLarge"
+	            android:textColor="@color/white"
+	            android:layout_weight="1"
+	            android:gravity="center_horizontal"/>
+	    </TableRow>
+	    
+	    <TableRow
+	        android:id="@+id/tableRow2"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/tableRow1"
+	        android:background="@color/white" >
+	
+	        <TextView
+	            android:id="@+id/ActiveShooterTextView"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"/>
+	
+	    </TableRow> 
+	    
+    
+	    <include
+	        layout="@layout/commonfooter" />
+	    
+   	    <Button
+           android:id="@+id/transparent_button"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:background="@drawable/map_icon_pressed"
+           android:alpha="0"
+           android:textColor="@color/white"
+           android:textSize="@dimen/button_text_size"
+           android:onClick="toggleMenu" />
+	    
+	    <fragment
+		    android:id="@+id/map"
+		    android:name="com.google.android.gms.maps.MapFragment"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/tableRow2"
+		    android:layout_above="@+id/transparent_button"
+		    android:layout_marginBottom="2dp"/>
+	
+	</RelativeLayout>
 
-</RelativeLayout>
-
+</com.example.test2app.view.viewgroup.FlyOutContainer>
