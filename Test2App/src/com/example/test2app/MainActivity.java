@@ -103,7 +103,7 @@ public class MainActivity extends Activity {
 		this.root.toggleMenu();
 	}
 	
-	public void toggleEaMarker(){
+	public void toggleEaMarker(View v){
 		if(eaShow){
 			for(Marker m :emergencyArea){
 				m.setVisible(false);
@@ -119,7 +119,7 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-	public void toggleBpMarker(){
+	public void toggleBpMarker(View v){
 		if(bpShow){
 			for (Marker m : bluePhone){
 				m.setVisible(false);
