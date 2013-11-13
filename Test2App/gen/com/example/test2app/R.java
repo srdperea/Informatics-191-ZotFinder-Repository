@@ -217,18 +217,19 @@ containing a value of this type.
         public static final int map_icon=0x7f020030;
         public static final int map_icon_pressed=0x7f020031;
         public static final int medical_emergency=0x7f020032;
-        public static final int narnia=0x7f020033;
-        public static final int oit=0x7f020034;
-        public static final int persons_in_distress=0x7f020035;
-        public static final int rounded_button=0x7f020036;
-        public static final int rounded_button2=0x7f020037;
-        public static final int student_health=0x7f020038;
-        public static final int suspicious_package=0x7f020039;
-        public static final int uci_emergency_info_line=0x7f02003a;
-        public static final int uci_police_dept=0x7f02003b;
-        public static final int utility_failure=0x7f02003c;
-        public static final int violence=0x7f02003d;
-        public static final int zotfindericon=0x7f02003e;
+        public static final int menu_slider_icon=0x7f020033;
+        public static final int narnia=0x7f020034;
+        public static final int oit=0x7f020035;
+        public static final int persons_in_distress=0x7f020036;
+        public static final int rounded_button=0x7f020037;
+        public static final int rounded_button2=0x7f020038;
+        public static final int student_health=0x7f020039;
+        public static final int suspicious_package=0x7f02003a;
+        public static final int uci_emergency_info_line=0x7f02003b;
+        public static final int uci_police_dept=0x7f02003c;
+        public static final int utility_failure=0x7f02003d;
+        public static final int violence=0x7f02003e;
+        public static final int zotfindericon=0x7f02003f;
     }
     public static final class id {
         public static final int ActiveShooterHeaderTextView=0x7f050007;
@@ -274,11 +275,11 @@ containing a value of this type.
         public static final int map=0x7f050025;
         public static final int mapHeaderTextView=0x7f050022;
         public static final int mapLinkButton=0x7f05002e;
+        public static final int menu_slider_button=0x7f050023;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int satellite=0x7f050002;
         public static final int tableRow1=0x7f050006;
-        public static final int tableRow2=0x7f050023;
         public static final int terrain=0x7f050003;
         public static final int transparent_button=0x7f050024;
     }
@@ -571,7 +572,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraBearing
+          @attr name com.example.test2app:cameraBearing
         */
         public static final int MapAttrs_cameraBearing = 1;
         /**
@@ -585,7 +586,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraTargetLat
+          @attr name com.example.test2app:cameraTargetLat
         */
         public static final int MapAttrs_cameraTargetLat = 2;
         /**
@@ -599,7 +600,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraTargetLng
+          @attr name com.example.test2app:cameraTargetLng
         */
         public static final int MapAttrs_cameraTargetLng = 3;
         /**
@@ -613,7 +614,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraTilt
+          @attr name com.example.test2app:cameraTilt
         */
         public static final int MapAttrs_cameraTilt = 4;
         /**
@@ -627,7 +628,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraZoom
+          @attr name com.example.test2app:cameraZoom
         */
         public static final int MapAttrs_cameraZoom = 5;
         /**
@@ -647,7 +648,7 @@ containing a value of this type.
 <tr><td><code>terrain</code></td><td>3</td><td></td></tr>
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name android:mapType
+          @attr name com.example.test2app:mapType
         */
         public static final int MapAttrs_mapType = 0;
         /**
@@ -661,7 +662,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiCompass
+          @attr name com.example.test2app:uiCompass
         */
         public static final int MapAttrs_uiCompass = 6;
         /**
@@ -675,7 +676,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiRotateGestures
+          @attr name com.example.test2app:uiRotateGestures
         */
         public static final int MapAttrs_uiRotateGestures = 7;
         /**
@@ -689,7 +690,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiScrollGestures
+          @attr name com.example.test2app:uiScrollGestures
         */
         public static final int MapAttrs_uiScrollGestures = 8;
         /**
@@ -703,7 +704,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiTiltGestures
+          @attr name com.example.test2app:uiTiltGestures
         */
         public static final int MapAttrs_uiTiltGestures = 9;
         /**
@@ -717,7 +718,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiZoomControls
+          @attr name com.example.test2app:uiZoomControls
         */
         public static final int MapAttrs_uiZoomControls = 10;
         /**
@@ -731,7 +732,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiZoomGestures
+          @attr name com.example.test2app:uiZoomGestures
         */
         public static final int MapAttrs_uiZoomGestures = 11;
         /**
@@ -745,7 +746,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:useViewLifecycle
+          @attr name com.example.test2app:useViewLifecycle
         */
         public static final int MapAttrs_useViewLifecycle = 12;
         /**
@@ -759,7 +760,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:zOrderOnTop
+          @attr name com.example.test2app:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 13;
     };

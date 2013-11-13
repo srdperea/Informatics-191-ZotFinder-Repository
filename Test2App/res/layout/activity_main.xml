@@ -31,15 +31,17 @@
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent" >
+	    
 	   
-	    <TableRow
+		<TableRow
 	        android:id="@+id/tableRow1"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentTop="true"
 	        android:background="@color/header_color_blue" >
-	
-	        <TextView
+	        
+
+	       <TextView
 	            android:id="@+id/mapHeaderTextView"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
@@ -49,25 +51,21 @@
 	            android:textColor="@color/white"
 	            android:layout_weight="1"
 	            android:gravity="center_horizontal"/>
-	    </TableRow>
-	    
-	    <TableRow
-	        android:id="@+id/tableRow2"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/tableRow1"
-	        android:background="@color/white" >
-	
-	        <TextView
-	            android:id="@+id/ActiveShooterTextView"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"/>
-	
-	    </TableRow> 
-	    
-    
+	       </TableRow>
+	        
 	    <include
 	        layout="@layout/commonfooter" />
+	    
+	     <Button 
+	   	       android:id="@+id/menu_slider_button"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_alignParentTop="true"
+	           android:gravity="left"
+	           android:background="@drawable/menu_slider_icon"
+	           android:textColor="@color/white"
+	           android:textSize="@dimen/button_text_size"
+	           android:onClick="toggleMenu"/>
 	    
    	    <Button
            android:id="@+id/transparent_button"
@@ -77,15 +75,26 @@
            android:background="@drawable/map_icon_pressed"
            android:alpha="0"
            android:textColor="@color/white"
+           android:textSize="@dimen/button_text_size"/>
+   	    
+   	    <!-- This is the button for formatting -->
+   	    <Button 
+   	       android:id="@+id/transparent_button"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:background="@drawable/map_icon_pressed"
+           android:alpha="0"
+           android:textColor="@color/white"
            android:textSize="@dimen/button_text_size"
-           android:onClick="toggleMenu" />
+   	       android:onClick="toggleMenu" />
 	    
 	    <fragment
 		    android:id="@+id/map"
 		    android:name="com.google.android.gms.maps.MapFragment"
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
-		    android:layout_below="@+id/tableRow2"
+		    android:layout_below="@+id/menu_slider_button"
 		    android:layout_above="@+id/transparent_button"
 		    android:layout_marginBottom="2dp"/>
 	

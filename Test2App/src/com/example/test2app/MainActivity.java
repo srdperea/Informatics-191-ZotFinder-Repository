@@ -116,6 +116,9 @@ public class MainActivity extends Activity {
 				m.setVisible(true);
 			}
 			eaShow = true;
+			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
+	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+			
 		}
 	}
 	
@@ -132,6 +135,8 @@ public class MainActivity extends Activity {
 				m.setVisible(true);
 			}
 			bpShow = true;
+			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
+	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 		}
 	}
 
