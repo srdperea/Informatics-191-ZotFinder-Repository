@@ -2,7 +2,6 @@ package com.example.test2app;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,7 +13,6 @@ import android.support.v4.app.FragmentManager;
 import com.example.test2app.view.viewgroup.FlyOutContainer;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -66,7 +64,6 @@ public class MainActivity extends FragmentActivity {
 	     
 	    //add uci marker and set zoom
 	     if (mMap!=null){
-	         Marker uci = mMap.addMarker(new MarkerOptions().position(UCI).title("UCI").snippet("University of California Irvine"));
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA1).title("Emergency Area").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))));
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA2).title("Emergency Area").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))));
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA3).title("Emergency Area").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))));

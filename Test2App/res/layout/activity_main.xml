@@ -6,26 +6,21 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#444488"
+        android:background="@color/header_color_blue"
         android:orientation="vertical" >
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="toggleEaMarker"
-            android:text="Emergency Areas" />
+            android:text="@string/evacuation_areas" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="toggleBpMarker"
-            android:text="Blue Light Phones" />
+            android:text="@string/blue_phones" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="toggleMenu"
-            android:text="Button 3" />
     </LinearLayout>
     
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -68,15 +63,6 @@
 	           android:textSize="@dimen/button_text_size"
 	           android:onClick="toggleMenu"/>
 	    
-   	    <Button
-           android:id="@+id/transparent_button"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true"
-           android:background="@drawable/map_icon_pressed"
-           android:alpha="0"
-           android:textColor="@color/white"
-           android:textSize="@dimen/button_text_size"/>
    	    
    	    <!-- This is the button for formatting and Toggling -->
    	    <Button 
