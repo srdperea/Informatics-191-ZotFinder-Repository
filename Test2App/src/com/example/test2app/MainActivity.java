@@ -8,11 +8,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 
 import com.example.test2app.view.viewgroup.FlyOutContainer;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -20,7 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 	private GoogleMap mMap;
 	FlyOutContainer root;
 	static final LatLng UCI = new LatLng(33.6455843, -117.8419771);
@@ -55,7 +58,11 @@ public class MainActivity extends Activity {
 	    dialerLinkButton = (Button) findViewById(R.id.dialerLinkButton);
 	    
 	    //Initialize Map
-	    mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+	    FragmentManager fragmentManager = getSupportFragmentManager();
+        SupportMapFragment mapFragment =  (SupportMapFragment)
+            fragmentManager.findFragmentById(R.id.map);
+        mMap = mapFragment.getMap();
+	   // mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 	     
 	    //add uci marker and set zoom
 	     if (mMap!=null){
@@ -69,6 +76,10 @@ public class MainActivity extends Activity {
 	         	         
 	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+	         
+	         mMap.getUiSettings().setCompassEnabled(true);
+	         mMap.getUiSettings().setZoomControlsEnabled(true);
+	         mMap.getUiSettings().setMyLocationButtonEnabled(true);
 	         
 	     }
 	    
