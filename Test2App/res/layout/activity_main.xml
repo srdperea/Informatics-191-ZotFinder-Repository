@@ -62,6 +62,19 @@
 	           android:textColor="@color/white"
 	           android:textSize="@dimen/button_text_size"
 	           android:onClick="toggleMenu"/>
+	     
+<!-- This is the button for Finding directions -->	     
+	     <Button 
+	   	       android:id="@+id/walking_directions_button"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_alignParentTop="true"
+	           android:layout_toRightOf="@+id/menu_slider_button"
+	           android:gravity="left"
+	           android:background="@drawable/menu_slider_icon"
+	           android:textColor="@color/white"
+	           android:textSize="@dimen/button_text_size"
+	           android:onClick="findDirections"/>
 	    
    	    
    	    <!-- This is the button for formatting and Toggling -->
