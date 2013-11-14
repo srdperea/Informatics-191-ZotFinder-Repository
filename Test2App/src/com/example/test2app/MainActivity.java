@@ -12,8 +12,11 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,6 +60,8 @@ public class MainActivity extends FragmentActivity {
 	Button emergencyLinkButton;
 	Button dialerLinkButton;
 	
+	public LatLng currentLocation = new LatLng(33.646073, -117.843166);
+	
 	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +101,7 @@ public class MainActivity extends FragmentActivity {
 	
 	public void findDirections(View v){
 	     // Getting URL to the Google Directions API
-        String url = getDirectionsUrl(EA1,BP2);
+        String url = getDirectionsUrl(currentLocation,BP2);
 
         DownloadTask downloadTask = new DownloadTask();
 
@@ -249,11 +254,11 @@ public class MainActivity extends FragmentActivity {
  
                     points.add(position);
                 }
- 
+
                 // Adding all the points in the route to LineOptions
                 lineOptions.addAll(points);
                 lineOptions.width(2);
- 
+
                 // Changing the color polyline according to the mode
                 lineOptions.color(Color.BLUE);
             }
@@ -332,4 +337,45 @@ public class MainActivity extends FragmentActivity {
 	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 		}
 	}
+	
+	public void findLocation(View v){
+		GetCurrentLocation();
+	}
+	
+	private void GetCurrentLocation() {
+
+	    double[] d = getlocation();
+	    currentLocation = new LatLng(d[0], d[1]);
+	    
+	     mMap
+	            .addMarker(new MarkerOptions()
+	                    .position(new LatLng(d[0], d[1]))
+	                    .title("Current Location")
+	                    .icon(BitmapDescriptorFactory
+	                            .fromResource(R.drawable.abc_list_longpressed_holo)));
+
+	             mMap
+	                .animateCamera(CameraUpdateFactory.newLatLngZoom(
+	                        new LatLng(d[0], d[1]), 15));
+	}
+
+	public double[] getlocation() {
+	    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+	    List<String> providers = lm.getProviders(true);
+
+	    Location l = null;
+	    for (int i = 0; i < providers.size(); i++) {
+	        l = lm.getLastKnownLocation(providers.get(i));
+	        if (l != null)
+	            break;
+	    }
+	    double[] gps = new double[2];
+
+	    if (l != null) {
+	        gps[0] = l.getLatitude();
+	        gps[1] = l.getLongitude();
+	    }
+	    return gps;
+	}
+	
 }
