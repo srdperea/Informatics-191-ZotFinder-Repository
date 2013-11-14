@@ -94,7 +94,7 @@ public class MainActivity extends FragmentActivity {
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP3).title("Blue Light Phone").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
 	         	         
 	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
-	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);    
+	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
 	     }
 	     
 	}
@@ -339,26 +339,11 @@ public class MainActivity extends FragmentActivity {
 	}
 	
 	public void findLocation(View v){
-		GetCurrentLocation();
+		double[] d = getlocation();
+	    currentLocation = new LatLng(d[0], d[1]);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15));
 	}
 	
-	private void GetCurrentLocation() {
-
-	    double[] d = getlocation();
-	    currentLocation = new LatLng(d[0], d[1]);
-	    
-	     mMap
-	            .addMarker(new MarkerOptions()
-	                    .position(new LatLng(d[0], d[1]))
-	                    .title("Current Location")
-	                    .icon(BitmapDescriptorFactory
-	                            .fromResource(R.drawable.abc_list_longpressed_holo)));
-
-	             mMap
-	                .animateCamera(CameraUpdateFactory.newLatLngZoom(
-	                        new LatLng(d[0], d[1]), 15));
-	}
-
 	public double[] getlocation() {
 	    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 	    List<String> providers = lm.getProviders(true);
