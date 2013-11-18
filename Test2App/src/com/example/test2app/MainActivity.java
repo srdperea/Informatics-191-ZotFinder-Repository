@@ -52,6 +52,7 @@ public class MainActivity extends FragmentActivity {
 	static final LatLng BP3 = new LatLng(33.646073, -117.843166);
 	ArrayList<Marker> emergencyArea = new ArrayList<Marker>();
 	ArrayList<Marker> bluePhone = new ArrayList<Marker>();
+	ArrayList<Marker> buildings = new ArrayList<Marker>();
 	public boolean eaShow=true;
 	public boolean bpShow=true;
 	
@@ -60,7 +61,7 @@ public class MainActivity extends FragmentActivity {
 	Button emergencyLinkButton;
 	Button dialerLinkButton;
 	
-	public LatLng currentLocation = new LatLng(33.646073, -117.843166);
+	public LatLng currentLocation;
 	
 	 
 	@Override
@@ -79,24 +80,37 @@ public class MainActivity extends FragmentActivity {
 	    
 	    //Initialize Map
 	    FragmentManager fragmentManager = getSupportFragmentManager();
-        SupportMapFragment mapFragment =  (SupportMapFragment)
-            fragmentManager.findFragmentById(R.id.map);
+        SupportMapFragment mapFragment =  (SupportMapFragment) fragmentManager.findFragmentById(R.id.map);
         mMap = mapFragment.getMap();
-	    // mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-	     
+	   
+        //set UI settings
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setCompassEnabled(true);
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        mMap.getUiSettings().setAllGesturesEnabled(true);
+        mMap.setMyLocationEnabled(true);
+        //sets current location
+        double[] d = getlocation();
+	    currentLocation = new LatLng(d[0], d[1]);
+	    
 	    //add uci marker and set zoom
 	     if (mMap!=null){
+
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA1).title("Emergency Area").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))));
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA2).title("Emergency Area").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))));
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA3).title("Emergency Area").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP1).title("Blue Light Phone").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP2).title("Blue Light Phone").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP3).title("Blue Light Phone").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
-	         	         
+
+	         buildings.add(mMap.addMarker(new MarkerOptions().position(new LatLng(33.643183,-117.842028)).title("Donald Bren Hall")
+	        		 .snippet("DBH").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
+
+	         //animate camera
 	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
+	         
 	     }
-	     
 	}
 	
 	public void findDirections(View v){
@@ -362,5 +376,4 @@ public class MainActivity extends FragmentActivity {
 	    }
 	    return gps;
 	}
-	
 }

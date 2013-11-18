@@ -52,6 +52,7 @@
 	    <include
 	        layout="@layout/commonfooter" />
 	    
+	<!-- This is the button for Opening the Slider -->	       
 	     <Button 
 	   	       android:id="@+id/menu_slider_button"
 	           android:layout_width="wrap_content"
@@ -63,7 +64,7 @@
 	           android:textSize="@dimen/button_text_size"
 	           android:onClick="toggleMenu"/>
 	     
-	<!-- This is the button for Finding directions -->	     
+	<!-- This is the button for Finding directions -->	    
 	     <Button 
 	   	       android:id="@+id/walking_directions_button"
 	           android:layout_width="wrap_content"
@@ -71,13 +72,13 @@
 	           android:layout_alignParentTop="true"
 	           android:layout_toRightOf="@+id/menu_slider_button"
 	           android:gravity="left"
-	           android:background="@drawable/menu_slider_icon"
+	           android:background="@drawable/directions_icon"
 	           android:textColor="@color/white"
 	           android:textSize="@dimen/button_text_size"
 	           android:onClick="findDirections"/>
 	     
      <!-- This is the button for Updating Current Location -->	     
-     <Button 
+<!--     <Button 
    	       android:id="@+id/current_location"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -87,7 +88,7 @@
            android:background="@drawable/menu_slider_icon"
            android:textColor="@color/white"
            android:textSize="@dimen/button_text_size"
-           android:onClick="findLocation"/>
+           android:onClick="findLocation"/> -->
 	    
    	    
    	    <!-- This is the button for formatting and Toggling -->
