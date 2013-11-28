@@ -79,7 +79,7 @@ public class EmergencyInfoActivity extends Activity {
 	
 	public void goToPowerOutage(View view)
 	{
-		Intent intent = new Intent(this,PowerOutageActivity.class);
+		Intent intent = new Intent(this,UtilityFailureActivity.class);
 		startActivity(intent);
 	}
 	

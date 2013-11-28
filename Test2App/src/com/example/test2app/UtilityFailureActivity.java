@@ -8,15 +8,15 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
-public class PowerOutageActivity extends Activity {
+public class UtilityFailureActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_power_outage);
+		setContentView(R.layout.activity_utility_failure);
 		
 		TextView ins = (TextView)findViewById(R.id.PowerOutageTextView);
-		ins.setText(Html.fromHtml(getString(R.string.power_outage_text)));
+		ins.setText(Html.fromHtml(getString(R.string.utility_failure_text)));
 	}
 	
 	 public void goToMap(View view) { 
@@ -37,7 +37,7 @@ public class PowerOutageActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.power_outage, menu);
+		getMenuInflater().inflate(R.menu.utility_failure, menu);
 		return true;
 	}
 

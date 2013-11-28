@@ -18,17 +18,20 @@
     <string name="emergency_info_header">Emergency Information</string>
     <string name="most_common_emergencies">Most Common Emergencies</string>
     <string name="other_emergencies">Other Emergencies</string>
-    <string name="active_shooter">Active Shooter</string>
-    <string name="earthquake">Earthquake</string>
+    <string name="active_shooter">Active\nShooter</string>
+    <string name="earthquake">Earth\nquake</string>
     <string name="violence">Violence</string>
-    <string name="evacuation_disabilities">Evacuation of Persons with Disabilities, Access or Functional Needs</string>
-    <string name="suspicious_package">Suspicious Package</string>
+    <string name="evacuation_disabilities">Evacuation\nDisabilities</string>
+    <string name="suspicious_package">Suspicious\nPackage</string>
     <string name="evacuation">Evacuation</string>
-    <string name="hazardous_material">Hazardous Material</string>
-    <string name="hazardous_material_shelter">Hazardous Material Shelter</string>
-    <string name="bomb_threat">Bomb Threat</string>
-    <string name="medical_emergency">Medical Emergency</string>
-    <string name="power_outage">Power Outage</string>
+    <string name="hazardous_material">Hazardous\nMaterial</string>
+    <string name="hazardous_material_shelter">Hazardous\nMaterial\nShelter</string>
+    <string name="bomb_threat">Bomb\nThreat</string>
+    <string name="medical_emergency">Medical\nEmergency</string>
+    <string name="emergency_preparedness">Emergency\nPreparedness</string>
+    <string name="fire">Fire</string>
+    <string name="persons_in_distress">Person\nIn\nDistress</string>
+    <string name="utility_failure">Utility\nFailure</string>
 
     <!-- Active Shooter -->
     <string name="active_shooter_text">
@@ -193,7 +196,7 @@
     </string>
 
     <!-- Power Outage -->
-    <string name="power_outage_text">
+    <string name="utility_failure_text">
 <![CDATA[
 			
 			<p>• Turn off and unplug computers and other sensitive electrical equipment.<br></p>
@@ -232,7 +235,7 @@
     <string name="title_activity_violence">ViolenceActivity</string>
     <string name="title_activity_evacuation_disabilities">EvacuationDisabilitiesActivity</string>
     <string name="title_activity_suspicious_package">SuspiciousPackageActivity</string>
-    <string name="title_activity_power_outage">PowerOutageActivity</string>
+    <string name="title_activity_utility_failure">PowerOutageActivity</string>
     <string name="title_activity_medical_emergency">MedicalEmergencyActivity</string>
     <string name="title_activity_bomb_threat">BombThreatActivity</string>
     <string name="title_activity_evacuation">EvacuationActivity</string>

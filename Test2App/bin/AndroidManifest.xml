@@ -86,8 +86,8 @@
             android:label="@string/title_activity_suspicious_package" >
         </activity>
         <activity
-            android:name="com.example.test2app.PowerOutageActivity"
-            android:label="@string/title_activity_power_outage"
+            android:name="com.example.test2app.UtilityFailureActivity"
+            android:label="@string/title_activity_utility_failure"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
