@@ -1,117 +1,143 @@
-<com.example.test2app.view.viewgroup.FlyOutContainer xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/TableLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
-     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent" 
+    android:background="@color/holo_dark">
+
+    <TableRow
+        android:id="@+id/e_tableRow1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/header_color_blue"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:background="@color/header_color_blue" >
+
+        <TextView
+            android:id="@+id/emergencyInfoHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/dialer_header"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size" />
+    </TableRow>
+    <TableRow android:layout_gravity="center" >
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="toggleEaMarker"
-            android:text="@string/evacuation_areas" />
+            android:id="@+id/call911Button"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:paddingTop="10dip"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_button"
+            android:text="@string/call_911"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:onClick="call911"/>
+       
+ 	</TableRow>
+ 	
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="toggleBpMarker"
-            android:text="@string/blue_phones" />
-
-    </LinearLayout>
-    
-	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent" >
-	    
-	   
-		<TableRow
-	        android:id="@+id/tableRow1"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentTop="true"
-	        android:background="@color/header_color_blue" >
+    <ScrollView 
+	    android:layout_width="wrap_content"
+   		android:layout_height="340dp"
+   		android:paddingTop="10dip"
+   		android:paddingBottom="10dip"
+   		android:fillViewport="true"
+	    android:layout_gravity="center"
+	    android:background="@color/holo_dark">
+        
+	    <TableLayout android:layout_gravity="center" 
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:stretchColumns="0,3">
 	        
-
-	       <TextView
-	            android:id="@+id/mapHeaderTextView"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="@string/map_header"
-	            android:textSize="@dimen/font_size"
-	            android:textAppearance="?android:attr/textAppearanceLarge"
-	            android:textColor="@color/white"
-	            android:layout_weight="1"
-	            android:gravity="center_horizontal"
-	            android:layout_marginBottom="3dp"/>
-	       </TableRow>
-	        
-	    <include
-	        layout="@layout/commonfooter" />
-	    
-	<!-- This is the button for Opening the Slider -->	       
-	     <Button 
-	   	       android:id="@+id/menu_slider_button"
-	           android:layout_width="wrap_content"
-	           android:layout_height="wrap_content"
-	           android:layout_alignParentTop="true"
-	           android:gravity="left"
-	           android:background="@drawable/menu_slider_icon"
-	           android:textColor="@color/white"
-	           android:textSize="@dimen/button_text_size"
-	           android:onClick="toggleMenu"/>
-	     
-	<!-- This is the button for Finding directions -->	    
-	     <Button 
-	   	       android:id="@+id/walking_directions_button"
-	           android:layout_width="wrap_content"
-	           android:layout_height="wrap_content"
-	           android:layout_alignParentTop="true"
-	           android:layout_toRightOf="@+id/menu_slider_button"
-	           android:gravity="left"
-	           android:background="@drawable/directions_icon"
-	           android:textColor="@color/white"
-	           android:textSize="@dimen/button_text_size"
-	           android:onClick="findDirections"/>
-	     
-     <!-- This is the button for Updating Current Location -->	     
-<!--     <Button 
-   	       android:id="@+id/current_location"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentTop="true"
-           android:layout_toRightOf="@+id/walking_directions_button"
-           android:gravity="left"
-           android:background="@drawable/menu_slider_icon"
-           android:textColor="@color/white"
-           android:textSize="@dimen/button_text_size"
-           android:onClick="findLocation"/> -->
-	    
-   	    
-   	    <!-- This is the button for formatting and Toggling -->
-   	    <Button 
-   	       android:id="@+id/transparent_button"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true"
-           android:background="@drawable/map_icon_pressed"
-           android:alpha="0"
-           android:textColor="@color/white"
-           android:textSize="@dimen/button_text_size"
-   	       android:onClick="toggleMenu" />
-	    
-	    <fragment
-		    android:id="@+id/map"
-		    android:name="com.google.android.gms.maps.SupportMapFragment"
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:layout_below="@+id/tableRow1"
-		    android:layout_above="@+id/transparent_button"
-		    android:layout_marginBottom="2dp"/>
+	        <TableRow android:layout_gravity="center">
+	            <TextView />
+	            <Button 
+	                android:layout_margin="5dp"
+	                android:layout_gravity="center_vertical"
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/uci_police_dept"
+	                android:onClick="callUciPoliceDept" />
+	            
+	            <Button 
+	                android:layout_margin="5dp"
+	                android:layout_gravity="center_vertical" 
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/emergency_mgmt"
+	                android:onClick="callEmergencyMgmt" />
+	             <TextView />
+	        </TableRow>
 	
-	</RelativeLayout>
+	        <TableRow android:layout_gravity="center">
+	            <TextView />
+	            <Button 
+	                android:layout_margin="5dp"
+					android:layout_gravity="center_vertical"
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/counseling_center"
+	                android:onClick="callCounselingCenter" />
+	            
+	            <Button 
+	                android:layout_margin="5dp"
+					android:layout_gravity="center_vertical"
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/student_health"
+	                android:onClick="callStudentHealth" />
+	            
+	            <TextView />
+	        </TableRow>
+	
+	        <TableRow android:layout_gravity="center">
+	            <TextView />
+                <Button 
+                    android:layout_margin="5dp"
+                	android:layout_gravity="center_vertical"
+                	android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+                	android:background="@drawable/emergency_health_and_safety"
+                	android:onClick="callEmergencyHealthAndSafety" />
+	            <Button 
+	                android:layout_margin="5dp"
+	                android:layout_gravity="center_vertical"
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/facilities_mgmt_service"
+	                android:onClick="callFacilitiesMgmtService" />
+	      
+	            <TextView />
+	        </TableRow>
+	        <TableRow android:layout_gravity="center">
+	            <TextView />
+                <Button 
+                    android:layout_margin="5dp"
+                	android:layout_gravity="center_vertical"
+                	android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+                	android:background="@drawable/oit"
+                	android:onClick="callOit" />
+	            <Button 
+	                android:layout_margin="5dp"
+	                android:layout_gravity="center_vertical"
+	                android:maxWidth="10dip" 
+	                android:maxHeight="10dip"
+	                android:background="@drawable/uci_emergency_info_line"
+	                android:onClick="callEmergencyInfoLine" />
+	      
+	            <TextView />
+	        </TableRow>
+	    </TableLayout>
+	
+	</ScrollView>
+    <include
+        
+        layout="@layout/commonfooter" />
 
-</com.example.test2app.view.viewgroup.FlyOutContainer>
+</TableLayout>
