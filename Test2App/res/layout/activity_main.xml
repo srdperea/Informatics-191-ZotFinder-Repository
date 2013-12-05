@@ -20,6 +20,14 @@
             android:layout_height="wrap_content"
             android:onClick="toggleBpMarker"
             android:text="@string/blue_phones" />
+        	
+        <TextView
+	            android:id="@+id/httpTextView"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:textSize="@dimen/font_size"
+	            android:textAppearance="?android:attr/textAppearanceLarge"
+	            android:textColor="@color/white"/>
 
     </LinearLayout>
     
@@ -76,6 +84,19 @@
 	           android:textColor="@color/white"
 	           android:textSize="@dimen/button_text_size"
 	           android:onClick="findDirections"/>
+	 
+	 <!-- This is the button for making HTTP Request -->	       
+	     <Button 
+	   	       android:id="@+id/HTTP_button"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_alignParentTop="true"
+	           android:gravity="right"
+	           android:layout_toRightOf="@+id/walking_directions_button"
+	           android:background="@drawable/menu_slider_icon"
+	           android:textColor="@color/white"
+	           android:textSize="@dimen/button_text_size"
+	           android:onClick="getData"/>
 	     
      <!-- This is the button for Updating Current Location -->	     
 <!--     <Button 

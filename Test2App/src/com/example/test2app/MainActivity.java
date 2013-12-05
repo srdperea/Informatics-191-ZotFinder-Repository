@@ -1,6 +1,7 @@
 package com.example.test2app;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,6 +11,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import android.content.Context;
@@ -19,10 +27,12 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -376,4 +386,71 @@ public class MainActivity extends FragmentActivity {
 	    }
 	    return gps;
 	}
+	
+/*	public void readHTTPRequest(View v){
+		try {
+			TextView httptextview = (TextView)findViewById(R.id.httpTextView);
+			httptextview.setText(getData());
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}*/
+	public void getData(View v) {
+	    try {
+	        StrictMode.ThreadPolicy policy = new StrictMode.
+	          ThreadPolicy.Builder().permitAll().build();
+	        StrictMode.setThreadPolicy(policy); 
+	        URL url = new URL("http://directory.uci.edu/index.php?uid=djpatter&form_type=plaintext");
+	        HttpURLConnection con = (HttpURLConnection) url
+	          .openConnection();
+	        TextView httptextview = (TextView)findViewById(R.id.httpTextView);
+	        httptextview.setText(readStream(con.getInputStream()));
+	        //readStream(con.getInputStream());
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}     
+
+	private String readStream(InputStream in) {
+	  BufferedReader reader = null;
+	  String output = "";
+	  try {
+	    reader = new BufferedReader(new InputStreamReader(in));
+	    String line = "";
+	    while ((line = reader.readLine()) != null) {
+	      output+=line;
+	    }
+	    return output;
+	  } catch (IOException e) {
+	    e.printStackTrace();
+	  } finally {
+	    if (reader != null) {
+	      try {
+	        reader.close();
+	      } catch (IOException e) {
+	        e.printStackTrace();
+	      }
+	    }
+	  }
+	return output;
+	} 
+/*	public String getHTTPRequest() throws ClientProtocolException, IOException{
+		HttpClient httpclient = new DefaultHttpClient();
+	    HttpResponse response = httpclient.execute(new HttpGet("http://directory.uci.edu/index.php?uid=djpatter&form_type=plaintext"));
+	    StatusLine statusLine = response.getStatusLine();
+	    if(statusLine.getStatusCode() == HttpStatus.SC_OK){
+	        ByteArrayOutputStream out = new ByteArrayOutputStream();
+	        response.getEntity().writeTo(out);
+	        out.close();
+	        String responseString = out.toString();
+	        //System.out.println(responseString);
+	        return responseString;
+	    } else{
+	        //Closes the connection.
+	        response.getEntity().getContent().close();
+	        throw new IOException(statusLine.getReasonPhrase());
+	    }
+	}*/
 }
