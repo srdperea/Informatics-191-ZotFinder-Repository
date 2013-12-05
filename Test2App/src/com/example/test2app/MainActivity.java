@@ -228,20 +228,38 @@ public class MainActivity extends FragmentActivity {
 	static final LatLng BP154 = new LatLng(33.64718995450, -117.83749799100	);
 	static final LatLng BP155 = new LatLng(33.64838932580, -117.83088987000	);
 	
-	//Bathrooms
-	//static final LatLng
-	//
-	//HERE
-	//
-	
+	//Restrooms
+
+	static final LatLng RR1 = new LatLng(33.65010225160, -117.84559094400);
+	static final LatLng RR2 = new LatLng(33.65040342400, -117.84496139200);
+	static final LatLng RR3 = new LatLng(33.64998896190, -117.84488620900);
+	static final LatLng RR4 = new LatLng(33.64995078660, -117.84501711000);
+	static final LatLng RR5 = new LatLng(33.64431413160, -117.84078154500);
+	static final LatLng RR6 = new LatLng(33.64354383150, -117.84396563000);
+	static final LatLng RR7 = new LatLng(33.64568623610, -117.84575639400);
+	static final LatLng RR8 = new LatLng(33.64839436640, -117.84452293200);
+	static final LatLng RR9 = new LatLng(33.64872460950, -117.84249951400);
+	static final LatLng RR10 = new LatLng(33.64822441410, -117.84365204600);
+	static final LatLng RR11 = new LatLng(33.64346134070, -117.84343369700);
+	static final LatLng RR12 = new LatLng(33.64397988970, -117.84346632700);
+	static final LatLng RR13 = new LatLng(33.64640262790, -117.84050172300);
+	static final LatLng RR14 = new LatLng(33.64649153390, -117.83743367200);
+	static final LatLng RR15 = new LatLng(33.64628115630, -117.83740776700);
+	static final LatLng RR16 = new LatLng(33.64712367770, -117.83906408700);
+	static final LatLng RR17 = new LatLng(33.64699239470, -117.83942377800);
+	static final LatLng RR18 = new LatLng(33.64814746040, -117.84786043000);
+	static final LatLng RR19 = new LatLng(33.64397676030, -117.84175444400);
+	static final LatLng RR20 = new LatLng(33.64414576200, -117.84197579900);
+	static final LatLng RR21 = new LatLng(33.64446559420, -117.84160199500);
 	
 	ArrayList<Marker> emergencyArea = new ArrayList<Marker>();
 	ArrayList<Marker> bluePhone = new ArrayList<Marker>();
-	ArrayList<Marker> restrooms = new ArrayList<Marker>();
+	ArrayList<Marker> restroom = new ArrayList<Marker>();
 	ArrayList<Marker> buildings = new ArrayList<Marker>();
 
 	public boolean eaShow=true;
 	public boolean bpShow=true;
+	public boolean rrShow=true;
 	
 	
 	Button mapLinkButton;
@@ -452,7 +470,28 @@ public class MainActivity extends FragmentActivity {
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP154).title("Blue Light Phone").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP155).title("Blue Light Phone").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
 
-	         
+	         //restroom markers
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR1).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR2).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR3).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR4).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR5).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR6).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR7).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR8).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR9).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR10).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR11).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR12).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR13).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR14).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR15).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR16).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR17).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR18).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR19).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR20).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR21).title("Restroom").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
 	         //buildings.add(mMap.addMarker(new MarkerOptions().position(new LatLng(33.643183,-117.842028)).title("Donald Bren Hall")
 	        		// .snippet("DBH").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
 
@@ -698,6 +737,24 @@ public class MainActivity extends FragmentActivity {
 				m.setVisible(true);
 			}
 			bpShow = true;
+			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
+	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+		}
+	}
+	
+	public void toggleRrMarker(View v){
+		if(rrShow){
+			for (Marker m : restroom){
+				m.setVisible(false);
+			}
+			rrShow = false;
+		}
+		else
+		{
+			for (Marker m : restroom){
+				m.setVisible(true);
+			}
+			rrShow = true;
 			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 		}

@@ -20,6 +20,12 @@
             android:layout_height="wrap_content"
             android:onClick="toggleBpMarker"
             android:text="@string/blue_phones" />
+        
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="toggleRrMarker"
+            android:text="@string/restrooms" />
         	
         <TextView
 	            android:id="@+id/httpTextView"
