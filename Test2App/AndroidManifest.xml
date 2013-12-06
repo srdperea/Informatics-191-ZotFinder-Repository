@@ -26,7 +26,9 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!--
          The following two permissions are not required to use
-	     Google Maps Android API v2, but are recommended.
+	     Google Maps Android API v2, but are recommended.
+
+
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -45,26 +47,36 @@
             android:value="AIzaSyAcD-vS33MrY9DGGpf8Qp2ZnWbxB5vTTn0" />
 
         <activity
-            android:name="com.example.test2app.MainActivity"
+            android:name="com.example.test2app.SplashScreenActivity"
             android:label="@string/app_name"
+            android:clearTaskOnLaunch="true"
             android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.example.test2app.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+
         <activity
             android:name="com.example.test2app.EmergencyInfoActivity"
             android:label="@string/title_activity_emergency_info"
             android:theme="@android:style/Theme.NoTitleBar" >
- >
         </activity>
+        
         <activity
             android:name="com.example.test2app.DialerActivity"
             android:label="@string/title_activity_dialer"
             android:theme="@android:style/Theme.NoTitleBar" >
- >
+ >
+
+
+
         </activity>
         <activity
             android:name="com.example.test2app.ActiveShooterActivity"
