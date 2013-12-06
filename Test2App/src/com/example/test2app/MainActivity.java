@@ -11,13 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+
 import org.json.JSONObject;
 
 import android.content.Context;
@@ -27,12 +21,10 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -69,9 +61,6 @@ public class MainActivity extends FragmentActivity {
 	static final LatLng EA10 = new LatLng(33.64504260036, -117.8347193371);
 	
 	//Blue phone posts 
-	//static final LatLng BP1 = new LatLng(33.645876,-117.845483);
-	//static final LatLng BP2 = new LatLng(33.648047, -117.843874);
-	//static final LatLng BP3 = new LatLng(33.646073, -117.843166);
 	static final LatLng BP1 = new LatLng(33.64461143420, -117.82632083200	);
 	static final LatLng BP2 = new LatLng(33.64387631680, -117.82420840800	);
 	static final LatLng BP3 = new LatLng(33.64471594450, -117.82438504100	);
@@ -229,7 +218,6 @@ public class MainActivity extends FragmentActivity {
 	static final LatLng BP155 = new LatLng(33.64838932580, -117.83088987000	);
 	
 	//Restrooms
-
 	static final LatLng RR1 = new LatLng(33.65010225160, -117.84559094400);
 	static final LatLng RR2 = new LatLng(33.65040342400, -117.84496139200);
 	static final LatLng RR3 = new LatLng(33.64998896190, -117.84488620900);
@@ -498,7 +486,7 @@ public class MainActivity extends FragmentActivity {
 
 	         //animate camera
 	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
-	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
+	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);     
 	         
 	     }
 	}
@@ -693,6 +681,11 @@ public class MainActivity extends FragmentActivity {
 			startActivity(intent);
 		}
 	 
+	 public void goToSearch(View view) { 
+			Intent intent = new Intent(this,SearchActivity.class);
+			startActivity(intent);
+		}
+	 
 	 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -795,45 +788,9 @@ public class MainActivity extends FragmentActivity {
 			e.printStackTrace();
 		}
 	}*/
-	public void getData(View v) {
-	    try {
-	        StrictMode.ThreadPolicy policy = new StrictMode.
-	          ThreadPolicy.Builder().permitAll().build();
-	        StrictMode.setThreadPolicy(policy); 
-	        URL url = new URL("http://directory.uci.edu/index.php?uid=djpatter&form_type=plaintext");
-	        HttpURLConnection con = (HttpURLConnection) url
-	          .openConnection();
-	        TextView httptextview = (TextView)findViewById(R.id.httpTextView);
-	        httptextview.setText(readStream(con.getInputStream()));
-	        //readStream(con.getInputStream());
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	}     
+	
+	
 
-	private String readStream(InputStream in) {
-	  BufferedReader reader = null;
-	  String output = "";
-	  try {
-	    reader = new BufferedReader(new InputStreamReader(in));
-	    String line = "";
-	    while ((line = reader.readLine()) != null) {
-	      output+=line;
-	    }
-	    return output;
-	  } catch (IOException e) {
-	    e.printStackTrace();
-	  } finally {
-	    if (reader != null) {
-	      try {
-	        reader.close();
-	      } catch (IOException e) {
-	        e.printStackTrace();
-	      }
-	    }
-	  }
-	return output;
-	} 
 /*	public String getHTTPRequest() throws ClientProtocolException, IOException{
 		HttpClient httpclient = new DefaultHttpClient();
 	    HttpResponse response = httpclient.execute(new HttpGet("http://directory.uci.edu/index.php?uid=djpatter&form_type=plaintext"));

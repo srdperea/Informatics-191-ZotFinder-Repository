@@ -1,4 +1,5 @@
-<com.example.test2app.view.viewgroup.FlyOutContainer xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.test2app.view.viewgroup.FlyOutContainer
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
@@ -26,14 +27,6 @@
             android:layout_height="wrap_content"
             android:onClick="toggleRrMarker"
             android:text="@string/restrooms" />
-        	
-        <TextView
-	            android:id="@+id/httpTextView"
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            android:textSize="@dimen/font_size"
-	            android:textAppearance="?android:attr/textAppearanceLarge"
-	            android:textColor="@color/white"/>
 
     </LinearLayout>
     
@@ -99,10 +92,10 @@
 	           android:layout_alignParentTop="true"
 	           android:gravity="right"
 	           android:layout_toRightOf="@+id/walking_directions_button"
-	           android:background="@drawable/menu_slider_icon"
+	           android:background="@drawable/search_icon"
 	           android:textColor="@color/white"
 	           android:textSize="@dimen/button_text_size"
-	           android:onClick="getData"/>
+	           android:onClick="goToSearch"/>
 	     
      <!-- This is the button for Updating Current Location -->	     
 <!--     <Button 
