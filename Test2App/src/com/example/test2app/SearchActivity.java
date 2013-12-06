@@ -23,7 +23,7 @@ EditText inputBox;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search_person);
+		setContentView(R.layout.activity_search);
 		
 		inputBox = (EditText)findViewById(R.id.searchEditText);
 		
