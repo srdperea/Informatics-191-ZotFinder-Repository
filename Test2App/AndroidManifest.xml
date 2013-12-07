@@ -73,7 +73,6 @@
             android:name="com.example.test2app.DialerActivity"
             android:label="@string/title_activity_dialer"
             android:theme="@android:style/Theme.NoTitleBar" >
- >
 
 
 
@@ -95,7 +94,9 @@
         </activity>
         <activity
             android:name="com.example.test2app.SuspiciousPackageActivity"
-            android:label="@string/title_activity_suspicious_package" >
+            android:label="@string/title_activity_suspicious_package" 
+            android:theme="@android:style/Theme.NoTitleBar" >
+            
         </activity>
         <activity
             android:name="com.example.test2app.UtilityFailureActivity"

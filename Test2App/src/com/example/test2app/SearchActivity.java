@@ -60,13 +60,32 @@ EditText inputBox;
 	private String readStream(InputStream in) {
 	  BufferedReader reader = null;
 	  String output = "";
+	  String ucinetid, name, title, department, address, phone, fax, email;
+	  String personOutput = "";
 	  try {
 	    reader = new BufferedReader(new InputStreamReader(in));
 	    String line = "";
 	    while ((line = reader.readLine()) != null) {
 	      output+=line;
 	    }
-	    return output;
+	    ucinetid = output.split("UCInetID: ")[1].split("<br/>")[0];
+	    name = output.split("Name: ")[1].split("<br/>")[0];
+	    title = output.split("Title: ")[1].split("<br/>")[0];
+	    department = output.split("Department: ")[1].split("<br/>")[0];
+	    address = output.split("Address: ")[1].split("<br/>")[0];
+	    phone = output.split("Phone: ")[1].split("<br/>")[0];
+	    fax = output.split("Fax: ")[1].split("<br/>")[0];
+	   	email = ucinetid + "@uci.edu";
+	   	personOutput = "Name: " + name + '\n';
+	   	personOutput+= "UCInetID: " + ucinetid + '\n';
+	   	personOutput+= "Title: " + title + '\n';
+	   	personOutput+= "E-mail: " + email + '\n';
+	   	personOutput+= "Department: " + department + '\n';
+	   	personOutput+= "Address: " + address + '\n';
+	   	personOutput+= "Phone#: " + phone + '\n';
+	   	personOutput+= "Fax: " + fax + '\n';
+	   	
+	    return personOutput;
 	  } catch (IOException e) {
 	    e.printStackTrace();
 	  } finally {
@@ -96,10 +115,6 @@ EditText inputBox;
 		startActivity(intent);
 	}
 	
-	 public void goToSearch(View view) { 
-			Intent intent = new Intent(this,SearchActivity.class);
-			startActivity(intent);
-		}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
