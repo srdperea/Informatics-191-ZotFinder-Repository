@@ -250,4 +250,6 @@
     <string name="title_activity_earthquake">EarthquakeActivity</string>
     <string name="title_activity_search">SearchActivity</string>
 
+    <!-- Search Person -->
+    <string name="call_this_person">Call</string>
 </resources>
