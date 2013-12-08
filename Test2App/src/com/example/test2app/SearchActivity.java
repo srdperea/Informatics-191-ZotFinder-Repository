@@ -10,6 +10,7 @@ import java.net.URL;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Editable;
@@ -40,6 +41,7 @@ String phoneNumber;
 				@Override
 				public boolean onKey(View v, int keyCode, KeyEvent event) {
 					if(keyCode == 66){
+						
 						getData(inputBox.getText().toString());
 						InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			               imm.hideSoftInputFromWindow(inputBox.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -59,11 +61,20 @@ String phoneNumber;
 	        URL url = new URL("http://directory.uci.edu/index.php?uid=" + inputValue + "&form_type=plaintext");
 	        HttpURLConnection con = (HttpURLConnection) url
 	          .openConnection();
-	        TextView httptextview = (TextView)findViewById(R.id.httpTextView);
-	        httptextview.setText(readStream(con.getInputStream()));
-	        httptextview.setTextSize(getResources().getDimension(R.dimen.search_out));
-	        httptextview.setTextColor(getResources().getColor(R.color.black));
-	        httptextview.setBackgroundColor(getResources().getColor(R.color.light_gray));
+	        
+	        
+	        //sheena
+	        String passedData = readStream(con.getInputStream());
+	        Bundle bundle = new Bundle();
+	        bundle.putString("personData", passedData);
+	        //Setup the Intent that will start the next Activity
+	        Intent personInfoActivity = new Intent(this, PersonInfoActivity.class); 
+	        //Assumes this references this instance of Activity A
+	        personInfoActivity.putExtras(bundle);
+	        startActivity(personInfoActivity);
+	   
+	        
+	       
 	        //readStream(con.getInputStream());
 	    } catch (Exception e) {
 	        e.printStackTrace();

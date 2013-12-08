@@ -22,7 +22,7 @@
 	            android:id="@+id/mapHeaderTextView"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="@string/search_header"
+	            android:text="@string/person_info"
 	            android:textSize="@dimen/font_size"
 	            android:textAppearance="?android:attr/textAppearanceLarge"
 	            android:textColor="@color/white"
@@ -31,38 +31,46 @@
 	            android:layout_marginBottom="3dp"/>
       </TableRow>
 	       
-       	    <!-- This is the button for formatting and Toggling -->
-   	    <Button 
-   	       android:id="@+id/transparent_button"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true"
-           android:background="@drawable/map_icon_pressed"
-           android:alpha="0"
-           android:textColor="@color/white"
-           android:textSize="@dimen/button_text_size"
-   	       android:onClick="goToMap" />
+    
+    <!-- This is the button for formatting and Toggling -->
+    <Button 
+       android:id="@+id/transparent_button"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:background="@drawable/map_icon_pressed"
+       android:alpha="0"
+       android:textColor="@color/white"
+       android:textSize="@dimen/button_text_size"
+       android:onClick="goToMap" />
 	        
     <include
 	        layout="@layout/commonfooter" />
-    <EditText
-        android:id="@+id/searchEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="61dp"
-        android:layout_marginTop="42dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/input_hint" >
-        <requestFocus />  
-    </EditText>
-  
-
+    
+    
+    <ScrollView 
+		    android:id="@+id/ScrollLayout"
+		    android:layout_below="@+id/tableRow1"
+		    android:layout_width="wrap_content"
+	  		android:layout_height="match_parent"
+	  		android:layout_marginTop="15dp"
+	  		android:layout_above="@+id/transparent_button">
+			
+			<RelativeLayout 
+			    android:id="@+id/R3Layout"
+			    android:layout_width="wrap_content"
+	  			android:layout_height="wrap_content">
+	        
+				<TextView
+					android:id="@+id/httpTextView"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/font_size"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/white"/>
+			</RelativeLayout>
+	    
+	</ScrollView>
 	
-	
+    
 </RelativeLayout>
-	
-
-

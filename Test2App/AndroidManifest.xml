@@ -27,8 +27,6 @@
     <!--
          The following two permissions are not required to use
 	     Google Maps Android API v2, but are recommended.
-
-
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -48,34 +46,29 @@
 
         <activity
             android:name="com.example.test2app.SplashScreenActivity"
-            android:label="@string/app_name"
             android:clearTaskOnLaunch="true"
+            android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.example.test2app.MainActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
-
         <activity
             android:name="com.example.test2app.EmergencyInfoActivity"
             android:label="@string/title_activity_emergency_info"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
-        
         <activity
             android:name="com.example.test2app.DialerActivity"
             android:label="@string/title_activity_dialer"
             android:theme="@android:style/Theme.NoTitleBar" >
-
-
-
         </activity>
         <activity
             android:name="com.example.test2app.ActiveShooterActivity"
@@ -94,9 +87,8 @@
         </activity>
         <activity
             android:name="com.example.test2app.SuspiciousPackageActivity"
-            android:label="@string/title_activity_suspicious_package" 
+            android:label="@string/title_activity_suspicious_package"
             android:theme="@android:style/Theme.NoTitleBar" >
-            
         </activity>
         <activity
             android:name="com.example.test2app.UtilityFailureActivity"
@@ -137,6 +129,11 @@
             android:name="com.example.test2app.SearchActivity"
             android:label="@string/title_activity_search"
             android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.PersonInfoActivity"
+            android:label="@string/title_activity_person_info"
+            android:theme="@android:style/Theme.NoTitleBar"  >
         </activity>
     </application>
 

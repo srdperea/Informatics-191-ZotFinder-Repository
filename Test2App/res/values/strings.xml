@@ -9,7 +9,10 @@
     <string name="blue_phones">Blue Light Phones</string>
     <string name="evacuation_areas">Evacuation Areas</string>
     <string name="restrooms">Restrooms</string>
+    
+    <!-- search everything related -->
     <string name="search_header">Search</string>
+    <string name="person_info">Details</string>
 
     <!-- 3 Links Bottom Page -->
     <string name="map_link">Map</string>
@@ -252,4 +255,6 @@
 
     <!-- Search Person -->
     <string name="call_this_person">Call</string>
+    <string name="title_activity_person_info">PersonInfoActivity</string>
+
 </resources>
