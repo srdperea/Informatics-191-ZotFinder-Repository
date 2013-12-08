@@ -80,7 +80,8 @@
 		android:text="@string/active_shooter"
 		android:layout_below="@+id/button1"
 		android:textSize="@dimen/button_text_size"
-		android:layout_marginTop="5dp"		
+		android:layout_marginTop="5dp"
+		android:layout_marginLeft="10dp"		
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:textColor="@color/white" />
 	        
@@ -104,7 +105,8 @@
 		android:text="@string/earthquake"
 		android:layout_below="@+id/button2"
 		android:textSize="@dimen/button_text_size"
-		android:layout_marginTop="5dp"		
+		android:layout_marginTop="5dp"
+		android:layout_marginLeft="15dp"		
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:textColor="@color/white" />
 	
@@ -151,7 +153,8 @@
 		android:text="@string/fire"
 		android:layout_below="@+id/button4"
 		android:textSize="@dimen/button_text_size"
-		android:layout_marginTop="5dp"		
+		android:layout_marginTop="5dp"
+		android:layout_marginLeft="20dp"		
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:textColor="@color/white" />
 	
@@ -175,7 +178,8 @@
 		android:text="@string/persons_in_distress"
 		android:layout_below="@+id/button5"
 		android:textSize="@dimen/button_text_size"
-		android:layout_marginTop="5dp"		
+		android:layout_marginTop="5dp"
+		android:layout_marginLeft="10dp"				
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:textColor="@color/white" />
 	<!-- Gray Bar -->
@@ -289,7 +293,7 @@
 		        android:onClick="goToHazadousMaterial" />
 			
 			<TextView
-				android:id="@+id/hazardousMaterailText"
+				android:id="@+id/hazardousMaterialText"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_alignLeft="@+id/button9"
@@ -353,10 +357,10 @@
 		        android:id="@+id/button12"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-				android:layout_below="@+id/button9"
+				android:layout_below="@+id/hazardousMaterialText"
 				android:layout_marginLeft="18dp"
 				android:layout_marginRight="18dp"
-				android:layout_marginTop="10dp"
+				android:layout_marginTop="20dp"
 		        android:background="@drawable/suspicious_package"
 		        android:onClick="goToSuspiciousPackage" /> 
 		        
@@ -377,9 +381,9 @@
 		        android:id="@+id/button13"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-				android:layout_below="@+id/button11"
+				android:layout_below="@+id/medicalEmergencyText"
 				android:layout_marginRight="18dp"
-				android:layout_marginTop="10dp"
+				android:layout_marginTop="20dp"
 				android:layout_alignParentRight="true"
 				android:background="@drawable/utility_failure"
 		        android:onClick="goToUtilityFailure" /> 
@@ -401,7 +405,7 @@
 		        android:id="@+id/button14"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-				android:layout_below="@+id/button10"
+				android:layout_below="@+id/hazardousMaterialShelterText"
 				android:layout_marginTop="10dp"
 				android:layout_marginRight="18dp"
 				android:layout_centerHorizontal="true"

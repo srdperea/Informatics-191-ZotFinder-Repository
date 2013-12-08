@@ -1503,8 +1503,8 @@ containing a value of this type.
         public static final int fill_vertical=0x7f050009;
         public static final int fireText=0x7f050074;
         public static final int greyLine=0x7f050076;
-        public static final int hazardousMaterailText=0x7f050081;
         public static final int hazardousMaterialShelterText=0x7f050083;
+        public static final int hazardousMaterialText=0x7f050081;
         public static final int home=0x7f050025;
         public static final int homeAsUp=0x7f050017;
         public static final int horizontal=0x7f050000;

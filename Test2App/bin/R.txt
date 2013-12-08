@@ -451,8 +451,8 @@ int id fill_horizontal 0x7f05000b
 int id fill_vertical 0x7f050009
 int id fireText 0x7f050074
 int id greyLine 0x7f050076
-int id hazardousMaterailText 0x7f050081
 int id hazardousMaterialShelterText 0x7f050083
+int id hazardousMaterialText 0x7f050081
 int id home 0x7f050025
 int id homeAsUp 0x7f050017
 int id horizontal 0x7f050000
