@@ -73,8 +73,9 @@ String phoneNumber;
 	private String readStream(InputStream in) {
 	  BufferedReader reader = null;
 	  String output = "";
-	  String ucinetid, name, title, department, address, phone, fax, email;
+	  String ucinetid, name, title, department, address, phone = "0", fax = "0", email;
 	  String personOutput = "";
+	  Boolean hasPhone = false, hasFax = false;
 	  try {
 	    reader = new BufferedReader(new InputStreamReader(in));
 	    String line = "";
@@ -86,19 +87,29 @@ String phoneNumber;
 	    title = output.split("Title: ")[1].split("<br/>")[0];
 	    department = output.split("Department: ")[1].split("<br/>")[0];
 	    address = output.split("Address: ")[1].split("<br/>")[0];
-	    phone = output.split("Phone: ")[1].split("<br/>")[0];
-	    fax = output.split("Fax: ")[1].split("<br/>")[0];
+	    if (output.contains("Phone: ")){
+	    	hasPhone = true;
+	    	phone = output.split("Phone: ")[1].split("<br/>")[0];
+	    }
+	    if (output.contains("Fax: ")){
+	    	hasFax = true;
+	    	fax = output.split("Fax: ")[1].split("<br/>")[0];
+	    }
 	   	email = ucinetid + "@uci.edu";
-	   	personOutput = "Name: " + name + '\n'+ '\n';
-	   	personOutput+= "UCInetID: " + ucinetid + '\n' + '\n';
-	   	personOutput+= "Title: " + title + '\n' + '\n';
-	   	personOutput+= "E-mail: " + email + '\n' + '\n';
-	   	personOutput+= "Department: " + department + '\n' + '\n';
-	   	personOutput+= "Address: " + address + '\n' + '\n';
-	   	personOutput+= "Phone#: " + phone + '\n' + '\n';
-	   	personOutput+= "Fax: " + fax + '\n';
-	   	phoneNumber = phone;
-	   	
+	   	personOutput = "Name: " + name + '\n';
+	   	personOutput+= "UCInetID: " + ucinetid + '\n';
+	   	personOutput+= "Title: " + title + '\n';
+	   	personOutput+= "E-mail: " + email + '\n';
+	   	personOutput+= "Department: " + department + '\n';
+	   	personOutput+= "Address: " + address + '\n';
+	   	if(hasPhone){
+	   		personOutput+= "Phone: " + phone + '\n';
+	   	}
+	   	if (hasFax){
+	   		personOutput+= "Fax: " + fax + '\n';
+	   	}
+	   	hasPhone = false;
+	   	hasFax = false;
 	    return personOutput;
 	  } catch (IOException e) {
 	    e.printStackTrace();

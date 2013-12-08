@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
+    <!-- slide menu -->
      <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -30,6 +30,7 @@
 
     </LinearLayout>
     
+     <!-- Header -->
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent" >
@@ -90,26 +91,12 @@
 	           android:layout_width="wrap_content"
 	           android:layout_height="wrap_content"
 	           android:layout_alignParentTop="true"
-	           android:gravity="right"
-	           android:layout_toRightOf="@+id/walking_directions_button"
-	           android:background="@drawable/search_icon"
+	           android:layout_alignParentRight="true"
+	           android:background="@drawable/ic_action_search"
 	           android:textColor="@color/white"
 	           android:textSize="@dimen/button_text_size"
 	           android:onClick="goToSearch"/>
-	     
-     <!-- This is the button for Updating Current Location -->	     
-<!--     <Button 
-   	       android:id="@+id/current_location"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentTop="true"
-           android:layout_toRightOf="@+id/walking_directions_button"
-           android:gravity="left"
-           android:background="@drawable/menu_slider_icon"
-           android:textColor="@color/white"
-           android:textSize="@dimen/button_text_size"
-           android:onClick="findLocation"/> -->
-	    
+ 
    	    
    	    <!-- This is the button for formatting and Toggling -->
    	    <Button 
@@ -123,6 +110,7 @@
            android:textSize="@dimen/button_text_size"
    	       android:onClick="toggleMenu" />
 	    
+   	    <!-- Map -->
 	    <fragment
 		    android:id="@+id/map"
 		    android:name="com.google.android.gms.maps.SupportMapFragment"
