@@ -21,7 +21,7 @@
     <string name="most_common_emergencies">Most Common Emergencies</string>
     <string name="other_emergencies">Other Emergencies</string>
     <string name="active_shooter">Active\nShooter</string>
-    <string name="earthquake">Earth\nquake</string>
+    <string name="earthquake">Earthquake</string>
     <string name="violence">Violence</string>
     <string name="evacuation_disabilities">Evacuation\nDisabilities</string>
     <string name="suspicious_package">Suspicious\nPackage</string>
