@@ -1564,9 +1564,9 @@ containing a value of this type.
         public static final int uciPoliceDept=0x7f05005e;
         public static final int up=0x7f050035;
         public static final int useLogo=0x7f050015;
-        public static final int utilityFailureText=0x7f050088;
+        public static final int utilityFailureText=0x7f05008a;
         public static final int vertical=0x7f050001;
-        public static final int violenceText=0x7f05008a;
+        public static final int violenceText=0x7f050088;
         public static final int walking_directions_button=0x7f050095;
         public static final int withText=0x7f05001e;
     }

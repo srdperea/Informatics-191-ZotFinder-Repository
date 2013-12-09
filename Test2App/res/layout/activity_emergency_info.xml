@@ -4,16 +4,17 @@
   	android:layout_width="wrap_content"
   	android:layout_height="wrap_content" 
   	xmlns:android="http://schemas.android.com/apk/res/android">
+  	
 	<!-- This is the button for formatting and Toggling -->
-		   	    <Button 
-		   	       android:id="@+id/transparent_button"
-		           android:layout_width="wrap_content"
-		           android:layout_height="wrap_content"
-		           android:layout_alignParentBottom="true"
-		           android:background="@drawable/map_icon_pressed"
-		           android:alpha="0"
-		           android:textColor="@color/white"
-		           android:textSize="@dimen/button_text_size" />
+	<Button 
+	   android:id="@+id/transparent_button"
+	   android:layout_width="wrap_content"
+	   android:layout_height="wrap_content"
+	   android:layout_alignParentBottom="true"
+	   android:background="@drawable/map_icon_pressed"
+	   android:alpha="0"
+	   android:textColor="@color/white"
+	   android:textSize="@dimen/button_text_size" />
 		   	    
 		   	    
     <!-- Footer -->
@@ -218,7 +219,8 @@
 		    android:id="@+id/R3Layout"
 		    android:layout_width="fill_parent"
   			android:layout_height="wrap_content">
-
+		
+			<!--  Bomb Threat -->
 			<Button
 		        android:id="@+id/button6"
 		        android:layout_width="wrap_content"
@@ -232,14 +234,15 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_alignLeft="@+id/button6"
-				android:gravity="center"
+				android:gravity="center_horizontal"
 				android:text="@string/bomb_threat"
 				android:layout_below="@+id/button6"
 				android:textSize="@dimen/button_text_size"
 				android:layout_marginTop="5dp"		
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/white" />
-					
+			
+			<!-- Evacuation -->	
 			<Button
 		        android:id="@+id/button7"
 		        android:layout_width="wrap_content"
@@ -262,6 +265,7 @@
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/white" />
 			
+			<!-- Disabilities -->
 			<Button
 			    android:id="@+id/button8"
 			    android:layout_width="wrap_content"
@@ -281,7 +285,9 @@
 				android:layout_marginTop="5dp"		
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/white" />
-						        
+			
+			
+			<!-- Hazardous Material -->	        
 			<Button
 		        android:id="@+id/button9"
 		        android:layout_width="wrap_content"
@@ -298,13 +304,15 @@
 				android:layout_height="wrap_content"
 				android:layout_alignLeft="@+id/button9"
 				android:gravity="center"
-				android:text="@string/evacuation_disabilities"
+				android:text="@string/hazardous_material"
 				android:layout_below="@+id/button9"
 				android:textSize="@dimen/button_text_size"
 				android:layout_marginTop="5dp"		
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/white" /> 
-			        
+			
+			
+			<!-- Hazardous Material Shelter -->
 			<Button
 		        android:id="@+id/button10"
 		        android:layout_width="wrap_content"
@@ -328,7 +336,9 @@
 				android:layout_marginTop="5dp"		
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/white" />
-			    
+			
+			
+			<!-- Medical Emergency -->
 			<Button
 		        android:id="@+id/button11"
 		        android:layout_width="wrap_content"
@@ -352,7 +362,9 @@
 				android:layout_marginTop="5dp"		
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/white" />
-			        
+			     
+			
+			<!-- Suspicious Package -->
 			<Button
 		        android:id="@+id/button12"
 		        android:layout_width="wrap_content"
@@ -377,32 +389,10 @@
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/white" />
 			
+			
+			<!-- Violence -->
 			<Button
 		        android:id="@+id/button13"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-				android:layout_below="@+id/medicalEmergencyText"
-				android:layout_marginRight="18dp"
-				android:layout_marginTop="20dp"
-				android:layout_alignParentRight="true"
-				android:background="@drawable/utility_failure"
-		        android:onClick="goToUtilityFailure" /> 
-		        
-			<TextView
-				android:id="@+id/utilityFailureText"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_alignLeft="@+id/button13"
-				android:gravity="center"
-				android:text="@string/utility_failure"
-				android:layout_below="@+id/button13"
-				android:textSize="@dimen/button_text_size"
-				android:layout_marginTop="5dp"		
-				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:textColor="@color/white" />
-			        
-			<Button
-		        android:id="@+id/button14"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 				android:layout_below="@+id/hazardousMaterialShelterText"
@@ -416,7 +406,7 @@
 				android:id="@+id/violenceText"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_alignLeft="@+id/button14"
+				android:layout_alignLeft="@+id/button13"
 				android:gravity="center"
 				android:text="@string/violence"
 				android:layout_below="@+id/button14"
@@ -424,6 +414,33 @@
 				android:layout_marginTop="5dp"		
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/white" />
+			
+			<!-- Utility Failure -->
+			<Button
+		        android:id="@+id/button14"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@+id/medicalEmergencyText"
+				android:layout_marginRight="18dp"
+				android:layout_marginTop="20dp"
+				android:layout_alignParentRight="true"
+				android:background="@drawable/utility_failure"
+		        android:onClick="goToUtilityFailure" /> 
+		        
+			<TextView
+				android:id="@+id/utilityFailureText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignLeft="@+id/button14"
+				android:gravity="center"
+				android:text="@string/utility_failure"
+				android:layout_below="@+id/button13"
+				android:textSize="@dimen/button_text_size"
+				android:layout_marginTop="5dp"		
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:textColor="@color/white" />
+			        
+
 				
  
         </RelativeLayout>      
