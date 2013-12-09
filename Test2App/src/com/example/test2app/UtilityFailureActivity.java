@@ -15,7 +15,7 @@ public class UtilityFailureActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_utility_failure);
 		
-		TextView ins = (TextView)findViewById(R.id.PowerOutageTextView);
+		TextView ins = (TextView)findViewById(R.id.UtilityFailureTextView);
 		ins.setText(Html.fromHtml(getString(R.string.utility_failure_text)));
 	}
 	

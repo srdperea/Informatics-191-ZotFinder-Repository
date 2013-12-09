@@ -71,7 +71,93 @@
 		
 			]]>
     </string>
+    
+    <!-- Persons In Distress -->
+    <string name="persons_in_distress_text">
+<![CDATA[
 
+			<p>Persons Who Are Disruptive<br></p>
+			<p>If a person displays conduct that is reckless, disorderly, threatening, 
+			including self-harmful behavior, and you are concerned for your safety or the 
+			safety of others, please call 911 or the UCI Police Department.<br></p>
+			<p>If the conduct is not life threatening:<br></p>
+			<p>• For a UCI student, contact the Office of Student Conduct.<br></p>
+			<p>• For a UCI employee, contact Human Resources.<br></p>
+			<p>Persons Who Are Distressed<br></p>
+			<p>Distressed persons display persistent behaviors, such as: anxious, sad, irritable, 
+			withdrawn, confused, lacks motivation and/or concentration, seeks constant attention, 
+			demonstrates bizarre or erratic behavior, or expresses suicidal thoughts.<br></p> 
+			<p>• For a UCI student, contact the Counseling Center, Student Health Center, Campus 
+			Assault Resources and Education (CARE), or the UCI Police Department for help.<br></p>
+			<p>• For a UCI employee, contact Human Resources, Cascade Employee Assistance Program,
+			 or the UCI Police Department for help.<br></p>
+			<p>For consultation regarding disruptive or distressed individuals, please contact the UCI 
+			Consultation Team through the Office of the Clinical Social Worker. <br></p>
+			
+		
+			]]>
+    </string>
+
+    <!-- Fire -->
+    <string name="fire_text">
+<![CDATA[
+			
+		    <p>If you discover a fire:<br></p>
+			<p>• Extinguish the fire if you have been trained and if it is safe to do so.<br></p>
+			<p>• Evacuate the immediate area and close doors behind you.<br></p> 
+			<p>• Pull the nearest fire alarm.<br></p>
+			<p>• Call 911 if safe to do so. Otherwise, evacuate the building then call 911.<br></p>
+			<p>• Do not re-enter the building until an “All Clear” is given by emergency responders.<br></p>
+			<p>If you hear a fire alarm:<br></p>
+			<p>• Evacuate as soon as the alarm sounds.<br></p>
+			<p>• Test closed doors with the back of your hand. DO NOT open doors if they are hot.<br></p>
+			<p>• Use stairs only. Do not use elevators.<br></p>
+			<p>• Proceed to the designated assembly area.<br></p>
+			<p>• Do not re-enter the building until an “All Clear” is given by emergency responders.<br></p>
+		
+			]]>
+    </string>
+	 <!-- Emergency Preparedness -->
+    <string name="emergency_preparedness_text">
+<![CDATA[
+			
+			<p>Are you prepared for an emergency situation? Take these simply steps to improve the preparedness 
+			of you, your family, and your work colleagues.<br></p>
+			<p>Have A Kit<br></p>
+			<p>Keep an emergency kit at home, in your car, and in your office.<br></p>
+			<p>• Water – one gallon per person per day for at least 3 days for drinking and sanitation.<br></p>
+			<p>• Food – at least a 3 day supply of non-perishable food.<br></p>
+			<p>• Battery operated Radio and Flashlight with extra batteries.<br></p>
+			<p>• First Aid Kit.<br></p>
+			<p>• Whistle.<br></p>
+			<p>• All Purpose Tool.<br></p>
+			<p>• Basic sanitation items like towelettes, garbage bags, hand sanitizer, tissues.<br></p>
+			<p>• Change of clothes and sturdy shoes.<br></p>
+			<p>Make A Plan<br></p>
+			<p>• Have an out-of-town contact for family members to report in to.<br></p>
+			<p>• ICE your cell phone – identify who to call In Case of Emergency.<br></p>
+			<p>• Be prepared to limit phone use to essential calls only. Text messages may go 
+			through when phone calls will not.<br></p>
+			<p>• Select a family meeting location in case your house is not safe or accessible.<br></p>
+			<p>Be Informed<br></p>
+			<p>• The Top 5 Hazards For UC Irvine are:<br></p>
+			<p>o Catastrophic Earthquake.<br></p>
+			<p>o Laboratory or Housing Fire.<br></p>
+			<p>o Civil Disturbance.<br></p>
+			<p>o Public Health Emergency.<br></p>
+			<p>o Active Shooter/Workplace Violence.<br></p>
+			<p>• Know what to do in case of an emergency on campus.<br></p>
+			<p>• Know evacuation routes and the pre-designated assembly areas for the buildings 
+			you are in most frequently.<br></p>
+			<p>• Inquire about the emergency plan for family members’ work and school.<br></p>
+			<p>• Visit www.ready.gov for more information.<br></p>
+			<p>• For campus emergency preparedness information visit www.police.uci.edu.<br></p>
+			<p>• Sign up to receive zotALERT text messages at www.oit.uci.edu/zotalert.<br></p>
+			
+					
+			]]>
+    </string>    
+    
     <!-- Bomb Threat -->
     <string name="bomb_threat_text">
 <![CDATA[
@@ -244,7 +330,7 @@
     <string name="title_activity_violence">ViolenceActivity</string>
     <string name="title_activity_evacuation_disabilities">EvacuationDisabilitiesActivity</string>
     <string name="title_activity_suspicious_package">SuspiciousPackageActivity</string>
-    <string name="title_activity_utility_failure">PowerOutageActivity</string>
+    <string name="title_activity_utility_failure">UtilityFailureActivity</string>
     <string name="title_activity_medical_emergency">MedicalEmergencyActivity</string>
     <string name="title_activity_bomb_threat">BombThreatActivity</string>
     <string name="title_activity_evacuation">EvacuationActivity</string>

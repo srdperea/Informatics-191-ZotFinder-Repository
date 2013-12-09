@@ -300,7 +300,7 @@
 				android:layout_marginLeft="18dp"
 				android:layout_marginTop="10dp"
 		        android:background="@drawable/hazardous_material"
-		        android:onClick="goToHazadousMaterial" />
+		        android:onClick="goToHazardousMaterial" />
 			
 			<TextView
 				android:id="@+id/hazardousMaterialText"
