@@ -77,7 +77,7 @@ public class EmergencyInfoActivity extends Activity {
 		startActivity(intent);
 	}	
 	
-	public void goToPowerOutage(View view)
+	public void goToUtilityFailure(View view)
 	{
 		Intent intent = new Intent(this,UtilityFailureActivity.class);
 		startActivity(intent);
@@ -88,6 +88,26 @@ public class EmergencyInfoActivity extends Activity {
 		Intent intent = new Intent(this,SuspiciousPackageActivity.class);
 		startActivity(intent);
 	}
+	
+	public void goToFire(View view)
+	{
+		Intent intent = new Intent(this,FireActivity.class);
+		startActivity(intent);
+	}
+	
+	public void goToEmergencyPreparedness(View view)
+	{
+	Intent intent = new Intent(this,EmergencyPreparednessActivity.class);
+	startActivity(intent);
+	}
+	
+	public void goToPersonsInDistress(View view)
+	{
+	Intent intent = new Intent(this,PersonsInDistressActivity.class);
+	startActivity(intent);
+	}
+	
+
 	
 	/**Footer Activity Starters
 	 * 

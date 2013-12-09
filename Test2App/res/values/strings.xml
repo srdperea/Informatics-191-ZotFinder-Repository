@@ -9,7 +9,7 @@
     <string name="blue_phones">Blue Light Phones</string>
     <string name="evacuation_areas">Evacuation Areas</string>
     <string name="restrooms">Restrooms</string>
-    
+
     <!-- search everything related -->
     <string name="search_header">Search</string>
     <string name="person_info">Details</string>
@@ -36,6 +36,7 @@
     <string name="emergency_preparedness">Emergency\nPreparedness</string>
     <string name="fire">Fire</string>
     <string name="persons_in_distress">Person\nIn\nDistress</string>
+    <string name="persons_i_d">Person In Distress</string>
     <string name="utility_failure">Utility\nFailure</string>
 
     <!-- Search -->
@@ -71,7 +72,7 @@
 		
 			]]>
     </string>
-    
+
     <!-- Persons In Distress -->
     <string name="persons_in_distress_text">
 <![CDATA[
@@ -117,7 +118,7 @@
 		
 			]]>
     </string>
-	 <!-- Emergency Preparedness -->
+    <!-- Emergency Preparedness -->
     <string name="emergency_preparedness_text">
 <![CDATA[
 			
@@ -156,8 +157,8 @@
 			
 					
 			]]>
-    </string>    
-    
+    </string>
+
     <!-- Bomb Threat -->
     <string name="bomb_threat_text">
 <![CDATA[
@@ -342,5 +343,8 @@
     <!-- Search Person -->
     <string name="call_this_person">Call</string>
     <string name="title_activity_person_info">PersonInfoActivity</string>
+    <string name="title_activity_fire">FireActivity</string>
+    <string name="title_activity_emergency_preparedness">EmergencyPreparednessActivity</string>
+    <string name="title_activity_persons_in_distress">PersonsInDistressActivity</string>
 
 </resources>

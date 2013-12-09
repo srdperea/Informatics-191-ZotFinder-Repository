@@ -133,6 +133,21 @@
         <activity
             android:name="com.example.test2app.PersonInfoActivity"
             android:label="@string/title_activity_person_info"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.FireActivity"
+            android:label="@string/title_activity_fire" 
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.EmergencyPreparednessActivity"
+            android:label="@string/title_activity_emergency_preparedness"
+            android:theme="@android:style/Theme.NoTitleBar"  >
+        </activity>
+        <activity
+            android:name="com.example.test2app.PersonsInDistressActivity"
+            android:label="@string/title_activity_persons_in_distress"
             android:theme="@android:style/Theme.NoTitleBar"  >
         </activity>
     </application>
