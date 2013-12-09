@@ -572,10 +572,11 @@ int menu hazardous_material 0x7f0c0007
 int menu hazardous_material_shelter 0x7f0c0008
 int menu main 0x7f0c0009
 int menu medical_emergency 0x7f0c000a
-int menu search 0x7f0c000b
-int menu suspicious_package 0x7f0c000c
-int menu utility_failure 0x7f0c000d
-int menu violence 0x7f0c000e
+int menu person_info 0x7f0c000b
+int menu search 0x7f0c000c
+int menu suspicious_package 0x7f0c000d
+int menu utility_failure 0x7f0c000e
+int menu violence 0x7f0c000f
 int string abc_action_bar_home_description 0x7f0a0001
 int string abc_action_bar_up_description 0x7f0a0002
 int string abc_action_menu_overflow_description 0x7f0a0003

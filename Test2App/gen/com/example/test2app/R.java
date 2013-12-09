@@ -1652,10 +1652,11 @@ containing a value of this type.
         public static final int hazardous_material_shelter=0x7f0c0008;
         public static final int main=0x7f0c0009;
         public static final int medical_emergency=0x7f0c000a;
-        public static final int search=0x7f0c000b;
-        public static final int suspicious_package=0x7f0c000c;
-        public static final int utility_failure=0x7f0c000d;
-        public static final int violence=0x7f0c000e;
+        public static final int person_info=0x7f0c000b;
+        public static final int search=0x7f0c000c;
+        public static final int suspicious_package=0x7f0c000d;
+        public static final int utility_failure=0x7f0c000e;
+        public static final int violence=0x7f0c000f;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
