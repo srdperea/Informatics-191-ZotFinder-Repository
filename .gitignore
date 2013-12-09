@@ -9,8 +9,8 @@
 *.class
 
 # generated files
-bin/
-gen/
+Test2App/bin/
+Test2App/gen/
 
 # Ignore gradle files
 .gradle/
