@@ -13,6 +13,10 @@
     <!-- search everything related -->
     <string name="search_header">Search</string>
     <string name="person_info">Details</string>
+    <string name="office_header">Office</string>
+    <string name="phone_header">Office Phone</string>
+    <string name="fax_header">Fax Number</string>
+    <string name="email_header">Email</string>
 
     <!-- 3 Links Bottom Page -->
     <string name="map_link">Map</string>

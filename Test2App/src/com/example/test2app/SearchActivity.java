@@ -25,6 +25,7 @@ import android.widget.TextView;
 public class SearchActivity extends Activity {
 EditText inputBox;
 String phoneNumber;
+Bundle bundle;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +34,7 @@ String phoneNumber;
 		
 		inputBox = (EditText)findViewById(R.id.searchEditText);
 		
- 
-		
-		inputBox.setOnKeyListener(
+ 		inputBox.setOnKeyListener(
 			new View.OnKeyListener() {
 
 				@Override
@@ -64,9 +63,11 @@ String phoneNumber;
 	        
 	        
 	        //sheena
-	        String passedData = readStream(con.getInputStream());
-	        Bundle bundle = new Bundle();
-	        bundle.putString("personData", passedData);
+	        //String passedData = readStream(con.getInputStream());
+	        bundle = new Bundle();
+	        readStream(con.getInputStream(), bundle);
+	        //Bundle bundle = new Bundle();
+	        //bundle.putString("personData", passedData);
 	        //Setup the Intent that will start the next Activity
 	        Intent personInfoActivity = new Intent(this, PersonInfoActivity.class); 
 	        //Assumes this references this instance of Activity A
@@ -81,12 +82,12 @@ String phoneNumber;
 	    }
 	}     
 
-	private String readStream(InputStream in) {
+	private void readStream(InputStream in, Bundle readBundle) {
 	  BufferedReader reader = null;
 	  String output = "";
 	  String ucinetid, name, title, department, address, phone = "0", fax = "0", email;
-	  String personOutput = "";
-	  Boolean hasPhone = false, hasFax = false;
+	  //String personOutput = "";
+	  //Boolean hasPhone = false, hasFax = false;
 	  try {
 	    reader = new BufferedReader(new InputStreamReader(in));
 	    String line = "";
@@ -94,20 +95,32 @@ String phoneNumber;
 	      output+=line;
 	    }
 	    ucinetid = output.split("UCInetID: ")[1].split("<br/>")[0];
+	    readBundle.putString("ucinetid", ucinetid);
 	    name = output.split("Name: ")[1].split("<br/>")[0];
+	    readBundle.putString("name", name);
 	    title = output.split("Title: ")[1].split("<br/>")[0];
+	    readBundle.putString("title", title);
 	    department = output.split("Department: ")[1].split("<br/>")[0];
+	    readBundle.putString("department", department);
 	    address = output.split("Address: ")[1].split("<br/>")[0];
+	    readBundle.putString("address", address);
 	    if (output.contains("Phone: ")){
-	    	hasPhone = true;
+	    	//hasPhone = true;
 	    	phone = output.split("Phone: ")[1].split("<br/>")[0];
+	    	readBundle.putString("phone", phone);
 	    }
+	    else
+	    	readBundle.putString("phone", "N/A");
 	    if (output.contains("Fax: ")){
-	    	hasFax = true;
+	    	//hasFax = true;
 	    	fax = output.split("Fax: ")[1].split("<br/>")[0];
+	    	readBundle.putString("fax", fax);
 	    }
+	    else
+	    	readBundle.putString("fax", "N/A");
 	   	email = ucinetid + "@uci.edu";
-	   	personOutput = "Name: " + name + '\n';
+	   	readBundle.putString("email", email);
+/*	   	personOutput = "Name: " + name + '\n';
 	   	personOutput+= "UCInetID: " + ucinetid + '\n';
 	   	personOutput+= "Title: " + title + '\n';
 	   	personOutput+= "E-mail: " + email + '\n';
@@ -120,8 +133,8 @@ String phoneNumber;
 	   		personOutput+= "Fax: " + fax + '\n';
 	   	}
 	   	hasPhone = false;
-	   	hasFax = false;
-	    return personOutput;
+	   	hasFax = false;*/
+	    //return personOutput;
 	  } catch (IOException e) {
 	    e.printStackTrace();
 	  } finally {
@@ -133,7 +146,7 @@ String phoneNumber;
 	      }
 	    }
 	  }
-	return output;
+	//return output;
 	} 
 	
 	public void goToMap(View view) { 

@@ -19,7 +19,7 @@
 	        
 
 	       <TextView
-	            android:id="@+id/mapHeaderTextView"
+	            android:id="@+id/personInfoHeaderTextView"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:text="@string/person_info"
@@ -60,11 +60,89 @@
 			    android:id="@+id/R3Layout"
 			    android:layout_width="wrap_content"
 	  			android:layout_height="wrap_content">
-	        
-				<TextView
-					android:id="@+id/httpTextView"
+	  			
+			    <!-- Office Location -->
+			    <TextView
+					android:id="@+id/officeHeader"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:text="@string/office_header"
+					android:textSize="@dimen/font_size"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/white"/>
+	        
+				<TextView
+					android:id="@+id/officeLocation"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/officeHeader"
+					android:layout_marginBottom="20dp"
+					android:textSize="@dimen/font_size"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/white"/>
+				
+				<!-- Phone Number -->
+				
+				<TextView
+					android:id="@+id/phoneHeader"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/officeLocation"
+					android:text="@string/phone_header"
+					android:textSize="@dimen/font_size"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/white"/>
+				
+				<TextView
+					android:id="@+id/phoneNumber"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/phoneHeader"
+					android:layout_marginBottom="20dp"
+					android:textSize="@dimen/font_size"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/white"
+					android:clickable="true"
+					android:onClick="call"/>
+				
+				<!-- Email -->
+				<TextView
+					android:id="@+id/emailHeader"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/phoneNumber"
+					android:text="@string/email_header"
+					android:textSize="@dimen/font_size"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/white"/>
+				
+				<TextView
+					android:id="@+id/email"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/emailHeader"
+					android:layout_marginBottom="20dp"
+					android:textSize="@dimen/font_size"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/white"/>
+				
+				<!-- Fax -->
+				<TextView
+					android:id="@+id/faxHeader"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/email"
+					android:text="@string/fax_header"
+					android:textSize="@dimen/font_size"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/white"/>
+				
+				<TextView
+					android:id="@+id/fax"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/faxHeader"
+					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/white"/>

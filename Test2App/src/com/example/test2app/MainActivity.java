@@ -480,8 +480,6 @@ public class MainActivity extends FragmentActivity {
 	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR19).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
 	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR20).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
 	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR21).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
-	         //buildings.add(mMap.addMarker(new MarkerOptions().position(new LatLng(33.643183,-117.842028)).title("Donald Bren Hall")
-	        		// .snippet("DBH").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 
 
 	         //animate camera
