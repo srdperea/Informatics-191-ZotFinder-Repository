@@ -7,7 +7,8 @@ import android.os.Handler;
 
 
 public class SplashScreenActivity extends Activity {
-
+	
+	//set time in milliseconds of how long the splash screen will remain on the screen
 	private static int SPLASH_TIME_OUT = 3000;
 	 
     @Override
@@ -26,5 +27,4 @@ public class SplashScreenActivity extends Activity {
             }
         }, SPLASH_TIME_OUT);
     }
- 
 }

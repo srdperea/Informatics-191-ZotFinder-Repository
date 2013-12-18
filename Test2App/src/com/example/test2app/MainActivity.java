@@ -1,7 +1,6 @@
 package com.example.test2app;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,7 +9,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 
 import org.json.JSONObject;
 
@@ -24,7 +22,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -43,12 +40,15 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 
 public class MainActivity extends FragmentActivity {
+	//map
 	private GoogleMap mMap;
+	//slideOut window
 	FlyOutContainer root;
-	//For default Map focus 
+	
+	//LatLng coordinate for default Map focus/centering 
 	static final LatLng UCI = new LatLng(33.6455843, -117.8419771);
 	
-	//Assembly areas 
+	//Assembly Area LatLng coordinates
 	static final LatLng EA1 = new LatLng(33.64825818995, -117.841933738);
 	static final LatLng EA2 = new LatLng(33.64665255641111, -117.8375963618889);
 	static final LatLng EA3 = new LatLng(33.64370913405833, -117.8430245279167);
@@ -60,164 +60,164 @@ public class MainActivity extends FragmentActivity {
 	static final LatLng EA9 = new LatLng(33.66363793256667, -117.8551668926667);
 	static final LatLng EA10 = new LatLng(33.64504260036, -117.8347193371);
 	
-	//Blue phone posts 
-	static final LatLng BP1 = new LatLng(33.64461143420, -117.82632083200	);
-	static final LatLng BP2 = new LatLng(33.64387631680, -117.82420840800	);
-	static final LatLng BP3 = new LatLng(33.64471594450, -117.82438504100	);
-	static final LatLng BP3s = new LatLng(33.64386776910, -117.82498730800	);
-	static final LatLng BP4 = new LatLng(33.64487641310, -117.82582024200	);
-	static final LatLng BP5 = new LatLng(33.64654247360, -117.82484033300	);
-	static final LatLng BP6 = new LatLng(33.64610528000, -117.82537664800	);
-	static final LatLng BP7 = new LatLng(33.64419610860, -117.84083743400	);
-	static final LatLng BP8 = new LatLng(33.64905839530, -117.84510098400	);
-	static final LatLng BP9 = new LatLng(33.64349385050, -117.84226314000	);
-	static final LatLng BP10 = new LatLng(33.64370405740, -117.85171702000	);
-	static final LatLng BP11 = new LatLng(33.64691530530, -117.84654438400	);
-	static final LatLng BP12 = new LatLng(33.64173799290, -117.83315946900	);
-	static final LatLng BP13 = new LatLng(33.64445896520, -117.83897252100	);
-	static final LatLng BP14 = new LatLng(33.64371022740, -117.84410233300	);
-	static final LatLng BP15 = new LatLng(33.64608829910, -117.84557471400	);
-	static final LatLng BP16 = new LatLng(33.64753969390, -117.84092686500	);
-	static final LatLng BP17 = new LatLng(33.64643458750, -117.83975616200	);
-	static final LatLng BP18 = new LatLng(33.64518889740, -117.83971749700	);
-	static final LatLng BP19 = new LatLng(33.65199303710, -117.84644255600	);
-	static final LatLng BP20 = new LatLng(33.64572101130, -117.82855306700	);
-	static final LatLng BP21 = new LatLng(33.64463264270, -117.82798388100	);
-	static final LatLng BP23 = new LatLng(33.65046641380, -117.84527242000	);
-	static final LatLng BP24 = new LatLng(33.65023193930, -117.84332279300	);
-	static final LatLng BP25 = new LatLng(33.65189605460, -117.84466356600	);
-	static final LatLng BP26 = new LatLng(33.65251837850, -117.84440887800	);
-	static final LatLng BP27 = new LatLng(33.65317162390, -117.84552698200	);
-	static final LatLng BP28 = new LatLng(33.64342641680, -117.82685256400	);
-	static final LatLng BP29 = new LatLng(33.64213595920, -117.82598218000	);
-	static final LatLng BP30 = new LatLng(33.64757116590, -117.83373485800	);
-	static final LatLng BP31 = new LatLng(33.64786948010, -117.83215323800	);
-	static final LatLng BP32 = new LatLng(33.64810707950, -117.83180632500	);
-	static final LatLng BP33 = new LatLng(33.65387675630, -117.84407568800	);
-	static final LatLng BP34 = new LatLng(33.65254517180, -117.84304088400	);
-	static final LatLng BP35 = new LatLng(33.65071925160, -117.84275715100	);
-	static final LatLng BP36 = new LatLng(33.64797621290, -117.84563628400	);
-	static final LatLng BP37 = new LatLng(33.64041197960, -117.83103663500	);
-	static final LatLng BP38 = new LatLng(33.64217279400, -117.83199597800	);
-	static final LatLng BP39 = new LatLng(33.64160149960, -117.83027842100	);
-	static final LatLng BP40 = new LatLng(33.64138044590, -117.83109287600	);
-	static final LatLng BP41 = new LatLng(33.63728900290, -117.83529814900	);
-	static final LatLng BP42 = new LatLng(33.64350235410, -117.84841375000	);
-	static final LatLng BP43 = new LatLng(33.64456498940, -117.84669565700	);
-	static final LatLng BP44 = new LatLng(33.64762491400, -117.84473377300	);
-	static final LatLng BP45 = new LatLng(33.64214403140, -117.84441999900	);
-	static final LatLng BP46 = new LatLng(33.64210242310, -117.84437173100	);
-	static final LatLng BP47 = new LatLng(33.64621960920, -117.85053935700	);
-	static final LatLng BP48 = new LatLng(33.63825311740, -117.82542816900	);
-	static final LatLng BP49 = new LatLng(33.63955926060, -117.82572507600	);
-	static final LatLng BP50 = new LatLng(33.63918198360, -117.82519359000	);
-	static final LatLng BP51 = new LatLng(33.63906382560, -117.82431962300	);
-	static final LatLng BP52 = new LatLng(33.63953646010, -117.82454318000	);
-	static final LatLng BP53 = new LatLng(33.64025196950, -117.82422555800	);
-	static final LatLng BP54 = new LatLng(33.64064025400, -117.82420838300	);
-	static final LatLng BP55 = new LatLng(33.64132088780, -117.82297729900	);
-	static final LatLng BP56 = new LatLng(33.64008092110, -117.82363943200	);
-	static final LatLng BP57 = new LatLng(33.64198969320, -117.82377184000	);
-	static final LatLng BP58 = new LatLng(33.64206488590, -117.82307758500	);
-	static final LatLng BP59 = new LatLng(33.64302874370, -117.82393644100	);
-	static final LatLng BP60 = new LatLng(33.64381670200, -117.82256064600	);
-	static final LatLng BP61 = new LatLng(33.64380016780, -117.82320926200	);
-	static final LatLng BP62 = new LatLng(33.64453821140, -117.82341626800	);
-	static final LatLng BP63 = new LatLng(33.64509176670, -117.82284813900	);
-	static final LatLng BP64 = new LatLng(33.64555406840, -117.82365810700	);
-	static final LatLng BP65 = new LatLng(33.64639381910, -117.82316410800	);
-	static final LatLng BP66 = new LatLng(33.64652422160, -117.82403483600	);
-	static final LatLng BP67 = new LatLng(33.64749927250, -117.82378908400	);
-	static final LatLng BP68 = new LatLng(33.64787485910, -117.82423381900	);
-	static final LatLng BP69 = new LatLng(33.64934242880, -117.82495693900	);
-	static final LatLng BP70 = new LatLng(33.64913722520, -117.82574467300	);
-	static final LatLng BP71 = new LatLng(33.64868537000, -117.82472104700	);
-	static final LatLng BP72 = new LatLng(33.64817118110, -117.82541632300	);
-	static final LatLng BP73 = new LatLng(33.64768576520, -117.82519676500	);
-	static final LatLng BP74 = new LatLng(33.64745234600, -117.82464062100	);
-	static final LatLng BP75 = new LatLng(33.64493636580, -117.82464961200	);
-	static final LatLng BP76 = new LatLng(33.64549877190, -117.82515729300	);
-	static final LatLng BP77 = new LatLng(33.64540972910, -117.82574707500	);
-	static final LatLng BP78 = new LatLng(33.64524575400, -117.82452524800	);
-	static final LatLng BP79 = new LatLng(33.64590694600, -117.82633004900	);
-	static final LatLng BP80 = new LatLng(33.64626301520, -117.82620786600	);
-	static final LatLng BP81 = new LatLng(33.64724097200, -117.82553436600	);
-	static final LatLng BP82 = new LatLng(33.64569414600, -117.82467813600	);
-	static final LatLng BP83 = new LatLng(33.64467724390, -117.82802472300	);
-	static final LatLng BP84 = new LatLng(33.64472574750, -117.82806443800	);
-	static final LatLng BP85 = new LatLng(33.64477514070, -117.82810525700	);
-	static final LatLng BP86 = new LatLng(33.64482146310, -117.82814874500	);
-	static final LatLng BP87 = new LatLng(33.64486755650, -117.82818417400	);
-	static final LatLng BP88 = new LatLng(33.64491453680, -117.82821999100	);
-	static final LatLng BP89 = new LatLng(33.64782638500, -117.83288019000	);
-	static final LatLng BP90 = new LatLng(33.63945622420, -117.85039789900	);
-	static final LatLng BP91 = new LatLng(33.64312710330, -117.84672659200	);
-	static final LatLng BP92 = new LatLng(33.65045524010, -117.84630872400	);
-	static final LatLng BP93 = new LatLng(33.65050738490, -117.84634721100	);
-	static final LatLng BP94 = new LatLng(33.65055331880, -117.84638724300	);
-	static final LatLng BP95 = new LatLng(33.65060145750, -117.84643014300	);
-	static final LatLng BP96 = new LatLng(33.65064555970, -117.84647392400	);
-	static final LatLng BP97 = new LatLng(33.64792994650, -117.84735102800	);
-	static final LatLng BP98 = new LatLng(33.66500586130, -117.85404937400	);
-	static final LatLng BP99 = new LatLng(33.64259210590, -117.85165248800	);
-	static final LatLng BP100 = new LatLng(33.64340528940, -117.85044689900	);
-	static final LatLng BP101 = new LatLng(33.64519494130, -117.83466970600	);
-	static final LatLng BP102 = new LatLng(33.64407252260, -117.83645722300	);
-	static final LatLng BP103 = new LatLng(33.64498185810, -117.83613268000	);
-	static final LatLng BP104 = new LatLng(33.64809608360, -117.82868278800	);
-	static final LatLng BP105 = new LatLng(33.64768919230, -117.82620072400	);
-	static final LatLng BP106 = new LatLng(33.64750855700, -117.82693968200	);
-	static final LatLng BP107 = new LatLng(33.64724518450, -117.82857378900	);
-	static final LatLng BP108 = new LatLng(33.64973589330, -117.84182167500	);
-	static final LatLng BP109 = new LatLng(33.64976467460, -117.84177426300	);
-	static final LatLng BP110 = new LatLng(33.64979846710, -117.84172371700	);
-	static final LatLng BP111 = new LatLng(33.64983436140, -117.84167197000	);
-	static final LatLng BP112 = new LatLng(33.64986922900, -117.84161906700	);
-	static final LatLng BP113 = new LatLng(33.64751464300, -117.83812743700	);
-	static final LatLng BP114 = new LatLng(33.64753326290, -117.83807057000	);
-	static final LatLng BP115 = new LatLng(33.64755912520, -117.83801414200	);
-	static final LatLng BP116 = new LatLng(33.64758881920, -117.83796370100	);
-	static final LatLng BP117 = new LatLng(33.64762405810, -117.83791019600	);
-	static final LatLng BP118 = new LatLng(33.64765684390, -117.83786174600	);
-	static final LatLng BP119 = new LatLng(33.64768500790, -117.83780527000	);
-	static final LatLng BP120 = new LatLng(33.64730316520, -117.83746235300	);
-	static final LatLng BP121 = new LatLng(33.64734802630, -117.83748622900	);
-	static final LatLng BP122 = new LatLng(33.64739780030, -117.83751460200	);
-	static final LatLng BP123 = new LatLng(33.64744521600, -117.83754180200	);
-	static final LatLng BP124 = new LatLng(33.64749463030, -117.83756889500	);
-	static final LatLng BP125 = new LatLng(33.64754610290, -117.83759644100	);
-	static final LatLng BP126 = new LatLng(33.64759664030, -117.83762483600	);
-	static final LatLng BP127 = new LatLng(33.64718514210, -117.83666196900	);
-	static final LatLng BP128 = new LatLng(33.64722652180, -117.83670263500	);
-	static final LatLng BP129 = new LatLng(33.64726836540, -117.83674567200	);
-	static final LatLng BP130 = new LatLng(33.64730953400, -117.83678549500	);
-	static final LatLng BP131 = new LatLng(33.64735233160, -117.83682633500	);
-	static final LatLng BP132 = new LatLng(33.64739602340, -117.83686684800	);
-	static final LatLng BP133 = new LatLng(33.64743778550, -117.83690870200	);
-	static final LatLng BP134 = new LatLng(33.64308728510, -117.83846291200	);
-	static final LatLng BP135 = new LatLng(33.64311174420, -117.83839965000	);
-	static final LatLng BP136 = new LatLng(33.64313751980, -117.83833270300	);
-	static final LatLng BP137 = new LatLng(33.64316917280, -117.83827233900	);
-	static final LatLng BP138 = new LatLng(33.64320161680, -117.83821371600	);
-	static final LatLng BP139= new LatLng(33.64323141310, -117.83815462700	);
-	static final LatLng BP140 = new LatLng(33.64326824920, -117.83809502200	);
-	static final LatLng BP141 = new LatLng(33.64327079090, -117.83716398200	);
-	static final LatLng BP142 = new LatLng(33.64323367720, -117.83720987400	);
-	static final LatLng BP143 = new LatLng(33.64320061730, -117.83725818700	);
-	static final LatLng BP144 = new LatLng(33.64317029380, -117.83731254900	);
-	static final LatLng BP145 = new LatLng(33.64314192190, -117.83736468500	);
-	static final LatLng BP146 = new LatLng(33.64310585450, -117.83741486000	);
-	static final LatLng BP147 = new LatLng(33.64307501440, -117.83746892800	);
-	static final LatLng BP148 = new LatLng(33.64256063390, -117.83469813900	);
-	static final LatLng BP149 = new LatLng(33.64581629270, -117.84810724600	);
-	static final LatLng BP150 = new LatLng(33.64093973230, -117.83308656100	);
-	static final LatLng BP151 = new LatLng(33.64555614920, -117.84448882300	);
-	static final LatLng BP152 = new LatLng(33.64807544110, -117.84780345800	);
-	static final LatLng BP153 = new LatLng(33.64231813710, -117.82890552800	);
-	static final LatLng BP154 = new LatLng(33.64718995450, -117.83749799100	);
-	static final LatLng BP155 = new LatLng(33.64838932580, -117.83088987000	);
+	//Blue Phone Post LatLng coordinates
+	static final LatLng BP1 = new LatLng(33.64461143420, -117.82632083200);
+	static final LatLng BP2 = new LatLng(33.64387631680, -117.82420840800);
+	static final LatLng BP3 = new LatLng(33.64471594450, -117.82438504100);
+	static final LatLng BP4 = new LatLng(33.64386776910, -117.82498730800);
+	static final LatLng BP5 = new LatLng(33.64487641310, -117.82582024200);
+	static final LatLng BP6 = new LatLng(33.64654247360, -117.82484033300);
+	static final LatLng BP7 = new LatLng(33.64610528000, -117.82537664800);
+	static final LatLng BP8 = new LatLng(33.64419610860, -117.84083743400);
+	static final LatLng BP9 = new LatLng(33.64905839530, -117.84510098400);
+	static final LatLng BP10 = new LatLng(33.64349385050, -117.84226314000);
+	static final LatLng BP11 = new LatLng(33.64370405740, -117.85171702000);
+	static final LatLng BP12 = new LatLng(33.64691530530, -117.84654438400);
+	static final LatLng BP13 = new LatLng(33.64173799290, -117.83315946900);
+	static final LatLng BP14 = new LatLng(33.64445896520, -117.83897252100);
+	static final LatLng BP15 = new LatLng(33.64371022740, -117.84410233300);
+	static final LatLng BP16 = new LatLng(33.64608829910, -117.84557471400);
+	static final LatLng BP17 = new LatLng(33.64753969390, -117.84092686500);
+	static final LatLng BP18 = new LatLng(33.64643458750, -117.83975616200);
+	static final LatLng BP19 = new LatLng(33.64518889740, -117.83971749700);
+	static final LatLng BP20 = new LatLng(33.65199303710, -117.84644255600);
+	static final LatLng BP21 = new LatLng(33.64572101130, -117.82855306700);
+	static final LatLng BP22 = new LatLng(33.64463264270, -117.82798388100);
+	static final LatLng BP23 = new LatLng(33.65046641380, -117.84527242000);
+	static final LatLng BP24 = new LatLng(33.65023193930, -117.84332279300);
+	static final LatLng BP25 = new LatLng(33.65189605460, -117.84466356600);
+	static final LatLng BP26 = new LatLng(33.65251837850, -117.84440887800);
+	static final LatLng BP27 = new LatLng(33.65317162390, -117.84552698200);
+	static final LatLng BP28 = new LatLng(33.64342641680, -117.82685256400);
+	static final LatLng BP29 = new LatLng(33.64213595920, -117.82598218000);
+	static final LatLng BP30 = new LatLng(33.64757116590, -117.83373485800);
+	static final LatLng BP31 = new LatLng(33.64786948010, -117.83215323800);
+	static final LatLng BP32 = new LatLng(33.64810707950, -117.83180632500);
+	static final LatLng BP33 = new LatLng(33.65387675630, -117.84407568800);
+	static final LatLng BP34 = new LatLng(33.65254517180, -117.84304088400);
+	static final LatLng BP35 = new LatLng(33.65071925160, -117.84275715100);
+	static final LatLng BP36 = new LatLng(33.64797621290, -117.84563628400);
+	static final LatLng BP37 = new LatLng(33.64041197960, -117.83103663500);
+	static final LatLng BP38 = new LatLng(33.64217279400, -117.83199597800);
+	static final LatLng BP39 = new LatLng(33.64160149960, -117.83027842100);
+	static final LatLng BP40 = new LatLng(33.64138044590, -117.83109287600);
+	static final LatLng BP41 = new LatLng(33.63728900290, -117.83529814900);
+	static final LatLng BP42 = new LatLng(33.64350235410, -117.84841375000);
+	static final LatLng BP43 = new LatLng(33.64456498940, -117.84669565700);
+	static final LatLng BP44 = new LatLng(33.64762491400, -117.84473377300);
+	static final LatLng BP45 = new LatLng(33.64214403140, -117.84441999900);
+	static final LatLng BP46 = new LatLng(33.64210242310, -117.84437173100);
+	static final LatLng BP47 = new LatLng(33.64621960920, -117.85053935700);
+	static final LatLng BP48 = new LatLng(33.63825311740, -117.82542816900);
+	static final LatLng BP49 = new LatLng(33.63955926060, -117.82572507600);
+	static final LatLng BP50 = new LatLng(33.63918198360, -117.82519359000);
+	static final LatLng BP51 = new LatLng(33.63906382560, -117.82431962300);
+	static final LatLng BP52 = new LatLng(33.63953646010, -117.82454318000);
+	static final LatLng BP53 = new LatLng(33.64025196950, -117.82422555800);
+	static final LatLng BP54 = new LatLng(33.64064025400, -117.82420838300);
+	static final LatLng BP55 = new LatLng(33.64132088780, -117.82297729900);
+	static final LatLng BP56 = new LatLng(33.64008092110, -117.82363943200);
+	static final LatLng BP57 = new LatLng(33.64198969320, -117.82377184000);
+	static final LatLng BP58 = new LatLng(33.64206488590, -117.82307758500);
+	static final LatLng BP59 = new LatLng(33.64302874370, -117.82393644100);
+	static final LatLng BP60 = new LatLng(33.64381670200, -117.82256064600);
+	static final LatLng BP61 = new LatLng(33.64380016780, -117.82320926200);
+	static final LatLng BP62 = new LatLng(33.64453821140, -117.82341626800);
+	static final LatLng BP63 = new LatLng(33.64509176670, -117.82284813900);
+	static final LatLng BP64 = new LatLng(33.64555406840, -117.82365810700);
+	static final LatLng BP65 = new LatLng(33.64639381910, -117.82316410800);
+	static final LatLng BP66 = new LatLng(33.64652422160, -117.82403483600);
+	static final LatLng BP67 = new LatLng(33.64749927250, -117.82378908400);
+	static final LatLng BP68 = new LatLng(33.64787485910, -117.82423381900);
+	static final LatLng BP69 = new LatLng(33.64934242880, -117.82495693900);
+	static final LatLng BP70 = new LatLng(33.64913722520, -117.82574467300);
+	static final LatLng BP71 = new LatLng(33.64868537000, -117.82472104700);
+	static final LatLng BP72 = new LatLng(33.64817118110, -117.82541632300);
+	static final LatLng BP73 = new LatLng(33.64768576520, -117.82519676500);
+	static final LatLng BP74 = new LatLng(33.64745234600, -117.82464062100);
+	static final LatLng BP75 = new LatLng(33.64493636580, -117.82464961200);
+	static final LatLng BP76 = new LatLng(33.64549877190, -117.82515729300);
+	static final LatLng BP77 = new LatLng(33.64540972910, -117.82574707500);
+	static final LatLng BP78 = new LatLng(33.64524575400, -117.82452524800);
+	static final LatLng BP79 = new LatLng(33.64590694600, -117.82633004900);
+	static final LatLng BP80 = new LatLng(33.64626301520, -117.82620786600);
+	static final LatLng BP81 = new LatLng(33.64724097200, -117.82553436600);
+	static final LatLng BP82 = new LatLng(33.64569414600, -117.82467813600);
+	static final LatLng BP83 = new LatLng(33.64467724390, -117.82802472300);
+	static final LatLng BP84 = new LatLng(33.64472574750, -117.82806443800);
+	static final LatLng BP85 = new LatLng(33.64477514070, -117.82810525700);
+	static final LatLng BP86 = new LatLng(33.64482146310, -117.82814874500);
+	static final LatLng BP87 = new LatLng(33.64486755650, -117.82818417400);
+	static final LatLng BP88 = new LatLng(33.64491453680, -117.82821999100);
+	static final LatLng BP89 = new LatLng(33.64782638500, -117.83288019000);
+	static final LatLng BP90 = new LatLng(33.63945622420, -117.85039789900);
+	static final LatLng BP91 = new LatLng(33.64312710330, -117.84672659200);
+	static final LatLng BP92 = new LatLng(33.65045524010, -117.84630872400);
+	static final LatLng BP93 = new LatLng(33.65050738490, -117.84634721100);
+	static final LatLng BP94 = new LatLng(33.65055331880, -117.84638724300);
+	static final LatLng BP95 = new LatLng(33.65060145750, -117.84643014300);
+	static final LatLng BP96 = new LatLng(33.65064555970, -117.84647392400);
+	static final LatLng BP97 = new LatLng(33.64792994650, -117.84735102800);
+	static final LatLng BP98 = new LatLng(33.66500586130, -117.85404937400);
+	static final LatLng BP99 = new LatLng(33.64259210590, -117.85165248800);
+	static final LatLng BP100 = new LatLng(33.64340528940, -117.85044689900);
+	static final LatLng BP101 = new LatLng(33.64519494130, -117.83466970600);
+	static final LatLng BP102 = new LatLng(33.64407252260, -117.83645722300);
+	static final LatLng BP103 = new LatLng(33.64498185810, -117.83613268000);
+	static final LatLng BP104 = new LatLng(33.64809608360, -117.82868278800);
+	static final LatLng BP105 = new LatLng(33.64768919230, -117.82620072400);
+	static final LatLng BP106 = new LatLng(33.64750855700, -117.82693968200);
+	static final LatLng BP107 = new LatLng(33.64724518450, -117.82857378900);
+	static final LatLng BP108 = new LatLng(33.64973589330, -117.84182167500);
+	static final LatLng BP109 = new LatLng(33.64976467460, -117.84177426300);
+	static final LatLng BP110 = new LatLng(33.64979846710, -117.84172371700);
+	static final LatLng BP111 = new LatLng(33.64983436140, -117.84167197000);
+	static final LatLng BP112 = new LatLng(33.64986922900, -117.84161906700);
+	static final LatLng BP113 = new LatLng(33.64751464300, -117.83812743700);
+	static final LatLng BP114 = new LatLng(33.64753326290, -117.83807057000);
+	static final LatLng BP115 = new LatLng(33.64755912520, -117.83801414200);
+	static final LatLng BP116 = new LatLng(33.64758881920, -117.83796370100);
+	static final LatLng BP117 = new LatLng(33.64762405810, -117.83791019600);
+	static final LatLng BP118 = new LatLng(33.64765684390, -117.83786174600);
+	static final LatLng BP119 = new LatLng(33.64768500790, -117.83780527000);
+	static final LatLng BP120 = new LatLng(33.64730316520, -117.83746235300);
+	static final LatLng BP121 = new LatLng(33.64734802630, -117.83748622900);
+	static final LatLng BP122 = new LatLng(33.64739780030, -117.83751460200);
+	static final LatLng BP123 = new LatLng(33.64744521600, -117.83754180200);
+	static final LatLng BP124 = new LatLng(33.64749463030, -117.83756889500);
+	static final LatLng BP125 = new LatLng(33.64754610290, -117.83759644100);
+	static final LatLng BP126 = new LatLng(33.64759664030, -117.83762483600);
+	static final LatLng BP127 = new LatLng(33.64718514210, -117.83666196900);
+	static final LatLng BP128 = new LatLng(33.64722652180, -117.83670263500);
+	static final LatLng BP129 = new LatLng(33.64726836540, -117.83674567200);
+	static final LatLng BP130 = new LatLng(33.64730953400, -117.83678549500);
+	static final LatLng BP131 = new LatLng(33.64735233160, -117.83682633500);
+	static final LatLng BP132 = new LatLng(33.64739602340, -117.83686684800);
+	static final LatLng BP133 = new LatLng(33.64743778550, -117.83690870200);
+	static final LatLng BP134 = new LatLng(33.64308728510, -117.83846291200);
+	static final LatLng BP135 = new LatLng(33.64311174420, -117.83839965000);
+	static final LatLng BP136 = new LatLng(33.64313751980, -117.83833270300);
+	static final LatLng BP137 = new LatLng(33.64316917280, -117.83827233900);
+	static final LatLng BP138 = new LatLng(33.64320161680, -117.83821371600);
+	static final LatLng BP139 = new LatLng(33.64323141310, -117.83815462700);
+	static final LatLng BP140 = new LatLng(33.64326824920, -117.83809502200);
+	static final LatLng BP141 = new LatLng(33.64327079090, -117.83716398200);
+	static final LatLng BP142 = new LatLng(33.64323367720, -117.83720987400);
+	static final LatLng BP143 = new LatLng(33.64320061730, -117.83725818700);
+	static final LatLng BP144 = new LatLng(33.64317029380, -117.83731254900);
+	static final LatLng BP145 = new LatLng(33.64314192190, -117.83736468500);
+	static final LatLng BP146 = new LatLng(33.64310585450, -117.83741486000);
+	static final LatLng BP147 = new LatLng(33.64307501440, -117.83746892800);
+	static final LatLng BP148 = new LatLng(33.64256063390, -117.83469813900);
+	static final LatLng BP149 = new LatLng(33.64581629270, -117.84810724600);
+	static final LatLng BP150 = new LatLng(33.64093973230, -117.83308656100);
+	static final LatLng BP151 = new LatLng(33.64555614920, -117.84448882300);
+	static final LatLng BP152 = new LatLng(33.64807544110, -117.84780345800);
+	static final LatLng BP153 = new LatLng(33.64231813710, -117.82890552800);
+	static final LatLng BP154 = new LatLng(33.64718995450, -117.83749799100);
+	static final LatLng BP155 = new LatLng(33.64838932580, -117.83088987000);
 	
-	//Restrooms
+	//Restroom LatLng coordinages
 	static final LatLng RR1 = new LatLng(33.65010225160, -117.84559094400);
 	static final LatLng RR2 = new LatLng(33.65040342400, -117.84496139200);
 	static final LatLng RR3 = new LatLng(33.64998896190, -117.84488620900);
@@ -240,20 +240,27 @@ public class MainActivity extends FragmentActivity {
 	static final LatLng RR20 = new LatLng(33.64414576200, -117.84197579900);
 	static final LatLng RR21 = new LatLng(33.64446559420, -117.84160199500);
 	
+	//Array of corrresponding LatLng coordinates
+	//used to store markers made from coordinates above
+	//also allows toggling of all markers in respected arrays
 	ArrayList<Marker> emergencyArea = new ArrayList<Marker>();
 	ArrayList<Marker> bluePhone = new ArrayList<Marker>();
 	ArrayList<Marker> restroom = new ArrayList<Marker>();
 	ArrayList<Marker> buildings = new ArrayList<Marker>();
-
+	
+	//---Booleans to show or hide markers---
+	//eaShow=true - Show all Emergency Area Markers
+	//eaShow=false - Hide all Emegency Area Markers
 	public boolean eaShow=true;
+	//bpShow=true - Show all Blue Phone Post Markers
+	//bpShow=false - Hide all Blue Phone Post Markers
 	public boolean bpShow=true;
+	//rrShow=true - Show all Restroom Markers
+	//rrSHow=false - Hide all Restroom Markers
 	public boolean rrShow=true;
 	
-	
-	Button mapLinkButton;
-	Button emergencyLinkButton;
-	Button dialerLinkButton;
-	
+	//coordinate for user's current location
+	//this coordinate is dynamic
 	public LatLng currentLocation;
 	
 	 
@@ -265,13 +272,10 @@ public class MainActivity extends FragmentActivity {
 		this.root = (FlyOutContainer) this.getLayoutInflater().inflate(R.layout.activity_main, null);
 		
 		this.setContentView(root);
-		
-		//Initialize Buttons
-	    mapLinkButton = (Button) findViewById(R.id.mapLinkButton);
-	    emergencyLinkButton = (Button) findViewById(R.id.emergencyLinkButton);
-	    dialerLinkButton = (Button) findViewById(R.id.dialerLinkButton);
 	    
 	    //Initialize Map
+		//Google maps requires the map to be a fragment 
+		//SupportFragment allows older model android phones to display the map (as opposed to just a fragment)
 	    FragmentManager fragmentManager = getSupportFragmentManager();
         SupportMapFragment mapFragment =  (SupportMapFragment) fragmentManager.findFragmentById(R.id.map);
         mMap = mapFragment.getMap();
@@ -282,6 +286,7 @@ public class MainActivity extends FragmentActivity {
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.getUiSettings().setAllGesturesEnabled(true);
         mMap.setMyLocationEnabled(true);
+        
         //sets current location
         double[] d = getlocation();
 	    currentLocation = new LatLng(d[0], d[1]);
@@ -289,7 +294,10 @@ public class MainActivity extends FragmentActivity {
 	    //add uci marker and set zoom
 	     if (mMap!=null){
 
-	          //emergency assembly areas
+	         //Makes markers from corresponding LatLng coordinates
+	    	 //and adds them to their respective array 
+	    	 
+	    	 //emergency assembly areas
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA1).title("Gateway").icon(BitmapDescriptorFactory.fromResource(R.drawable.emergency_area_icon))));
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA2).title("Social Sciences").icon(BitmapDescriptorFactory.fromResource(R.drawable.emergency_area_icon))));
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA3).title("Engineering").icon(BitmapDescriptorFactory.fromResource(R.drawable.emergency_area_icon))));
@@ -300,11 +308,11 @@ public class MainActivity extends FragmentActivity {
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA8).title("Athletics/Central Plant").icon(BitmapDescriptorFactory.fromResource(R.drawable.emergency_area_icon))));
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA9).title("NorthCampus").icon(BitmapDescriptorFactory.fromResource(R.drawable.emergency_area_icon))));
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA10).title("Residential").icon(BitmapDescriptorFactory.fromResource(R.drawable.emergency_area_icon))));
-	         // emergency blue phone posts
+	         
+	         //Emergency blue phone posts
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP1).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP2).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP3).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
-	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP3s).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP4).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP5).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP6).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
@@ -323,7 +331,7 @@ public class MainActivity extends FragmentActivity {
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP19).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP20).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP21).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
-	        // bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP22).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
+	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP22).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP23).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP24).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP25).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
@@ -458,7 +466,7 @@ public class MainActivity extends FragmentActivity {
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP154).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP155).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 
-	         //restroom markers
+	         //Restroom markers
 	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR1).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
 	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR2).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
 	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR3).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
@@ -482,39 +490,47 @@ public class MainActivity extends FragmentActivity {
 	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR21).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
 
 
-	         //animate camera
+	         //Animates the camera to the LatLng coordinate "UCI" which acts as the center
+	         //initial zoom is set to 15 but this can be changed
 	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);     
-	         
 	     }
 	}
 	
+	//displays directions on the screen from current location to given point
+	//currently the end point is hardcoded as BP2 (33.64387631680, -117.82420840800)
+	//this will be changed later to be the end destinate of whatever the user picks
 	public void findDirections(View v){
-	     // Getting URL to the Google Directions API
+		
+	    // Getting URL to the Google Directions API given start point and end point
         String url = getDirectionsUrl(currentLocation,BP2);
-
+        
         DownloadTask downloadTask = new DownloadTask();
 
         // Start downloading json data from Google Directions API
         downloadTask.execute(url);
-	  
-		  // Enable MyLocation Button in the Map
-	      mMap.setMyLocationEnabled(true);
 	}
 	
-
+	
+	//String output of directions in JSON given by Google Maps
+	//LatLng origin - coordinates of starting point
+	//LatLng dest - coordinates of ending point
     private String getDirectionsUrl(LatLng origin,LatLng dest){
  
         // Origin of route
+    	// lat and long of starting point
         String str_origin = "origin="+origin.latitude+","+origin.longitude;
  
         // Destination of route
+        // lat and long of destination
         String str_dest = "destination="+dest.latitude+","+dest.longitude;
  
         // Sensor enabled
-        String sensor = "sensor=false";
+        // sensor=true if currentLocation is provided by a sensor
+        // sensor=false if currentLocation is not provided by a sensor
+        // has no real baring on result; just for google's purposes
+        String sensor = "sensor=true";
         
- 
         // Building the parameters to the web service
         String parameters = str_origin+"&"+str_dest+"&"+sensor+"&"+"mode=walking";
  
@@ -527,12 +543,14 @@ public class MainActivity extends FragmentActivity {
         return url;
     }
  
-    /** A method to download json data from url */
+    // A method to download json data from url
     private String downloadUrl(String strUrl) throws IOException{
+    	//initializing the output string, InputStream, and HttpURLConnection used to make an http request
         String data = "";
         InputStream iStream = null;
         HttpURLConnection urlConnection = null;
         try{
+        	//setting url as the url provided in the parameters of the method
             URL url = new URL(strUrl);
  
             // Creating an http connection to communicate with url
@@ -544,10 +562,13 @@ public class MainActivity extends FragmentActivity {
             // Reading data from url
             iStream = urlConnection.getInputStream();
  
+            // Create buffered Reader to read the output provided by InputStream
             BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
- 
+            
+            //StringBuffer used to parse the bufferedReader
             StringBuffer sb = new StringBuffer();
- 
+            
+            //puts each line read from the bufferedReader into a new line in the string:"data"
             String line = "";
             while( ( line = br.readLine()) != null){
                 sb.append(line);
@@ -598,7 +619,7 @@ public class MainActivity extends FragmentActivity {
         }
     }
  
-    /** A class to parse the Google Places in JSON format */
+    // A class to parse the Google Places in JSON format
     private class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String,String>>> >{
  
         // Parsing the data in non-ui thread
@@ -662,101 +683,90 @@ public class MainActivity extends FragmentActivity {
             mMap.addPolyline(lineOptions);
         }
     }
-
-	 
-	 public void goToMap(View view) { 
-			Intent intent = new Intent(this,MainActivity.class);
-			startActivity(intent);
-		}
-	 
-	 public void goToEmergencyInfo(View view) { 
-			Intent intent = new Intent(this,EmergencyInfoActivity.class);
-			startActivity(intent);
-		}
-	 
-	 public void goToEmergencyDialer(View view) { 
-			Intent intent = new Intent(this,DialerActivity.class);
-			startActivity(intent);
-		}
-	 
-	 public void goToSearch(View view) { 
-			Intent intent = new Intent(this,SearchActivity.class);
-			startActivity(intent);
-		}
-	 
-	 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
+    
+	//Activates the slide menu 
 	public void toggleMenu(View v){
 		this.root.toggleMenu();
 	}
 	
+	//Toggles the Emergency Area markers on or off (depending on the state of the boolean)
 	public void toggleEaMarker(View v){
+		//if eaShow=true
 		if(eaShow){
+			//hide all the emergency area markers
 			for(Marker m :emergencyArea){
 				m.setVisible(false);
 			}
 			eaShow = false;
 		}
-		else 
-		{
+		//else if eaShow=false
+		else{
+			//show all the emergency area markers
 			for( Marker m : emergencyArea){
 				m.setVisible(true);
 			}
 			eaShow = true;
+		}
+			//animates the camera back to initial center point (UCI)
 			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
-			
-		}
 	}
 	
+	//Toggles the Blue Phone Post markers on or off (depending on the state of the boolean)
 	public void toggleBpMarker(View v){
+		//if bpShow=true
 		if(bpShow){
+			//hide all Blue Phone Post markers
 			for (Marker m : bluePhone){
 				m.setVisible(false);
 			}
 			bpShow = false;
 		}
-		else
-		{
+		//else if bpShow=false
+		else{
+			//show all Blue PHone Post Markers
 			for (Marker m : bluePhone){
 				m.setVisible(true);
 			}
 			bpShow = true;
+		}
+			//animates the camera back to initial center point (UCI)
 			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
-		}
 	}
 	
+	//Toggles the Restroom markers on or off (depending on the state of the boolean)
 	public void toggleRrMarker(View v){
+		//if rrShow=true
 		if(rrShow){
+			//hide all Restroom markers
 			for (Marker m : restroom){
 				m.setVisible(false);
 			}
 			rrShow = false;
 		}
-		else
-		{
+		//else if 
+		else{
+			//show all Restroom markers
 			for (Marker m : restroom){
 				m.setVisible(true);
 			}
 			rrShow = true;
+		}
+			//animates the camera back to initial center point (UCI)
 			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
-		}
 	}
 	
+	//Finds the current location of the user
+	//sets the global LatLng coordinate:"currentLocation"
 	public void findLocation(View v){
 		double[] d = getlocation();
 	    currentLocation = new LatLng(d[0], d[1]);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15));
 	}
 	
+	//Uses system's location service to provide an array of 2 doubles that define the Lat and Long of current location
 	public double[] getlocation() {
 	    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 	    List<String> providers = lm.getProviders(true);
@@ -775,35 +785,39 @@ public class MainActivity extends FragmentActivity {
 	    }
 	    return gps;
 	}
+	 
+	//Footer Methods
 	
-/*	public void readHTTPRequest(View v){
-		try {
-			TextView httptextview = (TextView)findViewById(R.id.httpTextView);
-			httptextview.setText(getData());
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}*/
-	
-	
+	//method to go to activity: MainActivity
+	//creates intent used to store the information of a different activity within this activity
+	//startActivity(intent) changes the current activity to the intent activity
+	public void goToMap(View view) { 
+		Intent intent = new Intent(this,MainActivity.class);
+		startActivity(intent);
+	}
+	 
+	//method to go to activity: EmergencyInfoActivity
+	//creates intent used to store the information of a different activity within this activity
+	//startActivity(intent) changes the current activity to the intent activity
+	public void goToEmergencyInfo(View view) { 
+		Intent intent = new Intent(this,EmergencyInfoActivity.class);
+		startActivity(intent);
+	}
 
-/*	public String getHTTPRequest() throws ClientProtocolException, IOException{
-		HttpClient httpclient = new DefaultHttpClient();
-	    HttpResponse response = httpclient.execute(new HttpGet("http://directory.uci.edu/index.php?uid=djpatter&form_type=plaintext"));
-	    StatusLine statusLine = response.getStatusLine();
-	    if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-	        ByteArrayOutputStream out = new ByteArrayOutputStream();
-	        response.getEntity().writeTo(out);
-	        out.close();
-	        String responseString = out.toString();
-	        //System.out.println(responseString);
-	        return responseString;
-	    } else{
-	        //Closes the connection.
-	        response.getEntity().getContent().close();
-	        throw new IOException(statusLine.getReasonPhrase());
-	    }
-	}*/
+	//method to go to activity: DialerActivity
+	//creates intent used to store the information of a different activity within this activity
+	//startActivity(intent) changes the current
+	public void goToEmergencyDialer(View view) { 
+		Intent intent = new Intent(this,DialerActivity.class);
+		startActivity(intent);
+	}
+	 
+	//menu functionality when the user press the physical menu button located on the phone
+	//currently the menu feature does nothing
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
 }
