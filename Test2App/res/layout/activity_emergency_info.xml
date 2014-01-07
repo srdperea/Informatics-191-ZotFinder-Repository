@@ -45,6 +45,43 @@
             android:textColor="@color/white" />
     </TableRow> 
     
+	<RelativeLayout 
+		    android:id="@+id/EmergencyViews"
+		    android:layout_width="wrap_content"
+  			android:layout_height="wrap_content"
+  			android:layout_below="@+id/e_tableRow1">
+        
+	            <Button 
+	                android:layout_alignParentLeft="true"
+	                android:id="@+id/emergencyPamphlet"
+		        	android:layout_width="wrap_content"
+		        	android:layout_height="wrap_content"
+					android:layout_marginLeft="18dp"
+					android:layout_marginTop="5dp"
+			        android:text="@string/call_911"
+			        android:textColor="@color/white"
+			        android:textSize="@dimen/font_size"
+			        android:textStyle="bold"
+			        android:onClick="goToEmergencyInfo"
+			        android:background="@color/header_color_blue" 
+	                />
+	            <Button 
+	                android:layout_alignParentRight="true"
+	                android:id="@+id/rolesExpectations "
+		        	android:layout_width="wrap_content"
+		        	android:layout_height="wrap_content"
+		        	android:layout_marginRight="8dp"
+		        	android:layout_marginTop="5dp"
+			        android:text="@string/call_911"
+			        android:textColor="@color/white"
+			        android:textSize="@dimen/font_size"
+			        android:textStyle="bold"
+			        android:onClick="goToRolesExpectations"
+			        android:background="@color/header_color_blue" 
+	               />
+   </RelativeLayout>
+	
+    
 <!-- Top 5 Emergencies --> 
 	<TextView
 		android:id="@+id/mostCommonEmergencyTextView"
@@ -53,12 +90,13 @@
 		android:gravity="center_horizontal"
 		android:layout_centerHorizontal="true"
 		android:text="@string/most_common_emergencies"
-		android:layout_below="@+id/e_tableRow1"
+		android:layout_below="@+id/EmergencyViews"
 		android:textSize="@dimen/font_size"
 		android:layout_marginBottom="15dp"
 		android:layout_marginTop="15dp"
 		android:textAppearance="?android:attr/textAppearanceLarge"
-		android:textColor="@color/white" />
+		android:textColor="@color/white"
+		 />
   
   	<!-- Active Shooter -->
 	<Button

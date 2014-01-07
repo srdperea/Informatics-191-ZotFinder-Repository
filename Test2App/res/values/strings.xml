@@ -335,6 +335,46 @@
 		
 			]]>
     </string>
+    
+    <string name="student_expectations">
+<![CDATA[
+
+			
+		
+			<p>• Review the UCI Emergency Procedures Chart (aka “Blue Flip Chart”).<br></p>
+			<p>• If you live on campus, have a copy of the chart posted in your dorm room or apartment.<br></p>
+			<p>• Know what to do in case of an emergency on campusEvacuate the immediate area and close doors behind you.<br></p> 
+			<p>• Know the location of emergency blue light phones.<br></p>
+			<p>• Know evacuation routes and the pre-designated assembly areas for the buildings you.<br></p>
+			<p>• Sign up to receive zotALERT text messages at www.oit.uci.edu/zotalert <br></p>
+			<p>• Work with your family to develop a Family Emergency Plan.<br></p>
+			<p>• Have an emergency kit at home and in your car.<br></p>
+			<p>• Test closed doors with the back of your hand. DO NOT open doors if they are hot.<br></p>
+		
+		
+			]]>
+    </string>
+    
+          <string name="faculty_expectations">
+<![CDATA[
+
+			<p>• Have a copy of the UCI Emergency Procedures Chart (aka “Blue Flip Chart”) accessible in your workspace, laboratories, and classroom(s).<br></p>
+			<p>• Know your role during an emergency.<br></p> 
+			<p>• Get to know your Zone Captain and the Zone Crew members in your area.<br></p>
+			<p>• Know evacuation routes and the pre-designated assembly areas for the buildings you are in most frequently.<br></p>
+			<p><b> Faculty members should be prepared to direct their students to assembly areas in the event of an emergency.</b><br></p> 
+			<p>• Know the emergency plan and continuity/recovery plan for your department.<br></p> 
+			<p>• Sign up to receive zotALERT text messages at www.oit.uci.edu/zotalert.<br></p> 
+			<p>• Have an emergency kit in your office, in your car, and at home.<br></p> 
+			<p>• Contact the campus Emergency Services Manager at x4-7147 if you are interested in a preparedness presentation for your department.<br></p> 
+			<p>• Get involved on campus.<br></p> 
+			<p>Become a Zone Crew member. Contact your Zone Captain and visit http://police.uci.edu/em/ZoneCrew.html for more information..<br></p> 
+			<p>Become a Campus Search and Rescue (CSAR) Team Member. Visit www.police.uci.edu/em/csar.html for training sessions and more information..<br></p> 
+			<p>Become First Aid and CPR trained. The ARC offers free or low cost classes conducted by the American Red Cross. Go to http://www.campusrec.uci.edu/ , Classes and Clinics for details..<br></p> 
+			
+			<p>•.<br></p> 
+			]]>
+    </string>
 
     <!-- Dialer Home -->
     <string name="dialer_header">Emergency Dialer</string>
