@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/fire"
+            android:text="@string/fire_title"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white"
             android:textSize="@dimen/font_size" />

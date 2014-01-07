@@ -40,9 +40,24 @@
     <string name="emergency_preparedness">Emergency\nPreparedness</string>
     <string name="fire">Fire</string>
     <string name="persons_in_distress">Person\nIn\nDistress</string>
-    <string name="persons_i_d">Person In Distress</string>
     <string name="utility_failure">Utility\nFailure</string>
-
+	
+    <!-- Emergency Info Home -->
+    <string name="active_shooter_title">Active Shooter</string>
+    <string name="earthquake_title">Earthquake</string>
+    <string name="violence_title">Violence</string>
+    <string name="evacuation_disabilities_title">Evacuation Disabilities</string>
+    <string name="suspicious_package_title">Suspicious Package</string>
+    <string name="evacuation_title">Evacuation</string>
+    <string name="hazardous_material_title">Hazardous Material</string>
+    <string name="hazardous_material_shelter_title">Hazardous Material Shelter</string>
+    <string name="bomb_threat_title">Bomb Threat</string>
+    <string name="medical_emergency_title">Medical Emergency</string>
+    <string name="emergency_preparedness_title">Emergency Preparedness</string>
+    <string name="fire_title">Fire</string>
+    <string name="persons_in_distress_title">Person In Distress</string>
+    <string name="utility_failure_title">Utility Failure</string>
+    
     <!-- Search -->
     <string name="input_text">UCINetID</string>
     <string name="input_hint">Enter a UciNetID</string>
