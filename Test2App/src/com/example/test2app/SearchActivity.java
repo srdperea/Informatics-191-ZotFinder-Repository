@@ -39,8 +39,8 @@ public class SearchActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
-        db = (new DatabaseHelper(this)).getWritableDatabase();
-		
+        
+		db = (new DatabaseHelper(this)).getWritableDatabase();
 		searchBox = (EditText) findViewById(R.id.searchText);
 		searchResults = (ListView) findViewById(R.id.resultsList);
 
@@ -147,15 +147,14 @@ public class SearchActivity extends Activity {
 	@SuppressWarnings("deprecation")
 	public void search(View view){
 		
-		cursor = db.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress, "
-				+ "FROM building LIKE ?", 
+		cursor = db.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress FROM building WHERE buildingName || ' ' || buildingNumber LIKE ?", 
 				new String[]{"%" + searchBox.getText().toString() + "%"});
 		listAdapter = new SimpleCursorAdapter(
 				this, 
-				R.layout.activity_building_info, 
+				R.layout.activity_building_list_item, 
 				cursor, 
 				new String[] {"buildingName", "buildingNumber", "buildingAddress"}, 
-				new int[] {R.id.buildingName, R.id.buildingNumber, R.id.buildingAddress});
+				new int[] {R.id.buildingName,R.id.buildingNumber, R.id.buildingAddress});
 		searchResults.setAdapter(listAdapter);
 				
 		
