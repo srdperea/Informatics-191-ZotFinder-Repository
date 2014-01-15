@@ -13,47 +13,38 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 public class SearchActivity extends Activity {
-	EditText inputBox;
+	EditText searchBox;
 	//bundle is global so that it may be accessed from outside the getData() method
 	Bundle bundle;
+	ListAdapter listAdapter;
+	ListView searchResults;
+	Cursor cursor;
+	SQLiteDatabase db;
 	
+	
+	int searchChooser; //-1=person; 0=building; 1=department
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
+        db = (new DatabaseHelper(this)).getWritableDatabase();
 		
-		//initializes the textView
-		/*inputBox = (EditText)findViewById(R.id.searchPersonText);
-		inputBox = (EditText)findViewById(R.id.searchBuildingText);
-		inputBox = (EditText)findViewById(R.id.searchDepartmentText);*/
-		//adds a listener to when the user presses enter
-		//keyCode 66 is the code corresponding to the ENTER key
-		//when the user presses the enter key, calls the getData() method and hides the keyboard
- 		inputBox.setOnKeyListener(
-			new View.OnKeyListener() {
+		searchBox = (EditText) findViewById(R.id.searchText);
+		searchResults = (ListView) findViewById(R.id.resultsList);
 
-				@Override
-				public boolean onKey(View v, int keyCode, KeyEvent event) {
-					if(keyCode == 66){
-						//uses the input from the input box as parameter for getData() method
-						getData(inputBox.getText().toString());
-						
-						//hides the keyboard after user presses enter
-						InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-			               imm.hideSoftInputFromWindow(inputBox.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-						return true;
-					}	
-					return false;
-				}		
-			}
-		);
+ 		
 	}
 	
 	//makes HTTP request and creates new intent with parsed output 
@@ -143,7 +134,63 @@ public class SearchActivity extends Activity {
 	  }
 	} 
 	
-	/*public void compareBuildingNames(InputStream in, Bundle readBundle){
+	public void choosePersonSearch(){
+		searchChooser = -1;
+	}
+	public void chooseBuildingSearch(){
+		searchChooser = 0;
+	}
+	public void chooseDepartmentSearch(){
+		searchChooser = 1;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void search(View view){
+		
+		cursor = db.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress, "
+				+ "FROM building LIKE ?", 
+				new String[]{"%" + searchBox.getText().toString() + "%"});
+		listAdapter = new SimpleCursorAdapter(
+				this, 
+				R.layout.activity_building_info, 
+				cursor, 
+				new String[] {"buildingName", "buildingNumber", "buildingAddress"}, 
+				new int[] {R.id.buildingName, R.id.buildingNumber, R.id.buildingAddress});
+		searchResults.setAdapter(listAdapter);
+				
+		
+		if (searchChooser == -1){
+			getData(searchBox.getText().toString());
+		
+		}
+	}
+	
+	/*
+	 * public static ArrayList<String> tokenizeFile(File input) {
+		ArrayList<String> words = new ArrayList<String>();
+		Scanner sc;
+		try {	
+			sc = new Scanner(input,"UTF-8").useDelimiter("[^A-Za-z0-9]| ");
+			while(sc.hasNext())
+			{
+				String line = sc.next().replace("\\s", "").toLowerCase();
+				if(!(line.equals("")))
+				{
+					words.add(line);
+				}
+			}
+			sc.close();
+			System.out.println(words);
+			//System.out.println(words.size());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return words;
+	}
+	 * 
+	 * 
+	 * 
+	 * public void compareBuildingNames(InputStream in, Bundle readBundle){
 		String line = "";
 		String[] notFound = null;
 		BufferedReader br=null;
