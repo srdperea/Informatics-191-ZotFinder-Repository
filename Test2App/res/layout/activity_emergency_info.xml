@@ -89,7 +89,7 @@
 		android:layout_height="wrap_content"
 		android:gravity="center_horizontal"
 		android:layout_centerHorizontal="true"
-		android:text="@string/most_common_emergencies"
+		android:text="@string/top_emergencies"
 		android:layout_below="@+id/EmergencyViews"
 		android:textSize="@dimen/font_size"
 		android:layout_marginBottom="15dp"

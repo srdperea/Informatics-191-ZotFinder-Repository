@@ -1,6 +1,8 @@
 package com.example.test2app;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -28,8 +30,9 @@ public class SearchActivity extends Activity {
 		setContentView(R.layout.activity_search);
 		
 		//initializes the textView
-		inputBox = (EditText)findViewById(R.id.searchEditText);
-		
+		/*inputBox = (EditText)findViewById(R.id.searchPersonText);
+		inputBox = (EditText)findViewById(R.id.searchBuildingText);
+		inputBox = (EditText)findViewById(R.id.searchDepartmentText);*/
 		//adds a listener to when the user presses enter
 		//keyCode 66 is the code corresponding to the ENTER key
 		//when the user presses the enter key, calls the getData() method and hides the keyboard
@@ -91,10 +94,10 @@ public class SearchActivity extends Activity {
 	  //initializes individual tag strings
 	  String ucinetid, name, title, department, address, phone = "0", fax = "0", email;
 	  try {
-	    reader = new BufferedReader(new InputStreamReader(in));
-	    String line = "";
-	    while ((line = reader.readLine()) != null) {
-	      output+=line;
+		    reader = new BufferedReader(new InputStreamReader(in));
+		    String line = "";
+		    while ((line = reader.readLine()) != null) {
+		      output+=line;
 	    }
 	    
 	    //sets the tag strings as the correct data from the output
@@ -139,6 +142,34 @@ public class SearchActivity extends Activity {
 	    }
 	  }
 	} 
+	
+	/*public void compareBuildingNames(InputStream in, Bundle readBundle){
+		String line = "";
+		String[] notFound = null;
+		BufferedReader br=null;
+		try{
+			br = new BufferedReader(new FileReader("BuildingLocations.csv"));
+			while ((line=br.readLine()) != null){
+				String[] output = line.split(",");
+				if (in.inputBuildingName.equalsIgnoreCase(output[1])){
+					;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return notFound;
+	}*/
 	
 	//Footer Methods
 	

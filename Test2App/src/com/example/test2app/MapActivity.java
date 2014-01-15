@@ -35,8 +35,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 
-
-public class MainActivity extends FragmentActivity {
+public class MapActivity extends FragmentActivity {
 	//map
 	private GoogleMap mMap;
 	//object for markers
@@ -88,8 +87,14 @@ public class MainActivity extends FragmentActivity {
 	         //Animates the camera to the LatLng coordinate "UCI" which acts as the center
 	         //initial zoom is set to 15 but this can be changed
 	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
-	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);     
+	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+	         
+	         String address = getIntent().getExtras().getString("Address");
+	         address.replaceAll("[0-9]", "");
+	         address.replaceAll(" ", "");
+	         	         
 	     }
+	     
 	}
 	
 	//displays directions on the screen from current location to given point

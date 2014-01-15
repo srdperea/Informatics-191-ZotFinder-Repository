@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/holo_dark"
+    tools:context=".RolesExpectationsActivity" >
+    	<include
+
+        layout="@layout/commonfooter" />
+
+   <TableRow
+        android:id="@+id/e_tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/header_color_blue" >
+        
+		<TextView
+            android:id="@+id/emergencyInfoHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/roles_expectations"
+            android:textSize="@dimen/font_size"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+    </TableRow> 
+    
+	<RelativeLayout 
+		    android:id="@+id/EmergencyViews"
+		    android:layout_width="wrap_content"
+  			android:layout_height="wrap_content"
+  			android:layout_below="@+id/e_tableRow1">
+        
+	            <Button 
+	                android:layout_alignParentLeft="true"
+	                android:id="@+id/emergencyProcedures"
+		        	android:layout_width="wrap_content"
+		        	android:layout_height="wrap_content"
+					android:layout_marginLeft="8dp"
+					android:layout_marginTop="20dp"
+					android:layout_marginBottom="50dp"
+			        android:text="@string/emergency_procedures"
+			        android:textColor="@color/white"
+			        android:textSize="12sp"
+			        android:textStyle="bold"
+			        android:onClick="goToEmergencyInfo"
+			        android:background="@color/header_color_blue" 
+	                />
+	            <Button 
+	                android:layout_alignParentRight="true"
+	                android:id="@+id/rolesExpectations "
+		        	android:layout_width="wrap_content"
+		        	android:layout_height="wrap_content"
+		        	android:layout_marginRight="8dp"
+		        	android:layout_marginTop="20dp"
+		        	android:layout_marginBottom="50dp"
+			        android:text="@string/roles_expectations"
+			        android:textColor="@color/white"
+			        android:textSize="12sp"
+			        android:textStyle="bold"
+			        android:onClick="goToRolesExpectations"
+			        android:background="@color/header_color_blue" 
+	               />
+   </RelativeLayout>
+  
+   
+	<Button
+       android:id="@+id/studentButton"
+       android:layout_width="match_parent"
+       android:layout_height="65dp"
+       android:layout_gravity="center"
+	   android:layout_below="@+id/EmergencyViews"
+	   android:layout_marginTop="20dp"
+       android:text="@string/student_button"
+       android:onClick="goToStudentExpectations" /> 
+     <Button
+       android:id="@+id/facultyButton"
+       android:layout_width="match_parent"
+       android:layout_height="65dp"
+       android:layout_gravity="center"
+	   android:layout_below="@+id/studentButton"
+	   android:layout_marginTop="10dp"
+       android:text="@string/faculty_button"
+       android:onClick="goToFacultyExpectations" />
+
+
+  
+</RelativeLayout>

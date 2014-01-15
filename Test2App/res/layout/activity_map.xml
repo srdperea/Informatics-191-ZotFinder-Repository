@@ -1,0 +1,125 @@
+<com.example.test2app.view.viewgroup.FlyOutContainer
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <!-- slide menu -->
+     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/header_color_blue"
+        android:orientation="vertical" >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="toggleEaMarker"
+            android:text="@string/evacuation_areas" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="toggleBpMarker"
+            android:text="@string/blue_phones" />
+        
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="toggleRrMarker"
+            android:text="@string/restrooms" />
+
+    </LinearLayout>
+    
+     <!-- Header -->
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent" >
+	    
+	   
+		<TableRow
+	        android:id="@+id/tableRow1"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentTop="true"
+	        android:background="@color/header_color_blue" >
+	        
+
+	       <TextView
+	            android:id="@+id/mapHeaderTextView"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/map_header"
+	            android:textSize="@dimen/font_size"
+	            android:textAppearance="?android:attr/textAppearanceLarge"
+	            android:textColor="@color/white"
+	            android:layout_weight="1"
+	            android:gravity="center_horizontal"
+	            android:layout_marginBottom="3dp"/>
+	       </TableRow>
+	        
+	    <include
+	        layout="@layout/commonfooter" />
+	    
+	<!-- This is the button for Opening the Slider -->	       
+	     <Button 
+	   	       android:id="@+id/menu_slider_button"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_alignParentTop="true"
+	           android:gravity="left"
+	           android:background="@drawable/menu_slider_icon"
+	           android:textColor="@color/white"
+	           android:textSize="@dimen/button_text_size"
+	           android:onClick="toggleMenu"/>
+	     
+	<!-- This is the button for Finding directions -->	    
+	     <Button 
+	   	       android:id="@+id/walking_directions_button"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_alignParentTop="true"
+	           android:layout_toRightOf="@+id/menu_slider_button"
+	           android:gravity="left"
+	           android:background="@drawable/directions_icon"
+	           android:textColor="@color/white"
+	           android:textSize="@dimen/button_text_size"
+	           android:onClick="findDirections"/>
+	 
+	 <!-- This is the button for making HTTP Request -->	       
+	     <Button 
+	   	       android:id="@+id/HTTP_button"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_alignParentTop="true"
+	           android:layout_alignParentRight="true"
+	           android:background="@drawable/ic_action_search"
+	           android:textColor="@color/white"
+	           android:textSize="@dimen/button_text_size"
+	           android:onClick="goToSearch"/>
+ 
+   	    
+   	    <!-- This is the button for formatting and Toggling -->
+   	    <Button 
+   	       android:id="@+id/transparent_button"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:background="@drawable/map_icon_pressed"
+           android:alpha="0"
+           android:textColor="@color/white"
+           android:textSize="@dimen/button_text_size"
+   	       android:onClick="toggleMenu" />
+	    
+   	    <!-- Map -->
+	    <fragment
+		    android:id="@+id/map"
+		    android:name="com.google.android.gms.maps.SupportMapFragment"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/tableRow1"
+		    android:layout_above="@+id/transparent_button"
+		    android:layout_marginBottom="2dp"/>
+	
+	</RelativeLayout>
+
+</com.example.test2app.view.viewgroup.FlyOutContainer>

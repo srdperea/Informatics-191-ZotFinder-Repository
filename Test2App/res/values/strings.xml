@@ -12,11 +12,19 @@
 
     <!-- search everything related -->
     <string name="search_header">Search</string>
-    <string name="person_info">Details</string>
+    <string name="person_info">Person Name</string>
     <string name="office_header">Office</string>
-    <string name="phone_header">Office Phone</string>
+    <string name="phone_header">Office Phone Number</string>
     <string name="fax_header">Fax Number</string>
     <string name="email_header">Email</string>
+    <string name="department_info">Department Name</string>
+    <string name="dept_address">Address</string>
+    <string name="dept_number">Office Phone Number</string>
+    <string name="dept_website">Website</string>
+    <string name="building_info">Building Name</string>
+    <string name="bldg_number">Building Number</string>
+    <string name="bldg_address">Address</string>
+    
 
     <!-- 3 Links Bottom Page -->
     <string name="map_link">Map</string>
@@ -25,7 +33,11 @@
 
     <!-- Emergency Info Home -->
     <string name="emergency_info_header">Emergency Information</string>
-    <string name="most_common_emergencies">Most Common Emergencies</string>
+    <string name="top_emergencies">Top Emergencies</string>
+    <string name="emergency_procedures">Emergency Procedures</string>
+    <string name="roles_expectations">Roles / Expectations</string>
+    <string name="student_button">Student</string>
+    <string name="faculty_button">Faculty/Staff</string>
     <string name="other_emergencies">Other Emergencies</string>
     <string name="active_shooter">Active\nShooter</string>
     <string name="earthquake">Earthquake</string>
@@ -41,7 +53,7 @@
     <string name="fire">Fire</string>
     <string name="persons_in_distress">Person\nIn\nDistress</string>
     <string name="utility_failure">Utility\nFailure</string>
-	
+
     <!-- Emergency Info Home -->
     <string name="active_shooter_title">Active Shooter</string>
     <string name="earthquake_title">Earthquake</string>
@@ -57,7 +69,7 @@
     <string name="fire_title">Fire</string>
     <string name="persons_in_distress_title">Person In Distress</string>
     <string name="utility_failure_title">Utility Failure</string>
-    
+
     <!-- Search -->
     <string name="input_text">UCINetID</string>
     <string name="input_hint">Enter a UciNetID</string>
@@ -335,7 +347,6 @@
 		
 			]]>
     </string>
-    
     <string name="student_expectations">
 <![CDATA[
 
@@ -354,8 +365,7 @@
 		
 			]]>
     </string>
-    
-          <string name="faculty_expectations">
+    <string name="faculty_expectations">
 <![CDATA[
 
 			<p>• Have a copy of the UCI Emergency Procedures Chart (aka “Blue Flip Chart”) accessible in your workspace, laboratories, and classroom(s).<br></p>
@@ -405,5 +415,10 @@
     <string name="title_activity_fire">FireActivity</string>
     <string name="title_activity_emergency_preparedness">EmergencyPreparednessActivity</string>
     <string name="title_activity_persons_in_distress">PersonsInDistressActivity</string>
+    <string name="title_activity_roles_expectations">RolesExpectationsActivity</string>
+    <string name="title_activity_student_expectations">StudentExpectationsActivity</string>
+    <string name="title_activity_faculty_expectations">FacultyExpectationsActivity</string>
+    <string name="title_activity_department_info">DepartmentInfoActivity</string>
+    <string name="title_activity_building_info">BuildingInfoActivity</string>
 
 </resources>

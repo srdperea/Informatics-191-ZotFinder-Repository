@@ -52,17 +52,7 @@ public class PersonInfoActivity extends Activity {
 		emailTextView.setTextColor(getResources().getColor(R.color.black));
 		emailTextView.setBackgroundColor(getResources().getColor(R.color.light_gray));
         
-		//some faculty do not have a fax number so this will put the text only if it is a valid phone number
-		//if the number provided is equal to "N/A" then a textview will not be set
-        String fax = getIntent().getExtras().getString("fax");
-        if (!fax.equals("N/A"))
-        {
-			TextView faxTextView = (TextView) findViewById(R.id.fax);
-			faxTextView.setText(fax);    
-			faxTextView.setTextSize(getResources().getDimension(R.dimen.search_out));
-			faxTextView.setTextColor(getResources().getColor(R.color.black));
-			faxTextView.setBackgroundColor(getResources().getColor(R.color.light_gray));
-        }
+		
 	}
 	
 	//goes to the phone's internal dial screen with the number given

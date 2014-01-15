@@ -17,12 +17,12 @@
 	        android:layout_alignParentTop="true"
 	        android:background="@color/header_color_blue" >
 	        
-
+			<!-- use this id to add the Building NAME -->
 	       <TextView
-	            android:id="@+id/personInfoHeaderTextView"
+	            android:id="@+id/buildingInfoHeaderTextView"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="@string/person_info"
+	            android:text="@string/building_info"
 	            android:textSize="@dimen/font_size"
 	            android:textAppearance="?android:attr/textAppearanceLarge"
 	            android:textColor="@color/white"
@@ -61,43 +61,43 @@
 			    android:layout_width="wrap_content"
 	  			android:layout_height="wrap_content">
 	  			
-			    <!-- Office Location -->
+			    <!-- Building Number HEADER -->
 			    <TextView
-					android:id="@+id/officeHeader"
+					android:id="@+id/bldgAddress"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:text="@string/office_header"
+					android:text="@string/bldg_address"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/white"/>
-	        
+	            <!-- Department Address FOR JAVA-->
 				<TextView
-					android:id="@+id/officeLocation"
+					android:id="@+id/buildingAddress"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/officeHeader"
+					android:layout_below="@+id/bldgdeptAddress"
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/white"/>
 				
-				<!-- Phone Number -->
+				<!-- Building Number HEADER -->
 				
 				<TextView
-					android:id="@+id/phoneHeader"
+					android:id="@+id/bldgNumber"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/officeLocation"
-					android:text="@string/phone_header"
+					android:layout_below="@+id/buildingAddress"
+					android:text="@string/bldg_number"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/white"/>
-				
+				<!-- Department Number FOR JAVA-->
 				<TextView
-					android:id="@+id/phoneNumber"
+					android:id="@+id/buildingNumber"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/phoneHeader"
+					android:layout_below="@+id/bldgNumber"
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
@@ -105,26 +105,7 @@
 					android:clickable="true"
 					android:onClick="call"/>
 				
-				<!-- Email -->
-				<TextView
-					android:id="@+id/emailHeader"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_below="@+id/phoneNumber"
-					android:text="@string/email_header"
-					android:textSize="@dimen/font_size"
-					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"/>
 				
-				<TextView
-					android:id="@+id/email"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_below="@+id/emailHeader"
-					android:layout_marginBottom="20dp"
-					android:textSize="@dimen/font_size"
-					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"/>
 				
 			</RelativeLayout>
 	    

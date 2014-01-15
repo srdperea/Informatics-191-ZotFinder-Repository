@@ -137,17 +137,40 @@
         </activity>
         <activity
             android:name="com.example.test2app.FireActivity"
-            android:label="@string/title_activity_fire" 
+            android:label="@string/title_activity_fire"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
             android:name="com.example.test2app.EmergencyPreparednessActivity"
             android:label="@string/title_activity_emergency_preparedness"
-            android:theme="@android:style/Theme.NoTitleBar"  >
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
             android:name="com.example.test2app.PersonsInDistressActivity"
             android:label="@string/title_activity_persons_in_distress"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.RolesExpectationsActivity"
+            android:label="@string/title_activity_roles_expectations"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.StudentExpectationsActivity"
+            android:label="@string/title_activity_student_expectations" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.FacultyExpectationsActivity"
+            android:label="@string/title_activity_faculty_expectations" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.DepartmentInfoActivity"
+            android:label="@string/title_activity_department_info"
+            android:theme="@android:style/Theme.NoTitleBar"  >
+        </activity>
+        <activity
+            android:name="com.example.test2app.BuildingInfoActivity"
+            android:label="@string/title_activity_building_info"
             android:theme="@android:style/Theme.NoTitleBar"  >
         </activity>
     </application>
