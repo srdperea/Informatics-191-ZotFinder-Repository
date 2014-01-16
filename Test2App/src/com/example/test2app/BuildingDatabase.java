@@ -1,5 +1,12 @@
 package com.example.test2app;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,13 +29,43 @@ public class BuildingDatabase extends SQLiteOpenHelper {
 		String sql = "CREATE TABLE IF NOT EXISTS building (" +
 						"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
 						"buildingName TEXT, " +
-						"buildingNumber TEXT, " +
-						"buildingAddress TEXT)";
+						"buildingLongitude TEXT, " +
+						"buildingLatitude TEXT, " +
+						"buildingType TEXT, " +
+						"buildingAddress TEXT, " + 
+						"buildingNumber TEXT, " + 
+						"buildingAbbreviation TEXT)";
 		db.execSQL(sql);
-		
 		ContentValues values = new ContentValues();
+	
+		BufferedReader br = null;
+		String line = "";
+		
+		try {
+			br = new BufferedReader(new FileReader("building_file.csv"));
+			while ((line = br.readLine()) != null)
+			{
+				String[] buildingInfo = line.split(",");
+				values.put("buildingName", buildingInfo[0]);
+				values.put("buildingLongitude", buildingInfo[1]);
+				values.put("buildingLatitude", buildingInfo[2]);
+				values.put("buildingType", buildingInfo[3]);
+				values.put("buildingAddress", buildingInfo[4]);
+				values.put("buildingNumber", buildingInfo[5]);
+				if (!(buildingInfo[6].equals("none")))
+					values.put("buildingAbbreviation", buildingInfo[6]);
+				db.insert("building", "buildingName", values);
+				
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
-		values.put("buildingName", "Donald Bren Hall");
+/*		values.put("buildingName", "Donald Bren Hall");
 		values.put("buildingNumber", "314");
 		values.put("buildingAddress", "314 Engineering Quad");
 		db.insert("building", "buildingName", values);
@@ -51,14 +88,7 @@ public class BuildingDatabase extends SQLiteOpenHelper {
 		values.put("buildingName", "Aldrich Hall");
 		values.put("buildingNumber", "111");
 		values.put("buildingAddress", "111 Gateway Quad");
-		db.insert("building", "buildingName", values);
-
-		//		values.put("lastName", "Smith");
-//		values.put("title", "CEO");
-//		values.put("officePhone", "617-219-2001");
-//		values.put("cellPhone", "617-456-7890");
-//		values.put("email", "jsmith@email.com");
-//		db.insert("employee", "lastName", values);
+		db.insert("building", "buildingName", values);*/
 		
 	}
 
