@@ -55,6 +55,7 @@
 	        android:layout_below="@+id/tableRow1"
 	        android:layout_marginTop="25dp"
 	        android:layout_toLeftOf="@+id/buildingTab"
+	        android:onClick="choosePersonSearch"
 	        android:text="Person" />
 	
 	    <Button
@@ -64,6 +65,7 @@
 	        android:layout_below="@+id/tableRow1"
 	        android:layout_marginTop="25dp"
 	        android:layout_centerHorizontal="true"
+	        android:onClick="chooseBuildingSearch"
 	        android:text="Building" />
 	
 	    <Button
@@ -73,6 +75,7 @@
 	        android:layout_toRightOf="@+id/buildingTab"
 	        android:layout_below="@+id/tableRow1"
 	        android:layout_marginTop="25dp"
+	        android:onClick="chooseDepartmentSearch"
 	        android:text="Department" />
 	    
 	    <LinearLayout

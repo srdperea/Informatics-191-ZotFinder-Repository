@@ -24,7 +24,6 @@
     <string name="building_info">Building Name</string>
     <string name="bldg_number">Building Number</string>
     <string name="bldg_address">Address</string>
-    
 
     <!-- 3 Links Bottom Page -->
     <string name="map_link">Map</string>
@@ -420,5 +419,7 @@
     <string name="title_activity_faculty_expectations">FacultyExpectationsActivity</string>
     <string name="title_activity_department_info">DepartmentInfoActivity</string>
     <string name="title_activity_building_info">BuildingInfoActivity</string>
+    <string name="title_activity_department_list_item">MainActivity</string>
+    <string name="title_activity_person_list_item">PersonListItemActivity</string>
 
 </resources>

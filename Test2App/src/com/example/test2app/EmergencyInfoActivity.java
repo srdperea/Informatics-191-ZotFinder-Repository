@@ -90,6 +90,11 @@ public class EmergencyInfoActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void goToRolesExpectations(View view) {
+		Intent intent = new Intent(this,RolesExpectationsActivity.class);
+		startActivity(intent);
+	}
+		
 	//Footer Methods
 	
 	//method to go to activity: MainActivity

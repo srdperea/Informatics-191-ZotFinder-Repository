@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android" >
- <item android:state_pressed="true" >
-     <shape android:shape="rectangle"  >
-         <corners android:radius="3dip" />
-         <stroke android:width="1dip" android:color="@color/red" />
-         <gradient android:angle="-90" android:startColor="@color/red" android:endColor="@color/red"/>          
-     </shape>
- </item>
-<item android:state_focused="true">
-     <shape android:shape="rectangle"  >
-         <corners android:radius="3dip" />
-         <stroke android:width="1dip" android:color="@color/red" />
-         <solid  android:color="@color/red"/>       
-     </shape>
- </item>  
-<item >
-    <shape android:shape="rectangle"  >
-         <corners android:radius="3dip" />
-         <stroke android:width="1dip" android:color="@color/light_red" />
-         <gradient  android:angle="-90"  android:startColor="@color/red" android:endColor="@color/radiant_red" />            
-     </shape>
- </item>
-</selector>
+ <shape xmlns:android="http://schemas.android.com/apk/res/android"
+  android:shape="rectangle" android:padding="10dp">   
+ <solid android:color="@color/red"/> <!-- this one is ths color of the Rounded Button -->
+  <size
+        android:height="40dp"
+        android:width="80dp" />
+  <corners
+   android:bottomRightRadius="10dp"
+   android:bottomLeftRadius="10dp"
+   android:topLeftRadius="10dp"
+   android:topRightRadius="10dp"/>
+</shape>

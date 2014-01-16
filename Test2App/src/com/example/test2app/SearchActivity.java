@@ -31,8 +31,10 @@ public class SearchActivity extends Activity {
 	ListAdapter listAdapter;
 	ListView searchResults;
 	Cursor cursor;
-	SQLiteDatabase db;
-	
+	SQLiteDatabase buildingDb;
+	SQLiteDatabase departmentDb;
+	SQLiteDatabase personDb;
+
 	
 	int searchChooser; //-1=person; 0=building; 1=department
 	@Override
@@ -40,7 +42,9 @@ public class SearchActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
         
-		db = (new DatabaseHelper(this)).getWritableDatabase();
+		buildingDb = (new BuildingDatabase(this)).getWritableDatabase();
+		departmentDb = (new DepartmentDatabase(this)).getWritableDatabase();
+		personDb = (new PersonDatabase(this)).getWritableDatabase();
 		searchBox = (EditText) findViewById(R.id.searchText);
 		searchResults = (ListView) findViewById(R.id.resultsList);
 
@@ -134,32 +138,49 @@ public class SearchActivity extends Activity {
 	  }
 	} 
 	
-	public void choosePersonSearch(){
+	public void choosePersonSearch(View view){
 		searchChooser = -1;
 	}
-	public void chooseBuildingSearch(){
+	public void chooseBuildingSearch(View view){
 		searchChooser = 0;
 	}
-	public void chooseDepartmentSearch(){
+	public void chooseDepartmentSearch(View view){
 		searchChooser = 1;
 	}
 	
 	@SuppressWarnings("deprecation")
 	public void search(View view){
+		if (searchChooser == 0){
+			cursor = buildingDb.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress FROM building WHERE buildingName || ' ' || buildingNumber LIKE ?", 
+					new String[]{"%" + searchBox.getText().toString() + "%"});
+			listAdapter = new SimpleCursorAdapter(
+					this, 
+					R.layout.activity_building_list_item, 
+					cursor, 
+					new String[] {"buildingName", "buildingNumber", "buildingAddress"}, 
+					new int[] {R.id.buildingName,R.id.buildingNumber, R.id.buildingAddress});
+			searchResults.setAdapter(listAdapter);
+		}	else if (searchChooser == 1){
+			cursor = departmentDb.rawQuery("SELECT _id, departmentName, departmentAddress FROM department WHERE departmentName || ' ' || departmentAddress LIKE ?", 
+					new String[]{"%" + searchBox.getText().toString() + "%"});
+			listAdapter = new SimpleCursorAdapter(
+					this, 
+					R.layout.activity_department_list_item, 
+					cursor, 
+					new String[] {"departmentName", "departmentAddress"}, 
+					new int[] {R.id.departmentName, R.id.departmentAddress});
+			searchResults.setAdapter(listAdapter);
 		
-		cursor = db.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress FROM building WHERE buildingName || ' ' || buildingNumber LIKE ?", 
-				new String[]{"%" + searchBox.getText().toString() + "%"});
-		listAdapter = new SimpleCursorAdapter(
-				this, 
-				R.layout.activity_building_list_item, 
-				cursor, 
-				new String[] {"buildingName", "buildingNumber", "buildingAddress"}, 
-				new int[] {R.id.buildingName,R.id.buildingNumber, R.id.buildingAddress});
-		searchResults.setAdapter(listAdapter);
-				
-		
-		if (searchChooser == -1){
-			getData(searchBox.getText().toString());
+		} else if (searchChooser == -1){
+			cursor = personDb.rawQuery("SELECT _id, personName, personAddress FROM person WHERE personName || ' ' || personAddress LIKE ?", 
+					new String[]{"%" + searchBox.getText().toString() + "%"});
+			listAdapter = new SimpleCursorAdapter(
+					this, 
+					R.layout.activity_person_list_item, 
+					cursor, 
+					new String[] {"personName", "personAddress"}, 
+					new int[] {R.id.personName, R.id.personAddress});
+			searchResults.setAdapter(listAdapter);
 		
 		}
 	}

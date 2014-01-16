@@ -5,11 +5,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class BuildingDatabase extends SQLiteOpenHelper {
 
-	public static final String DATABASE_NAME = "UCI_directory";
+	public static final String DATABASE_NAME = "UCI_building_directory";
 	
-	public DatabaseHelper(Context context) {
+	public BuildingDatabase(Context context) {
 		super(context, DATABASE_NAME, null, 1);
 	}
 
