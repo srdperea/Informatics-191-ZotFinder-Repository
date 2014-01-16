@@ -38,7 +38,7 @@ public class BuildingDatabase extends SQLiteOpenHelper {
 		db.execSQL(sql);
 		ContentValues values = new ContentValues();
 	
-		BufferedReader br = null;
+		/*BufferedReader br = null;
 		String line = "";
 		
 		try {
@@ -55,17 +55,15 @@ public class BuildingDatabase extends SQLiteOpenHelper {
 				if (!(buildingInfo[6].equals("none")))
 					values.put("buildingAbbreviation", buildingInfo[6]);
 				db.insert("building", "buildingName", values);
-				
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 
-/*		values.put("buildingName", "Donald Bren Hall");
+		values.put("buildingName", "Donald Bren Hall");
 		values.put("buildingNumber", "314");
 		values.put("buildingAddress", "314 Engineering Quad");
 		db.insert("building", "buildingName", values);
@@ -88,7 +86,7 @@ public class BuildingDatabase extends SQLiteOpenHelper {
 		values.put("buildingName", "Aldrich Hall");
 		values.put("buildingNumber", "111");
 		values.put("buildingAddress", "111 Gateway Quad");
-		db.insert("building", "buildingName", values);*/
+		db.insert("building", "buildingName", values);
 		
 	}
 
