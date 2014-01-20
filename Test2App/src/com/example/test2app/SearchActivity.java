@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
@@ -31,36 +32,60 @@ public class SearchActivity extends Activity {
 	SQLiteDatabase buildingDb;
 	SQLiteDatabase departmentDb;
 	SQLiteDatabase personDb;
-
-	
+	boolean addedDatabase;
 	int searchChooser; //-1=person; 0=building; 1=department
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 		BuildingDatabase buildingDatabase = new BuildingDatabase(this);
-		
-
+		DepartmentDatabase departmentDatabase = new DepartmentDatabase(this);
 		BufferedReader br = null;
 		String line = "";
-		InputStream is = getResources().openRawResource(R.raw.building_file);
+		InputStream buildingIS = null;
+		InputStream departmentIS = null;
 		
-		
-		try {
-			br = new BufferedReader(new InputStreamReader(is));
-			while ((line = br.readLine()) != null)
-			{
-				String[] buildingInfo = line.split(",");
-				buildingDatabase.addToDatabase(buildingInfo);
+		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
+		addedDatabase = settings.getBoolean("addedDatabase", false);
+		if (!addedDatabase)
+		{
+			buildingIS = getResources().openRawResource(R.raw.building_file);
+			try {
+				br = new BufferedReader(new InputStreamReader(buildingIS));
+				while ((line = br.readLine()) != null)
+				{
+					String[] buildingInfo = line.split(",");
+					buildingDatabase.addToDatabase(buildingInfo);
+				}
+				buildingIS.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			
+			departmentIS = getResources().openRawResource(R.raw.departments_file);
+			try {
+				br = new BufferedReader(new InputStreamReader(departmentIS));
+				while ((line = br.readLine()) != null)
+				{
+					String[] departmentInfo = line.split(",");
+					departmentDatabase.addToDatabase(departmentInfo);
+				}
+				departmentIS.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			addedDatabase = true;
 		}
-		buildingDb = buildingDatabase.getWritableDatabase();
-		departmentDb = (new DepartmentDatabase(this)).getWritableDatabase();
-		personDb = (new PersonDatabase(this)).getWritableDatabase();
+
+		buildingDb = buildingDatabase.getReadableDatabase();
+		departmentDb = departmentDatabase.getReadableDatabase();
+		personDb = (new PersonDatabase(this)).getReadableDatabase();
 		searchBox = (EditText) findViewById(R.id.searchText);
 		searchResults = (ListView) findViewById(R.id.resultsList);
  		
@@ -286,5 +311,32 @@ public class SearchActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.search, menu);
 		return true;
+	}
+	
+	@Override
+	protected void onStop() {
+		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
+		SharedPreferences.Editor editor = settings.edit();
+	    editor.putBoolean("addedDatabase", addedDatabase);
+	    editor.commit();
+		super.onStop();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
+		SharedPreferences.Editor editor = settings.edit();
+	    editor.putBoolean("addedDatabase", addedDatabase);
+	    editor.commit();
+		super.onDestroy();
+	}
+	
+	@Override
+	protected void onPause() {
+		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
+		SharedPreferences.Editor editor = settings.edit();
+	    editor.putBoolean("addedDatabase", addedDatabase);
+	    editor.commit();
+		super.onPause();
 	}
 }

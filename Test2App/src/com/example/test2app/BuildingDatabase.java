@@ -36,57 +36,6 @@ public class BuildingDatabase extends SQLiteOpenHelper {
 						"buildingNumber TEXT, " + 
 						"buildingAbbreviation TEXT)";
 		db.execSQL(sql);
-		ContentValues values = new ContentValues();
-	
-		/*BufferedReader br = null;
-		String line = "";
-		
-		try {
-			br = new BufferedReader(new FileReader("building_file.csv"));
-			while ((line = br.readLine()) != null)
-			{
-				String[] buildingInfo = line.split(",");
-				values.put("buildingName", buildingInfo[0]);
-				values.put("buildingLongitude", buildingInfo[1]);
-				values.put("buildingLatitude", buildingInfo[2]);
-				values.put("buildingType", buildingInfo[3]);
-				values.put("buildingAddress", buildingInfo[4]);
-				values.put("buildingNumber", buildingInfo[5]);
-				if (!(buildingInfo[6].equals("none")))
-					values.put("buildingAbbreviation", buildingInfo[6]);
-				db.insert("building", "buildingName", values);
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
-		
-
-		values.put("buildingName", "Donald Bren Hall");
-		values.put("buildingNumber", "314");
-		values.put("buildingAddress", "314 Engineering Quad");
-		db.insert("building", "buildingName", values);
-		
-		values.put("buildingName", "Humanities Hall");
-		values.put("buildingNumber", "601");
-		values.put("buildingAddress", "601 Humanities Quad");
-		db.insert("building", "buildingName", values);
-		
-		values.put("buildingName", "Engineering Gateway");
-		values.put("buildingNumber", "321");
-		values.put("buildingAddress", "321 Engineering Quad");
-		db.insert("building", "buildingName", values);
-		
-		values.put("buildingName", "Humanties Gateway");
-		values.put("buildingNumber", "611");
-		values.put("buildingAddress", "611 Humanities Quad");
-		db.insert("building", "buildingName", values);
-		
-		values.put("buildingName", "Aldrich Hall");
-		values.put("buildingNumber", "111");
-		values.put("buildingAddress", "111 Gateway Quad");
-		db.insert("building", "buildingName", values);
 		
 	}
 

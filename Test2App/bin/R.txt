@@ -648,6 +648,7 @@ int menu suspicious_package 0x7f0d0017
 int menu utility_failure 0x7f0d0018
 int menu violence 0x7f0d0019
 int raw building_file 0x7f050000
+int raw departments_file 0x7f050001
 int string abc_action_bar_home_description 0x7f08001a
 int string abc_action_bar_up_description 0x7f08001b
 int string abc_action_menu_overflow_description 0x7f08001c

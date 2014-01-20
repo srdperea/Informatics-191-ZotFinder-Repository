@@ -22,40 +22,33 @@ public class DepartmentDatabase extends SQLiteOpenHelper {
 		String sql = "CREATE TABLE IF NOT EXISTS department (" +
 						"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
 						"departmentName TEXT, " +
+						"departmentLatitude TEXT, " +
+						"departmentLongitude TEXT, " +
 						"departmentPhoneNumber TEXT, " +
 						"departmentAddress TEXT, " +
 						"departmentWebsite TEXT)";
 		db.execSQL(sql);
-		
-		ContentValues values = new ContentValues();
 
-		values.put("departmentName", "Art");
-		values.put("departmentPhoneNumber", "(949) 824-6648");
-		values.put("departmentAddress", "3229 Art, Culture and Technology Building");
-		values.put("departmentWebsite", "http://studioart.arts.uci.edu/");
-		db.insert("department", "departmentName", values);
-		
-		values.put("departmentName", "Dance");
-		values.put("departmentPhoneNumber", "(949) 824-7283");
-		values.put("departmentAddress", "301 Mesa Arts Building");
-		values.put("departmentWebsite", "http://dance.arts.uci.edu/");
-		db.insert("department", "departmentName", values);
-		
-		
-
-		//		values.put("lastName", "Smith");
-//		values.put("title", "CEO");
-//		values.put("officePhone", "617-219-2001");
-//		values.put("cellPhone", "617-456-7890");
-//		values.put("email", "jsmith@email.com");
-//		db.insert("employee", "lastName", values);
-		
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL("DROP TABLE IF EXISTS departments");
 		onCreate(db);
+	}
+	
+	public void addToDatabase(String[] input)
+	{
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put("departmentName", input[0]);
+		values.put("departmentLatitude", input[1]);
+		values.put("departmentLongitude", input[2]);
+		values.put("departmentAddress", input[3]);
+		values.put("departmentPhoneNumber", input[4]);
+		values.put("departmentWebsite", input[5]);
+		db.insert("department", null, values);
+		db.close();
 	}
 	
 }
