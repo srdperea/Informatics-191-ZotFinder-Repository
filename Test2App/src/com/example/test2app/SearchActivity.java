@@ -2,7 +2,6 @@ package com.example.test2app;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -15,10 +14,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -41,13 +38,31 @@ public class SearchActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
-        
-		buildingDb = (new BuildingDatabase(this)).getWritableDatabase();
+		BuildingDatabase buildingDatabase = new BuildingDatabase(this);
+		
+
+		BufferedReader br = null;
+		String line = "";
+		InputStream is = getResources().openRawResource(R.raw.building_file);
+		
+		
+		try {
+			br = new BufferedReader(new InputStreamReader(is));
+			while ((line = br.readLine()) != null)
+			{
+				String[] buildingInfo = line.split(",");
+				buildingDatabase.addToDatabase(buildingInfo);
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		buildingDb = buildingDatabase.getWritableDatabase();
 		departmentDb = (new DepartmentDatabase(this)).getWritableDatabase();
 		personDb = (new PersonDatabase(this)).getWritableDatabase();
 		searchBox = (EditText) findViewById(R.id.searchText);
 		searchResults = (ListView) findViewById(R.id.resultsList);
-
  		
 	}
 	

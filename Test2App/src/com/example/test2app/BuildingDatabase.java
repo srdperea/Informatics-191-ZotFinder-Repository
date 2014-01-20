@@ -96,4 +96,19 @@ public class BuildingDatabase extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 	
+	public void addToDatabase(String[] input)
+	{
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put("buildingName", input[0]);
+		values.put("buildingLongitude", input[1]);
+		values.put("buildingLatitude", input[2]);
+		values.put("buildingType", input[3]);
+		values.put("buildingAddress", input[4]);
+		values.put("buildingNumber", input[5]);
+		values.put("buildingAbbreviation", input[6]);
+		db.insert("building", null, values);
+		db.close();
+	}
+	
 }
