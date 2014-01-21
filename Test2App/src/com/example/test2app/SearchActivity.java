@@ -11,6 +11,7 @@ import java.net.URL;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -22,7 +23,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-public class SearchActivity extends Activity {
+public class SearchActivity extends ListActivity {
 	EditText searchBox;
 	//bundle is global so that it may be accessed from outside the getData() method
 	Bundle bundle;
@@ -40,8 +41,10 @@ public class SearchActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
+		
 		BuildingDatabase buildingDatabase = new BuildingDatabase(this);
 		DepartmentDatabase departmentDatabase = new DepartmentDatabase(this);
+		
 		BufferedReader br = null;
 		String line = "";
 		InputStream buildingIS = null;
@@ -49,6 +52,7 @@ public class SearchActivity extends Activity {
 		
 		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
 		addedDatabase = settings.getBoolean("addedDatabase", false);
+		searchChooser = settings.getInt("searchType", 0);
 		if (!addedDatabase)
 		{
 			buildingIS = getResources().openRawResource(R.raw.building_file);
@@ -87,7 +91,6 @@ public class SearchActivity extends Activity {
 		departmentDb = departmentDatabase.getReadableDatabase();
 		personDb = (new PersonDatabase(this)).getReadableDatabase();
 		searchBox = (EditText) findViewById(R.id.searchText);
-		searchResults = (ListView) findViewById(R.id.resultsList);
  		
 	}
 	
@@ -188,6 +191,7 @@ public class SearchActivity extends Activity {
 		searchChooser = 1;
 	}
 	
+
 	@SuppressWarnings("deprecation")
 	public void search(View view){
 		if (searchChooser == 0){
@@ -199,7 +203,7 @@ public class SearchActivity extends Activity {
 					cursor, 
 					new String[] {"buildingName", "buildingNumber", "buildingAddress"}, 
 					new int[] {R.id.buildingName,R.id.buildingNumber, R.id.buildingAddress});
-			searchResults.setAdapter(listAdapter);
+			setListAdapter(listAdapter);
 		}	else if (searchChooser == 1){
 			cursor = departmentDb.rawQuery("SELECT _id, departmentName, departmentAddress FROM department WHERE departmentName || ' ' || departmentAddress LIKE ?", 
 					new String[]{"%" + searchBox.getText().toString() + "%"});
@@ -209,7 +213,7 @@ public class SearchActivity extends Activity {
 					cursor, 
 					new String[] {"departmentName", "departmentAddress"}, 
 					new int[] {R.id.departmentName, R.id.departmentAddress});
-			searchResults.setAdapter(listAdapter);
+			setListAdapter(listAdapter);
 		
 		} else if (searchChooser == -1){
 			cursor = personDb.rawQuery("SELECT _id, personName, personAddress FROM person WHERE personName || ' ' || personAddress LIKE ?", 
@@ -220,63 +224,38 @@ public class SearchActivity extends Activity {
 					cursor, 
 					new String[] {"personName", "personAddress"}, 
 					new int[] {R.id.personName, R.id.personAddress});
-			searchResults.setAdapter(listAdapter);
-		
+			setListAdapter(listAdapter);
 		}
 	}
 	
-	/*
-	 * public static ArrayList<String> tokenizeFile(File input) {
-		ArrayList<String> words = new ArrayList<String>();
-		Scanner sc;
-		try {	
-			sc = new Scanner(input,"UTF-8").useDelimiter("[^A-Za-z0-9]| ");
-			while(sc.hasNext())
-			{
-				String line = sc.next().replace("\\s", "").toLowerCase();
-				if(!(line.equals("")))
-				{
-					words.add(line);
-				}
-			}
-			sc.close();
-			System.out.println(words);
-			//System.out.println(words.size());
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		return words;
-	}
-	 * 
-	 * 
-	 * 
-	 * public void compareBuildingNames(InputStream in, Bundle readBundle){
-		String line = "";
-		String[] notFound = null;
-		BufferedReader br=null;
-		try{
-			br = new BufferedReader(new FileReader("BuildingLocations.csv"));
-			while ((line=br.readLine()) != null){
-				String[] output = line.split(",");
-				if (in.inputBuildingName.equalsIgnoreCase(output[1])){
-					;
-				}
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return notFound;
-	}*/
+    public void onListItemClick(ListView parent, View view, int position, long id) {
+    	Bundle bundle = new Bundle();
+    	if (searchChooser == 0)
+    	{
+	    	Intent intent = new Intent(this, BuildingInfoActivity.class);
+	    	Cursor cursor = (Cursor) listAdapter.getItem(position);
+	    	bundle.putInt("BUILDING_ID", cursor.getInt(cursor.getColumnIndex("_id")));
+	    	intent.putExtras(bundle);
+	    	startActivity(intent);
+    	}
+    	else if (searchChooser == 1)
+    	{
+	    	Intent intent = new Intent(this, DepartmentInfoActivity.class);
+	    	Cursor cursor = (Cursor) listAdapter.getItem(position);
+	    	bundle.putInt("DEPARTMENT_ID", cursor.getInt(cursor.getColumnIndex("_id")));
+	    	intent.putExtras(bundle);
+	    	startActivity(intent);
+    	}
+    	else if (searchChooser == -1)
+    	{
+	    	Intent intent = new Intent(this, PersonInfoActivity.class);
+	    	Cursor cursor = (Cursor) listAdapter.getItem(position);
+	    	bundle.putInt("PERSON_ID", cursor.getInt(cursor.getColumnIndex("_id")));
+	    	intent.putExtras(bundle);
+	    	startActivity(intent);
+    	}
+    }
+	
 	
 	//Footer Methods
 	
@@ -318,6 +297,7 @@ public class SearchActivity extends Activity {
 		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
 		SharedPreferences.Editor editor = settings.edit();
 	    editor.putBoolean("addedDatabase", addedDatabase);
+	    editor.putInt("searchType", searchChooser);
 	    editor.commit();
 		super.onStop();
 	}
@@ -327,6 +307,7 @@ public class SearchActivity extends Activity {
 		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
 		SharedPreferences.Editor editor = settings.edit();
 	    editor.putBoolean("addedDatabase", addedDatabase);
+	    editor.putInt("searchType", searchChooser);
 	    editor.commit();
 		super.onDestroy();
 	}
@@ -336,6 +317,7 @@ public class SearchActivity extends Activity {
 		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
 		SharedPreferences.Editor editor = settings.edit();
 	    editor.putBoolean("addedDatabase", addedDatabase);
+	    editor.putInt("searchType", searchChooser);
 	    editor.commit();
 		super.onPause();
 	}

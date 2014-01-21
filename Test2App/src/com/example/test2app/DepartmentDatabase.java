@@ -44,8 +44,8 @@ public class DepartmentDatabase extends SQLiteOpenHelper {
 		values.put("departmentName", input[0]);
 		values.put("departmentLatitude", input[1]);
 		values.put("departmentLongitude", input[2]);
-		values.put("departmentAddress", input[3]);
-		values.put("departmentPhoneNumber", input[4]);
+		values.put("departmentPhoneNumber", input[3]);
+		values.put("departmentAddress", input[4]);
 		values.put("departmentWebsite", input[5]);
 		db.insert("department", null, values);
 		db.close();

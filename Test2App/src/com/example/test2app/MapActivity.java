@@ -32,6 +32,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 
@@ -45,6 +46,7 @@ public class MapActivity extends FragmentActivity {
 
 	//LatLng coordinate for default Map focus/centering 
 	static final LatLng UCI = new LatLng(33.6455843, -117.8419771);
+	protected LatLng destinationPoint;
 	
 	//coordinate for user's current location
 	//this coordinate is dynamic
@@ -88,22 +90,53 @@ public class MapActivity extends FragmentActivity {
 	         //initial zoom is set to 15 but this can be changed
 	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
-	         
-	         String address = getIntent().getExtras().getString("Address");
-	         address.replaceAll("[0-9]", "");
-	         address.replaceAll(" ", "");
-	         	         
+	        
+	         int type = getIntent().getExtras().getInt("type");
+	         if (type ==0)
+	         {
+	        	 float latitude = getIntent().getExtras().getFloat("buildingLatitude");
+	        	 float longitude = getIntent().getExtras().getFloat("buildingLongitude");
+	        	 int id = getIntent().getExtras().getInt("BUILDING_ID");
+	        	 String name = getIntent().getExtras().getString("buildingName");
+	        	 String address = getIntent().getExtras().getString("buildingAddress");
+	        	 String number = getIntent().getExtras().getString("buildingNumber");
+	        	 
+	        	 mMap.addMarker(new MarkerOptions()
+	        	 	.position(new LatLng(latitude, longitude))
+	        	 	.title(name)
+	        	 	.snippet("Address: " + address +  "Building Number: " + number));
+	        	 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
+		         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+		         destinationPoint = new LatLng(latitude, longitude);
+	         }
+	         else if(type==1)
+	         {
+	        	 float latitude = getIntent().getExtras().getFloat("departmentLatitude");
+	        	 float longitude = getIntent().getExtras().getFloat("departmentLongitude");
+	        	 int id = getIntent().getExtras().getInt("DEPARTMENT_ID");
+	        	 String name = getIntent().getExtras().getString("departmentName");
+	        	 String address = getIntent().getExtras().getString("departmentAddress");
+	        	 String phoneNumber = getIntent().getExtras().getString("departmentPhoneNumber");
+	        	 String website = getIntent().getExtras().getString("departmentWebsite");
+	        	 
+	        	 mMap.addMarker(new MarkerOptions()
+	        	 	.position(new LatLng(latitude, longitude))
+	        	 	.title(name)
+	        	 	.snippet("Address: " + address));
+	        	 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
+		         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+		         destinationPoint = new LatLng(latitude, longitude);
+	         }
 	     }
-	     
 	}
 	
 	//displays directions on the screen from current location to given point
 	//currently the end point is hardcoded as BP2 (33.64387631680, -117.82420840800)
 	//this will be changed later to be the end destinate of whatever the user picks
-	public void findDirections(View v, LatLng xy){
+	public void findDirections(View v){
 		
 	    // Getting URL to the Google Directions API given start point and end point
-        String url = getDirectionsUrl(currentLocation, xy);
+        String url = getDirectionsUrl(currentLocation, destinationPoint);
         
         DownloadTask downloadTask = new DownloadTask();
 

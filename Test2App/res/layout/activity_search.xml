@@ -83,14 +83,15 @@
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
-		    android:layout_below="@+id/buildingTab"
-	    >
+		    android:layout_below="@+id/buildingTab">
 
 		<EditText
 			android:id="@+id/searchText"
-			android:layout_width="fill_parent"
+			android:layout_width="0dip"
 			android:layout_height="wrap_content"
-			android:layout_weight="1"/>
+			android:layout_weight="1"
+			android:inputType="text"
+			android:hint="Enter Person, Bldg, or Dpt"/>
 	
 		<Button
 			android:id="@+id/searchButton"
@@ -101,14 +102,12 @@
 
 	</LinearLayout>
         
-	 <ListView 
-		android:id="@+id/resultsList"
+	 <ListView
+		android:id="@android:id/list"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
-		android:layout_above="@+id/transparent_button"
 		android:layout_below="@+id/searchBoxLayout"
-		
-		/>
+		android:layout_above="@+id/transparent_button"/>
 	 
 </RelativeLayout>
 	

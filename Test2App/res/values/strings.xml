@@ -421,5 +421,7 @@
     <string name="title_activity_building_info">BuildingInfoActivity</string>
     <string name="title_activity_department_list_item">MainActivity</string>
     <string name="title_activity_person_list_item">PersonListItemActivity</string>
+    <string name="title_activity_building_list">Building_list</string>
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>

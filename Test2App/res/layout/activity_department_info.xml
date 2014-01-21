@@ -19,7 +19,7 @@
 	        
 			<!-- use this id to add the Department NAME -->
 	       <TextView
-	            android:id="@+id/departmentInfoHeaderTextView"
+	            android:id="@+id/departmentName"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:text="@string/department_info"
@@ -79,12 +79,14 @@
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"/>
+					android:textColor="@color/white"
+					android:clickable = "true"
+					android:onClick="plotPoint"/>
 				
 				<!-- Department Number HEADER -->
 				
 				<TextView
-					android:id="@+id/deptNumber"
+					android:id="@+id/deptPhoneNumber"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_below="@+id/departmentAddress"
@@ -94,10 +96,10 @@
 					android:textColor="@color/white"/>
 				<!-- Department Number FOR JAVA-->
 				<TextView
-					android:id="@+id/departmentNumber"
+					android:id="@+id/departmentPhoneNumber"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/deptNumber"
+					android:layout_below="@+id/deptPhoneNumber"
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
@@ -110,7 +112,7 @@
 					android:id="@+id/deptWebsite"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/departmentNumber"
+					android:layout_below="@+id/departmentPhoneNumber"
 					android:text="@string/dept_website"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"

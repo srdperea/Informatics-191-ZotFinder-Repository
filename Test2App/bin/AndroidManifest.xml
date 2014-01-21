@@ -26,7 +26,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!--
          The following two permissions are not required to use
-	     Google Maps Android API v2, but are recommended.
+	     Google Maps Android API v2, but are recommended.
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -180,6 +180,15 @@
         <activity
             android:name="com.example.test2app.PersonListItemActivity"
             android:label="@string/title_activity_person_list_item" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.Building_list"
+            android:label="@string/title_activity_building_list" >
+        </activity>
+        <activity
+            android:name="com.example.test2app.MapActivity"
+            android:label="@string/title_activity_map" 
+            android:theme="@android:style/Theme.NoTitleBar">
         </activity>
     </application>
 

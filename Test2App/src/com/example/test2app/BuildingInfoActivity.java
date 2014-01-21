@@ -3,16 +3,75 @@ package com.example.test2app;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 public class BuildingInfoActivity extends Activity {
 
+	protected TextView buildingName;
+	protected TextView buildingAddress;
+	protected TextView buildingNumber;
+	protected String buildingNameString;
+	protected String buildingAddressString;
+	protected String buildingNumberString;
+    protected int buildingId;
+    protected float buildingLongitude;
+    protected float buildingLatitude;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_building_info);
+		
+		buildingId = getIntent().getExtras().getInt("BUILDING_ID");
+        SQLiteDatabase db = (new BuildingDatabase(this)).getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress, buildingLongitude, buildingLatitude FROM building WHERE _id=?",
+        		new String[]{""+buildingId});
+        
+        if (cursor.getCount() == 1)
+        {
+        	cursor.moveToFirst();
+        
+        	buildingName = (TextView) findViewById(R.id.buildingName);
+        	buildingNameString = cursor.getString(cursor.getColumnIndex("buildingName"));
+        	buildingName.setText(buildingNameString);
+        	
+	
+	        buildingAddress = (TextView) findViewById(R.id.buildingAddress);
+	        buildingAddressString = cursor.getString(cursor.getColumnIndex("buildingAddress"));
+	        buildingAddress.setText(buildingAddressString);
+	        
+
+	        buildingNumber = (TextView) findViewById(R.id.buildingNumber);
+	        buildingNumberString = cursor.getString(cursor.getColumnIndex("buildingNumber"));
+	        buildingNumber.setText(buildingNumberString);
+	        
+	        buildingLongitude = Float.valueOf(cursor.getString(cursor.getColumnIndex("buildingLongitude")));
+	        
+	        buildingLatitude = Float.valueOf(cursor.getString(cursor.getColumnIndex("buildingLatitude")));
+	        
+        }
 	}
+	
+	public void plotPoint(View view)
+	{
+		Intent intent = new Intent(this,MapActivity.class);
+		Bundle bundle = new Bundle();
+		bundle.putInt("type", 0);
+		bundle.putInt("BUILDING_ID", buildingId);
+		bundle.putString("buildingName", buildingNameString);
+		bundle.putString("buildingAddress", buildingAddressString);
+		bundle.putString("buildingNumber", buildingNumberString);
+		bundle.putFloat("buildingLongitude", buildingLongitude);
+		bundle.putFloat("buildingLatitude", buildingLatitude);
+		intent.putExtras(bundle);
+		startActivity(intent);
+	}
+	
+	
 
 	//Footer Methods
 	

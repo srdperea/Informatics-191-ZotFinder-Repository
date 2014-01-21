@@ -69,17 +69,20 @@
 					android:text="@string/bldg_address"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"/>
-	            <!-- Department Address FOR JAVA-->
+					android:textColor="@color/white"
+					android:onClick="plotPoint"/>
+	            <!-- Building Address FOR JAVA-->
 				<TextView
 					android:id="@+id/buildingAddress"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/bldgdeptAddress"
+					android:layout_below="@+id/bldgAddress"
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"/>
+					android:textColor="@color/white"
+					android:clickable = "true"
+					android:onClick="plotPoint"/>
 				
 				<!-- Building Number HEADER -->
 				
@@ -92,7 +95,7 @@
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/white"/>
-				<!-- Department Number FOR JAVA-->
+				<!-- Building Number FOR JAVA-->
 				<TextView
 					android:id="@+id/buildingNumber"
 					android:layout_width="match_parent"
@@ -103,7 +106,7 @@
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/white"
 					android:clickable="true"
-					android:onClick="call"/>
+					/>
 				
 				
 				
