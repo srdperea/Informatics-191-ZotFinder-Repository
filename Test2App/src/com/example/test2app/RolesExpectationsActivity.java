@@ -24,10 +24,6 @@ public class RolesExpectationsActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	public void goToEInfo(View view) {
-		Intent intent = new Intent(this,EmergencyInfoActivity.class);
-		startActivity(intent);
-	}
 	
 	public void goToRolesExpectations(View view) {
 		Intent intent = new Intent(this,RolesExpectationsActivity.class);
@@ -35,6 +31,9 @@ public class RolesExpectationsActivity extends Activity {
 	}
 
 	//Footer Methods
+	  public void finishActivity(View v){
+		    finish();
+		    }
 	
 	//method to go to activity: MainActivity
 	//creates intent used to store the information of a different activity within this activity

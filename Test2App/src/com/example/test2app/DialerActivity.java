@@ -77,6 +77,9 @@ public class DialerActivity extends Activity {
 	}
 	
 	//Footer Methods
+  public void finishActivity(View v){
+	    finish();
+	    }
 	
 	//method to go to activity: MainActivity
 	//creates intent used to store the information of a different activity within this activity

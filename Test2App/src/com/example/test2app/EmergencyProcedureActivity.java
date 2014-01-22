@@ -8,21 +8,34 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
-public class HazardousMaterialActivity extends Activity {
-
+public class EmergencyProcedureActivity extends Activity {
+    
+	String emergencyTitle;
+	String emergencyInfo;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_hazardous_material);
+		setContentView(R.layout.activity_emergency_procedure);
 		
-		//creates textView:"ins" that corresponds to textView:"HazardousMaterialTextView" in file:"activity_hazardous_material.xml"
-		TextView ins = (TextView)findViewById(R.id.HazardousMaterialTextView);
-		//sets the text of textview to string found in strings file
-		ins.setText(Html.fromHtml(getString(R.string.hazardous_material_text)));
+		//grabs the name from the intent passed from SearchActivity
+		//puts it into set textView:"personInfoHeaderTextView"
+		
+		emergencyTitle = getIntent().getExtras().getString("emergencyName");
+		TextView emergencyTitleTextView = (TextView) findViewById(R.id.emergencyProcedureHeaderTextView);
+		emergencyTitleTextView.setText(Html.fromHtml(emergencyTitle)); 
+		emergencyInfo = getIntent().getExtras().getString("emergencyInfo");
+		TextView emergencyTextView = (TextView) findViewById(R.id.emergencyProcedureTextView);
+		emergencyTextView.setText(Html.fromHtml(emergencyInfo)); 
+		
+			
 	}
 	
-	//Footer Methods
 	
+	//Footer Methods
+   public void finishActivity(View v){
+	    finish();
+	    }
+
 	//method to go to activity: MainActivity
 	//creates intent used to store the information of a different activity within this activity
 	//startActivity(intent) changes the current activity to the intent activity
@@ -48,11 +61,12 @@ public class HazardousMaterialActivity extends Activity {
 	}
 	 
 	//menu functionality when the user press the physical menu button located on the phone
-	//currently the menu feature does nothing
-	@Override
+	//currently the menu feature does nothing	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.hazardous_material, menu);
+		getMenuInflater().inflate(R.menu.person_info, menu);
 		return true;
 	}
+
+
 }
