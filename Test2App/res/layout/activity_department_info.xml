@@ -9,6 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
     
+	<include
+	        layout="@layout/commonfooter" />
     
     <TableRow
 	        android:id="@+id/tableRow1"
@@ -16,6 +18,24 @@
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentTop="true"
 	        android:background="@color/header_color_blue" >
+	        
+	        <ImageButton 
+	            android:id="@+id/backButton"
+	        	android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+				android:layout_marginLeft="2dp"
+				android:layout_marginTop="3dp"
+				android:layout_marginBottom="3dp"
+				android:padding="1dp"
+				android:gravity="center_horizontal"
+		        android:text="@string/back_button"
+		        android:textSize="12sp"
+		        android:textStyle="bold"
+		        android:background="@android:color/transparent"
+		        android:src="@drawable/ic_action_previous_item"
+		        android:onClick="finishActivity"
+		 
+		                />
 	        
 			<!-- use this id to add the Department NAME -->
 	       <TextView
@@ -44,8 +64,7 @@
        android:textSize="@dimen/button_text_size"
        android:onClick="goToMap" />
 	        
-    <include
-	        layout="@layout/commonfooter" />
+
     
     
     <ScrollView 
@@ -78,8 +97,8 @@
 					android:layout_below="@+id/deptAddress"
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
-					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"
+					android:textColor="@color/black"
+					android:background="@color/white"
 					android:clickable = "true"
 					android:onClick="plotPoint"/>
 				
@@ -102,8 +121,8 @@
 					android:layout_below="@+id/deptPhoneNumber"
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
-					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"
+					android:textColor="@color/black"
+					android:background="@color/white"
 					android:clickable="true"
 					android:onClick="call"/>
 				
@@ -125,8 +144,8 @@
 					android:layout_below="@+id/deptWebsite"
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
-					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"/>
+					android:textColor="@color/black"
+					android:background="@color/white"/>
 				
 			</RelativeLayout>
 	    

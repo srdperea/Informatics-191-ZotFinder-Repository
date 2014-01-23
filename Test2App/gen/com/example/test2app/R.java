@@ -1377,48 +1377,49 @@ containing a value of this type.
         public static final int fire=0x7f020085;
         public static final int hazardous_material=0x7f020086;
         public static final int hazardous_material_shelter=0x7f020087;
-        public static final int ic_action_search=0x7f020088;
-        public static final int ic_icon=0x7f020089;
-        public static final int ic_plusone_medium_off_client=0x7f02008a;
-        public static final int ic_plusone_small_off_client=0x7f02008b;
-        public static final int ic_plusone_standard_off_client=0x7f02008c;
-        public static final int ic_plusone_tall_off_client=0x7f02008d;
-        public static final int map_icon=0x7f02008e;
-        public static final int map_icon_pressed=0x7f02008f;
-        public static final int medical_emergency=0x7f020090;
-        public static final int menu_slider_icon=0x7f020091;
-        public static final int oit=0x7f020092;
-        public static final int oit_icon=0x7f020093;
-        public static final int persons_in_distress=0x7f020094;
-        public static final int restroom_icon=0x7f020095;
-        public static final int rounded_button=0x7f020096;
-        public static final int rounded_button2=0x7f020097;
-        public static final int rounded_button3=0x7f020098;
-        public static final int student_health=0x7f020099;
-        public static final int student_health_icon=0x7f02009a;
-        public static final int suspicious_package=0x7f02009b;
-        public static final int uci_emergency_info_line=0x7f02009c;
-        public static final int uci_emergency_info_line_dialer_icon=0x7f02009d;
-        public static final int uci_police_dept=0x7f02009e;
-        public static final int uci_police_dept_dialer_icon=0x7f02009f;
-        public static final int utility_failure=0x7f0200a0;
-        public static final int violence=0x7f0200a1;
-        public static final int zotfindericon=0x7f0200a2;
-        public static final int zotfindericon2=0x7f0200a3;
-        public static final int zotfindersplashscreen=0x7f0200a4;
+        public static final int ic_action_previous_item=0x7f020088;
+        public static final int ic_action_search=0x7f020089;
+        public static final int ic_icon=0x7f02008a;
+        public static final int ic_plusone_medium_off_client=0x7f02008b;
+        public static final int ic_plusone_small_off_client=0x7f02008c;
+        public static final int ic_plusone_standard_off_client=0x7f02008d;
+        public static final int ic_plusone_tall_off_client=0x7f02008e;
+        public static final int map_icon=0x7f02008f;
+        public static final int map_icon_pressed=0x7f020090;
+        public static final int medical_emergency=0x7f020091;
+        public static final int menu_slider_icon=0x7f020092;
+        public static final int oit=0x7f020093;
+        public static final int oit_icon=0x7f020094;
+        public static final int persons_in_distress=0x7f020095;
+        public static final int restroom_icon=0x7f020096;
+        public static final int rounded_button=0x7f020097;
+        public static final int rounded_button2=0x7f020098;
+        public static final int rounded_button3=0x7f020099;
+        public static final int student_health=0x7f02009a;
+        public static final int student_health_icon=0x7f02009b;
+        public static final int suspicious_package=0x7f02009c;
+        public static final int uci_emergency_info_line=0x7f02009d;
+        public static final int uci_emergency_info_line_dialer_icon=0x7f02009e;
+        public static final int uci_police_dept=0x7f02009f;
+        public static final int uci_police_dept_dialer_icon=0x7f0200a0;
+        public static final int utility_failure=0x7f0200a1;
+        public static final int violence=0x7f0200a2;
+        public static final int zotfindericon=0x7f0200a3;
+        public static final int zotfindericon2=0x7f0200a4;
+        public static final int zotfindersplashscreen=0x7f0200a5;
     }
     public static final class id {
         public static final int EmergencyViews=0x7f070072;
         public static final int FacultyHeaderTextView=0x7f070097;
         public static final int FacultyTextView=0x7f070098;
         public static final int HTTP_button=0x7f07009c;
-        public static final int R1DLayout=0x7f070060;
+        public static final int R1DLayout=0x7f070061;
         public static final int R1Layout=0x7f07006e;
-        public static final int R2DLayout=0x7f070061;
+        public static final int R2DLayout=0x7f070062;
         public static final int R2Layout=0x7f07006f;
         public static final int R3DLayout=0x7f070066;
-        public static final int R3Layout=0x7f070054;
-        public static final int ScrollLayout=0x7f070053;
+        public static final int R3Layout=0x7f070055;
+        public static final int ScrollLayout=0x7f070054;
         public static final int StudentHeaderTextView=0x7f0700b0;
         public static final int StudentTextView=0x7f0700b1;
         public static final int TableLayout1=0x7f070096;
@@ -1439,15 +1440,15 @@ containing a value of this type.
         public static final int alignBounds=0x7f070007;
         public static final int alignMargins=0x7f070008;
         public static final int always=0x7f070021;
-        public static final int backButton=0x7f070063;
+        public static final int backButton=0x7f070051;
         public static final int beginning=0x7f070026;
-        public static final int bldgAddress=0x7f070055;
-        public static final int bldgNumber=0x7f070057;
+        public static final int bldgAddress=0x7f070056;
+        public static final int bldgNumber=0x7f070058;
         public static final int bombThreatText=0x7f070083;
         public static final int bottom=0x7f07000a;
-        public static final int buildingAddress=0x7f070056;
-        public static final int buildingName=0x7f070051;
-        public static final int buildingNumber=0x7f070058;
+        public static final int buildingAddress=0x7f070057;
+        public static final int buildingName=0x7f070052;
+        public static final int buildingNumber=0x7f070059;
         public static final int buildingTab=0x7f0700aa;
         public static final int button1=0x7f070076;
         public static final int button10=0x7f07008b;
@@ -1472,16 +1473,16 @@ containing a value of this type.
         public static final int clip_vertical=0x7f070013;
         public static final int collapseActionView=0x7f070023;
         public static final int counselingCenter=0x7f070069;
-        public static final int d_tableRow1=0x7f070062;
+        public static final int d_tableRow1=0x7f070063;
         public static final int default_activity_button=0x7f07003c;
-        public static final int departmentAddress=0x7f07005b;
-        public static final int departmentName=0x7f070059;
-        public static final int departmentPhoneNumber=0x7f07005d;
+        public static final int departmentAddress=0x7f07005c;
+        public static final int departmentName=0x7f07005a;
+        public static final int departmentPhoneNumber=0x7f07005e;
         public static final int departmentTab=0x7f0700ab;
-        public static final int departmentWebsite=0x7f07005f;
-        public static final int deptAddress=0x7f07005a;
-        public static final int deptPhoneNumber=0x7f07005c;
-        public static final int deptWebsite=0x7f07005e;
+        public static final int departmentWebsite=0x7f070060;
+        public static final int deptAddress=0x7f07005b;
+        public static final int deptPhoneNumber=0x7f07005d;
+        public static final int deptWebsite=0x7f07005f;
         public static final int dialerHeaderTextView=0x7f070064;
         public static final int dialerLinkButton=0x7f0700b4;
         public static final int dialog=0x7f070024;
@@ -1581,7 +1582,7 @@ containing a value of this type.
         public static final int title=0x7f07003f;
         public static final int top=0x7f070009;
         public static final int top_action_bar=0x7f070034;
-        public static final int transparent_button=0x7f070052;
+        public static final int transparent_button=0x7f070053;
         public static final int uciPoliceDept=0x7f070067;
         public static final int up=0x7f070035;
         public static final int useLogo=0x7f070019;
@@ -1780,7 +1781,7 @@ containing a value of this type.
         public static final int call_911=0x7f080073;
         /**  Search Person 
          */
-        public static final int call_this_person=0x7f080087;
+        public static final int call_this_person=0x7f080088;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -1943,27 +1944,28 @@ containing a value of this type.
         public static final int suspicious_package_title=0x7f080056;
         public static final int title_activity_active_shooter=0x7f08007b;
         public static final int title_activity_bomb_threat=0x7f080081;
-        public static final int title_activity_building_info=0x7f080090;
-        public static final int title_activity_department_info=0x7f08008f;
-        public static final int title_activity_department_list_item=0x7f080091;
+        public static final int title_activity_building_info=0x7f080091;
+        public static final int title_activity_department_info=0x7f080090;
+        public static final int title_activity_department_list_item=0x7f080092;
         public static final int title_activity_dialer=0x7f08007a;
         public static final int title_activity_earthquake=0x7f080085;
         public static final int title_activity_emergency_info=0x7f080078;
-        public static final int title_activity_emergency_preparedness=0x7f08008a;
-        public static final int title_activity_emergency_procedure=0x7f080093;
+        public static final int title_activity_emergency_preparedness=0x7f08008b;
+        public static final int title_activity_emergency_procedure=0x7f080094;
         public static final int title_activity_evacuation=0x7f080082;
         public static final int title_activity_evacuation_disabilities=0x7f08007d;
-        public static final int title_activity_faculty_expectations=0x7f08008e;
-        public static final int title_activity_fire=0x7f080089;
+        public static final int title_activity_faculty_expectations=0x7f08008f;
+        public static final int title_activity_fire=0x7f08008a;
         public static final int title_activity_hazardous_material=0x7f080083;
         public static final int title_activity_hazardous_material_shelter=0x7f080084;
+        public static final int title_activity_map=0x7f080087;
         public static final int title_activity_medical_emergency=0x7f080080;
-        public static final int title_activity_person_info=0x7f080088;
-        public static final int title_activity_person_list_item=0x7f080092;
-        public static final int title_activity_persons_in_distress=0x7f08008b;
-        public static final int title_activity_roles_expectations=0x7f08008c;
+        public static final int title_activity_person_info=0x7f080089;
+        public static final int title_activity_person_list_item=0x7f080093;
+        public static final int title_activity_persons_in_distress=0x7f08008c;
+        public static final int title_activity_roles_expectations=0x7f08008d;
         public static final int title_activity_search=0x7f080086;
-        public static final int title_activity_student_expectations=0x7f08008d;
+        public static final int title_activity_student_expectations=0x7f08008e;
         public static final int title_activity_suspicious_package=0x7f08007e;
         public static final int title_activity_utility_failure=0x7f08007f;
         public static final int title_activity_violence=0x7f08007c;
@@ -3933,7 +3935,7 @@ containing a value of this type.
          */
         public static final int[] MenuView = {
             0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e,
-            0x0101012f, 0x01010130, 0x01010131, 0x0101041a
+            0x0101012f, 0x01010130, 0x01010131, 0x01010435
         };
         /**
           <p>

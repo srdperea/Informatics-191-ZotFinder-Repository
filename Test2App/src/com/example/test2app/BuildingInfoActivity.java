@@ -71,10 +71,12 @@ public class BuildingInfoActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	
+	//Back button
+	public void finishActivity(View v){
+		finish();
+	    }
 
 	//Footer Methods
-	
 		//method to go to activity: MainActivity
 		//creates intent used to store the information of a different activity within this activity
 		//startActivity(intent) changes the current activity to the intent activity

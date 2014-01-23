@@ -256,7 +256,11 @@ public class SearchActivity extends ListActivity {
     	}
     }
 	
-	
+  //Back button
+  	public void finishActivity(View v){
+  	    finish();
+  	    }
+    
 	//Footer Methods
 	
 	//method to go to activity: MainActivity

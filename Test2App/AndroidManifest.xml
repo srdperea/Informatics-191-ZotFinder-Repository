@@ -121,6 +121,11 @@
             android:label="@string/title_activity_emergency_procedure"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
+        <activity
+            android:name="com.example.test2app.MapActivity"
+            android:label="@string/title_activity_map"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
     </application>
 
 </manifest>

@@ -69,6 +69,7 @@
     <string name="persons_in_distress_title">Person In Distress</string>
     <string name="utility_failure_title">Utility Failure</string>
 
+
     
     <!-- Search -->
     <string name="input_text">UCINetID</string>
@@ -408,6 +409,7 @@
     <string name="title_activity_hazardous_material_shelter">HazardousMaterialShelterActivity</string>
     <string name="title_activity_earthquake">EarthquakeActivity</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_map">MapActivity</string>
 
     <!-- Search Person -->
     <string name="call_this_person">Call</string>
