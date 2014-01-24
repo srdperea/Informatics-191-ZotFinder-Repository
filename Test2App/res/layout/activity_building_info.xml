@@ -33,9 +33,7 @@
 		        android:textStyle="bold"
 		        android:background="@android:color/transparent"
 		        android:src="@drawable/ic_action_previous_item"
-		        android:onClick="finishActivity"
-		 
-		                />
+		        android:onClick="finishActivity"/>
 	        
 			<!-- use this id to add the Building NAME -->
 	       <TextView

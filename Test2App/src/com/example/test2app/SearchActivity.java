@@ -10,7 +10,6 @@ import java.net.URL;
 
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
