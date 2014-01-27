@@ -7,19 +7,25 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 
 public class SearchActivity extends ListActivity {
@@ -27,6 +33,7 @@ public class SearchActivity extends ListActivity {
 	//bundle is global so that it may be accessed from outside the getData() method
 	Bundle bundle;
 	ListAdapter listAdapter;
+	SimpleAdapter simpleAdapter;
 	ListView searchResults;
 	Cursor cursor;
 	SQLiteDatabase buildingDb;
@@ -34,7 +41,7 @@ public class SearchActivity extends ListActivity {
 	SQLiteDatabase personDb;
 	boolean addedDatabase;
 	int searchChooser; //-1=person; 0=building; 1=department
-	
+	String personOutput;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -90,95 +97,79 @@ public class SearchActivity extends ListActivity {
 		departmentDb = departmentDatabase.getReadableDatabase();
 		personDb = (new PersonDatabase(this)).getReadableDatabase();
 		searchBox = (EditText) findViewById(R.id.searchText);
+		
  		
 	}
 	
-	//makes HTTP request and creates new intent with parsed output 
-	public void getData(String inputValue) {
-	    try {
-	    	//creating an http connection to make an Http Request
-	        StrictMode.ThreadPolicy policy = new StrictMode.
-	          ThreadPolicy.Builder().permitAll().build();
-	        StrictMode.setThreadPolicy(policy); 
-	        URL url = new URL("http://directory.uci.edu/index.php?uid=" + inputValue + "&form_type=plaintext");
-	        HttpURLConnection con = (HttpURLConnection) url
-	          .openConnection();
-	        
-	        //bundle is used as a map (data structure) to pass to new activity
-	        bundle = new Bundle();
-	        readStream(con.getInputStream(), bundle);
-	        
-	        //Setup the Intent that will start the next Activity
-	        Intent personInfoActivity = new Intent(this, PersonInfoActivity.class); 
-	        
-	        //Assumes this references this instance of Activity A
-	        //puts the bundle into the intent:"personInfoActivity"
-	        personInfoActivity.putExtras(bundle);
-	        startActivity(personInfoActivity);
-	   
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	}     
+	//return false = list of people
+	//return true = one person
+	public boolean personSearchResultType(String inputValue) throws InterruptedException, ExecutionException	{
+		String input = inputValue.toLowerCase();
+		String url = "http://directory.uci.edu/index.php?basic_keywords=" + input + "&modifier=Exact+Match&basic_submit=Search&checkbox_employees=Employees&form_type=basic_search";
+		String output = new RetreiveDirectoryResultTask().execute(url).get();
+		   if (output.contains("<p align=\"center\">Your search for <strong>"))
+			   return false;
+		   else
+			   return true;
+	}
 	
-	//parses the output from the HttpRequest
-	//method is void since it access the global variable bundle
-	//may have to change this
-	private void readStream(InputStream in, Bundle readBundle) {
-	  BufferedReader reader = null;
-	  //initialize an output string
-	  String output = "";
-	  //initializes individual tag strings
-	  String ucinetid, name, title, department, address, phone = "0", fax = "0", email;
-	  try {
-		    reader = new BufferedReader(new InputStreamReader(in));
-		    String line = "";
-		    while ((line = reader.readLine()) != null) {
-		      output+=line;
-	    }
-	    
-	    //sets the tag strings as the correct data from the output
-	    //the following must be done in this order
-	    ucinetid = output.split("UCInetID: ")[1].split("<br/>")[0];
-	    readBundle.putString("ucinetid", ucinetid);
-	    name = output.split("Name: ")[1].split("<br/>")[0];
-	    readBundle.putString("name", name);
-	    title = output.split("Title: ")[1].split("<br/>")[0];
-	    readBundle.putString("title", title);
-	    department = output.split("Department: ")[1].split("<br/>")[0];
-	    readBundle.putString("department", department);
-	    address = output.split("Address: ")[1].split("<br/>")[0];
-	    readBundle.putString("address", address);
-	    
-	    //since some faculty/staff don't have phone numbers or fax number, the method will only parse the number if it exists
-	    //if the output does not contain a number, the tag string is written as "N/A"
-	    if (output.contains("Phone: ")){
-	    	phone = output.split("Phone: ")[1].split("<br/>")[0];
-	    	readBundle.putString("phone", phone);
-	    }
-	    else
-	    	readBundle.putString("phone", "N/A");
-	    if (output.contains("Fax: ")){
-	    	fax = output.split("Fax: ")[1].split("<br/>")[0];
-	    	readBundle.putString("fax", fax);
-	    }
-	    else
-	    	readBundle.putString("fax", "N/A");
-	   	email = ucinetid + "@uci.edu";
-	   	readBundle.putString("email", email);
-	   	
-	  } catch (IOException e) {
-	    e.printStackTrace();
-	  } finally {
-	    if (reader != null) {
-	      try {
-	        reader.close();
-	      } catch (IOException e) {
-	        e.printStackTrace();
-	      }
-	    }
-	  }
-	} 
+	private List<HashMap<String, String>> readSingleResultStream(String inputValue) throws InterruptedException, ExecutionException {
+		List<HashMap<String, String>> personResults = new ArrayList<HashMap<String, String>>();
+    	//creating an http connection to make an Http Request
+    	String input = inputValue.toLowerCase();
+        String url = "http://directory.uci.edu/index.php?basic_keywords=" + input + "&modifier=Exact+Match&basic_submit=Search&checkbox_employees=Employees&form_type=basic_search";
+        String output = new RetreiveDirectoryResultTask().execute(url).get();
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("rowid","1");
+        output = output.replaceAll("\\r\\n\\t|\\r|\\n|\\t", "");
+        String name = output.split("<span class=\"label\">Name</span><span class=\"resultData\">")[1].split("</span></p>")[0];
+        map.put("name", name);
+        String ucinetid = output.split("<span class=\"label\">UCInetID</span><span class=\"resultData\">")[1].split("</span></p>")[0];
+        map.put("ucinetid",ucinetid);
+        String title = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Title</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+        map.put("title", title);
+        String department = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Department</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+        map.put("department", department);
+        String address = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Address</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+        map.put("address", address);
+        if(output.contains("<span class=\"label\">Phone</span><span class=\"resultData\">")){
+        	String phoneNumber = output.split("<span class=\"label\">Phone</span><span class=\"resultData\">")[1].split("</span></p>")[0];
+        	map.put("phoneNumber",phoneNumber);;
+        }
+        if(output.contains("p><span class=\"label\">Fax</span><span class=\"resultData\">")){
+        	String faxNumber = output.split("p><span class=\"label\">Fax</span><span class=\"resultData\">")[1].split("</span></p>")[0];
+        	map.put("faxNumber",faxNumber);
+        }
+        String email = "E-mail: " + ucinetid + "@uci.edu";
+        map.put("email", email);
+        personResults.add(map);
+        return personResults;
+	}
+	
+	private List<HashMap<String, String>> readMultipleResultStream(String inputValue) throws InterruptedException, ExecutionException {
+		List<HashMap<String, String>> personResults = new ArrayList<HashMap<String, String>>();
+    	//creating an http connection to make an Http Request
+    	String input = inputValue.toLowerCase();
+        String url = "http://directory.uci.edu/index.php?basic_keywords=" + input + "&modifier=Exact+Match&basic_submit=Search&checkbox_employees=Employees&form_type=basic_search";
+        String output = new RetreiveDirectoryResultTask().execute(url).get();
+        
+        HashMap<String, String> map = new HashMap<String, String>();
+        String[] nameSplit = output.split("&return=basic_keywords%3D" + inputValue + "%26modifier%3DExact%2BMatch%26basic_submit%3DSearch%26checkbox_employees%3DEmployees%26form_type%3Dbasic_search'>");
+        String[] titleSplit = output.split("<span class=\"departmentmajor\">"); 
+        int j = 1;
+        for(int i = 1; i < nameSplit.length; i++){
+        	map.put("personid", "" +i);
+        	map.put("name", nameSplit[i].split("</a>")[0]);
+        	if(titleSplit[j].split("</span>")[0].contains("<br />"))
+        		map.put("title",titleSplit[j].split("</span>")[0].split("<br />")[0]);
+        	else
+        		map.put("title",titleSplit[j].split("</span>")[0]);
+        	j += 2;
+        	personResults.add(map); 	
+		}
+        return personResults;
+	}
+					   
 	
 	public void choosePersonSearch(View view){
 		searchChooser = -1;
@@ -192,7 +183,7 @@ public class SearchActivity extends ListActivity {
 	
 
 	@SuppressWarnings("deprecation")
-	public void search(View view){
+	public void search(View view) throws InterruptedException, ExecutionException{
 		if (searchChooser == 0){
 			cursor = buildingDb.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress FROM building WHERE buildingName || ' ' || buildingNumber LIKE ?", 
 					new String[]{"%" + searchBox.getText().toString() + "%"});
@@ -215,15 +206,17 @@ public class SearchActivity extends ListActivity {
 			setListAdapter(listAdapter);
 		
 		} else if (searchChooser == -1){
-			cursor = personDb.rawQuery("SELECT _id, personName, personAddress FROM person WHERE personName || ' ' || personAddress LIKE ?", 
-					new String[]{"%" + searchBox.getText().toString() + "%"});
-			listAdapter = new SimpleCursorAdapter(
-					this, 
-					R.layout.activity_person_list_item, 
-					cursor, 
-					new String[] {"personName", "personAddress"}, 
-					new int[] {R.id.personName, R.id.personAddress});
-			setListAdapter(listAdapter);
+			String searchInput = searchBox.getText().toString();
+			boolean resultType = personSearchResultType(searchInput);
+			List<HashMap<String, String>> personResults = new ArrayList<HashMap<String, String>>();
+			if(resultType)
+				personResults = readSingleResultStream(searchInput);
+			else
+				personResults = readMultipleResultStream(searchInput);
+			 String[] from = new String[] {"name", "title"};
+		     int[] to = new int[] {R.id.personName, R.id.personTitle};
+			simpleAdapter = new SimpleAdapter(this,personResults, R.layout.activity_person_list_item,from,to);
+			setListAdapter(simpleAdapter);
 		}
 	}
 	
@@ -254,6 +247,44 @@ public class SearchActivity extends ListActivity {
 	    	startActivity(intent);
     	}
     }
+    
+	private class RetreiveDirectoryResultTask extends AsyncTask<String, Integer,String> {
+
+		@Override
+		protected String doInBackground(String... urls) {
+			String output = "";
+			InputStream iStream = null;
+			HttpURLConnection urlConnection = null;
+			try{
+				URL url = new URL(urls[0]);
+				urlConnection = (HttpURLConnection) url.openConnection();
+				
+				urlConnection.connect();
+				
+				iStream = urlConnection.getInputStream();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(iStream));
+		   		StringBuffer sb = new StringBuffer();
+				String line = "";
+		   		while ((line = reader.readLine()) != null) 
+		   			sb.append(line);
+			   
+		   		output = sb.toString().replaceAll("\\r\\n\\t|\\r|\\n|\\t", "");
+		   		
+		   		reader.close();
+			
+				} catch (Exception e) {
+					Log.d("Exception while downloading url", e.toString());
+			 	}finally{
+			 		try {
+						iStream.close();
+						urlConnection.disconnect();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+			 	}
+			return output;
+		}
+	}
 	
   //Back button
   	public void finishActivity(View v){
