@@ -6,11 +6,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -165,7 +172,8 @@ public class SearchActivity extends ListActivity {
         	else
         		map.put("title",titleSplit[j].split("</span>")[0]);
         	j += 2;
-        	personResults.add(map); 	
+        	personResults.add(map);
+        	map.clear();
 		}
         return personResults;
 	}
@@ -180,7 +188,6 @@ public class SearchActivity extends ListActivity {
 	public void chooseDepartmentSearch(View view){
 		searchChooser = 1;
 	}
-	
 
 	@SuppressWarnings("deprecation")
 	public void search(View view) throws InterruptedException, ExecutionException{
@@ -213,8 +220,8 @@ public class SearchActivity extends ListActivity {
 				personResults = readSingleResultStream(searchInput);
 			else
 				personResults = readMultipleResultStream(searchInput);
-			 String[] from = new String[] {"name", "title"};
-		     int[] to = new int[] {R.id.personName, R.id.personTitle};
+			String[] from = new String[] {"name", "title"};
+		    int[] to = new int[] {R.id.personName, R.id.personTitle};
 			simpleAdapter = new SimpleAdapter(this,personResults, R.layout.activity_person_list_item,from,to);
 			setListAdapter(simpleAdapter);
 		}
@@ -253,34 +260,20 @@ public class SearchActivity extends ListActivity {
 		@Override
 		protected String doInBackground(String... urls) {
 			String output = "";
-			InputStream iStream = null;
-			HttpURLConnection urlConnection = null;
+			HttpGet httpGet = null;
+			DefaultHttpClient httpClient = null;
 			try{
-				URL url = new URL(urls[0]);
-				urlConnection = (HttpURLConnection) url.openConnection();
-				
-				urlConnection.connect();
-				
-				iStream = urlConnection.getInputStream();
-				BufferedReader reader = new BufferedReader(new InputStreamReader(iStream));
-		   		StringBuffer sb = new StringBuffer();
-				String line = "";
-		   		while ((line = reader.readLine()) != null) 
-		   			sb.append(line);
-			   
-		   		output = sb.toString().replaceAll("\\r\\n\\t|\\r|\\n|\\t", "");
-		   		
-		   		reader.close();
+				httpClient = new DefaultHttpClient();
+				URI url = new URI(urls[0]);
+				httpGet = new HttpGet(url);
+				HttpResponse httpResponse = httpClient.execute(httpGet);
+				HttpEntity httpEntity = httpResponse.getEntity();
+			    output = EntityUtils.toString(httpEntity);
+			    
+		   		output = output.replaceAll("\\r\\n\\t|\\r|\\n|\\t", "");
 			
 				} catch (Exception e) {
 					Log.d("Exception while downloading url", e.toString());
-			 	}finally{
-			 		try {
-						iStream.close();
-						urlConnection.disconnect();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
 			 	}
 			return output;
 		}
