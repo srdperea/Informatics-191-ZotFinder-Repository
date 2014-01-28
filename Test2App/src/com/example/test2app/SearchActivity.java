@@ -112,9 +112,12 @@ public class SearchActivity extends ListActivity {
 	//return true = one person
 	public boolean personSearchResultType(String inputValue) throws InterruptedException, ExecutionException	{
 		String input = inputValue.toLowerCase();
+		if(input.contains(" ")){
+			input = input.replaceAll(" ", "+");
+		}
 		String url = "http://directory.uci.edu/index.php?basic_keywords=" + input + "&modifier=Exact+Match&basic_submit=Search&checkbox_employees=Employees&form_type=basic_search";
 		String output = new RetreiveDirectoryResultTask().execute(url).get();
-		   if (output.contains("<p align=\"center\">Your search for <strong>"))
+		   if (output.contains("Your search"))
 			   return false;
 		   else
 			   return true;
@@ -124,6 +127,9 @@ public class SearchActivity extends ListActivity {
 		List<HashMap<String, String>> personResults = new ArrayList<HashMap<String, String>>();
     	//creating an http connection to make an Http Request
     	String input = inputValue.toLowerCase();
+    	if(input.contains(" ")){
+			input = input.replaceAll(" ", "+");
+		}
         String url = "http://directory.uci.edu/index.php?basic_keywords=" + input + "&modifier=Exact+Match&basic_submit=Search&checkbox_employees=Employees&form_type=basic_search";
         String output = new RetreiveDirectoryResultTask().execute(url).get();
         HashMap<String, String> map = new HashMap<String, String>();
@@ -133,12 +139,22 @@ public class SearchActivity extends ListActivity {
         map.put("name", name);
         String ucinetid = output.split("<span class=\"label\">UCInetID</span><span class=\"resultData\">")[1].split("</span></p>")[0];
         map.put("ucinetid",ucinetid);
-        String title = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Title</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
-        map.put("title", title);
-        String department = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Department</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
-        map.put("department", department);
-        String address = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Address</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
-        map.put("address", address);
+        if (output.contains("Title </span></TD>")){
+        	
+            String title = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Title</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+            map.put("title", title);
+            String department = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Department</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+            map.put("department", department);
+            	
+        }
+        else{
+            String department = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Department</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+            map.put("title", department);
+        }
+        if(output.contains("Address</span></TD>")){
+        	String address = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Address</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+            map.put("address", address);	
+        }
         if(output.contains("<span class=\"label\">Phone</span><span class=\"resultData\">")){
         	String phoneNumber = output.split("<span class=\"label\">Phone</span><span class=\"resultData\">")[1].split("</span></p>")[0];
         	map.put("phoneNumber",phoneNumber);
@@ -161,6 +177,9 @@ public class SearchActivity extends ListActivity {
 		List<HashMap<String, String>> personResults = new ArrayList<HashMap<String, String>>();
     	//creating an http connection to make an Http Request
     	String input = inputValue.toLowerCase();
+    	if(input.contains(" ")){
+			input = input.replaceAll(" ", "+");
+		}
         String url = "http://directory.uci.edu/index.php?basic_keywords=" + input + "&modifier=Exact+Match&basic_submit=Search&checkbox_employees=Employees&form_type=basic_search";
         String output = new RetreiveDirectoryResultTask().execute(url).get();
         
