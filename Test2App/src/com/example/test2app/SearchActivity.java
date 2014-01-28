@@ -141,12 +141,16 @@ public class SearchActivity extends ListActivity {
         map.put("address", address);
         if(output.contains("<span class=\"label\">Phone</span><span class=\"resultData\">")){
         	String phoneNumber = output.split("<span class=\"label\">Phone</span><span class=\"resultData\">")[1].split("</span></p>")[0];
-        	map.put("phoneNumber",phoneNumber);;
+        	map.put("phoneNumber",phoneNumber);
         }
+        else
+        	map.put("phoneNumber","N/A");
         if(output.contains("p><span class=\"label\">Fax</span><span class=\"resultData\">")){
         	String faxNumber = output.split("p><span class=\"label\">Fax</span><span class=\"resultData\">")[1].split("</span></p>")[0];
         	map.put("faxNumber",faxNumber);
         }
+        else
+        	map.put("faxNumber", "N/A");
         String email = "E-mail: " + ucinetid + "@uci.edu";
         map.put("email", email);
         personResults.add(map);
@@ -160,12 +164,14 @@ public class SearchActivity extends ListActivity {
         String url = "http://directory.uci.edu/index.php?basic_keywords=" + input + "&modifier=Exact+Match&basic_submit=Search&checkbox_employees=Employees&form_type=basic_search";
         String output = new RetreiveDirectoryResultTask().execute(url).get();
         
-        HashMap<String, String> map = new HashMap<String, String>();
+        String[] ucinetidSplit = output.split("uid=");
         String[] nameSplit = output.split("&return=basic_keywords%3D" + inputValue + "%26modifier%3DExact%2BMatch%26basic_submit%3DSearch%26checkbox_employees%3DEmployees%26form_type%3Dbasic_search'>");
         String[] titleSplit = output.split("<span class=\"departmentmajor\">"); 
         int j = 1;
         for(int i = 1; i < nameSplit.length; i++){
+        	HashMap<String, String> map = new HashMap<String, String>();
         	map.put("personid", "" +i);
+        	map.put("ucinetid", ucinetidSplit[i].split("&")[0]);
         	map.put("name", nameSplit[i].split("</a>")[0]);
         	if(titleSplit[j].split("</span>")[0].contains("<br />"))
         		map.put("title",titleSplit[j].split("</span>")[0].split("<br />")[0]);
@@ -173,7 +179,7 @@ public class SearchActivity extends ListActivity {
         		map.put("title",titleSplit[j].split("</span>")[0]);
         	j += 2;
         	personResults.add(map);
-        	map.clear();
+        	Log.w("com.example.test2app",map.get("ucinetid"));
 		}
         return personResults;
 	}
@@ -215,11 +221,13 @@ public class SearchActivity extends ListActivity {
 		} else if (searchChooser == -1){
 			String searchInput = searchBox.getText().toString();
 			boolean resultType = personSearchResultType(searchInput);
-			List<HashMap<String, String>> personResults = new ArrayList<HashMap<String, String>>();
+			List<HashMap<String, String>> personResults;
+			
 			if(resultType)
-				personResults = readSingleResultStream(searchInput);
+				personResults = readSingleResultStream(searchInput);		
 			else
 				personResults = readMultipleResultStream(searchInput);
+			
 			String[] from = new String[] {"name", "title"};
 		    int[] to = new int[] {R.id.personName, R.id.personTitle};
 			simpleAdapter = new SimpleAdapter(this,personResults, R.layout.activity_person_list_item,from,to);
@@ -227,7 +235,7 @@ public class SearchActivity extends ListActivity {
 		}
 	}
 	
-    public void onListItemClick(ListView parent, View view, int position, long id) {
+    public void onListItemClick(ListView parent, View view, int position, long id){
     	Bundle bundle = new Bundle();
     	if (searchChooser == 0)
     	{
@@ -248,9 +256,18 @@ public class SearchActivity extends ListActivity {
     	else if (searchChooser == -1)
     	{
 	    	Intent intent = new Intent(this, PersonInfoActivity.class);
-	    	Cursor cursor = (Cursor) listAdapter.getItem(position);
-	    	bundle.putInt("PERSON_ID", cursor.getInt(cursor.getColumnIndex("_id")));
-	    	intent.putExtras(bundle);
+	    	HashMap<String, String> personResults = null;
+	    	HashMap<String, String> listResults = null;
+	    	try {
+	    		listResults = (HashMap<String, String>) simpleAdapter.getItem(position);
+				personResults = readSingleResultStream(listResults.get("ucinetid")).get(0);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+	    	//bundle.putSerializable("person", personResults);
+	    	intent.putExtra("person",personResults);
 	    	startActivity(intent);
     	}
     }

@@ -65,7 +65,7 @@ Arroyo Vista 1060,-117.827341,33.645319,5,1060 Arroyo Dr,1060,none
 Arroyo Vista 1060,-117.827343,33.645233,5,1062 Arroyo Dr,1062,none
 Arroyo Vista 1096/98,-117.825259,33.64625134,5,1096/1098 Arroyo Dr,1096/1098,none
 Arroyo Vista Housing Office,-117.8290315,33.64673716,2,1000 Arroyo Dr,1000,none
-"Art, Culture and Technology",-117.8448326,33.65053791,1,727 Arts Quad,727,ACT
+Art, Culture and Technology,-117.8448326,33.65053791,1,727 Arts Quad,727,ACT
 Arts Computation Engineering,-117.8468779,33.64647338,1,522 Biological Sciences Quad,522,ACE
 Arts Instruction and Technology Resource Center,-117.843902,33.64977312,1,714 Arts Quad,714,AITR
 Arts Studio,-117.8448649,33.65029618,1,722 Arts Quad,722,ART
@@ -219,7 +219,7 @@ Medical Sciences A Annex Offices,-117.8499241,33.64480786,1,815 Medical Sciences
 Medical Sciences B,-117.8498565,33.64549605,1,811 Medical Sciences Quad,811,MS-B
 Medical Sciences C,-117.850448,33.64549175,1,821 Medical Sciences Quad,821,MS-C
 Medical Sciences Classroom Facility,-117.8523487,33.64534064,1,833 Medical Sciences Quad,833,none
-"Medical Sciences D, Cheney Building",-117.8510393,33.64548269,1,825 Medical Sciences Quad,825,none
+Medical Sciences D, Cheney Building",-117.8510393,33.64548269,1,825 Medical Sciences Quad,825,none
 Medical Sciences E,-117.8514888,33.64539598,1,827 Medical Sciences Quad,827,MS-E
 Medical Surge I,-117.8501311,33.64638452,1,810 Medical Plaza Dr,810,MS1
 Medical Surge II,-117.8500455,33.64684262,1,812 Medical Plaza Dr,812,MS2

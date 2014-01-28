@@ -1,30 +1,42 @@
 package com.example.test2app;
 
+import java.util.HashMap;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
 public class PersonInfoActivity extends Activity {
 	String number;
+	String name;
+	String officeLocation;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_person_info);
 		
+		Intent intent = getIntent();
+		HashMap<String,String> personResults = (HashMap<String, String>) intent.getSerializableExtra("person");
+		Log.w("com.example.test2app",personResults.get("name"));
+	
+	
 		//grabs the name from the intent passed from SearchActivity
 		//puts it into set textView:"personInfoHeaderTextView"
-		String name = getIntent().getExtras().getString("name");
+		name = personResults.get("name");
 		TextView nameTextView = (TextView) findViewById(R.id.personInfoHeaderTextView);
 		nameTextView.setText(name);  
 		
 		//grabs the officeLocation from the intent passed from SearchActivity
 		//puts it into set textView:"officeLocation"
-		String officeLocation = getIntent().getExtras().getString("address");
+		officeLocation = personResults.get("address");
 		TextView officeTextView = (TextView) findViewById(R.id.officeLocation);
 		officeTextView.setText(officeLocation);    
 		officeTextView.setTextSize(getResources().getDimension(R.dimen.search_out));
@@ -33,7 +45,7 @@ public class PersonInfoActivity extends Activity {
         
 		//some faculty do not have a phone number so this will put the text only if it is a valid phone number
 		//if the number provided is equal to "N/A" then a textview will not be set
-        number = getIntent().getExtras().getString("phone");
+        number = personResults.get("phoneNumber");
         if (!number.equals("N/A"))
         {
 			TextView phoneTextView = (TextView) findViewById(R.id.phoneNumber);
@@ -45,13 +57,12 @@ public class PersonInfoActivity extends Activity {
         
         //grabs the email from the intent passed from SearchActivity
       	//puts it into set textView:"email"
-        String email = getIntent().getExtras().getString("email");
+        String email = personResults.get("email");
 		TextView emailTextView = (TextView) findViewById(R.id.email);
 		emailTextView.setText(email);    
 		emailTextView.setTextSize(getResources().getDimension(R.dimen.search_out));
 		emailTextView.setTextColor(getResources().getColor(R.color.black));
 		emailTextView.setBackgroundColor(getResources().getColor(R.color.light_gray));
-        
 		
 	}
 	
@@ -62,6 +73,47 @@ public class PersonInfoActivity extends Activity {
 		 if(!(number.equals("N/A"))) {
 			 intent.setData(Uri.parse("tel:" + number));
 			 startActivity(intent); 
+		 }
+	}
+	
+	public void plotPoint(View view)
+	{
+		String buildingLocation = officeLocation;
+		for(int i=1; i<buildingLocation.length(); i++)
+		{
+			if(Character.isDigit(buildingLocation.charAt(0)))
+			{
+				buildingLocation = buildingLocation.substring(1);
+			}
+			else
+			{
+				buildingLocation = buildingLocation.substring(1);
+				break;
+			}
+		}
+		
+		//hardcoded solution for DBH
+		if(buildingLocation.equals("Donald Bren Hall"))
+		{
+			buildingLocation = "Bren Hall";
+		}
+		
+		SQLiteDatabase buildingDb = (new BuildingDatabase(this)).getReadableDatabase();
+		Cursor cursor = buildingDb.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress, buildingLongitude, buildingLatitude FROM building WHERE buildingName like ?",
+        		new String[]{buildingLocation});
+	    
+		 if (cursor.getCount() == 1)
+		 {
+			 cursor.moveToFirst();
+			 Intent intent = new Intent(this,MapActivity.class);
+			 Bundle bundle = new Bundle();
+			 bundle.putInt("type", -1);
+			 bundle.putString("personName", name);
+			 bundle.putString("officeAddress", officeLocation);
+			 bundle.putFloat("officeLatitude", cursor.getFloat(cursor.getColumnIndex("buildingLatitude")));
+			 bundle.putFloat("officeLongitude", cursor.getFloat(cursor.getColumnIndex("buildingLongitude")));
+			 intent.putExtras(bundle);
+			 startActivity(intent);
 		 }
 	}
 	

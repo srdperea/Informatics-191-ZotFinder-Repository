@@ -127,6 +127,20 @@ public class MapActivity extends FragmentActivity {
 		         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 		         destinationPoint = new LatLng(latitude, longitude);
 	         }
+	         else if (type==-1)
+	         {
+	        	 float latitude = getIntent().getExtras().getFloat("officeLatitude");
+	        	 float longitude = getIntent().getExtras().getFloat("officeLongitude");
+	        	 String name = getIntent().getExtras().getString("personName");
+	        	 String officeLocation = getIntent().getExtras().getString("officeAddress");
+	        	 
+	        	 mMap.addMarker(new MarkerOptions()
+	        	 	.position(new LatLng(latitude, longitude))
+	        	 	.title(name)
+	        	 	.snippet("Office Location: " + officeLocation));
+	        	 	mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+	        	 	destinationPoint = new LatLng(latitude, longitude);
+	         }
 	     }
 	}
 	
