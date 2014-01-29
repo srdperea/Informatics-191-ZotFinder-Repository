@@ -103,7 +103,9 @@
 			        android:textStyle="bold"
 			        android:background="@android:color/transparent"
 			        android:src="@drawable/ic_action_locate"
+			        android:clickable="true"
 			        android:onClick="plotPoint"
+			        
 	                />
 	        
 				<TextView
@@ -113,8 +115,11 @@
 					android:layout_below="@+id/officeHeader"
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
-					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"/>
+					android:textColor="@color/white"
+					android:clickable="true"
+					android:onClick="plotPoint"
+					
+			       />
 				
 				<!-- Phone Number -->
 				
@@ -136,7 +141,6 @@
 					android:layout_below="@+id/phoneHeader"
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
-					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/white"
 					android:clickable="true"
 					android:onClick="call"/>
@@ -160,7 +164,6 @@
 					android:layout_below="@+id/emailHeader"
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
-					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/white"/>
 				
 			</RelativeLayout>

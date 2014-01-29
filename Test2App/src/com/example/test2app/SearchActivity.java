@@ -210,7 +210,6 @@ public class SearchActivity extends ListActivity {
         		map.put("title",titleSplit[j].split("</span>")[0]);
         	j += 2;
         	personResults.add(map);
-        	Log.w("com.example.test2app",map.get("ucinetid"));
 		}
         return personResults;
 	}
