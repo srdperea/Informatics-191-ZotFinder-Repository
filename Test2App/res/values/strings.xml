@@ -78,10 +78,10 @@
     <!-- Active Shooter -->
     <string name="active_shooter_text">
 <![CDATA[
-			<p>• <b>Call 911</b>.<br></p>
-			<p>• <b>Run</b> – if you can get out, escape the area.<br></p>
-			<p>• <b>Hide</b> – secure in place, lock/barricade doors, turn off lights, silence phones, and be quiet.<br></p>
-			<p>• <b>Fight</b> – as a last resort, attack aggressively.</p>
+			<p>â€¢ <b>Call 911</b>, if safe to do so.<br></p>
+			<p>â€¢ <b>Run</b> â€“ if you can get out, escape the area.<br></p>
+			<p>â€¢ <b>Hide</b> â€“ secure in place, lock/barricade doors, turn off lights, silence phones, and be quiet.<br></p>
+			<p>â€¢ <b>Fight</b> â€“ as a last resort, attack aggressively.</p>
 		
 			]]>
     </string>
@@ -91,16 +91,16 @@
 <![CDATA[
 
 			<p>If you are inside:<br></p>
-			<p>• Drop-Cover-Hold under a table or desk or against an inside wall until the shaking stops.<br></p>
-			<p>• Avoid windows, filing cabinets, bookcases and other heavy objects.<br></p>
-			<p>• After the shaking stops, check for injuries and assess your surroundings for damage.<br></p>
-			<p>• Evacuate the building if you feel unsafe or if told to do so by building staff or emergency 
+			<p>â€¢ Drop-Cover-Hold under a table or desk or against an inside wall until the shaking stops.<br></p>
+			<p>â€¢ Avoid windows, filing cabinets, bookcases and other heavy objects.<br></p>
+			<p>â€¢ After the shaking stops, check for injuries and assess your surroundings for damage.<br></p>
+			<p>â€¢ Evacuate the building if you feel unsafe or if told to do so by building staff or emergency 
 			responders.<br></p>
-			<p>• Do not leave the area/campus without reporting your status to someone in charge.<br><br></p>
+			<p>â€¢ Do not leave the area/campus without reporting your status to someone in charge.<br><br></p>
 			<p>If you are outside:<br></p>
-			<p>• Move away from trees, signs, buildings, electrical poles and wires. <br></p>
-			<p>• Protect your head with your arms.<br></p>
-			<p>• Proceed to the nearest assembly area.<br></p>
+			<p>â€¢ Move away from trees, signs, buildings, electrical poles and wires. <br></p>
+			<p>â€¢ Protect your head with your arms.<br></p>
+			<p>â€¢ Proceed to the nearest assembly area.<br></p>
 		
 			]]>
     </string>
@@ -114,15 +114,15 @@
 			including self-harmful behavior, and you are concerned for your safety or the 
 			safety of others, please call 911 or the UCI Police Department.<br></p>
 			<p>If the conduct is not life threatening:<br></p>
-			<p>• For a UCI student, contact the Office of Student Conduct.<br></p>
-			<p>• For a UCI employee, contact Human Resources.<br></p>
+			<p>â€¢ For a UCI student, contact the Office of Student Conduct.<br></p>
+			<p>â€¢ For a UCI employee, contact Human Resources.<br></p>
 			<p>Persons Who Are Distressed<br></p>
 			<p>Distressed persons display persistent behaviors, such as: anxious, sad, irritable, 
 			withdrawn, confused, lacks motivation and/or concentration, seeks constant attention, 
 			demonstrates bizarre or erratic behavior, or expresses suicidal thoughts.<br></p> 
-			<p>• For a UCI student, contact the Counseling Center, Student Health Center, Campus 
+			<p>â€¢ For a UCI student, contact the Counseling Center, Student Health Center, Campus 
 			Assault Resources and Education (CARE), or the UCI Police Department for help.<br></p>
-			<p>• For a UCI employee, contact Human Resources, Cascade Employee Assistance Program,
+			<p>â€¢ For a UCI employee, contact Human Resources, Cascade Employee Assistance Program,
 			 or the UCI Police Department for help.<br></p>
 			<p>For consultation regarding disruptive or distressed individuals, please contact the UCI 
 			Consultation Team through the Office of the Clinical Social Worker. <br></p>
@@ -136,17 +136,17 @@
 <![CDATA[
 			
 		    <p>If you discover a fire:<br></p>
-			<p>• Extinguish the fire if you have been trained and if it is safe to do so.<br></p>
-			<p>• Evacuate the immediate area and close doors behind you.<br></p> 
-			<p>• Pull the nearest fire alarm.<br></p>
-			<p>• Call 911 if safe to do so. Otherwise, evacuate the building then call 911.<br></p>
-			<p>• Do not re-enter the building until an “All Clear” is given by emergency responders.<br></p>
+			<p>â€¢ Extinguish the fire if you have been trained and if it is safe to do so.<br></p>
+			<p>â€¢ Evacuate the immediate area and close doors behind you.<br></p> 
+			<p>â€¢ Pull the nearest fire alarm.<br></p>
+			<p>â€¢ Call 911 if safe to do so. Otherwise, evacuate the building then call 911.<br></p>
+			<p>â€¢ Do not re-enter the building until an â€œAll Clearâ€ is given by emergency responders.<br></p>
 			<p>If you hear a fire alarm:<br></p>
-			<p>• Evacuate as soon as the alarm sounds.<br></p>
-			<p>• Test closed doors with the back of your hand. DO NOT open doors if they are hot.<br></p>
-			<p>• Use stairs only. Do not use elevators.<br></p>
-			<p>• Proceed to the designated assembly area.<br></p>
-			<p>• Do not re-enter the building until an “All Clear” is given by emergency responders.<br></p>
+			<p>â€¢ Evacuate as soon as the alarm sounds.<br></p>
+			<p>â€¢ Test closed doors with the back of your hand. DO NOT open doors if they are hot.<br></p>
+			<p>â€¢ Use stairs only. Do not use elevators.<br></p>
+			<p>â€¢ Proceed to the designated assembly area.<br></p>
+			<p>â€¢ Do not re-enter the building until an â€œAll Clearâ€ is given by emergency responders.<br></p>
 		
 			]]>
     </string>
@@ -158,34 +158,34 @@
 			of you, your family, and your work colleagues.<br></p>
 			<p>Have A Kit<br></p>
 			<p>Keep an emergency kit at home, in your car, and in your office.<br></p>
-			<p>• Water – one gallon per person per day for at least 3 days for drinking and sanitation.<br></p>
-			<p>• Food – at least a 3 day supply of non-perishable food.<br></p>
-			<p>• Battery operated Radio and Flashlight with extra batteries.<br></p>
-			<p>• First Aid Kit.<br></p>
-			<p>• Whistle.<br></p>
-			<p>• All Purpose Tool.<br></p>
-			<p>• Basic sanitation items like towelettes, garbage bags, hand sanitizer, tissues.<br></p>
-			<p>• Change of clothes and sturdy shoes.<br></p>
+			<p>â€¢ Water â€“ one gallon per person per day for at least 3 days for drinking and sanitation.<br></p>
+			<p>â€¢ Food â€“ at least a 3 day supply of non-perishable food.<br></p>
+			<p>â€¢ Battery operated Radio and Flashlight with extra batteries.<br></p>
+			<p>â€¢ First Aid Kit.<br></p>
+			<p>â€¢ Whistle.<br></p>
+			<p>â€¢ All Purpose Tool.<br></p>
+			<p>â€¢ Basic sanitation items like towelettes, garbage bags, hand sanitizer, tissues.<br></p>
+			<p>â€¢ Change of clothes and sturdy shoes.<br></p>
 			<p>Make A Plan<br></p>
-			<p>• Have an out-of-town contact for family members to report in to.<br></p>
-			<p>• ICE your cell phone – identify who to call In Case of Emergency.<br></p>
-			<p>• Be prepared to limit phone use to essential calls only. Text messages may go 
+			<p>â€¢ Have an out-of-town contact for family members to report in to.<br></p>
+			<p>â€¢ ICE your cell phone â€“ identify who to call In Case of Emergency.<br></p>
+			<p>â€¢ Be prepared to limit phone use to essential calls only. Text messages may go 
 			through when phone calls will not.<br></p>
-			<p>• Select a family meeting location in case your house is not safe or accessible.<br></p>
+			<p>â€¢ Select a family meeting location in case your house is not safe or accessible.<br></p>
 			<p>Be Informed<br></p>
-			<p>• The Top 5 Hazards For UC Irvine are:<br></p>
+			<p>â€¢ The Top 5 Hazards For UC Irvine are:<br></p>
 			<p>o Catastrophic Earthquake.<br></p>
 			<p>o Laboratory or Housing Fire.<br></p>
 			<p>o Civil Disturbance.<br></p>
 			<p>o Public Health Emergency.<br></p>
 			<p>o Active Shooter/Workplace Violence.<br></p>
-			<p>• Know what to do in case of an emergency on campus.<br></p>
-			<p>• Know evacuation routes and the pre-designated assembly areas for the buildings 
+			<p>â€¢ Know what to do in case of an emergency on campus.<br></p>
+			<p>â€¢ Know evacuation routes and the pre-designated assembly areas for the buildings 
 			you are in most frequently.<br></p>
-			<p>• Inquire about the emergency plan for family members’ work and school.<br></p>
-			<p>• Visit www.ready.gov for more information.<br></p>
-			<p>• For campus emergency preparedness information visit www.police.uci.edu.<br></p>
-			<p>• Sign up to receive zotALERT text messages at www.oit.uci.edu/zotalert.<br></p>
+			<p>â€¢ Inquire about the emergency plan for family membersâ€™ work and school.<br></p>
+			<p>â€¢ Visit www.ready.gov for more information.<br></p>
+			<p>â€¢ For campus emergency preparedness information visit www.police.uci.edu.<br></p>
+			<p>â€¢ Sign up to receive zotALERT text messages at www.oit.uci.edu/zotalert.<br></p>
 			
 					
 			]]>
@@ -219,14 +219,14 @@
     <!-- Evacuation -->
     <string name="evacuation_text">
 <![CDATA[
-			<p>• Stay calm. Do not panic. Move swiftly.<br></p>
-			<p>• Safely stop your work and secure any hazardous materials or equipment before leaving.<br></p>
-			<p>• Gather your personal belongings if safe to do so.<br></p>
-			<p>• Proceed to the nearest safe exit.<br></p>
-			<p>• Do not use elevators.<br></p>
-			<p>• Proceed to the designated assembly area.<br></p>
-			<p>• Wait for instructions from emergency responders.<br></p>
-			<p>• Do not re-enter the building until an “All Clear” is given by emergency responders.<br></p>
+			<p>â€¢ Stay calm. Do not panic. Move swiftly.<br></p>
+			<p>â€¢ Safely stop your work and secure any hazardous materials or equipment before leaving.<br></p>
+			<p>â€¢ Gather your personal belongings if safe to do so.<br></p>
+			<p>â€¢ Proceed to the nearest safe exit.<br></p>
+			<p>â€¢ Do not use elevators.<br></p>
+			<p>â€¢ Proceed to the designated assembly area.<br></p>
+			<p>â€¢ Wait for instructions from emergency responders.<br></p>
+			<p>â€¢ Do not re-enter the building until an â€œAll Clearâ€ is given by emergency responders.<br></p>
 			
 			]]>
     </string>
@@ -234,14 +234,14 @@
     <!-- Hazardous Material -->
     <string name="hazardous_material_text">
 <![CDATA[
-			<p>• Evacuate affected area.<br></p>
-			<p>• Call 911.<br></p>
-			<p>• Provide the dispatcher with information on the material type, quantity, and specific location of
+			<p>â€¢ Evacuate affected area.<br></p>
+			<p>â€¢ Call 911.<br></p>
+			<p>â€¢ Provide the dispatcher with information on the material type, quantity, and specific location of
 			the spill or release.<br></p>	
-			<p>• Isolate the spill/release and deny entry to the area.<br></p>
-			<p>• Notify EH&S at 824-6200 if you have been exposed to a hazard or you have information about 
+			<p>â€¢ Isolate the spill/release and deny entry to the area.<br></p>
+			<p>â€¢ Notify EH&S at 824-6200 if you have been exposed to a hazard or you have information about 
 			the release.<br></p>
-			<p>• Follow instructions of emergency responders.<br></p>
+			<p>â€¢ Follow instructions of emergency responders.<br></p>
 		
 			]]>
     </string>
@@ -251,12 +251,12 @@
 <![CDATA[
 			<p>If you See Something, Say Something.<br><br></p>
 			<p>Immediately call 911 from a safe location if you are the victim of or witness to:<br></p>
-			<p>• Assault.<br></p>
-			<p>• Verbal or other threat of bodily harm.<br></p>
-			<p>• Suspicious activity or suspicious packages/items.<br></p>
-			<p>• Crimes in progress.<br></p>
-			<p>• Weapons violations.<br></p>
-			<p>• Activities presenting a serious risk to yourself or others.<br></p>
+			<p>â€¢ Assault.<br></p>
+			<p>â€¢ Verbal or other threat of bodily harm.<br></p>
+			<p>â€¢ Suspicious activity or suspicious packages/items.<br></p>
+			<p>â€¢ Crimes in progress.<br></p>
+			<p>â€¢ Weapons violations.<br></p>
+			<p>â€¢ Activities presenting a serious risk to yourself or others.<br></p>
 			<p>Do not confront the suspect or block their exit.<br></p>
 			<p>Do not take unnecessary chances.<br></p>
 			 
@@ -276,7 +276,7 @@
 			from others in the area if exit is difficult or obstructed.<br></p>
 			<p>4. If unable to evacuate the building:<br></p>
 			<p>a. Take safe refuge in a fire-rated stairwell. Close the door to keep smoke out. OR<br></p>
-			<p>b. Evacuate “horizontally” to a room away from hazards. Close the doors, Signal rescuers 
+			<p>b. Evacuate â€œhorizontallyâ€ to a room away from hazards. Close the doors, Signal rescuers 
 			by placing a sign in the window. Place wet cloths around and under the door to prevent 
 			smoke from entering. Call 911 and provide your location to the dispatcher. Follow their 
 			directions.<br></p>
@@ -294,15 +294,15 @@
 			or compromised, sheltering in place keeps you inside an area offering more protection. Although rarely 
 			called for, SIP events usually last only a few hours.<br></p>
 			<p>Immediate Shelter-In-Place:<br></p>
-			<p>• When the release is nearby and the need to seek shelter is immediate.<br></p>
-			<p>• Stay inside a building.<br></p>
-			<p>• If outside, enter the nearest building.<br></p>
-			<p>• Remain in place until advised by emergency responders that it is safe to leave.
+			<p>â€¢ When the release is nearby and the need to seek shelter is immediate.<br></p>
+			<p>â€¢ Stay inside a building.<br></p>
+			<p>â€¢ If outside, enter the nearest building.<br></p>
+			<p>â€¢ Remain in place until advised by emergency responders that it is safe to leave.
 			Delayed Shelter-In-Place<br></p>
-			<p>• When a release occurs off campus and there is time (30 minutes or more) to move people to 
+			<p>â€¢ When a release occurs off campus and there is time (30 minutes or more) to move people to 
 			large, enclosed areas.<br></p>
-			<p>• Follow directions of emergency responders to move quickly to SIP location.<br></p>
-			<p>• Remain in place until advised by emergency responders that it is safe to leave.<br></p>
+			<p>â€¢ Follow directions of emergency responders to move quickly to SIP location.<br></p>
+			<p>â€¢ Remain in place until advised by emergency responders that it is safe to leave.<br></p>
 			<p>You may be notified to Shelter-In-Place via Zone Crew members, emergency responders, zotmail, and 
 			ZotALERT text messages.<br></p>
 		
@@ -313,12 +313,12 @@
     <string name="medical_emergency_text">
 <![CDATA[
 
-			<p>• Call 911.<br></p>
-			<p>• Do not approach the victim unless it is safe to do so.<br></p>
-			<p>• Send someone to meet and direct emergency responders.<br></p>
-			<p>• Do not move the patient unless absolutely necessary.<br></p>
-			<p>• Do not take seriously ill or injured persons to the Student Health Center.<br></p>
-			<p>• Provide first aid if trained and if it is safe to do so.<br></p>
+			<p>â€¢ Call 911.<br></p>
+			<p>â€¢ Do not approach the victim unless it is safe to do so.<br></p>
+			<p>â€¢ Send someone to meet and direct emergency responders.<br></p>
+			<p>â€¢ Do not move the patient unless absolutely necessary.<br></p>
+			<p>â€¢ Do not take seriously ill or injured persons to the Student Health Center.<br></p>
+			<p>â€¢ Provide first aid if trained and if it is safe to do so.<br></p>
 		
 			]]>
     </string>
@@ -327,12 +327,12 @@
     <string name="utility_failure_text">
 <![CDATA[
 			
-			<p>• Turn off and unplug computers and other sensitive electrical equipment.<br></p>
-			<p>• Keep freezers and refrigerators closed during the power outage.<br></p>
-			<p>• Keep a flashlight with fresh batteries in the area.<br></p>
-			<p>• Move cautiously to a lighted area.<br></p>
-			<p>• Exits may be indicated by lighted signs.<br></p>
-			<p>• Contact the Facilities Management Service Desk at 824-5444.<br></p>
+			<p>â€¢ Turn off and unplug computers and other sensitive electrical equipment.<br></p>
+			<p>â€¢ Keep freezers and refrigerators closed during the power outage.<br></p>
+			<p>â€¢ Keep a flashlight with fresh batteries in the area.<br></p>
+			<p>â€¢ Move cautiously to a lighted area.<br></p>
+			<p>â€¢ Exits may be indicated by lighted signs.<br></p>
+			<p>â€¢ Contact the Facilities Management Service Desk at 824-5444.<br></p>
 			]]>
     </string>
 
@@ -340,10 +340,10 @@
     <string name="suspicious_package_text">
 <![CDATA[
 
-			<p>• Do not touch or disturb the object/package.<br></p>
-			<p>• Call 911.<br></p>
-			<p>• Notify a supervisor/department head.<br></p>
-			<p>• Prepare to evacuate.<br></p>
+			<p>â€¢ Do not touch or disturb the object/package.<br></p>
+			<p>â€¢ <b>Call 911</b>, if safe to do so.<br></p>
+			<p>â€¢ Notify a supervisor/department head.<br></p>
+			<p>â€¢ Prepare to evacuate.<br></p>
 			
 		
 			]]>
@@ -353,15 +353,15 @@
 
 			
 		
-			<p>• Review the UCI Emergency Procedures Chart (aka “Blue Flip Chart”).<br></p>
-			<p>• If you live on campus, have a copy of the chart posted in your dorm room or apartment.<br></p>
-			<p>• Know what to do in case of an emergency on campusEvacuate the immediate area and close doors behind you.<br></p> 
-			<p>• Know the location of emergency blue light phones.<br></p>
-			<p>• Know evacuation routes and the pre-designated assembly areas for the buildings you.<br></p>
-			<p>• Sign up to receive zotALERT text messages at www.oit.uci.edu/zotalert <br></p>
-			<p>• Work with your family to develop a Family Emergency Plan.<br></p>
-			<p>• Have an emergency kit at home and in your car.<br></p>
-			<p>• Test closed doors with the back of your hand. DO NOT open doors if they are hot.<br></p>
+			<p>â€¢ Review the UCI Emergency Procedures Chart (aka â€œBlue Flip Chartâ€).<br></p>
+			<p>â€¢ If you live on campus, have a copy of the chart posted in your dorm room or apartment.<br></p>
+			<p>â€¢ Know what to do in case of an emergency on campusEvacuate the immediate area and close doors behind you.<br></p> 
+			<p>â€¢ Know the location of emergency blue light phones.<br></p>
+			<p>â€¢ Know evacuation routes and the pre-designated assembly areas for the buildings you.<br></p>
+			<p>â€¢ Sign up to receive zotALERT text messages at www.oit.uci.edu/zotalert <br></p>
+			<p>â€¢ Work with your family to develop a Family Emergency Plan.<br></p>
+			<p>â€¢ Have an emergency kit at home and in your car.<br></p>
+			<p>â€¢ Test closed doors with the back of your hand. DO NOT open doors if they are hot.<br></p>
 		
 		
 			]]>
@@ -369,21 +369,21 @@
     <string name="faculty_expectations">
 <![CDATA[
 
-			<p>• Have a copy of the UCI Emergency Procedures Chart (aka “Blue Flip Chart”) accessible in your workspace, laboratories, and classroom(s).<br></p>
-			<p>• Know your role during an emergency.<br></p> 
-			<p>• Get to know your Zone Captain and the Zone Crew members in your area.<br></p>
-			<p>• Know evacuation routes and the pre-designated assembly areas for the buildings you are in most frequently.<br></p>
+			<p>â€¢ Have a copy of the UCI Emergency Procedures Chart (aka â€œBlue Flip Chartâ€) accessible in your workspace, laboratories, and classroom(s).<br></p>
+			<p>â€¢ Know your role during an emergency.<br></p> 
+			<p>â€¢ Get to know your Zone Captain and the Zone Crew members in your area.<br></p>
+			<p>â€¢ Know evacuation routes and the pre-designated assembly areas for the buildings you are in most frequently.<br></p>
 			<p><b> Faculty members should be prepared to direct their students to assembly areas in the event of an emergency.</b><br></p> 
-			<p>• Know the emergency plan and continuity/recovery plan for your department.<br></p> 
-			<p>• Sign up to receive zotALERT text messages at www.oit.uci.edu/zotalert.<br></p> 
-			<p>• Have an emergency kit in your office, in your car, and at home.<br></p> 
-			<p>• Contact the campus Emergency Services Manager at x4-7147 if you are interested in a preparedness presentation for your department.<br></p> 
-			<p>• Get involved on campus.<br></p> 
+			<p>â€¢ Know the emergency plan and continuity/recovery plan for your department.<br></p> 
+			<p>â€¢ Sign up to receive zotALERT text messages at www.oit.uci.edu/zotalert.<br></p> 
+			<p>â€¢ Have an emergency kit in your office, in your car, and at home.<br></p> 
+			<p>â€¢ Contact the campus Emergency Services Manager at x4-7147 if you are interested in a preparedness presentation for your department.<br></p> 
+			<p>â€¢ Get involved on campus.<br></p> 
 			<p>Become a Zone Crew member. Contact your Zone Captain and visit http://police.uci.edu/em/ZoneCrew.html for more information..<br></p> 
 			<p>Become a Campus Search and Rescue (CSAR) Team Member. Visit www.police.uci.edu/em/csar.html for training sessions and more information..<br></p> 
 			<p>Become First Aid and CPR trained. The ARC offers free or low cost classes conducted by the American Red Cross. Go to http://www.campusrec.uci.edu/ , Classes and Clinics for details..<br></p> 
 			
-			<p>•.<br></p> 
+			<p>â€¢.<br></p> 
 			]]>
     </string>
 

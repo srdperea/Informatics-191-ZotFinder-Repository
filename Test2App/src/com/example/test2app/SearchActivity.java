@@ -22,18 +22,24 @@ import org.apache.http.util.EntityUtils;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 public class SearchActivity extends ListActivity {
 	EditText searchBox;
@@ -105,16 +111,28 @@ public class SearchActivity extends ListActivity {
 		personDb = (new PersonDatabase(this)).getReadableDatabase();
 		searchBox = (EditText) findViewById(R.id.searchText);
 		
- 		
+		searchBox.setOnEditorActionListener(new OnEditorActionListener() {
+
+	        @Override
+	        public boolean onEditorAction(TextView v, int actionId,
+	                KeyEvent event) {
+	            if (event != null&& (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+	                InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+	                in.hideSoftInputFromWindow(searchBox
+	                        .getApplicationWindowToken(),
+	                        InputMethodManager.HIDE_NOT_ALWAYS);
+	               // Must return true here to consume event
+	               return true;
+	            }
+	            return false;
+	        }
+	    });
 	}
 	
 	//return false = list of people
 	//return true = one person
 	public boolean personSearchResultType(String inputValue) throws InterruptedException, ExecutionException	{
-		String input = inputValue.toLowerCase();
-		if(input.contains(" ")){
-			input = input.replaceAll(" ", "+");
-		}
+		String input = inputValue;
 		String url = "http://directory.uci.edu/index.php?basic_keywords=" + input + "&modifier=Exact+Match&basic_submit=Search&checkbox_employees=Employees&form_type=basic_search";
 		String output = new RetreiveDirectoryResultTask().execute(url).get();
 		   if (output.contains("Your search"))
@@ -126,10 +144,7 @@ public class SearchActivity extends ListActivity {
 	private List<HashMap<String, String>> readSingleResultStream(String inputValue) throws InterruptedException, ExecutionException {
 		List<HashMap<String, String>> personResults = new ArrayList<HashMap<String, String>>();
     	//creating an http connection to make an Http Request
-    	String input = inputValue.toLowerCase();
-    	if(input.contains(" ")){
-			input = input.replaceAll(" ", "+");
-		}
+    	String input = inputValue;
         String url = "http://directory.uci.edu/index.php?basic_keywords=" + input + "&modifier=Exact+Match&basic_submit=Search&checkbox_employees=Employees&form_type=basic_search";
         String output = new RetreiveDirectoryResultTask().execute(url).get();
         HashMap<String, String> map = new HashMap<String, String>();
@@ -176,15 +191,12 @@ public class SearchActivity extends ListActivity {
 	private List<HashMap<String, String>> readMultipleResultStream(String inputValue) throws InterruptedException, ExecutionException {
 		List<HashMap<String, String>> personResults = new ArrayList<HashMap<String, String>>();
     	//creating an http connection to make an Http Request
-    	String input = inputValue.toLowerCase();
-    	if(input.contains(" ")){
-			input = input.replaceAll(" ", "+");
-		}
+    	String input = inputValue;
         String url = "http://directory.uci.edu/index.php?basic_keywords=" + input + "&modifier=Exact+Match&basic_submit=Search&checkbox_employees=Employees&form_type=basic_search";
         String output = new RetreiveDirectoryResultTask().execute(url).get();
         
         String[] ucinetidSplit = output.split("uid=");
-        String[] nameSplit = output.split("&return=basic_keywords%3D" + inputValue + "%26modifier%3DExact%2BMatch%26basic_submit%3DSearch%26checkbox_employees%3DEmployees%26form_type%3Dbasic_search'>");
+        String[] nameSplit = output.split("&return=basic_keywords%3D" + input + "%26modifier%3DExact%2BMatch%26basic_submit%3DSearch%26checkbox_employees%3DEmployees%26form_type%3Dbasic_search'>");
         String[] titleSplit = output.split("<span class=\"departmentmajor\">"); 
         int j = 1;
         for(int i = 1; i < nameSplit.length; i++){
@@ -217,7 +229,7 @@ public class SearchActivity extends ListActivity {
 	@SuppressWarnings("deprecation")
 	public void search(View view) throws InterruptedException, ExecutionException{
 		if (searchChooser == 0){
-			cursor = buildingDb.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress FROM building WHERE buildingName || ' ' || buildingNumber LIKE ?", 
+			cursor = buildingDb.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress, buildingAbbreviation FROM building WHERE buildingName || ' ' || buildingAbbreviation || ' ' || buildingNumber LIKE ?" , 
 					new String[]{"%" + searchBox.getText().toString() + "%"});
 			listAdapter = new SimpleCursorAdapter(
 					this, 
@@ -239,20 +251,31 @@ public class SearchActivity extends ListActivity {
 		
 		} else if (searchChooser == -1){
 			String searchInput = searchBox.getText().toString();
-			boolean resultType = personSearchResultType(searchInput);
-			List<HashMap<String, String>> personResults;
-			
-			if(resultType)
-				personResults = readSingleResultStream(searchInput);		
-			else
-				personResults = readMultipleResultStream(searchInput);
-			
-			String[] from = new String[] {"name", "title"};
-		    int[] to = new int[] {R.id.personName, R.id.personTitle};
-			simpleAdapter = new SimpleAdapter(this,personResults, R.layout.activity_person_list_item,from,to);
-			setListAdapter(simpleAdapter);
+			searchInput = searchInput.toLowerCase();
+			searchInput = searchInput.trim();
+	    	if(searchInput.contains(" ")){
+	    		searchInput = searchInput.replaceAll(" ", "+");
+			}
+			if(searchInput.matches("^[a-zA-Z]+"))
+			{
+				
+				boolean resultType = personSearchResultType(searchInput);
+				List<HashMap<String, String>> personResults;
+				
+				if(resultType)
+					personResults = readSingleResultStream(searchInput);		
+				else
+					personResults = readMultipleResultStream(searchInput);
+				
+				String[] from = new String[] {"name", "title"};
+			    int[] to = new int[] {R.id.personName, R.id.personTitle};
+				simpleAdapter = new SimpleAdapter(this,personResults, R.layout.activity_person_list_item,from,to);
+				setListAdapter(simpleAdapter);
+			}
 		}
 	}
+	
+	
 	
     public void onListItemClick(ListView parent, View view, int position, long id){
     	Bundle bundle = new Bundle();

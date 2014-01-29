@@ -33,19 +33,20 @@
         android:layout_height="wrap_content"
         android:background="@color/header_color_blue" >
 
-         <Button 
+    <ImageButton 
             android:id="@+id/backButton"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
 			android:layout_marginLeft="2dp"
 			android:layout_marginTop="3dp"
 			android:layout_marginBottom="3dp"
-			android:padding="5dp"
+			android:padding="1dp"
 			android:gravity="center_horizontal"
 	        android:text="@string/back_button"
 	        android:textSize="12sp"
 	        android:textStyle="bold"
-	        android:background="@drawable/rounded_button3"
+	        android:background="@android:color/transparent"
+	        android:src="@drawable/ic_action_previous_item"
 	        android:onClick="finishActivity"
 	 
 	                />

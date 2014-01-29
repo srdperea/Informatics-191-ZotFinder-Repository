@@ -88,7 +88,23 @@
 					android:text="@string/office_header"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"/>
+					android:textColor="@color/white"
+					android:background="@color/header_color_blue"/>
+			    <ImageButton 
+		            android:id="@+id/locateButton"
+		        	android:layout_width="wrap_content"
+		        	android:layout_height="wrap_content"
+		        	android:layout_alignRight="@+id/officeHeader"
+					android:layout_marginLeft="2dp"
+					android:layout_marginTop="2dp"
+					android:layout_marginBottom="3dp"
+					android:padding="1dp"
+			        android:textSize="12sp"
+			        android:textStyle="bold"
+			        android:background="@android:color/transparent"
+			        android:src="@drawable/ic_action_locate"
+			        android:onClick="plotPoint"
+	                />
 	        
 				<TextView
 					android:id="@+id/officeLocation"
@@ -98,9 +114,7 @@
 					android:layout_marginBottom="20dp"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"
-					android:clickable = "true"
-					android:onClick="plotPoint"/>
+					android:textColor="@color/white"/>
 				
 				<!-- Phone Number -->
 				
@@ -112,7 +126,8 @@
 					android:text="@string/phone_header"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"/>
+					android:textColor="@color/white"
+					android:background="@color/header_color_blue"/>
 				
 				<TextView
 					android:id="@+id/phoneNumber"
@@ -135,7 +150,8 @@
 					android:text="@string/email_header"
 					android:textSize="@dimen/font_size"
 					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/white"/>
+					android:textColor="@color/white"
+					android:background="@color/header_color_blue"/>
 				
 				<TextView
 					android:id="@+id/email"
