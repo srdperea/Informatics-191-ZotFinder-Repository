@@ -16,6 +16,7 @@ import android.widget.TextView;
 public class PersonInfoActivity extends Activity {
     String number;
     String name;
+    String email;
     String officeLocation;
 
     @Override
@@ -51,7 +52,7 @@ public class PersonInfoActivity extends Activity {
     
     //grabs the email from the intent passed from SearchActivity
           //puts it into set textView:"email"
-    String email = personResults.get("email");
+    email = personResults.get("email");
             TextView emailTextView = (TextView) findViewById(R.id.email);
             emailTextView.setText(email);  
             
@@ -106,6 +107,16 @@ public class PersonInfoActivity extends Activity {
                      intent.putExtras(bundle);
                      startActivity(intent);
              }
+    }
+    
+    public void sendEmail(View v)
+    {
+    	Intent emailIntent = new Intent(Intent.ACTION_SEND); 
+    	emailIntent.setType("text/plain"); 
+    	emailIntent.putExtra(Intent.EXTRA_EMAIL, email); 
+    	emailIntent.putExtra(Intent.EXTRA_SUBJECT, "my subject"); 
+    	emailIntent.putExtra(Intent.EXTRA_TEXT, "body text"); 
+    	startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
     
     //Back button
