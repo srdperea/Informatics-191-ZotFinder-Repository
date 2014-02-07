@@ -37,7 +37,7 @@
     <string name="roles_expectations">Roles / Expectations</string>
     <string name="student_button">Student</string>
     <string name="faculty_button">Faculty/Staff</string>
-    <string name="other_emergencies">Other Emergencies</string>
+    <string name="other_emergencies">All Emergencies</string>
     <string name="active_shooter">Active\nShooter</string>
     <string name="earthquake">Earthquake</string>
     <string name="violence">Violence</string>

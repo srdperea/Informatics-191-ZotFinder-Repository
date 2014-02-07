@@ -29,46 +29,46 @@ public class EmergencyInfoActivity extends Activity {
 	{
 		int id = v.getId();
 
-		if(id == R.id.button1) {
+		if(id == R.id.topActiveShooterButton || id == R.id.activeShooterButton) {
 			bundle.putString("emergencyName", getString(R.string.active_shooter_title));
 			bundle.putString("emergencyInfo", getString(R.string.active_shooter_text));
-		} else if (id == R.id.button2){
+		} else if (id == R.id.topEarthquakeButton || id == R.id.earthquakeButton){
 			bundle.putString("emergencyName", getString(R.string.earthquake_title));
 			bundle.putString("emergencyInfo", getString(R.string.earthquake_text));
-		} else if (id == R.id.button3){
+		} else if (id == R.id.topEmergencyPreparednessButton || id == R.id.emergencyPreparednessButton){
 			bundle.putString("emergencyName", getString(R.string.emergency_preparedness_title));
 			bundle.putString("emergencyInfo", getString(R.string.emergency_preparedness_text));
-		} else if (id == R.id.button4){
+		} else if (id == R.id.topFireButton || id == R.id.fireButton){
 			bundle.putString("emergencyName", getString(R.string.fire_title));
 			bundle.putString("emergencyInfo", getString(R.string.fire_text));
-		} else if (id == R.id.button5){
+		} else if (id == R.id.topPersonsInDistressButton || id == R.id.personsInDistressButton){
 			bundle.putString("emergencyName", getString(R.string.persons_in_distress_title));
 			bundle.putString("emergencyInfo", getString(R.string.persons_in_distress_text));
-		} else if (id == R.id.button6){
+		} else if (id == R.id.bombThreatButton){
 			bundle.putString("emergencyName", getString(R.string.bomb_threat_title));
 			bundle.putString("emergencyInfo", getString(R.string.bomb_threat_text));
-		} else if (id == R.id.button7){
+		} else if (id == R.id.evacuationButton){
 			bundle.putString("emergencyName", getString(R.string.evacuation_title));
 			bundle.putString("emergencyInfo", getString(R.string.evacuation_text));
-		} else if (id == R.id.button8){
+		} else if (id == R.id.evacuationDisabilitiesButton){
 			bundle.putString("emergencyName", getString(R.string.evacuation_disabilities_title));
 			bundle.putString("emergencyInfo", getString(R.string.evacuation_disabilities_text));
-		} else if (id == R.id.button9){
+		} else if (id == R.id.hazardousMaterialButton){
 			bundle.putString("emergencyName", getString(R.string.hazardous_material_title));
 			bundle.putString("emergencyInfo", getString(R.string.hazardous_material_text));
-		} else if (id == R.id.button10){
+		} else if (id == R.id.hazardousMaterialShelterButton){
 			bundle.putString("emergencyName", getString(R.string.hazardous_material_shelter_title));
 			bundle.putString("emergencyInfo", getString(R.string.hazardous_material_shelter_text));
-		} else if (id == R.id.button11){
+		} else if (id == R.id.medicalEmergencyButton){
 			bundle.putString("emergencyName", getString(R.string.medical_emergency_title));
 			bundle.putString("emergencyInfo", getString(R.string.medical_emergency_text));
-		} else if (id == R.id.button12){
+		} else if (id == R.id.suspiciousPackageButton){
 			bundle.putString("emergencyName", getString(R.string.suspicious_package_title));
 			bundle.putString("emergencyInfo", getString(R.string.suspicious_package_text));
-		} else if (id == R.id.button13){
+		} else if (id == R.id.violenceButton){
 			bundle.putString("emergencyName", getString(R.string.violence_title));
 			bundle.putString("emergencyInfo", getString(R.string.violence_text));
-		} else if (id == R.id.button14){
+		} else if (id == R.id.utilityFailureButton){
 			bundle.putString("emergencyName", getString(R.string.utility_failure_title));
 			bundle.putString("emergencyInfo", getString(R.string.utility_failure_text));
 		}
