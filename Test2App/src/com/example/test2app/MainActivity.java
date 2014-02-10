@@ -350,7 +350,7 @@ public class MainActivity extends FragmentActivity {
 	//creates intent used to store the information of a different activity within this activity
 	//startActivity(intent) changes the current activity to the intent activity
 	public void goToEmergencyInfo(View view) { 
-		Intent intent = new Intent(this,EmergencyInfoActivity.class);
+		Intent intent = new Intent(this,EmergencyActivity.class);
 		startActivity(intent);
 	}
 

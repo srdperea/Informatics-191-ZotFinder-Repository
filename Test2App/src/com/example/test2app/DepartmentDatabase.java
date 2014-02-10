@@ -15,10 +15,7 @@ public class DepartmentDatabase extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		/*
-		 * Create the employee table and populate it with sample data.
-		 * In step 6, we will move these hardcoded statements to an XML document.
-		 */
+		
 		String sql = "CREATE TABLE IF NOT EXISTS department (" +
 						"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
 						"departmentName TEXT, " +

@@ -51,7 +51,6 @@ public class SearchActivity extends ListActivity {
 	Cursor cursor;
 	SQLiteDatabase buildingDb;
 	SQLiteDatabase departmentDb;
-	SQLiteDatabase personDb;
 	boolean addedDatabase;
 	int searchChooser; //-1=person; 0=building; 1=department
 	String personOutput;
@@ -108,7 +107,6 @@ public class SearchActivity extends ListActivity {
 
 		buildingDb = buildingDatabase.getReadableDatabase();
 		departmentDb = departmentDatabase.getReadableDatabase();
-		personDb = (new PersonDatabase(this)).getReadableDatabase();
 		searchBox = (EditText) findViewById(R.id.searchText);
 		
 		searchBox.setOnEditorActionListener(new OnEditorActionListener() {

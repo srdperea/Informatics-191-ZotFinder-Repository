@@ -17,16 +17,12 @@ public class EmergencyProcedureActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_emergency_procedure);
 		
-		//grabs the name from the intent passed from SearchActivity
-		//puts it into set textView:"personInfoHeaderTextView"
-		
 		emergencyTitle = getIntent().getExtras().getString("emergencyName");
 		TextView emergencyTitleTextView = (TextView) findViewById(R.id.emergencyProcedureHeaderTextView);
 		emergencyTitleTextView.setText(Html.fromHtml(emergencyTitle)); 
 		emergencyInfo = getIntent().getExtras().getString("emergencyInfo");
 		TextView emergencyTextView = (TextView) findViewById(R.id.emergencyProcedureTextView);
 		emergencyTextView.setText(Html.fromHtml(emergencyInfo)); 
-		
 			
 	}
 	

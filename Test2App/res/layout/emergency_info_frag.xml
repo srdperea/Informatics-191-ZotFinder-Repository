@@ -3,6 +3,7 @@
     android:id="@+id/R1Layout"
   	android:layout_width="wrap_content"
   	android:layout_height="wrap_content" 
+  	android:background="@color/holo_dark"
   	xmlns:android="http://schemas.android.com/apk/res/android">
 	<!-- This is the button for formatting and Toggling -->
 	<Button 
@@ -16,17 +17,17 @@
 	   android:textSize="@dimen/button_text_size" />
 		   	    
 		   	    
-    <!-- Footer -->
+    <!-- Footer 
     <include
         layout="@layout/commonfooter" /> 
-    
+    -->
     <!-- Top Half of layout -->
     <RelativeLayout
 	    android:id="@+id/R2Layout"
 	  	android:layout_width="wrap_content"
 	  	android:layout_height="wrap_content" >
 	  	
-    <!-- Header -->
+    <!-- Header 
 	<TableRow
         android:id="@+id/e_tableRow1"
         android:layout_width="match_parent"
@@ -61,6 +62,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white" />
     </TableRow> 
+    -->
     
 	<RelativeLayout 
 		    android:id="@+id/EmergencyViews"
@@ -524,10 +526,6 @@
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/white"
 				android:onClick="viewInfo" />
-			        
-
-				
- 
         </RelativeLayout>      
 	</ScrollView>
 </RelativeLayout>
