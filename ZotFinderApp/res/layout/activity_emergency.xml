@@ -4,13 +4,27 @@
     android:layout_height="fill_parent"
     android:background="@color/holo_dark"
     android:orientation="vertical" >
+  
     
+      
 	<android.support.v4.view.ViewPager
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/pager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
      />
-	<include
-       layout="@layout/commonfooter" /> 
+	
+	
+	
+       
+	 <fragment android:name="com.example.test2app.EmergencyInfoFragment"
+              android:id="@+id/emergency_info_frag"
+              android:layout_width="0dp"
+              android:layout_height="match_parent" />
+	 
+	 <fragment android:name="com.example.test2app.RolesExpectationsFragment"
+              android:id="@+id/roles_expectation_fragment"
+              android:layout_width="0dp"
+              android:layout_height="match_parent" />
+	
 </FrameLayout>

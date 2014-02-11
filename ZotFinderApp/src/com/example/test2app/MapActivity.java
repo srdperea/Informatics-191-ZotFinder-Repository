@@ -141,6 +141,23 @@ public class MapActivity extends FragmentActivity {
 	        	 	mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 	        	 	destinationPoint = new LatLng(latitude, longitude);
 	         }
+	         else if(type==2)
+	         {
+	        	 float latitude = getIntent().getExtras().getFloat("serviceLatitude");
+	        	 float longitude = getIntent().getExtras().getFloat("serviceLongitude");
+	        	 int id = getIntent().getExtras().getInt("SERVICE_ID");
+	        	 String name = getIntent().getExtras().getString("serviceName");
+	        	 String address = getIntent().getExtras().getString("serviceAddress");
+	        	 
+	        	 mMap.addMarker(new MarkerOptions()
+	        	 	.position(new LatLng(latitude, longitude))
+	        	 	.title(name)
+	        	 	.snippet("Address: " + address));
+	        	 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
+		         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+		         destinationPoint = new LatLng(latitude, longitude);
+	         }
+	         
 	     }
 	}
 	

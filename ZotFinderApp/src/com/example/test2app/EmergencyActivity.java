@@ -1,33 +1,61 @@
 package com.example.test2app;
 
-
 import android.os.Bundle;
-import android.app.Activity;
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
 
-public class EmergencyInfoActivity extends Activity {
-	Bundle bundle;
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) 
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_emergency_info);
-	       //bundle is used as a map (data structure) to pass to new activity
-        bundle = new Bundle();
-	}
-	
-	//Emergency Information methods
-	
-	//method to go to activity: ActiveShooterActivity
-	//creates intent used to store the information of a different activity within this activity
-	//startActivity(intent) changes the current activity to the intent activity
-
-	public void viewInfo(View v)
+public class EmergencyActivity extends FragmentActivity {
+    ViewPager Tab;
+    TabPageAdapter TabAdapter;
+    ActionBar actionBar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_emergency);
+        TabAdapter = new TabPageAdapter(getSupportFragmentManager());
+        Tab = (ViewPager)findViewById(R.id.pager);
+        Tab.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        actionBar = getActionBar();
+                        actionBar.setSelectedNavigationItem(position);                    }
+                });
+        Tab.setAdapter(TabAdapter);
+        actionBar = getActionBar();
+        //Enable Tabs on Action Bar
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        ActionBar.TabListener tabListener = new ActionBar.TabListener(){
+            @Override
+            public void onTabReselected(android.app.ActionBar.Tab tab,
+                    FragmentTransaction ft) {
+               
+            }
+            @Override
+             public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+                Tab.setCurrentItem(tab.getPosition());
+            }
+            @Override
+            public void onTabUnselected(android.app.ActionBar.Tab tab,
+                    FragmentTransaction ft) {
+               
+            }};
+            //Add New Tab
+            actionBar.addTab(actionBar.newTab().setText("Emergency Procedures").setTabListener(tabListener));
+            actionBar.addTab(actionBar.newTab().setText("Roles & Expectations").setTabListener(tabListener));
+          
+    }
+    
+    public void viewInfo(View v)
 	{
 		int id = v.getId();
+		
+		Bundle bundle = new Bundle();
 
 		if(id == R.id.topActiveShooterButton || id == R.id.activeShooterButton) {
 			bundle.putString("emergencyName", getString(R.string.active_shooter_title));
@@ -81,49 +109,51 @@ public class EmergencyInfoActivity extends Activity {
 	    emergencyProcedureActivity.putExtras(bundle);
 	    startActivity(emergencyProcedureActivity);	
 	}
-    	
+    
+    public void goToStudentExpectations(View view) {
+		Intent intent = new Intent(this,StudentExpectationsActivity.class);
+		startActivity(intent);
+	}
+	
+	public void goToFacultyExpectations(View view) {
+		Intent intent = new Intent(this,FacultyExpectationsActivity.class);
+		startActivity(intent);
+	}
+	
+    
 	//Footer Methods
-    public void finishActivity(View v){
-    finish();
-    }
-	
 	//method to go to activity: MainActivity
-	//creates intent used to store the information of a different activity within this activity
-	//startActivity(intent) changes the current activity to the intent activity
-	public void goToMap(View view) { 
-		Intent intent = new Intent(this,MainActivity.class);
-		startActivity(intent);
-		overridePendingTransition(R.anim.slide_right,R.anim.abc_fade_in);
-	}
-	 
-	//method to go to activity: EmergencyInfoActivity
-	//creates intent used to store the information of a different activity within this activity
-	//startActivity(intent) changes the current activity to the intent activity
-	public void goToEmergencyInfo(View view) { 
-		Intent intent = new Intent(this,EmergencyInfoActivity.class);
-		startActivity(intent);
-	}
+		//creates intent used to store the information of a different activity within this activity
+		//startActivity(intent) changes the current activity to the intent activity
+		public void goToMap(View view) { 
+			Intent intent = new Intent(this,MainActivity.class);
+			startActivity(intent);
+		}
 
-	//method to go to activity: DialerActivity
-	//creates intent used to store the information of a different activity within this activity
-	//startActivity(intent) changes the current
-	public void goToEmergencyDialer(View view) { 
-		Intent intent = new Intent(this,DialerActivity.class);
-		startActivity(intent);
-		overridePendingTransition(R.anim.slide_left,R.anim.abc_fade_in);
-	}
-	
-	public void goToRolesExpectations(View view) { 
-		Intent intent = new Intent(this,RolesExpectationsActivity.class);
-		startActivity(intent);
-	}
+	//method to go to activity: EmergencyActivity
+		//creates intent used to store the information of a different activity within this activity
+		//startActivity(intent) changes the current activity to the intent activity
+		public void goToEmergencyInfo(View view) { 
+			Intent intent = new Intent(this,EmergencyActivity.class);
+			startActivity(intent);
+		}
+
+		//method to go to activity: DialerActivity
+		//creates intent used to store the information of a different activity within this activity
+		//startActivity(intent) changes the current
+		public void goToEmergencyDialer(View view) { 
+			Intent intent = new Intent(this,DialerActivity.class);
+			startActivity(intent);
+		}
+		
+		
 	 
 	//menu functionality when the user press the physical menu button located on the phone
 	//currently the menu feature does nothing
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.emergency_info, menu);
+		getMenuInflater().inflate(R.menu.emergency, menu);
 		return true;
 	}
 }

@@ -94,6 +94,16 @@
 	        android:onClick="chooseDepartmentSearch"
 	        android:text="Department" />
 	    
+	    <Button
+	        android:id="@+id/serviceTab"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@+id/serviceTab"
+	        android:layout_below="@+id/tableRow1"
+	        android:layout_marginTop="25dp"
+	        android:onClick="chooseServicesSearch"
+	        android:text="Service" />
+	    
 	    <LinearLayout
 		    android:id="@+id/searchBoxLayout"
 		    android:orientation="horizontal"
@@ -108,7 +118,7 @@
 			android:layout_weight="1"
 			android:inputType="text"
 			android:imeOptions="actionGo"
-			android:hint="Enter Person, Bldg, or Dpt"/>
+			android:hint="Enter Person, Bldg, Dpt, or Service"/>
 	
 		<Button
 			android:id="@+id/searchButton"

@@ -51,10 +51,6 @@ public class StudentExpectationsActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	public void goToRolesExpectations(View view) { 
-		Intent intent = new Intent(this,RolesExpectationsActivity.class);
-		startActivity(intent);
-	}
 	 
 	//menu functionality when the user press the physical menu button located on the phone
 	//currently the menu feature does nothing

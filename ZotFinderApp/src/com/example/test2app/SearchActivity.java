@@ -51,9 +51,9 @@ public class SearchActivity extends ListActivity {
 	Cursor cursor;
 	SQLiteDatabase buildingDb;
 	SQLiteDatabase departmentDb;
-	SQLiteDatabase personDb;
+	SQLiteDatabase serviceDb;
 	boolean addedDatabase;
-	int searchChooser; //-1=person; 0=building; 1=department
+	int searchChooser; //-1=person; 0=building; 1=department ; 2=services
 	String personOutput;
 	
 	@Override
@@ -63,11 +63,13 @@ public class SearchActivity extends ListActivity {
 		
 		BuildingDatabase buildingDatabase = new BuildingDatabase(this);
 		DepartmentDatabase departmentDatabase = new DepartmentDatabase(this);
+		ServicesDatabase servicesDatabase = new ServicesDatabase(this);
 		
 		BufferedReader br = null;
 		String line = "";
 		InputStream buildingIS = null;
 		InputStream departmentIS = null;
+		InputStream servicesIS = null;
 		
 		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
 		addedDatabase = settings.getBoolean("addedDatabase", false);
@@ -103,12 +105,28 @@ public class SearchActivity extends ListActivity {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			servicesIS = getResources().openRawResource(R.raw.campus_services);
+			try {
+				br = new BufferedReader(new InputStreamReader(servicesIS));
+				while ((line = br.readLine()) != null)
+				{
+					String[] servicesInfo = line.split(",");
+					servicesDatabase.addToDatabase(servicesInfo);
+				}
+				servicesIS.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			addedDatabase = true;
 		}
+		
 
 		buildingDb = buildingDatabase.getReadableDatabase();
 		departmentDb = departmentDatabase.getReadableDatabase();
-		personDb = (new PersonDatabase(this)).getReadableDatabase();
+		serviceDb = servicesDatabase.getReadableDatabase();
 		searchBox = (EditText) findViewById(R.id.searchText);
 		
 		searchBox.setOnEditorActionListener(new OnEditorActionListener() {
@@ -224,7 +242,9 @@ public class SearchActivity extends ListActivity {
 	public void chooseDepartmentSearch(View view){
 		searchChooser = 1;
 	}
-
+	public void chooseServicesSearch(View view){
+		searchChooser = 2;
+	}
 	@SuppressWarnings("deprecation")
 	public void search(View view) throws InterruptedException, ExecutionException{
 		if (searchChooser == 0){
@@ -272,6 +292,17 @@ public class SearchActivity extends ListActivity {
 				setListAdapter(simpleAdapter);
 			}
 		}
+		else if (searchChooser == 2){
+			cursor = serviceDb.rawQuery("SELECT _id, serviceName, serviceAddress FROM service WHERE serviceName || ' ' || serviceAddress LIKE ?", 
+					new String[]{"%" + searchBox.getText().toString() + "%"});
+			listAdapter = new SimpleCursorAdapter(
+					this, 
+					R.layout.activity_services_list_item, 
+					cursor, 
+					new String[] {"serviceName", "serviceAddress"}, 
+					new int[] {R.id.serviceName, R.id.serviceAddress});
+			setListAdapter(listAdapter);
+		}
 	}
 	
 	
@@ -309,6 +340,13 @@ public class SearchActivity extends ListActivity {
 			}
 	    	//bundle.putSerializable("person", personResults);
 	    	intent.putExtra("person",personResults);
+	    	startActivity(intent);
+    	}
+    	else if (searchChooser == 2){
+    		Intent intent = new Intent(this, ServicesInfoActivity.class);
+	    	Cursor cursor = (Cursor) listAdapter.getItem(position);
+	    	bundle.putInt("SERVICE_ID", cursor.getInt(cursor.getColumnIndex("_id")));
+	    	intent.putExtras(bundle);
 	    	startActivity(intent);
     	}
     }

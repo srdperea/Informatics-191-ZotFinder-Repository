@@ -18,6 +18,7 @@
     <string name="fax_header">Fax Number</string>
     <string name="email_header">Email</string>
     <string name="department_info">Department Name</string>
+    <string name="service_info">Service Name</string>
     <string name="dept_address">Address</string>
     <string name="dept_number">Office Phone Number</string>
     <string name="dept_website">Website</string>
@@ -424,5 +425,6 @@
     <string name="title_activity_person_list_item">PersonListItemActivity</string>
     <string name="title_activity_emergency_procedure">EmergencyProcedureActivity</string>
     <string name="title_activity_emergency">EmergencyActivity</string>
+    <string name="title_activity_services_info">ServicesInfoActivity</string>
 
 </resources>
