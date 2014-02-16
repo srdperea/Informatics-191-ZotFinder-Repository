@@ -87,7 +87,6 @@ public class DialerActivity extends Activity {
 	public void goToMap(View view) { 
 		Intent intent = new Intent(this,MainActivity.class);
 		startActivity(intent);
-		overridePendingTransition(R.anim.slide_right,R.anim.abc_fade_in);
 	}
 	 
 	//method to go to activity: EmergencyInfoActivity
@@ -96,7 +95,6 @@ public class DialerActivity extends Activity {
 	public void goToEmergencyInfo(View view) { 
 		Intent intent = new Intent(this,EmergencyActivity.class);
 		startActivity(intent);
-		overridePendingTransition(R.anim.slide_right,R.anim.abc_fade_in);
 	}
 
 	//method to go to activity: DialerActivity

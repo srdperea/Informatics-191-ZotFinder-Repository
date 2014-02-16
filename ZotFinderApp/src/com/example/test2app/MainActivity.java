@@ -26,6 +26,7 @@ import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.example.test2app.DirectionsJSONParser;
 import com.example.test2app.view.viewgroup.FlyOutContainer;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -36,13 +37,11 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends SherlockFragmentActivity {
 	//map
 	private GoogleMap mMap;
 	//object for markers
 	private Markers marker = new Markers();
-	//slideOut window
-	FlyOutContainer root;
 
 	//LatLng coordinate for default Map focus/centering 
 	static final LatLng UCI = new LatLng(33.6455843, -117.8419771);
@@ -55,11 +54,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.activity_main);
-		
-		this.root = (FlyOutContainer) this.getLayoutInflater().inflate(R.layout.activity_main, null);
-		
-		this.setContentView(root);
+		setContentView(R.layout.activity_main);
 	    
 	    //Initialize Map
 		//Google maps requires the map to be a fragment 
@@ -278,11 +273,6 @@ public class MainActivity extends FragmentActivity {
             mMap.addPolyline(lineOptions);
         }
     }
-    
-	//Activates the slide menu 
-	public void toggleMenu(View v){
-		this.root.toggleMenu();
-	}
 	
 	//Toggles the Emergency Area markers on or off (depending on the state of the boolean)
 	public void toggleEaMarker(View v){
@@ -365,14 +355,6 @@ public class MainActivity extends FragmentActivity {
 	public void goToSearch(View view){
 		Intent intent = new Intent(this,SearchActivity.class);
 		startActivity(intent);
-	}
-	//menu functionality when the user press the physical menu button located on the phone
-	//currently the menu feature does nothing
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
 	}
 	
 }

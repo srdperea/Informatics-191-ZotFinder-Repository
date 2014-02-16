@@ -58,7 +58,7 @@
         <activity
             android:name="com.example.test2app.MainActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="com.example.test2app.DialerActivity"
@@ -111,7 +111,7 @@
         <activity
             android:name="com.example.test2app.MapActivity"
             android:label="@string/title_activity_map"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="com.example.test2app.EmergencyActivity"
