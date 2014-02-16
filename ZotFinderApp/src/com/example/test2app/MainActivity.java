@@ -33,6 +33,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 
@@ -40,8 +41,6 @@ import com.google.android.gms.maps.model.PolylineOptions;
 public class MainActivity extends SherlockFragmentActivity {
 	//map
 	private GoogleMap mMap;
-	//object for markers
-	private Markers marker = new Markers();
 
 	//LatLng coordinate for default Map focus/centering 
 	static final LatLng UCI = new LatLng(33.6455843, -117.8419771);
@@ -49,6 +48,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	//coordinate for user's current location
 	//this coordinate is dynamic
 	public LatLng currentLocation;
+	protected LatLng destinationPoint;
 	
 	 
 	@Override
@@ -76,9 +76,78 @@ public class MainActivity extends SherlockFragmentActivity {
 	    
 	    //add uci marker and set zoom
 	     if (mMap!=null){
-	    	 marker.addBluePhoneMarker(mMap);
-	    	 marker.addEmergencyAreaMarker(mMap);
-	    	 marker.addRestroomMarker(mMap);
+	    	 Markers.addBluePhoneMarker(mMap);
+	    	 Markers.addEmergencyAreaMarker(mMap);
+	    	 Markers.addRestroomMarker(mMap);
+	    	 
+	    	 if(getIntent().getExtras() != null){
+	    		 int type = getIntent().getExtras().getInt("type");
+		         if (type ==1)
+		         {
+		        	 float latitude = getIntent().getExtras().getFloat("buildingLatitude");
+		        	 float longitude = getIntent().getExtras().getFloat("buildingLongitude");
+		        	 int id = getIntent().getExtras().getInt("BUILDING_ID");
+		        	 String name = getIntent().getExtras().getString("buildingName");
+		        	 String address = getIntent().getExtras().getString("buildingAddress");
+		        	 String number = getIntent().getExtras().getString("buildingNumber");
+		        	 
+		        	 mMap.addMarker(new MarkerOptions()
+		        	 	.position(new LatLng(latitude, longitude))
+		        	 	.title(name)
+		        	 	.snippet("Address: " + address +  "Building Number: " + number));
+		        	 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
+			         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+			         destinationPoint = new LatLng(latitude, longitude);
+		         }
+		         else if(type==2)
+		         {
+		        	 float latitude = getIntent().getExtras().getFloat("departmentLatitude");
+		        	 float longitude = getIntent().getExtras().getFloat("departmentLongitude");
+		        	 int id = getIntent().getExtras().getInt("DEPARTMENT_ID");
+		        	 String name = getIntent().getExtras().getString("departmentName");
+		        	 String address = getIntent().getExtras().getString("departmentAddress");
+		        	 String phoneNumber = getIntent().getExtras().getString("departmentPhoneNumber");
+		        	 String website = getIntent().getExtras().getString("departmentWebsite");
+		        	 
+		        	 mMap.addMarker(new MarkerOptions()
+		        	 	.position(new LatLng(latitude, longitude))
+		        	 	.title(name)
+		        	 	.snippet("Address: " + address));
+		        	 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
+			         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+			         destinationPoint = new LatLng(latitude, longitude);
+		         }
+		         else if (type==3)
+		         {
+		        	 float latitude = getIntent().getExtras().getFloat("officeLatitude");
+		        	 float longitude = getIntent().getExtras().getFloat("officeLongitude");
+		        	 String name = getIntent().getExtras().getString("personName");
+		        	 String officeLocation = getIntent().getExtras().getString("officeAddress");
+		        	 
+		        	 mMap.addMarker(new MarkerOptions()
+		        	 	.position(new LatLng(latitude, longitude))
+		        	 	.title(name)
+		        	 	.snippet("Office Location: " + officeLocation));
+		        	 	mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+		        	 	destinationPoint = new LatLng(latitude, longitude);
+		         }
+		         else if(type==4)
+		         {
+		        	 float latitude = getIntent().getExtras().getFloat("serviceLatitude");
+		        	 float longitude = getIntent().getExtras().getFloat("serviceLongitude");
+		        	 int id = getIntent().getExtras().getInt("SERVICE_ID");
+		        	 String name = getIntent().getExtras().getString("serviceName");
+		        	 String address = getIntent().getExtras().getString("serviceAddress");
+		        	 
+		        	 mMap.addMarker(new MarkerOptions()
+		        	 	.position(new LatLng(latitude, longitude))
+		        	 	.title(name)
+		        	 	.snippet("Address: " + address));
+		        	 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
+			         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+			         destinationPoint = new LatLng(latitude, longitude);
+		         }
+	    	 }
 	    	 
 	         //Animates the camera to the LatLng coordinate "UCI" which acts as the center
 	         //initial zoom is set to 15 but this can be changed
@@ -276,26 +345,26 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 	//Toggles the Emergency Area markers on or off (depending on the state of the boolean)
 	public void toggleEaMarker(View v){
-			marker.toggleEmergencyMarker();
-			//animates the camera back to initial center point (UCI)
-			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
-	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+		Markers.toggleEmergencyMarker();
+		//animates the camera back to initial center point (UCI)
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
+	    mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 	}
 	
 	//Toggles the Blue Phone Post markers on or off (depending on the state of the boolean)
 	public void toggleBpMarker(View v){
-			marker.toggleBluePhone();
-			//animates the camera back to initial center point (UCI)
-			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
-	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+		Markers.toggleBluePhone();
+		//animates the camera back to initial center point (UCI)
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
+	    mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 	}
 	
 	//Toggles the Restroom markers on or off (depending on the state of the boolean)
 	public void toggleRrMarker(View v){
-			marker.toggleRestroom();
-			//animates the camera back to initial center point (UCI)
-			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
-	        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+		Markers.toggleRestroom();
+		//animates the camera back to initial center point (UCI)
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
+	    mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 	}
 	
 	//Finds the current location of the user

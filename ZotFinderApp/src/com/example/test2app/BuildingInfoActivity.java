@@ -58,9 +58,9 @@ public class BuildingInfoActivity extends Activity {
 	
 	public void plotPoint(View view)
 	{
-		Intent intent = new Intent(this,MapActivity.class);
+		Intent intent = new Intent(this,MainActivity.class);
 		Bundle bundle = new Bundle();
-		bundle.putInt("type", 0);
+		bundle.putInt("type", 1);
 		bundle.putInt("BUILDING_ID", buildingId);
 		bundle.putString("buildingName", buildingNameString);
 		bundle.putString("buildingAddress", buildingAddressString);

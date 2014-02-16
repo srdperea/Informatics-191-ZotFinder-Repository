@@ -97,9 +97,9 @@ public class PersonInfoActivity extends Activity {
              if (cursor.getCount() == 1)
              {
                      cursor.moveToFirst();
-                     Intent intent = new Intent(this,MapActivity.class);
+                     Intent intent = new Intent(this,MainActivity.class);
                      Bundle bundle = new Bundle();
-                     bundle.putInt("type", -1);
+                     bundle.putInt("type", 3);
                      bundle.putString("personName", name);
                      bundle.putString("officeAddress", officeLocation);
                      bundle.putFloat("officeLatitude", cursor.getFloat(cursor.getColumnIndex("buildingLatitude")));

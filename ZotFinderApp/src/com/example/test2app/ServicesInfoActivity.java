@@ -48,9 +48,9 @@ public class ServicesInfoActivity extends Activity {
 	
 	public void plotPoint(View view)
 	{
-		Intent intent = new Intent(this,MapActivity.class);
+		Intent intent = new Intent(this,MainActivity.class);
 		Bundle bundle = new Bundle();
-		bundle.putInt("type", 2);
+		bundle.putInt("type", 4);
 		bundle.putInt("service_ID", serviceId);
 		bundle.putString("serviceName", serviceNameString);
 		bundle.putString("serviceAddress", serviceAddressString);

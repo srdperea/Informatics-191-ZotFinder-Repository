@@ -109,11 +109,6 @@
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.example.test2app.MapActivity"
-            android:label="@string/title_activity_map"
-            android:theme="@style/Theme.Sherlock" >
-        </activity>
-        <activity
             android:name="com.example.test2app.EmergencyActivity"
             android:label="@string/title_activity_emergency" >
         </activity>

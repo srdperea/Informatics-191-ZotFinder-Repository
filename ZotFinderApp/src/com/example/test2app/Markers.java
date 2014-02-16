@@ -13,20 +13,20 @@ public class Markers {
 		//Array of corrresponding LatLng coordinates
 		//used to store markers made from coordinates above
 		//also allows toggling of all markers in respected arrays
-		ArrayList<Marker> emergencyArea = new ArrayList<Marker>();
-		ArrayList<Marker> bluePhone = new ArrayList<Marker>();
-		ArrayList<Marker> restroom = new ArrayList<Marker>();
-		ArrayList<Marker> building = new ArrayList<Marker>();
+		protected static ArrayList<Marker> emergencyArea = new ArrayList<Marker>();
+		protected static ArrayList<Marker> bluePhone = new ArrayList<Marker>();
+		protected static ArrayList<Marker> restroom = new ArrayList<Marker>();
+		protected static ArrayList<Marker> building = new ArrayList<Marker>();
 		//---Booleans to show or hide markers---
 		//eaShow=true - Show all Emergency Area Markers
 		//eaShow=false - Hide all Emegency Area Markers
-		public boolean eaShow=true;
+		protected static boolean eaShow=true;
 		//bpShow=true - Show all Blue Phone Post Markers
 		//bpShow=false - Hide all Blue Phone Post Markers
-		public boolean bpShow=true;
+		protected static boolean bpShow=true;
 		//rrShow=true - Show all Restroom Markers
 		//rrSHow=false - Hide all Restroom Markers
-		public boolean rrShow=true;
+		protected static boolean rrShow=true;
 		
 		//Assembly Area LatLng coordinates
 		static final LatLng EA1 = new LatLng(33.64825818995, -117.841933738);
@@ -222,7 +222,7 @@ public class Markers {
 
 	
 		
-		public void addEmergencyAreaMarker(GoogleMap mMap){
+		public static void addEmergencyAreaMarker(GoogleMap mMap){
 			//Makes markers from corresponding LatLng coordinates
 	    	 //and adds them to their respective array 
 	    	 
@@ -239,7 +239,7 @@ public class Markers {
 	         emergencyArea.add(mMap.addMarker(new MarkerOptions().position(EA10).title("Residential").icon(BitmapDescriptorFactory.fromResource(R.drawable.emergency_area_icon))));
 	         
 		}
-		public void addBluePhoneMarker (GoogleMap mMap){
+		public static void addBluePhoneMarker (GoogleMap mMap){
 			 //Emergency blue phone posts
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP1).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
 	         bluePhone.add(mMap.addMarker(new MarkerOptions().position(BP2).title("Blue Light Phone").icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
@@ -399,7 +399,7 @@ public class Markers {
 
 		}
 		
-		public void addRestroomMarker(GoogleMap mMap){
+		public static void addRestroomMarker(GoogleMap mMap){
 			 //Restroom markers
 	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR1).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
 	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR2).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
@@ -424,7 +424,7 @@ public class Markers {
 	         restroom.add(mMap.addMarker(new MarkerOptions().position(RR21).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
 		}
 		
-		public void addBuildingMarker(GoogleMap mMap)
+		public static void addBuildingMarker(GoogleMap mMap)
 		{
 			building.add(mMap.addMarker(new MarkerOptions().position(new LatLng(	33.641466	, -117.834031	)	).title("Building") ));
 			building.add(mMap.addMarker(new MarkerOptions().position(new LatLng(	33.64156	, -117.833509	)	).title("Building") ));
@@ -1084,7 +1084,7 @@ public class Markers {
 			
 		}
 		
-		public void toggleEmergencyMarker(){
+		public static void toggleEmergencyMarker(){
 			
 			//if eaShow=true
 			if(eaShow){
@@ -1104,7 +1104,7 @@ public class Markers {
 			}
 		}
 		
-		public void toggleBluePhone(){
+		public static void toggleBluePhone(){
 			//if bpShow=true
 			if(bpShow){
 				//hide all Blue Phone Post markers
@@ -1123,7 +1123,7 @@ public class Markers {
 			}
 		}
 		
-		public void toggleRestroom(){
+		public static void toggleRestroom(){
 			//if rrShow=true
 			if(rrShow){
 				//hide all Restroom markers
