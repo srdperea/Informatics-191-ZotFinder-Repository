@@ -13,8 +13,7 @@
          android:background="@drawable/map_icon_pressed"
          android:alpha="0"
          android:textColor="@color/white"
-         android:textSize="@dimen/button_text_size"
- 	       android:onClick="toggleMenu" />
+         android:textSize="@dimen/button_text_size" />
    
  	    <!-- Map -->
     <fragment
@@ -22,7 +21,6 @@
 	    android:name="com.google.android.gms.maps.SupportMapFragment"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/tableRow1"
 	    android:layout_above="@+id/transparent_button"
 	    android:layout_marginBottom="2dp"/>
 

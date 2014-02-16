@@ -462,8 +462,6 @@ public class MainActivity extends SherlockFragmentActivity {
 	//creates intent used to store the information of a different activity within this activity
 	//startActivity(intent) changes the current activity to the intent activity
 	public void goToMap(View view) { 
-		Intent intent = new Intent(this,MainActivity.class);
-		startActivity(intent);
 	}
 	 
 	//method to go to activity: EmergencyActivity
