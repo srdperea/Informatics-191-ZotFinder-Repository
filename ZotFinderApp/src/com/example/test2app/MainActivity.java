@@ -25,6 +25,9 @@ import android.widget.Toast;
 import android.support.v4.app.FragmentManager;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.SubMenu;
 import com.example.test2app.DirectionsJSONParser;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -47,11 +50,72 @@ public class MainActivity extends SherlockFragmentActivity {
 	public LatLng currentLocation;
 	protected LatLng destinationPoint;
 	
-	 
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+		menu.add("Search")
+        .setIcon(R.drawable.ic_search)
+        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+		
+		SubMenu subMenu1 = menu.addSubMenu("Action Item");
+        subMenu1.add("Blue Phone Posts");
+        subMenu1.add("Emergency Areas");
+        subMenu1.add("Restrooms");
+        subMenu1.add("About Us");
+
+        MenuItem subMenu1Item = subMenu1.getItem();
+        subMenu1Item.setIcon(R.drawable.ic_title_share_default);
+        subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        
+
+/*        SubMenu subMenu2 = menu.addSubMenu("Overflow Item");
+        subMenu2.add("These");
+        subMenu2.add("Are");
+        subMenu2.add("Sample");
+        subMenu2.add("Items");
+
+        MenuItem subMenu2Item = subMenu2.getItem();
+        subMenu2Item.setIcon(R.drawable.ic_compose);*/
+
+        return super.onCreateOptionsMenu(menu);
+    } 
+	
+	@Override
+	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+		
+		String itemTitle = item.getTitle().toString();
+		
+		if (itemTitle.equals("Blue Phone Posts")){
+			Markers.toggleBluePhone();
+			return true;
+		}
+		if (itemTitle.equals("Emergency Areas")){
+			Markers.toggleEmergencyMarker();
+			return true;
+		}
+		if (itemTitle.equals("Restrooms")){
+			Markers.toggleRestroom();
+			return true;
+		}
+		if (itemTitle.equals("About Us")){
+			return true;
+		}
+		if(itemTitle.equals("Search")){
+			Intent intent = new Intent(this,SearchActivity.class);
+			startActivity(intent);
+			return true;
+		}
+		return false;
+	};
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		getSupportActionBar().setTitle("Map");
+		getSupportActionBar().setHomeButtonEnabled(true);
 	    
 	    //Initialize Map
 		//Google maps requires the map to be a fragment 

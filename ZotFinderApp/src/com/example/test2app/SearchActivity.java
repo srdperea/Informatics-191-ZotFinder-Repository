@@ -419,7 +419,6 @@ public class SearchActivity extends ListActivity {
 	protected void onStop() {
 		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
 		SharedPreferences.Editor editor = settings.edit();
-	    editor.putBoolean("addedDatabase", addedDatabase);
 	    editor.putInt("searchType", searchChooser);
 	    editor.commit();
 		super.onStop();
@@ -429,7 +428,6 @@ public class SearchActivity extends ListActivity {
 	protected void onDestroy() {
 		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
 		SharedPreferences.Editor editor = settings.edit();
-	    editor.putBoolean("addedDatabase", addedDatabase);
 	    editor.putInt("searchType", searchChooser);
 	    editor.commit();
 		super.onDestroy();
@@ -439,7 +437,6 @@ public class SearchActivity extends ListActivity {
 	protected void onPause() {
 		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
 		SharedPreferences.Editor editor = settings.edit();
-	    editor.putBoolean("addedDatabase", addedDatabase);
 	    editor.putInt("searchType", searchChooser);
 	    editor.commit();
 		super.onPause();
