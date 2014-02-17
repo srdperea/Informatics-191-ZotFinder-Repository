@@ -65,7 +65,7 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 		
-		getSupportActionBar().setTitle("Search");
+		getSupportActionBar().setTitle("        Press icon to Search...");
 		getSupportActionBar().setHomeButtonEnabled(true);
 		
 		BuildingDatabase buildingDatabase = new BuildingDatabase(this);
