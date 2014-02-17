@@ -52,11 +52,12 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 	        searchView = new SearchView(getSupportActionBar().getThemedContext());
 	        searchView.setQueryHint("Press Button Below");
 	        searchView.setOnQueryTextListener(this);
-
-	        menu.add("Search")
+	        searchView.setIconified(false);
+	        menu.add(0,1,0, "Search")
 	            .setIcon(R.drawable.abs__ic_search)
 	            .setActionView(searchView)
-	            .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+	            .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+	        menu.findItem(1).expandActionView();
 	        return true;
 	    }
 	
@@ -65,7 +66,7 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 		
-		getSupportActionBar().setTitle("        Press icon to Search...");
+		getSupportActionBar().setTitle("Search");
 		getSupportActionBar().setHomeButtonEnabled(true);
 		
 		BuildingDatabase buildingDatabase = new BuildingDatabase(this);
@@ -343,11 +344,6 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 			return output;
 		}
 	}
-	
-  //Back button
-  	public void finishActivity(View v){
-  	    finish();
-  	    }
     
 	//Footer Methods
 	
