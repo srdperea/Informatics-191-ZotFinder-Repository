@@ -58,11 +58,11 @@ public class MainActivity extends SherlockFragmentActivity {
 
 		menu.add("Directions")
         .setIcon(R.drawable.ic_action_directions)
-        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 		
 		menu.add("Search")
         .setIcon(R.drawable.ic_search)
-        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 		
 		SubMenu subMenu1 = menu.addSubMenu("Action Item");
         subMenu1.add("Blue Phone Posts");
