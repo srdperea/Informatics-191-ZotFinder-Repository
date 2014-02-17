@@ -426,5 +426,6 @@
     <string name="title_activity_emergency_procedure">EmergencyProcedureActivity</string>
     <string name="title_activity_emergency">EmergencyActivity</string>
     <string name="title_activity_services_info">ServicesInfoActivity</string>
+    <string name="title_activity_fragment_stack_support">FragmentStackSupport</string>
 
 </resources>

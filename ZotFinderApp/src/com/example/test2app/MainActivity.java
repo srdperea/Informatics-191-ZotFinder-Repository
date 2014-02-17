@@ -34,6 +34,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 
@@ -49,10 +50,16 @@ public class MainActivity extends SherlockFragmentActivity {
 	//this coordinate is dynamic
 	public LatLng currentLocation;
 	protected LatLng destinationPoint;
+	Polyline polyline = null;
+	boolean directionsToggle = false;
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
+		menu.add("Directions")
+        .setIcon(R.drawable.ic_action_directions)
+        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+		
 		menu.add("Search")
         .setIcon(R.drawable.ic_search)
         .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
@@ -103,6 +110,12 @@ public class MainActivity extends SherlockFragmentActivity {
 		if(itemTitle.equals("Search")){
 			Intent intent = new Intent(this,SearchActivity.class);
 			startActivity(intent);
+			return true;
+		}
+		if(itemTitle.equals("Directions")){
+			if(destinationPoint!=null){
+				findDirections(destinationPoint);
+			}
 			return true;
 		}
 		return false;
@@ -220,15 +233,22 @@ public class MainActivity extends SherlockFragmentActivity {
 	//displays directions on the screen from current location to given point
 	//currently the end point is hardcoded as BP2 (33.64387631680, -117.82420840800)
 	//this will be changed later to be the end destinate of whatever the user picks
-	public void findDirections(View v, LatLng xy){
+	public void findDirections(LatLng xy){
 		
-	    // Getting URL to the Google Directions API given start point and end point
-        String url = getDirectionsUrl(currentLocation, xy);
-        
-        DownloadTask downloadTask = new DownloadTask();
-
-        // Start downloading json data from Google Directions API
-        downloadTask.execute(url);
+		if(!directionsToggle){
+		    // Getting URL to the Google Directions API given start point and end point
+	        String url = getDirectionsUrl(currentLocation, xy);
+	        
+	        DownloadTask downloadTask = new DownloadTask();
+	
+	        // Start downloading json data from Google Directions API
+	        downloadTask.execute(url);
+	        directionsToggle = true;
+		}
+		else {
+			polyline.remove();
+			directionsToggle = false;
+		}
 	}
 	
 	
@@ -400,7 +420,7 @@ public class MainActivity extends SherlockFragmentActivity {
             }
  
             // Drawing polyline in the Google Map for the i-th route
-            mMap.addPolyline(lineOptions);
+          polyline = mMap.addPolyline(lineOptions);
         }
     }
 	

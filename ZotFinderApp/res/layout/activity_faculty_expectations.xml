@@ -1,75 +1,46 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/TableLayout1"
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@color/holo_dark"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/holo_dark"
-    tools:context=".StudentExpectationsActivity" >
-
-   <TableRow
-        android:id="@+id/e_tableRow1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/header_color_blue" >
-        
-        <ImageButton 
-            android:id="@+id/backButton"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-			android:layout_marginLeft="2dp"
-			android:layout_marginTop="3dp"
-			android:layout_marginBottom="3dp"
-			android:padding="1dp"
-			android:gravity="center_horizontal"
-	        android:text="@string/back_button"
-	        android:textSize="12sp"
-	        android:textStyle="bold"
-	        android:background="@android:color/transparent"
-	        android:src="@drawable/ic_action_previous_item"
-	        android:onClick="finishActivity"
-	 
-	                />
-        
-		<TextView
-            android:id="@+id/FacultyHeaderTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="@string/faculty_button"
-            android:textSize="@dimen/font_size"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white" />
-    </TableRow> 
+    android:paddingTop="@dimen/activity_vertical_margin">
     
-	<ScrollView 
+    <!-- This is the button for formatting and Toggling -->
+	<Button 
+	   android:id="@+id/transparent_button"
+	   android:layout_width="wrap_content"
+	   android:layout_height="wrap_content"
+	   android:layout_alignParentBottom="true"
+	   android:background="@drawable/map_icon_pressed"
+	   android:alpha="0"
+	   android:textColor="@color/white"
+	   android:textSize="@dimen/button_text_size" />
+		   	    
+    
+ 	<include
+	        layout="@layout/commonfooter" />   
+
+    <ScrollView 
+	    android:id="@+id/ScrollLayout"
 	    android:layout_width="wrap_content"
-   		android:layout_height="380dp"
-   		android:paddingTop="10dip"
-   		android:paddingBottom="10dip"
-   		android:fillViewport="true"
-	    android:layout_gravity="center"
-	    android:background="@color/holo_dark">
+  		android:layout_height="match_parent"
+  		android:layout_above="@+id/transparent_button">
+	  			
 	    <TextView
 	        android:id="@+id/FacultyTextView"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:text="@string/faculty_expectations"
 	        android:textSize="15sp"
-	        android:textColor="@color/black" 
+	        android:textColor="@color/white" 
 	        android:layout_marginTop="20dp"
 	        android:layout_marginBottom="5dp"
-	        android:layout_marginLeft="5dp"
-	        android:layout_marginRight="5dp"
-	    	android:background="@color/light_gray"/>
-
-    </ScrollView>
+		    android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"/>
+	</ScrollView>
+	
     
-
-  	<include
-
-        layout="@layout/commonfooter" />
-</TableLayout>
+</RelativeLayout>

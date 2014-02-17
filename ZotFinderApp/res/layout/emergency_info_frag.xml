@@ -51,7 +51,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
 		android:layout_below="@+id/mostCommonEmergencyTextView"
-		android:layout_marginRight="18dp"
         android:background="@drawable/active_shooter_top" 
         android:onClick="viewInfo" /> 
         
@@ -75,9 +74,9 @@
         android:id="@+id/topEarthquakeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
 		android:layout_below="@+id/mostCommonEmergencyTextView"
-		android:layout_toRightOf="@+id/topActiveShooterButton"
+		android:layout_toLeftOf="@+id/topEmergencyPreparednessButton"
+		android:layout_marginRight="8dp"
         android:background="@drawable/earthquake_top"
         android:onClick="viewInfo"  /> 
         
@@ -127,9 +126,9 @@
         android:id="@+id/topFireButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
 		android:layout_below="@+id/mostCommonEmergencyTextView"
 		android:layout_toLeftOf="@+id/topPersonsInDistressButton"
+		android:layout_marginRight="8dp"
         android:background="@drawable/fire_top"
         android:onClick="viewInfo"  /> 
 	
@@ -155,7 +154,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
 		android:layout_below="@+id/mostCommonEmergencyTextView"
-		android:layout_marginLeft="18dp"
         android:background="@drawable/persons_in_distress_top"
         android:onClick="viewInfo"
 	        /> 
@@ -216,6 +214,7 @@
 		        android:id="@+id/activeShooterButton"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
 				android:layout_marginLeft="18dp"
 		        android:background="@drawable/active_shooter"
 		        android:onClick="viewInfo" /> 
@@ -342,8 +341,7 @@
 			    android:id="@+id/evacuationDisabilitiesButton"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:layout_below="@+id/earthquakeText"
-				android:layout_marginTop="10dp"
+			    android:layout_alignTop="@+id/evacuationButton"
 				android:layout_alignRight="@+id/earthquakeButton"
 			    android:background="@drawable/evacuation_disabilities"
 			    android:onClick="viewInfo" />
@@ -447,9 +445,8 @@
 		        android:id="@+id/medicalEmergencyButton"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-				android:layout_below="@+id/fireText"
+				android:layout_alignTop="@+id/suspiciousPackageButton"
 				android:layout_alignLeft="@+id/fireButton"
-				android:layout_marginTop="10dp"
 				android:background="@drawable/medical_emergency"
 		        android:onClick="viewInfo" />
 			
@@ -473,8 +470,7 @@
 		        android:id="@+id/personsInDistressButton"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-				android:layout_below="@+id/hazardousMaterialText"
-				android:layout_marginTop="10dp"
+				android:layout_alignTop="@+id/suspiciousPackageButton"
 				android:layout_centerHorizontal="true"
 		        android:background="@drawable/persons_in_distress"
 		        android:onClick="viewInfo"
@@ -526,8 +522,7 @@
 		        android:id="@+id/violenceButton"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-				android:layout_below="@+id/medicalEmergencyText"
-				android:layout_marginTop="10dp"
+				android:layout_alignTop="@+id/utilityFailureButton"
 				android:layout_alignLeft="@+id/medicalEmergencyButton"
 				android:layout_centerHorizontal="true"
 		        android:background="@drawable/violence"

@@ -23,73 +23,23 @@
     
  	<include
 	        layout="@layout/commonfooter" />   
-	        
- 	
-    <TableRow
-	        android:id="@+id/tableRow1"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentTop="true"
-	        android:background="@color/header_color_blue" >
-	        <ImageButton 
-            android:id="@+id/backButton"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-			android:layout_marginLeft="2dp"
-			android:layout_marginTop="3dp"
-			android:layout_marginBottom="3dp"
-			android:padding="1dp"
-			android:gravity="center_horizontal"
-	        android:text="@string/back_button"
-	        android:textSize="12sp"
-	        android:textStyle="bold"
-	        android:background="@android:color/transparent"
-	        android:src="@drawable/ic_action_previous_item"
-	        android:onClick="finishActivity"
-	 
-	                />
-	        
 
-	       <TextView
-	            android:id="@+id/emergencyProcedureHeaderTextView"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:textSize="@dimen/font_size"
-	            android:textAppearance="?android:attr/textAppearanceLarge"
-	            android:textColor="@color/white"
-	            android:layout_weight="1"
-	            android:gravity="center_horizontal"
-	            android:layout_marginBottom="3dp"/>
-      </TableRow>
-	  
     <ScrollView 
 		    android:id="@+id/ScrollLayout"
-		    android:layout_below="@+id/tableRow1"
 		    android:layout_width="wrap_content"
 	  		android:layout_height="match_parent"
-	  		android:layout_marginTop="15dp"
 	  		android:layout_above="@+id/transparent_button">
-			
-			<RelativeLayout 
-			    android:id="@+id/R3Layout"
-			    android:layout_width="wrap_content"
-	  			android:layout_height="wrap_content">
 	  			
-			    <TextView
-			        android:id="@+id/emergencyProcedureTextView"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:textSize="15sp"
-			        android:textColor="@color/black" 
-			        android:layout_marginTop="20dp"
-			        android:layout_marginBottom="5dp"
-			        android:layout_marginLeft="5dp"
-			        android:layout_marginRight="5dp"
-			    	android:background="@color/light_gray"/>
-				
-			</RelativeLayout>
+		    <TextView
+		        android:id="@+id/emergencyProcedureTextView"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="15sp"
+		        android:textColor="@color/white" 
+		        android:layout_marginTop="20dp"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="5dp"
+		        android:layout_marginRight="5dp"/>
 	    
 	</ScrollView>
-	
-    
 </RelativeLayout>

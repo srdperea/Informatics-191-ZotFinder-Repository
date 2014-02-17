@@ -1,5 +1,7 @@
 package com.example.test2app;
 
+import com.actionbarsherlock.app.SherlockActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,12 +9,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-public class DialerActivity extends Activity {
+public class DialerActivity extends SherlockActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dialer);
+		
+		getSupportActionBar().setTitle("Emergency Dialer");
 	}
 	
 	//Dialer Methods
@@ -75,12 +79,7 @@ public class DialerActivity extends Activity {
 		intent.setData(Uri.parse("tel:8664786397"));
 		startActivity(intent); 
 	}
-	
-	//Footer Methods
-  public void finishActivity(View v){
-	    finish();
-	    }
-	
+
 	//method to go to activity: MainActivity
 	//creates intent used to store the information of a different activity within this activity
 	//startActivity(intent) changes the current activity to the intent activity
@@ -103,14 +102,5 @@ public class DialerActivity extends Activity {
 	public void goToEmergencyDialer(View view) { 
 		Intent intent = new Intent(this,DialerActivity.class);
 		startActivity(intent);
-	}
-	 
-	//menu functionality when the user press the physical menu button located on the phone
-	//currently the menu feature does nothing
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.dialer, menu);
-		return true;
 	}
 }

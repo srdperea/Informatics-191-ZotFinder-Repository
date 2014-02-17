@@ -5,15 +5,15 @@
   	android:layout_height="wrap_content" 
   	xmlns:android="http://schemas.android.com/apk/res/android">
 	<!-- This is the button for formatting and Toggling -->
-		   	    <Button 
-		   	       android:id="@+id/transparent_button"
-		           android:layout_width="wrap_content"
-		           android:layout_height="wrap_content"
-		           android:layout_alignParentBottom="true"
-		           android:background="@drawable/map_icon_pressed"
-		           android:alpha="0"
-		           android:textColor="@color/white"
-		           android:textSize="@dimen/button_text_size" />
+   	<Button 
+	    android:id="@+id/transparent_button"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:background="@drawable/map_icon_pressed"
+	    android:alpha="0"
+	    android:textColor="@color/white"
+	    android:textSize="@dimen/button_text_size" />
 		   	    
 		   	    
     <!-- Footer -->
@@ -21,51 +21,16 @@
         layout="@layout/commonfooter" /> 
         
      <!-- Top Half of layout -->
-    <RelativeLayout
+   	<RelativeLayout
 	    android:id="@+id/R2DLayout"
 	  	android:layout_width="wrap_content"
 	  	android:layout_height="wrap_content" >
 	  	
-	<!--  Header  -->
-    <TableRow
-        android:id="@+id/d_tableRow1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/header_color_blue" >
-
-    <ImageButton 
-            android:id="@+id/backButton"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-			android:layout_marginLeft="2dp"
-			android:layout_marginTop="3dp"
-			android:layout_marginBottom="3dp"
-			android:padding="1dp"
-			android:gravity="center_horizontal"
-	        android:text="@string/back_button"
-	        android:textSize="12sp"
-	        android:textStyle="bold"
-	        android:background="@android:color/transparent"
-	        android:src="@drawable/ic_action_previous_item"
-	        android:onClick="finishActivity"
-	 
-	                />
-        <TextView
-            android:id="@+id/dialerHeaderTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="@string/dialer_header"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_size" />
-    </TableRow>
+	
     
     <!-- 911 button -->
      <Button
          android:id="@+id/call911Button"
-         android:layout_below="@+id/d_tableRow1"
          android:layout_margin="10dip"
          android:layout_width="match_parent"
    		 android:layout_height="wrap_content"

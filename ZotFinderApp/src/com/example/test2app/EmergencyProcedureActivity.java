@@ -1,14 +1,14 @@
 package com.example.test2app;
 
+import com.actionbarsherlock.app.SherlockActivity;
+
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
 import android.text.Html;
-import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
-public class EmergencyProcedureActivity extends Activity {
+public class EmergencyProcedureActivity extends SherlockActivity {
     
 	String emergencyTitle;
 	String emergencyInfo;
@@ -17,12 +17,13 @@ public class EmergencyProcedureActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_emergency_procedure);
 		
+		getSupportActionBar().setHomeButtonEnabled(true);
+		
 		//grabs the name from the intent passed from SearchActivity
 		//puts it into set textView:"personInfoHeaderTextView"
 		
 		emergencyTitle = getIntent().getExtras().getString("emergencyName");
-		TextView emergencyTitleTextView = (TextView) findViewById(R.id.emergencyProcedureHeaderTextView);
-		emergencyTitleTextView.setText(Html.fromHtml(emergencyTitle)); 
+		getSupportActionBar().setTitle(emergencyTitle);
 		emergencyInfo = getIntent().getExtras().getString("emergencyInfo");
 		TextView emergencyTextView = (TextView) findViewById(R.id.emergencyProcedureTextView);
 		emergencyTextView.setText(Html.fromHtml(emergencyInfo)); 
@@ -30,12 +31,15 @@ public class EmergencyProcedureActivity extends Activity {
 			
 	}
 	
+	@Override
+	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+		if(item.getItemId() == android.R.id.home){
+			finish();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	};
 	
-	//Footer Methods
-   public void finishActivity(View v){
-	    finish();
-	    }
-
 	//method to go to activity: MainActivity
 	//creates intent used to store the information of a different activity within this activity
 	//startActivity(intent) changes the current activity to the intent activity
@@ -59,14 +63,5 @@ public class EmergencyProcedureActivity extends Activity {
 		Intent intent = new Intent(this,DialerActivity.class);
 		startActivity(intent);
 	}
-	 
-	//menu functionality when the user press the physical menu button located on the phone
-	//currently the menu feature does nothing	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.person_info, menu);
-		return true;
-	}
-
 
 }

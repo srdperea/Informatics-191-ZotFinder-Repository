@@ -11,124 +11,47 @@
     
      <include
 	        layout="@layout/commonfooter" />
-    <TableRow
-	        android:id="@+id/tableRow1"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentTop="true"
-	        android:background="@color/header_color_blue" >
-	        
-        	<ImageButton 
-	            android:id="@+id/backButton"
-	        	android:layout_width="wrap_content"
-	        	android:layout_height="wrap_content"
-				android:layout_marginLeft="2dp"
-				android:layout_marginTop="3dp"
-				android:layout_marginBottom="3dp"
-				android:padding="1dp"
-				android:gravity="center_horizontal"
-		        android:text="@string/back_button"
-		        android:textSize="12sp"
-		        android:textStyle="bold"
-		        android:background="@android:color/transparent"
-		        android:src="@drawable/ic_action_previous_item"
-		        android:onClick="finishActivity"
-	                />
-
-	       <TextView
-	            android:id="@+id/mapHeaderTextView"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="@string/search_header"
-	            android:textSize="@dimen/font_size"
-	            android:textAppearance="?android:attr/textAppearanceLarge"
-	            android:textColor="@color/white"
-	            android:layout_weight="1"
-	            android:gravity="center_horizontal"
-	            android:layout_marginBottom="3dp"/>
-      </TableRow>
-	       
-       	    <!-- This is the button for formatting and Toggling -->
-   	    <Button 
-   	       android:id="@+id/transparent_button"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true"
-           android:background="@drawable/map_icon_pressed"
-           android:alpha="0"
-           android:textColor="@color/white"
-           android:textSize="@dimen/button_text_size"
-   	       android:onClick="goToMap" />
-    
-	
-	
-   
-   
-       <Button
-	        android:id="@+id/personTab"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/tableRow1"
-	        android:layout_marginTop="25dp"
-	        android:layout_toLeftOf="@+id/buildingTab"
-	        android:onClick="choosePersonSearch"
-	        android:text="Person" />
-	
-	    <Button
-	        android:id="@+id/buildingTab"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/tableRow1"
-	        android:layout_marginTop="25dp"
-	        android:layout_centerHorizontal="true"
-	        android:onClick="chooseBuildingSearch"
-	        android:text="Building" />
-	
-	    <Button
-	        android:id="@+id/departmentTab"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_toRightOf="@+id/buildingTab"
-	        android:layout_below="@+id/tableRow1"
-	        android:layout_marginTop="25dp"
-	        android:onClick="chooseDepartmentSearch"
-	        android:text="Department" />
-	    
-	    <Button
-	        android:id="@+id/serviceTab"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_toRightOf="@+id/serviceTab"
-	        android:layout_below="@+id/tableRow1"
-	        android:layout_marginTop="25dp"
-	        android:onClick="chooseServicesSearch"
-	        android:text="Service" />
-	    
-	    <LinearLayout
+	<LinearLayout
 		    android:id="@+id/searchBoxLayout"
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:layout_below="@+id/buildingTab">
-
-		<EditText
-			android:id="@+id/searchText"
-			android:layout_width="0dip"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:inputType="text"
-			android:imeOptions="actionGo"
-			android:hint="Enter Person, Bldg, Dpt, or Service"/>
+		    android:layout_height="wrap_content">
+       <Button
+	        android:id="@+id/personTab"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:onClick="choosePersonSearch"
+	        android:layout_weight="1"
+	        android:text="Person"
+	        android:textSize="12sp" />
 	
-		<Button
-			android:id="@+id/searchButton"
-			android:text="Search"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:onClick="search"/>
-
-	</LinearLayout>
-        
+	    <Button
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:onClick="chooseBuildingSearch"
+	        android:layout_weight="1"
+	        android:text="Building"
+	        android:textSize="12sp" />
+	
+	    <Button
+	        android:id="@+id/departmentTab"
+	       android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:onClick="chooseDepartmentSearch"
+	        android:layout_weight="1.1"
+	        android:text="Department" 
+	        android:textSize="12sp"/>
+	    
+	    <Button
+	        android:id="@+id/serviceTab"
+	       	android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:onClick="chooseServiceSearch"
+	        android:layout_weight="1"
+	        android:text="Service"
+	        android:textSize="12sp" />
+	 </LinearLayout>
+	    
 	 <ListView
 		android:id="@android:id/list"
 		android:layout_width="fill_parent"

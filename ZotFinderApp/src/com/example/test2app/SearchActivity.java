@@ -1,13 +1,6 @@
 package com.example.test2app;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,30 +12,26 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import com.actionbarsherlock.app.SherlockListActivity;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.widget.Toast;
 
-public class SearchActivity extends ListActivity {
-	EditText searchBox;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.widget.SearchView;
+
+public class SearchActivity extends SherlockListActivity implements SearchView.OnQueryTextListener {
 	//bundle is global so that it may be accessed from outside the getData() method
 	Bundle bundle;
 	ListAdapter listAdapter;
@@ -55,83 +44,41 @@ public class SearchActivity extends ListActivity {
 	boolean addedDatabase;
 	int searchChooser; //-1=person; 0=building; 1=department ; 2=services
 	String personOutput;
+	SearchView searchView = null;
+	
+	 @Override
+	    public boolean onCreateOptionsMenu(Menu menu) {
+	        //Create the search view
+	        searchView = new SearchView(getSupportActionBar().getThemedContext());
+	        searchView.setQueryHint("Press Button Below");
+	        searchView.setOnQueryTextListener(this);
+
+	        menu.add("Search")
+	            .setIcon(R.drawable.abs__ic_search)
+	            .setActionView(searchView)
+	            .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+	        return true;
+	    }
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 		
+		getSupportActionBar().setTitle("Search");
+		getSupportActionBar().setHomeButtonEnabled(true);
+		
 		BuildingDatabase buildingDatabase = new BuildingDatabase(this);
 		DepartmentDatabase departmentDatabase = new DepartmentDatabase(this);
 		ServicesDatabase servicesDatabase = new ServicesDatabase(this);
-		
-		BufferedReader br = null;
-		String line = "";
-		InputStream buildingIS = null;
-		InputStream departmentIS = null;
-		InputStream servicesIS = null;
-		
-		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
-		addedDatabase = settings.getBoolean("addedDatabase", false);
-		searchChooser = settings.getInt("searchType", 0);
-		if (!addedDatabase)
-		{
-			buildingIS = getResources().openRawResource(R.raw.building_file);
-			try {
-				br = new BufferedReader(new InputStreamReader(buildingIS));
-				while ((line = br.readLine()) != null)
-				{
-					String[] buildingInfo = line.split(",");
-					buildingDatabase.addToDatabase(buildingInfo);
-				}
-				buildingIS.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			departmentIS = getResources().openRawResource(R.raw.departments_file);
-			try {
-				br = new BufferedReader(new InputStreamReader(departmentIS));
-				while ((line = br.readLine()) != null)
-				{
-					String[] departmentInfo = line.split(",");
-					departmentDatabase.addToDatabase(departmentInfo);
-				}
-				departmentIS.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			servicesIS = getResources().openRawResource(R.raw.campus_services);
-			try {
-				br = new BufferedReader(new InputStreamReader(servicesIS));
-				while ((line = br.readLine()) != null)
-				{
-					String[] servicesInfo = line.split(",");
-					servicesDatabase.addToDatabase(servicesInfo);
-				}
-				servicesIS.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			addedDatabase = true;
-		}
-		
 
 		buildingDb = buildingDatabase.getReadableDatabase();
 		departmentDb = departmentDatabase.getReadableDatabase();
 		serviceDb = servicesDatabase.getReadableDatabase();
-		searchBox = (EditText) findViewById(R.id.searchText);
-		
+		/*
 		searchBox.setOnEditorActionListener(new OnEditorActionListener() {
 
-	        @Override
+			@Override
 	        public boolean onEditorAction(TextView v, int actionId,
 	                KeyEvent event) {
 	            if (event != null&& (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
@@ -144,8 +91,17 @@ public class SearchActivity extends ListActivity {
 	            }
 	            return false;
 	        }
-	    });
+	    });*/
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+		if(item.getItemId() == android.R.id.home){
+			finish();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	};
 	
 	//return false = list of people
 	//return true = one person
@@ -235,21 +191,27 @@ public class SearchActivity extends ListActivity {
 	
 	public void choosePersonSearch(View view){
 		searchChooser = -1;
+		searchView.setQueryHint("Search for a Person");
 	}
 	public void chooseBuildingSearch(View view){
 		searchChooser = 0;
+		searchView.setQueryHint("Search for a Building");
 	}
 	public void chooseDepartmentSearch(View view){
 		searchChooser = 1;
+		searchView.setQueryHint("Search for a Department");
 	}
-	public void chooseServicesSearch(View view){
+	public void chooseServiceSearch(View view){
 		searchChooser = 2;
+		searchView.setQueryHint("Search for a Service");
 	}
+	
 	@SuppressWarnings("deprecation")
-	public void search(View view) throws InterruptedException, ExecutionException{
+	public void search(String input){
+		List<HashMap<String, String>> personResults = null;
 		if (searchChooser == 0){
 			cursor = buildingDb.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress, buildingAbbreviation FROM building WHERE buildingName || ' ' || buildingAbbreviation || ' ' || buildingNumber LIKE ?" , 
-					new String[]{"%" + searchBox.getText().toString() + "%"});
+					new String[]{"%" + input + "%"});
 			listAdapter = new SimpleCursorAdapter(
 					this, 
 					R.layout.activity_building_list_item, 
@@ -259,7 +221,7 @@ public class SearchActivity extends ListActivity {
 			setListAdapter(listAdapter);
 		}	else if (searchChooser == 1){
 			cursor = departmentDb.rawQuery("SELECT _id, departmentName, departmentAddress FROM department WHERE departmentName || ' ' || departmentAddress LIKE ?", 
-					new String[]{"%" + searchBox.getText().toString() + "%"});
+					new String[]{"%" + input + "%"});
 			listAdapter = new SimpleCursorAdapter(
 					this, 
 					R.layout.activity_department_list_item, 
@@ -269,7 +231,7 @@ public class SearchActivity extends ListActivity {
 			setListAdapter(listAdapter);
 		
 		} else if (searchChooser == -1){
-			String searchInput = searchBox.getText().toString();
+			String searchInput = input;
 			searchInput = searchInput.toLowerCase();
 			searchInput = searchInput.trim();
 	    	if(searchInput.contains(" ")){
@@ -277,14 +239,21 @@ public class SearchActivity extends ListActivity {
 			}
 			if(searchInput.matches("^[a-zA-Z]+"))
 			{
+				boolean resultType;
+				try {
+					resultType = personSearchResultType(searchInput);
+					
+					
+					if(resultType)
+						personResults = readSingleResultStream(searchInput);		
+					else
+						personResults = readMultipleResultStream(searchInput);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} catch (ExecutionException e) {
+					e.printStackTrace();
+				}
 				
-				boolean resultType = personSearchResultType(searchInput);
-				List<HashMap<String, String>> personResults;
-				
-				if(resultType)
-					personResults = readSingleResultStream(searchInput);		
-				else
-					personResults = readMultipleResultStream(searchInput);
 				
 				String[] from = new String[] {"name", "title"};
 			    int[] to = new int[] {R.id.personName, R.id.personTitle};
@@ -294,7 +263,7 @@ public class SearchActivity extends ListActivity {
 		}
 		else if (searchChooser == 2){
 			cursor = serviceDb.rawQuery("SELECT _id, serviceName, serviceAddress FROM service WHERE serviceName || ' ' || serviceAddress LIKE ?", 
-					new String[]{"%" + searchBox.getText().toString() + "%"});
+					new String[]{"%" + input + "%"});
 			listAdapter = new SimpleCursorAdapter(
 					this, 
 					R.layout.activity_services_list_item, 
@@ -406,39 +375,17 @@ public class SearchActivity extends ListActivity {
 		startActivity(intent);
 	}
 	 
-	//menu functionality when the user press the physical menu button located on the phone
-	//currently the menu feature does nothing
+
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.search, menu);
+	public boolean onQueryTextSubmit(String query) {
+		Toast.makeText(this, "You searched for: " + query, Toast.LENGTH_LONG).show();
+		search(query);
 		return true;
 	}
-	
+
 	@Override
-	protected void onStop() {
-		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
-		SharedPreferences.Editor editor = settings.edit();
-	    editor.putInt("searchType", searchChooser);
-	    editor.commit();
-		super.onStop();
-	}
-	
-	@Override
-	protected void onDestroy() {
-		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
-		SharedPreferences.Editor editor = settings.edit();
-	    editor.putInt("searchType", searchChooser);
-	    editor.commit();
-		super.onDestroy();
-	}
-	
-	@Override
-	protected void onPause() {
-		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
-		SharedPreferences.Editor editor = settings.edit();
-	    editor.putInt("searchType", searchChooser);
-	    editor.commit();
-		super.onPause();
+	public boolean onQueryTextChange(String newText) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
