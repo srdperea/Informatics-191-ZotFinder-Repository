@@ -192,19 +192,19 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 	
 	public void choosePersonSearch(View view){
 		searchChooser = -1;
-		searchView.setQueryHint("Search for a Person");
+		searchView.setQueryHint("Search for Person");
 	}
 	public void chooseBuildingSearch(View view){
 		searchChooser = 0;
-		searchView.setQueryHint("Search for a Building");
+		searchView.setQueryHint("Search for Building");
 	}
 	public void chooseDepartmentSearch(View view){
 		searchChooser = 1;
-		searchView.setQueryHint("Search for a Department");
+		searchView.setQueryHint("Search for Department");
 	}
 	public void chooseServiceSearch(View view){
 		searchChooser = 2;
-		searchView.setQueryHint("Search for a Service");
+		searchView.setQueryHint("Search for Service");
 	}
 	
 	@SuppressWarnings("deprecation")
