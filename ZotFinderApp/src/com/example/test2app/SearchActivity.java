@@ -42,7 +42,7 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 	SQLiteDatabase departmentDb;
 	SQLiteDatabase serviceDb;
 	boolean addedDatabase;
-	int searchChooser; //-1=person; 0=building; 1=department ; 2=services
+	int searchChooser; //1=person; 0=building; 1=department ; 2=services
 	String personOutput;
 	SearchView searchView = null;
 	
@@ -157,7 +157,7 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
         }
         else
         	map.put("faxNumber", "N/A");
-        String email = "E-mail: " + ucinetid + "@uci.edu";
+        String email = ucinetid + "@uci.edu";
         map.put("email", email);
         personResults.add(map);
         return personResults;
