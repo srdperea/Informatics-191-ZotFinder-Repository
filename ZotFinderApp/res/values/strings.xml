@@ -139,13 +139,13 @@
 			<p>&#8226; Evacuate the immediate area and close doors behind you.<br></p> 
 			<p>&#8226; Pull the nearest fire alarm.<br></p>
 			<p>&#8226; Call 911 if safe to do so. Otherwise, evacuate the building then call 911.<br></p>
-			<p>&#8226; Do not re-enter the building until an &#8220;All Clearâ€ is given by emergency responders.<br></p>
+			<p>&#8226; Do not re-enter the building until an &#34;All Clear&#34; is given by emergency responders.<br></p>
 			<p>If you hear a fire alarm:<br></p>
 			<p>&#8226; Evacuate as soon as the alarm sounds.<br></p>
 			<p>&#8226; Test closed doors with the back of your hand. DO NOT open doors if they are hot.<br></p>
 			<p>&#8226; Use stairs only. Do not use elevators.<br></p>
 			<p>&#8226; Proceed to the designated assembly area.<br></p>
-			<p>&#8226; Do not re-enter the building until an &#8220;All Clearâ€ is given by emergency responders.<br></p>
+			<p>&#8226; Do not re-enter the building until an &#34;All Clear&#34; is given by emergency responders.<br></p>
 		
 			]]>
     </string>
@@ -157,8 +157,8 @@
 			of you, your family, and your work colleagues.<br></p>
 			<p>Have A Kit<br></p>
 			<p>Keep an emergency kit at home, in your car, and in your office.<br></p>
-			<p>&#8226; Water â€“ one gallon per person per day for at least 3 days for drinking and sanitation.<br></p>
-			<p>&#8226; Food â€“ at least a 3 day supply of non-perishable food.<br></p>
+			<p>&#8226; Water - one gallon per person per day for at least 3 days for drinking and sanitation.<br></p>
+			<p>&#8226; Food - at least a 3 day supply of non-perishable food.<br></p>
 			<p>&#8226; Battery operated Radio and Flashlight with extra batteries.<br></p>
 			<p>&#8226; First Aid Kit.<br></p>
 			<p>&#8226; Whistle.<br></p>
@@ -167,7 +167,7 @@
 			<p>&#8226; Change of clothes and sturdy shoes.<br></p>
 			<p>Make A Plan<br></p>
 			<p>&#8226; Have an out-of-town contact for family members to report in to.<br></p>
-			<p>&#8226; ICE your cell phone â€“ identify who to call In Case of Emergency.<br></p>
+			<p>&#8226; ICE your cell phone - identify who to call In Case of Emergency.<br></p>
 			<p>&#8226; Be prepared to limit phone use to essential calls only. Text messages may go 
 			through when phone calls will not.<br></p>
 			<p>&#8226; Select a family meeting location in case your house is not safe or accessible.<br></p>
@@ -181,7 +181,7 @@
 			<p>&#8226; Know what to do in case of an emergency on campus.<br></p>
 			<p>&#8226; Know evacuation routes and the pre-designated assembly areas for the buildings 
 			you are in most frequently.<br></p>
-			<p>&#8226; Inquire about the emergency plan for family membersâ€™ work and school.<br></p>
+			<p>&#8226; Inquire about the emergency plan for family members\' work and school.<br></p>
 			<p>&#8226; Visit www.ready.gov for more information.<br></p>
 			<p>&#8226; For campus emergency preparedness information visit www.police.uci.edu.<br></p>
 			<p>&#8226; Sign up to receive zotALERT text messages at www.oit.uci.edu/zotalert.<br></p>
@@ -225,7 +225,7 @@
 			<p>&#8226; Do not use elevators.<br></p>
 			<p>&#8226; Proceed to the designated assembly area.<br></p>
 			<p>&#8226; Wait for instructions from emergency responders.<br></p>
-			<p>&#8226; Do not re-enter the building until an &#8220;All Clearâ€ is given by emergency responders.<br></p>
+			<p>&#8226; Do not re-enter the building until an &#34;All Clear&#34; is given by emergency responders.<br></p>
 			
 			]]>
     </string>
@@ -275,7 +275,7 @@
 			from others in the area if exit is difficult or obstructed.<br></p>
 			<p>4. If unable to evacuate the building:<br></p>
 			<p>a. Take safe refuge in a fire-rated stairwell. Close the door to keep smoke out. OR<br></p>
-			<p>b. Evacuate &#8220;horizontallyâ€ to a room away from hazards. Close the doors, Signal rescuers 
+			<p>b. Evacuate "horizontally" to a room away from hazards. Close the doors, Signal rescuers 
 			by placing a sign in the window. Place wet cloths around and under the door to prevent 
 			smoke from entering. Call 911 and provide your location to the dispatcher. Follow their 
 			directions.<br></p>
@@ -352,7 +352,7 @@
 
 			
 		
-			<p>&#8226; Review the UCI Emergency Procedures Chart (aka &#8220;Blue Flip Chartâ€).<br></p>
+			<p>&#8226; Review the UCI Emergency Procedures Chart (aka &#34;Blue Flip Chart&#34;).<br></p>
 			<p>&#8226; If you live on campus, have a copy of the chart posted in your dorm room or apartment.<br></p>
 			<p>&#8226; Know what to do in case of an emergency on campusEvacuate the immediate area and close doors behind you.<br></p> 
 			<p>&#8226; Know the location of emergency blue light phones.<br></p>
@@ -368,7 +368,7 @@
     <string name="faculty_expectations">
 <![CDATA[
 
-			<p>&#8226; Have a copy of the UCI Emergency Procedures Chart (aka &#8220;Blue Flip Chart&#8220;) accessible in your workspace, laboratories, and classroom(s).<br></p>
+			<p>&#8226; Have a copy of the UCI Emergency Procedures Chart (aka &#34;Blue Flip Chart&#34;) accessible in your workspace, laboratories, and classroom(s).<br></p>
 			<p>&#8226; Know your role during an emergency.<br></p> 
 			<p>&#8226; Get to know your Zone Captain and the Zone Crew members in your area.<br></p>
 			<p>&#8226; Know evacuation routes and the pre-designated assembly areas for the buildings you are in most frequently.<br></p>
@@ -380,9 +380,7 @@
 			<p>&#8226; Get involved on campus.<br></p> 
 			<p>Become a Zone Crew member. Contact your Zone Captain and visit http://police.uci.edu/em/ZoneCrew.html for more information..<br></p> 
 			<p>Become a Campus Search and Rescue (CSAR) Team Member. Visit www.police.uci.edu/em/csar.html for training sessions and more information..<br></p> 
-			<p>Become First Aid and CPR trained. The ARC offers free or low cost classes conducted by the American Red Cross. Go to http://www.campusrec.uci.edu/ , Classes and Clinics for details..<br></p> 
-			
-			<p>&#8226;.<br></p> 
+			<p>Become First Aid and CPR trained. The ARC offers free or low cost classes conducted by the American Red Cross. Go to http://www.campusrec.uci.edu/ , Classes and Clinics for details.<br></p> 
 			]]>
     </string>
 

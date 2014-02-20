@@ -71,7 +71,7 @@ public class MainActivity extends SherlockFragmentActivity {
         subMenu1.add("About Us");
 
         MenuItem subMenu1Item = subMenu1.getItem();
-        subMenu1Item.setIcon(R.drawable.ic_title_share_default);
+        subMenu1Item.setIcon(R.drawable.ic_drawer);
         subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         
 
