@@ -1,6 +1,8 @@
-package com.example.test2app;
+package edu.uci.zotfinder;
 
 import java.util.HashMap;
+
+import com.example.test2app.R;
 
 import android.net.Uri;
 import android.os.Bundle;

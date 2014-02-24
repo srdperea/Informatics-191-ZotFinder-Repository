@@ -1,4 +1,4 @@
-package com.example.test2app;
+package edu.uci.zotfinder;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

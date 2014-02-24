@@ -1,6 +1,7 @@
-package com.example.test2app;
+package edu.uci.zotfinder;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -28,14 +29,18 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
-import com.example.test2app.DirectionsJSONParser;
+import com.example.test2app.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+
+import edu.uci.zotfinder.DirectionsJSONParser;
 
 
 
@@ -52,6 +57,19 @@ public class MainActivity extends SherlockFragmentActivity {
 	protected LatLng destinationPoint;
 	Polyline polyline = null;
 	boolean directionsToggle = false;
+	private static ArrayList<Marker> emergencyAreas = new ArrayList<Marker>();
+	private static ArrayList<Marker> bluePhones = new ArrayList<Marker>();
+	private static ArrayList<Marker> restrooms = new ArrayList<Marker>();
+	//---Booleans to show or hide markers---
+	//eaShow=true - Show all Emergency Area Markers
+	//eaShow=false - Hide all Emegency Area Markers
+	protected static boolean eaShow=true;
+	//bpShow=true - Show all Blue Phone Post Markers
+	//bpShow=false - Hide all Blue Phone Post Markers
+	protected static boolean bpShow=true;
+	//rrShow=true - Show all Restroom Markers
+	//rrSHow=false - Hide all Restroom Markers
+	protected static boolean rrShow=true;
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -93,15 +111,15 @@ public class MainActivity extends SherlockFragmentActivity {
 		String itemTitle = item.getTitle().toString();
 		
 		if (itemTitle.equals("Blue Phone Posts")){
-			Markers.toggleBluePhone();
+			toggleBluePhone();
 			return true;
 		}
 		if (itemTitle.equals("Emergency Areas")){
-			Markers.toggleEmergencyMarker();
+			toggleEmergencyMarker();
 			return true;
 		}
 		if (itemTitle.equals("Restrooms")){
-			Markers.toggleRestroom();
+			toggleRestroom();
 			return true;
 		}
 		if (itemTitle.equals("About Us")){
@@ -150,9 +168,8 @@ public class MainActivity extends SherlockFragmentActivity {
 	    
 	    //add uci marker and set zoom
 	     if (mMap!=null){
-	    	 Markers.addBluePhoneMarker(mMap);
-	    	 Markers.addEmergencyAreaMarker(mMap);
-	    	 Markers.addRestroomMarker(mMap);
+	    	 addMarkers();
+	    	  
 	    	 
 	    	 if(getIntent().getExtras() != null){
 	    		 int type = getIntent().getExtras().getInt("type");
@@ -426,7 +443,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 	//Toggles the Emergency Area markers on or off (depending on the state of the boolean)
 	public void toggleEaMarker(View v){
-		Markers.toggleEmergencyMarker();
+		toggleEmergencyMarker();
 		//animates the camera back to initial center point (UCI)
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	    mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
@@ -434,7 +451,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 	//Toggles the Blue Phone Post markers on or off (depending on the state of the boolean)
 	public void toggleBpMarker(View v){
-		Markers.toggleBluePhone();
+		toggleBluePhone();
 		//animates the camera back to initial center point (UCI)
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	    mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
@@ -442,7 +459,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 	//Toggles the Restroom markers on or off (depending on the state of the boolean)
 	public void toggleRrMarker(View v){
-		Markers.toggleRestroom();
+		toggleRestroom();
 		//animates the camera back to initial center point (UCI)
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	    mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
@@ -474,6 +491,112 @@ public class MainActivity extends SherlockFragmentActivity {
 	        gps[1] = l.getLongitude();
 	    }
 	    return gps;
+	}
+	
+	public void addMarkers()
+	{
+		InputStream emergencyIS = getResources().openRawResource(R.raw.assembly_areas);
+		InputStream bluePhoneIS = getResources().openRawResource(R.raw.blue_phones);
+		InputStream restroomIS = getResources().openRawResource(R.raw.restrooms);	
+		String line = "";
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new InputStreamReader(emergencyIS));
+			while ((line = br.readLine()) != null)
+			{
+				String[] input = line.split(",");
+				emergencyAreas.add(mMap.addMarker(new MarkerOptions().position(new LatLng(Float.valueOf(input[2]),Float.valueOf(input[3]))).title(input[0]).icon(BitmapDescriptorFactory.fromResource(R.drawable.emergency_area_icon))));
+			}
+			emergencyIS.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			br = new BufferedReader(new InputStreamReader(bluePhoneIS));
+			while ((line = br.readLine()) != null)
+			{
+				String[] input = line.split(",");
+				bluePhones.add(mMap.addMarker(new MarkerOptions().position(new LatLng(Float.valueOf(input[4]),Float.valueOf(input[3]))).title(input[2]).icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_phone_icon))));
+			}
+			bluePhoneIS.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			br = new BufferedReader(new InputStreamReader(restroomIS));
+			while ((line = br.readLine()) != null)
+			{
+				String[] input = line.split(",");
+				restrooms.add(mMap.addMarker(new MarkerOptions().position(new LatLng(Float.valueOf(input[2]),Float.valueOf(input[1]))).title("Restroom").icon(BitmapDescriptorFactory.fromResource(R.drawable.restroom_icon))));
+			}
+			restroomIS.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void toggleEmergencyMarker(){
+		
+		//if eaShow=true
+		if(eaShow){
+			//hide all the emergency area markers
+			for(Marker m :emergencyAreas){
+				m.setVisible(false);
+			}
+			eaShow = false;
+		}
+		//else if eaShow=false
+		else{
+			//show all the emergency area markers
+			for( Marker m : emergencyAreas){
+				m.setVisible(true);
+			}
+			eaShow = true;
+		}
+	}
+	
+	public static void toggleBluePhone(){
+		//if bpShow=true
+		if(bpShow){
+			//hide all Blue Phone Post markers
+			for (Marker m : bluePhones){
+				m.setVisible(false);
+			}
+			bpShow = false;
+		}
+		//else if bpShow=false
+		else{
+			//show all Blue PHone Post Markers
+			for (Marker m : bluePhones){
+				m.setVisible(true);
+			}
+			bpShow = true;
+		}
+	}
+	
+	public static void toggleRestroom(){
+		//if rrShow=true
+		if(rrShow){
+			//hide all Restroom markers
+			for (Marker m : restrooms){
+				m.setVisible(false);
+			}
+			rrShow = false;
+		}
+		//else if 
+		else{
+			//show all Restroom markers
+			for (Marker m : restrooms){
+				m.setVisible(true);
+			}
+			rrShow = true;
+		}
 	}
 	 
 	//Footer Methods

@@ -1,4 +1,4 @@
-package com.example.test2app;
+package edu.uci.zotfinder;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.SearchView;
+import com.example.test2app.R;
 
 public class SearchActivity extends SherlockListActivity implements SearchView.OnQueryTextListener {
 	//bundle is global so that it may be accessed from outside the getData() method

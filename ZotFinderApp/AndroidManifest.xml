@@ -45,7 +45,7 @@
             android:value="AIzaSyAcD-vS33MrY9DGGpf8Qp2ZnWbxB5vTTn0" />
 
         <activity
-            android:name="com.example.test2app.SplashScreenActivity"
+            android:name="edu.uci.zotfinder.SplashScreenActivity"
             android:clearTaskOnLaunch="true"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >
@@ -56,65 +56,65 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.test2app.MainActivity"
+            android:name="edu.uci.zotfinder.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
-            android:name="com.example.test2app.DialerActivity"
+            android:name="edu.uci.zotfinder.DialerActivity"
             android:label="@string/title_activity_dialer"
             android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
-            android:name="com.example.test2app.SearchActivity"
+            android:name="edu.uci.zotfinder.SearchActivity"
             android:label="@string/title_activity_search"
             android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
-            android:name="com.example.test2app.PersonInfoActivity"
+            android:name="edu.uci.zotfinder.PersonInfoActivity"
             android:label="@string/title_activity_person_info"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.example.test2app.StudentExpectationsActivity"
+            android:name="edu.uci.zotfinder.StudentExpectationsActivity"
             android:label="@string/title_activity_student_expectations"
             android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
-            android:name="com.example.test2app.FacultyExpectationsActivity"
+            android:name="edu.uci.zotfinder.FacultyExpectationsActivity"
             android:label="@string/title_activity_faculty_expectations"
             android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
-            android:name="com.example.test2app.DepartmentInfoActivity"
+            android:name="edu.uci.zotfinder.DepartmentInfoActivity"
             android:label="@string/title_activity_department_info"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.example.test2app.BuildingInfoActivity"
+            android:name="edu.uci.zotfinder.BuildingInfoActivity"
             android:label="@string/title_activity_building_info"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.example.test2app.DepartmentListItemActivity"
+            android:name="edu.uci.zotfinder.DepartmentListItemActivity"
             android:label="@string/title_activity_department_list_item" >
         </activity>
         <activity
-            android:name="com.example.test2app.PersonListItemActivity"
+            android:name="edu.uci.zotfinder.PersonListItemActivity"
             android:label="@string/title_activity_person_list_item" >
         </activity>
         <activity
-            android:name="com.example.test2app.EmergencyProcedureActivity"
+            android:name="edu.uci.zotfinder.EmergencyProcedureActivity"
             android:label="@string/title_activity_emergency_procedure"
             android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
-            android:name="com.example.test2app.EmergencyActivity"
+            android:name="edu.uci.zotfinder.EmergencyActivity"
             android:label="@string/title_activity_emergency"
             android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
-            android:name="com.example.test2app.ServicesInfoActivity"
+            android:name="edu.uci.zotfinder.ServicesInfoActivity"
             android:label="@string/title_activity_services_info" >
         </activity>
     </application>

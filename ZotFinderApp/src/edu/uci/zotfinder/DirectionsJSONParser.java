@@ -1,4 +1,4 @@
-package com.example.test2app;
+package edu.uci.zotfinder;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.example.test2app;
+package edu.uci.zotfinder;
 
 import android.content.ContentValues;
 import android.content.Context;

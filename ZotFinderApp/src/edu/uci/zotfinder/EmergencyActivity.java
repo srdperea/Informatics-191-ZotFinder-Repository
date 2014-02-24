@@ -1,7 +1,9 @@
-package com.example.test2app;
+package edu.uci.zotfinder;
 
 import java.util.ArrayList;
+
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.example.test2app.R;
 
 import android.os.Bundle;
 import android.app.ActionBar;

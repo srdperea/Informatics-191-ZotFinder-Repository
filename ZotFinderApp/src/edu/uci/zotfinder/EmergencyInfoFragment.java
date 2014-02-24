@@ -1,4 +1,6 @@
-package com.example.test2app;
+package edu.uci.zotfinder;
+
+import com.example.test2app.R;
 
 import android.content.Intent;
 import android.os.Bundle;

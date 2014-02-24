@@ -1,6 +1,7 @@
-package com.example.test2app;
+package edu.uci.zotfinder;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.example.test2app.R;
 
 import android.os.Bundle;
 import android.content.Intent;

@@ -1,10 +1,12 @@
-package com.example.test2app;
+package edu.uci.zotfinder;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import com.example.test2app.R;
 
 import android.app.Activity;
 import android.content.Intent;
