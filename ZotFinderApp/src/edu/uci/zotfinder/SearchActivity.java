@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.InputFilter.LengthFilter;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListAdapter;
@@ -56,6 +57,7 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 	        //Create the search view
 	        searchView = new SearchView(getSupportActionBar().getThemedContext());
 	        searchView.setQueryHint("Press Button Below");
+	        searchView.setInputType(InputType.TYPE_CLASS_TEXT);
 	        searchView.setOnQueryTextListener(this);
 	        searchView.setIconified(false);
 	        menu.add(0,1,0, "Search")
@@ -404,6 +406,7 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 
 	@Override
 	public boolean onQueryTextSubmit(String query) {
+		searchView.clearFocus();
 		search(query);
 		return true;
 	}
