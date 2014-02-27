@@ -1,14 +1,35 @@
 package edu.uci.zotfinder;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
+import java.util.concurrent.ExecutionException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.util.EntityUtils;
+
 import com.example.test2app.R;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class BuildingInfoActivity extends Activity {
@@ -16,6 +37,7 @@ public class BuildingInfoActivity extends Activity {
 	protected TextView buildingName;
 	protected TextView buildingAddress;
 	protected TextView buildingNumber;
+	protected ImageView buildingImage;
 	protected String buildingNameString;
 	protected String buildingAddressString;
 	protected String buildingNumberString;
@@ -55,6 +77,19 @@ public class BuildingInfoActivity extends Activity {
 	        
 	        buildingLatitude = Float.valueOf(cursor.getString(cursor.getColumnIndex("buildingLatitude")));
 	        
+	        buildingImage = (ImageView) findViewById(R.id.building_image);
+	        String imageUrl = "https://eee.uci.edu/images/buildings/" + buildingNumberString + ".jpg";
+	        Bitmap img = null;
+			try {
+				img = new RetreiveDirectoryResultTask().execute(imageUrl).get();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+			
+			if(img!=null)
+				buildingImage.setImageBitmap(img);
         }
 	}
 	
@@ -73,11 +108,40 @@ public class BuildingInfoActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	//Back button
-	public void finishActivity(View v){
-		finish();
-	    }
 
+	private class RetreiveDirectoryResultTask extends AsyncTask<String, Integer,Bitmap> {
+
+		@Override
+		protected Bitmap doInBackground(String... urls) {
+			Bitmap img = null;
+			InputStream is = null;
+			HttpGet httpGet = null;
+			DefaultHttpClient httpClient = null;
+			HttpParams httpParameters = new BasicHttpParams();
+			int timeoutConnection = 3000;
+			int timeoutSocket = 5000;
+			HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
+			HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
+			try{
+				httpClient = new DefaultHttpClient(httpParameters);
+				URI url = new URI(urls[0]);
+				httpGet = new HttpGet(url);
+				HttpResponse httpResponse = httpClient.execute(httpGet);
+				HttpEntity httpEntity = httpResponse.getEntity();
+			    is = httpEntity.getContent();
+			    img = BitmapFactory.decodeStream(is);
+			} catch (Exception e) {
+					Log.d("Exception while downloading url", e.toString());
+			 	}
+			return img;
+		}
+	}
+	
+		//Back button
+		public void finishActivity(View v){
+			finish();
+	    }
+	
 	//Footer Methods
 		//method to go to activity: MainActivity
 		//creates intent used to store the information of a different activity within this activity

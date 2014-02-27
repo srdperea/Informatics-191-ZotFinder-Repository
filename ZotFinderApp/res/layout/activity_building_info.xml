@@ -74,6 +74,10 @@
 			    android:id="@+id/R3Layout"
 			    android:layout_width="wrap_content"
 	  			android:layout_height="wrap_content">
+	  			<ImageView 
+	  			    android:id="@+id/building_image"
+	  			    android:layout_width="wrap_content"
+	  			    android:layout_height="wrap_content" />
 	  			
 			    <!-- Building Number HEADER -->
 			    <TextView
@@ -85,7 +89,7 @@
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/white"
 					android:background="@color/header_color_blue"
-					/>
+					android:layout_below="@+id/building_image" />
 			    <ImageButton 
 		            android:id="@+id/locateButton"
 		        	android:layout_width="wrap_content"
