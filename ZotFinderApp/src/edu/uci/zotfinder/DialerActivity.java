@@ -101,7 +101,5 @@ public class DialerActivity extends SherlockActivity {
 	//creates intent used to store the information of a different activity within this activity
 	//startActivity(intent) changes the current
 	public void goToEmergencyDialer(View view) { 
-		Intent intent = new Intent(this,DialerActivity.class);
-		startActivity(intent);
 	}
 }

@@ -233,8 +233,6 @@ public class EmergencyActivity extends SherlockFragmentActivity {
 		//creates intent used to store the information of a different activity within this activity
 		//startActivity(intent) changes the current activity to the intent activity
 		public void goToEmergencyInfo(View view) { 
-			Intent intent = new Intent(this,EmergencyActivity.class);
-			startActivity(intent);
 		}
 
 		//method to go to activity: DialerActivity
