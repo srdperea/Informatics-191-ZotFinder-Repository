@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
@@ -70,6 +71,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	//rrShow=true - Show all Restroom Markers
 	//rrSHow=false - Hide all Restroom Markers
 	protected static boolean rrShow=true;
+	
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -169,8 +171,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	    //add uci marker and set zoom
 	     if (mMap!=null){
 	    	 addMarkers();
-	    	  
-	    	 
+
 	    	 if(getIntent().getExtras() != null){
 	    		 int type = getIntent().getExtras().getInt("type");
 		         if (type ==1)
@@ -245,6 +246,25 @@ public class MainActivity extends SherlockFragmentActivity {
 	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
 	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);     
 	     }
+	    	SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
+	 		eaShow = settings.getBoolean("ea", true);
+	 		bpShow = settings.getBoolean("bp", true);
+	 		rrShow = settings.getBoolean("rr", true);
+	 		if(!eaShow)
+ 			{
+	 			for(Marker m :emergencyAreas)
+					m.setVisible(false);
+ 			}
+	 		if(!bpShow)
+ 			{
+	 			for(Marker m :bluePhones)
+					m.setVisible(false);
+ 			}
+	 		if(!rrShow)
+	 		{
+	 			for(Marker m :restrooms)
+					m.setVisible(false);
+ 			}
 	}
 	
 	//displays directions on the screen from current location to given point
@@ -541,8 +561,9 @@ public class MainActivity extends SherlockFragmentActivity {
 		}
 	}
 	
-	public static void toggleEmergencyMarker(){
-		
+	public void toggleEmergencyMarker(){
+		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
+		SharedPreferences.Editor editor = settings.edit();
 		//if eaShow=true
 		if(eaShow){
 			//hide all the emergency area markers
@@ -550,6 +571,7 @@ public class MainActivity extends SherlockFragmentActivity {
 				m.setVisible(false);
 			}
 			eaShow = false;
+			editor.putBoolean("ea", eaShow);
 		}
 		//else if eaShow=false
 		else{
@@ -558,10 +580,14 @@ public class MainActivity extends SherlockFragmentActivity {
 				m.setVisible(true);
 			}
 			eaShow = true;
+			editor.putBoolean("ea", eaShow);
 		}
+		editor.commit();
 	}
 	
-	public static void toggleBluePhone(){
+	public void toggleBluePhone(){
+		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
+		SharedPreferences.Editor editor = settings.edit();
 		//if bpShow=true
 		if(bpShow){
 			//hide all Blue Phone Post markers
@@ -569,6 +595,7 @@ public class MainActivity extends SherlockFragmentActivity {
 				m.setVisible(false);
 			}
 			bpShow = false;
+			editor.putBoolean("bp", bpShow);
 		}
 		//else if bpShow=false
 		else{
@@ -577,10 +604,14 @@ public class MainActivity extends SherlockFragmentActivity {
 				m.setVisible(true);
 			}
 			bpShow = true;
+			editor.putBoolean("bp", bpShow);
 		}
+		editor.commit();
 	}
 	
-	public static void toggleRestroom(){
+	public void toggleRestroom(){
+		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
+		SharedPreferences.Editor editor = settings.edit();
 		//if rrShow=true
 		if(rrShow){
 			//hide all Restroom markers
@@ -588,6 +619,7 @@ public class MainActivity extends SherlockFragmentActivity {
 				m.setVisible(false);
 			}
 			rrShow = false;
+			editor.putBoolean("rr", rrShow);
 		}
 		//else if 
 		else{
@@ -596,7 +628,9 @@ public class MainActivity extends SherlockFragmentActivity {
 				m.setVisible(true);
 			}
 			rrShow = true;
+			editor.putBoolean("rr", rrShow);
 		}
+		editor.commit();
 	}
 	 
 	//Footer Methods
