@@ -10,6 +10,9 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 
 import com.actionbarsherlock.app.SherlockListActivity;
@@ -19,6 +22,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.InputFilter.LengthFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListAdapter;
@@ -126,41 +130,44 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("rowid","1");
         output = output.replaceAll("\\r\\n\\t|\\r|\\n|\\t", "");
-        String name = output.split("<span class=\"label\">Name</span><span class=\"resultData\">")[1].split("</span></p>")[0];
-        map.put("name", name);
-        String ucinetid = output.split("<span class=\"label\">UCInetID</span><span class=\"resultData\">")[1].split("</span></p>")[0];
-        map.put("ucinetid",ucinetid);
-        if (output.contains("Title </span></TD>")){
-        	
-            String title = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Title</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
-            map.put("title", title);
-            String department = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Department</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
-            map.put("department", department);
-            	
+        if(!(output.isEmpty()))
+        {
+	        String name = output.split("<span class=\"label\">Name</span><span class=\"resultData\">")[1].split("</span></p>")[0];
+	        map.put("name", name);
+	        String ucinetid = output.split("<span class=\"label\">UCInetID</span><span class=\"resultData\">")[1].split("</span></p>")[0];
+	        map.put("ucinetid",ucinetid);
+	        if (output.contains("Title </span></TD>")){
+	        	
+	            String title = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Title</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+	            map.put("title", title);
+	            String department = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Department</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+	            map.put("department", department);
+	            	
+	        }
+	        else{
+	            String department = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Department</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+	            map.put("title", department);
+	        }
+	        if(output.contains("Address</span></TD>")){
+	        	String address = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Address</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
+	            map.put("address", address);	
+	        }
+	        if(output.contains("<span class=\"label\">Phone</span><span class=\"resultData\">")){
+	        	String phoneNumber = output.split("<span class=\"label\">Phone</span><span class=\"resultData\">")[1].split("</span></p>")[0];
+	        	map.put("phoneNumber",phoneNumber);
+	        }
+	        else
+	        	map.put("phoneNumber","N/A");
+	        if(output.contains("p><span class=\"label\">Fax</span><span class=\"resultData\">")){
+	        	String faxNumber = output.split("p><span class=\"label\">Fax</span><span class=\"resultData\">")[1].split("</span></p>")[0];
+	        	map.put("faxNumber",faxNumber);
+	        }
+	        else
+	        	map.put("faxNumber", "N/A");
+	        String email = ucinetid + "@uci.edu";
+	        map.put("email", email);
+	        personResults.add(map);
         }
-        else{
-            String department = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Department</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
-            map.put("title", department);
-        }
-        if(output.contains("Address</span></TD>")){
-        	String address = output.split("<TD class=\"positioning_cell\"><span class=\"table_label\">Address</span></TD><TD><span class=\"table_data\">")[1].split("</span></TD>")[0];
-            map.put("address", address);	
-        }
-        if(output.contains("<span class=\"label\">Phone</span><span class=\"resultData\">")){
-        	String phoneNumber = output.split("<span class=\"label\">Phone</span><span class=\"resultData\">")[1].split("</span></p>")[0];
-        	map.put("phoneNumber",phoneNumber);
-        }
-        else
-        	map.put("phoneNumber","N/A");
-        if(output.contains("p><span class=\"label\">Fax</span><span class=\"resultData\">")){
-        	String faxNumber = output.split("p><span class=\"label\">Fax</span><span class=\"resultData\">")[1].split("</span></p>")[0];
-        	map.put("faxNumber",faxNumber);
-        }
-        else
-        	map.put("faxNumber", "N/A");
-        String email = ucinetid + "@uci.edu";
-        map.put("email", email);
-        personResults.add(map);
         return personResults;
 	}
 	
@@ -214,24 +221,33 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 		if (searchChooser == 0){
 			cursor = buildingDb.rawQuery("SELECT _id, buildingName, buildingNumber, buildingAddress, buildingAbbreviation FROM building WHERE buildingName || ' ' || buildingAbbreviation || ' ' || buildingNumber LIKE ?" , 
 					new String[]{"%" + input + "%"});
-			listAdapter = new SimpleCursorAdapter(
-					this, 
-					R.layout.activity_building_list_item, 
-					cursor, 
-					new String[] {"buildingName", "buildingNumber", "buildingAddress"}, 
-					new int[] {R.id.buildingName,R.id.buildingNumber, R.id.buildingAddress});
-			setListAdapter(listAdapter);
+			if(cursor.moveToFirst())
+			{
+				listAdapter = new SimpleCursorAdapter(
+						this, 
+						R.layout.activity_building_list_item, 
+						cursor, 
+						new String[] {"buildingName", "buildingNumber", "buildingAddress"}, 
+						new int[] {R.id.buildingName,R.id.buildingNumber, R.id.buildingAddress});
+				setListAdapter(listAdapter);
+			}
+			else
+				Toast.makeText(getApplicationContext(), "No Results Found. Please Try again.", Toast.LENGTH_LONG).show();
 		}	else if (searchChooser == 1){
 			cursor = departmentDb.rawQuery("SELECT _id, departmentName, departmentAddress FROM department WHERE departmentName || ' ' || departmentAddress LIKE ?", 
 					new String[]{"%" + input + "%"});
-			listAdapter = new SimpleCursorAdapter(
-					this, 
-					R.layout.activity_department_list_item, 
-					cursor, 
-					new String[] {"departmentName", "departmentAddress"}, 
-					new int[] {R.id.departmentName, R.id.departmentAddress});
-			setListAdapter(listAdapter);
-		
+			if(cursor.moveToFirst())
+			{
+				listAdapter = new SimpleCursorAdapter(
+						this, 
+						R.layout.activity_department_list_item, 
+						cursor, 
+						new String[] {"departmentName", "departmentAddress"}, 
+						new int[] {R.id.departmentName, R.id.departmentAddress});
+				setListAdapter(listAdapter);
+			}
+			else
+				Toast.makeText(getApplicationContext(), "No Results Found. Please Try again.", Toast.LENGTH_LONG).show();
 		} else if (searchChooser == -1){
 			String searchInput = input;
 			searchInput = searchInput.toLowerCase();
@@ -260,19 +276,27 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 				String[] from = new String[] {"name", "title"};
 			    int[] to = new int[] {R.id.personName, R.id.personTitle};
 				simpleAdapter = new SimpleAdapter(this,personResults, R.layout.activity_person_list_item,from,to);
-				setListAdapter(simpleAdapter);
+				if(personResults!=null && !personResults.isEmpty())
+					setListAdapter(simpleAdapter);
+				else
+					Toast.makeText(getApplicationContext(), "No Results Found. Please Try Again.", Toast.LENGTH_LONG).show();
 			}
 		}
 		else if (searchChooser == 2){
 			cursor = serviceDb.rawQuery("SELECT _id, serviceName, serviceAddress FROM service WHERE serviceName || ' ' || serviceAddress LIKE ?", 
 					new String[]{"%" + input + "%"});
-			listAdapter = new SimpleCursorAdapter(
-					this, 
-					R.layout.activity_services_list_item, 
-					cursor, 
-					new String[] {"serviceName", "serviceAddress"}, 
-					new int[] {R.id.serviceName, R.id.serviceAddress});
-			setListAdapter(listAdapter);
+			if(cursor.moveToFirst())
+			{
+				listAdapter = new SimpleCursorAdapter(
+						this, 
+						R.layout.activity_services_list_item, 
+						cursor, 
+						new String[] {"serviceName", "serviceAddress"}, 
+						new int[] {R.id.serviceName, R.id.serviceAddress});
+				setListAdapter(listAdapter);
+			}
+			else
+				Toast.makeText(getApplicationContext(), "No Results Found. Please Try again.", Toast.LENGTH_LONG).show();
 		}
 	}
 	
@@ -329,8 +353,13 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 			String output = "";
 			HttpGet httpGet = null;
 			DefaultHttpClient httpClient = null;
+			HttpParams httpParameters = new BasicHttpParams();
+			int timeoutConnection = 3000;
+			int timeoutSocket = 5000;
+			HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
+			HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
 			try{
-				httpClient = new DefaultHttpClient();
+				httpClient = new DefaultHttpClient(httpParameters);
 				URI url = new URI(urls[0]);
 				httpGet = new HttpGet(url);
 				HttpResponse httpResponse = httpClient.execute(httpGet);
@@ -375,7 +404,6 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 
 	@Override
 	public boolean onQueryTextSubmit(String query) {
-		Toast.makeText(this, "You searched for: " + query, Toast.LENGTH_LONG).show();
 		search(query);
 		return true;
 	}
