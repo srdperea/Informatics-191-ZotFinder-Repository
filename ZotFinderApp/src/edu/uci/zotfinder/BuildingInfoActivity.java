@@ -1,10 +1,7 @@
 package edu.uci.zotfinder;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 import org.apache.http.HttpEntity;
@@ -14,28 +11,25 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.example.test2app.R;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class BuildingInfoActivity extends Activity {
+public class BuildingInfoActivity extends SherlockActivity {
 
-	protected TextView buildingName;
 	protected TextView buildingAddress;
 	protected TextView buildingNumber;
 	protected ImageView buildingImage;
@@ -50,6 +44,10 @@ public class BuildingInfoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_building_info);
+		
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setIcon(R.drawable.ic_action_previous_item);
+		
 		
 		View commonFooter = findViewById(R.id.footer);
 		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
@@ -67,10 +65,9 @@ public class BuildingInfoActivity extends Activity {
         if (cursor.getCount() == 1)
         {
         	cursor.moveToFirst();
-        
-        	buildingName = (TextView) findViewById(R.id.buildingName);
-        	buildingNameString = cursor.getString(cursor.getColumnIndex("buildingName"));
-        	buildingName.setText(buildingNameString);
+       
+        	buildingNameString = cursor.getString(cursor.getColumnIndex("buildingName"));        	
+        	getSupportActionBar().setTitle(buildingNameString);
         	
 	
 	        buildingAddress = (TextView) findViewById(R.id.buildingAddress);
@@ -101,6 +98,15 @@ public class BuildingInfoActivity extends Activity {
 				buildingImage.setImageBitmap(img);
         }
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+		if(item.getItemId() == android.R.id.home){
+			finish();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	};
 	
 	public void plotPoint(View view)
 	{
@@ -146,11 +152,6 @@ public class BuildingInfoActivity extends Activity {
 		}
 	}
 	
-		//Back button
-		public void finishActivity(View v){
-			finish();
-	    }
-	
 	//Footer Methods
 		//method to go to activity: MainActivity
 		//creates intent used to store the information of a different activity within this activity
@@ -174,14 +175,6 @@ public class BuildingInfoActivity extends Activity {
 		public void goToEmergencyDialer(View view) { 
 			Intent intent = new Intent(this,DialerActivity.class);
 			startActivity(intent);
-		}
-		 
-		//menu functionality when the user press the physical menu button located on the phone
-		//currently the menu feature does nothing	@Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			// Inflate the menu; this adds items to the action bar if it is present.
-			getMenuInflater().inflate(R.menu.person_info, menu);
-			return true;
 		}
 
 	}

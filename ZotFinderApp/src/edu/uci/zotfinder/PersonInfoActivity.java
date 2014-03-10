@@ -2,21 +2,20 @@ package edu.uci.zotfinder;
 
 import java.util.HashMap;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.example.test2app.R;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class PersonInfoActivity extends Activity {
+public class PersonInfoActivity extends SherlockActivity {
     String number;
     String name;
     String email;
@@ -26,6 +25,9 @@ public class PersonInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_person_info);
+            
+    		getSupportActionBar().setHomeButtonEnabled(true);
+    		getSupportActionBar().setIcon(R.drawable.ic_action_previous_item);
             
     		View commonFooter = findViewById(R.id.footer);
     		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
@@ -43,8 +45,7 @@ public class PersonInfoActivity extends Activity {
             //grabs the name from the intent passed from SearchActivity
             //puts it into set textView:"personInfoHeaderTextView"
             name = personResults.get("name");
-            TextView nameTextView = (TextView) findViewById(R.id.personInfoHeaderTextView);
-            nameTextView.setText(name);  
+            getSupportActionBar().setTitle(name);
             
             //grabs the officeLocation from the intent passed from SearchActivity
             //puts it into set textView:"officeLocation
@@ -158,14 +159,6 @@ public class PersonInfoActivity extends Activity {
     public void goToEmergencyDialer(View view) { 
             Intent intent = new Intent(this,DialerActivity.class);
             startActivity(intent);
-    }
-     
-    //menu functionality when the user press the physical menu button located on the phone
-    //currently the menu feature does nothing        @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-                getMenuInflater().inflate(R.menu.person_info, menu);
-                return true;
     }
 
 }

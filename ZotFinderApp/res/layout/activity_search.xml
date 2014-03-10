@@ -30,41 +30,70 @@
 		    android:id="@+id/searchBoxLayout"
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content">
-       <Button
-	        android:id="@+id/personTab"
-	        android:layout_width="0dp"
-	        android:layout_height="wrap_content"
-	        android:onClick="choosePersonSearch"
-	        android:layout_weight="1"
-	        android:text="Person"
-	        android:textSize="12sp" />
-	
-	    <Button
-	        android:layout_width="0dp"
-	        android:layout_height="wrap_content"
-	        android:onClick="chooseBuildingSearch"
-	        android:layout_weight="1"
-	        android:text="Building"
-	        android:textSize="12sp" />
-	
-	    <Button
-	        android:id="@+id/departmentTab"
-	       android:layout_width="0dp"
-	        android:layout_height="wrap_content"
-	        android:onClick="chooseDepartmentSearch"
-	        android:layout_weight="1.1"
-	        android:text="Department" 
-	        android:textSize="12sp"/>
+		    android:layout_height="wrap_content"
+		    android:baselineAligned="false">
+		    
+	   <LinearLayout
+	      android:id="@+id/personcollumn"
+	      android:layout_width="0dp"
+		  android:layout_height="wrap_content"
+		  android:layout_weight="1"
+		  android:gravity="center">
+		  
+	       	 <ToggleButton
+	            android:id="@+id/personTab"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:onClick="choosePersonSearch"
+	            android:textOff="Person"
+	            android:textOn="Person"/>
+		</LinearLayout>
+	   <LinearLayout
+	      android:id="@+id/buildingcollumn"
+	      android:layout_width="0dp"
+		  android:layout_height="wrap_content"
+		  android:layout_weight="1"
+		  android:gravity="center">
+		  
+	       	 <ToggleButton
+	            android:id="@+id/buildingTab"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:onClick="chooseBuildingSearch"
+	            android:textOff="Building"
+	            android:textOn="Building" />
+		</LinearLayout>
 	    
-	    <Button
-	        android:id="@+id/serviceTab"
-	       	android:layout_width="0dp"
-	        android:layout_height="wrap_content"
-	        android:onClick="chooseServiceSearch"
-	        android:layout_weight="1"
-	        android:text="Service"
-	        android:textSize="12sp" />
+	   <LinearLayout
+	      android:id="@+id/departmentcollumn"
+	      android:layout_width="0dp"
+		  android:layout_height="wrap_content"
+		  android:layout_weight="1.1"
+		  android:gravity="center">
+		  
+	       	 <ToggleButton
+	            android:id="@+id/departmentTab"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:onClick="chooseDepartmentSearch"
+	            android:textOff="Department"
+	            android:textOn="Department"/>
+		</LinearLayout>
+		<LinearLayout
+	      android:id="@+id/servicecollumn"
+	      android:layout_width="0dp"
+		  android:layout_height="wrap_content"
+		  android:layout_weight="1"
+		  android:gravity="center">
+		  
+	       	 <ToggleButton
+	            android:id="@+id/serviceTab"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:onClick="chooseServiceSearch"
+	            android:textOff="service"
+	            android:textOn="service"/>
+		</LinearLayout>
 	 </LinearLayout>
 	    
 	 <ListView

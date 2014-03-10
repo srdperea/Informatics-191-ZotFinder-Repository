@@ -77,7 +77,7 @@
         <activity
             android:name="edu.uci.zotfinder.PersonInfoActivity"
             android:label="@string/title_activity_person_info"
-            android:theme="@android:style/Theme.NoTitleBar" 
+            android:theme="@style/Theme.Sherlock"
             android:screenOrientation="portrait">
         </activity>
         <activity
@@ -95,13 +95,13 @@
         <activity
             android:name="edu.uci.zotfinder.DepartmentInfoActivity"
             android:label="@string/title_activity_department_info"
-            android:theme="@android:style/Theme.NoTitleBar"
+            android:theme="@style/Theme.Sherlock"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.BuildingInfoActivity"
             android:label="@string/title_activity_building_info"
-            android:theme="@android:style/Theme.NoTitleBar"
+            android:theme="@style/Theme.Sherlock"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -129,6 +129,7 @@
         <activity
             android:name="edu.uci.zotfinder.ServicesInfoActivity"
             android:label="@string/title_activity_services_info" 
+            android:theme="@style/Theme.Sherlock"
             android:screenOrientation="portrait">  
         </activity>
     </application>

@@ -1,20 +1,18 @@
 package edu.uci.zotfinder;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.example.test2app.R;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ServicesInfoActivity extends Activity {
+public class ServicesInfoActivity extends SherlockActivity {
 	
-	protected TextView serviceName;
 	protected TextView serviceAddress;
 	protected String serviceNameString;
 	protected String serviceAddressString;
@@ -26,6 +24,9 @@ public class ServicesInfoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_services_info);
+		
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setIcon(R.drawable.ic_action_previous_item);
 		
 		View commonFooter = findViewById(R.id.footer);
 		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
@@ -43,10 +44,9 @@ public class ServicesInfoActivity extends Activity {
         if (cursor.getCount() == 1)
         {
         	cursor.moveToFirst();
-        
-        	serviceName = (TextView) findViewById(R.id.serviceName);
+        	
         	serviceNameString = cursor.getString(cursor.getColumnIndex("serviceName"));
-        	serviceName.setText(serviceNameString);
+        	getSupportActionBar().setTitle(serviceNameString);
         	
 	        serviceAddress = (TextView) findViewById(R.id.serviceAddress);
 	        serviceAddressString = cursor.getString(cursor.getColumnIndex("serviceAddress"));
@@ -100,13 +100,4 @@ public class ServicesInfoActivity extends Activity {
 			Intent intent = new Intent(this,DialerActivity.class);
 			startActivity(intent);
 		}
-		 
-		//menu functionality when the user press the physical menu button located on the phone
-		//currently the menu feature does nothing	@Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			// Inflate the menu; this adds items to the action bar if it is present.
-			getMenuInflater().inflate(R.menu.person_info, menu);
-			return true;
-		}
-
 	}

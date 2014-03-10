@@ -19,6 +19,7 @@ public class StudentExpectationsActivity extends SherlockActivity {
 		
 		getSupportActionBar().setTitle("Student Role and Expectation");
 		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setIcon(R.drawable.ic_action_previous_item);
 		
 		View commonFooter = findViewById(R.id.footer);
 		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);

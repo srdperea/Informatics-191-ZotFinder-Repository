@@ -22,7 +22,6 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.text.InputFilter.LengthFilter;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -32,11 +31,13 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.SearchView;
 import com.example.test2app.R;
+import com.google.android.gms.plus.model.people.Person.Collection;
 
 public class SearchActivity extends SherlockListActivity implements SearchView.OnQueryTextListener {
 	//bundle is global so that it may be accessed from outside the getData() method
@@ -76,6 +77,7 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 		
 		getSupportActionBar().setTitle("Search");
 		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setIcon(R.drawable.ic_action_previous_item);
 		
 		View commonFooter = findViewById(R.id.footer);
 		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
@@ -212,18 +214,54 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 	public void choosePersonSearch(View view){
 		searchChooser = -1;
 		searchView.setQueryHint("Search for Person");
+		ToggleButton personButton = (ToggleButton) findViewById(R.id.personTab);
+		personButton.setChecked(true);
+		ToggleButton buildingButton = (ToggleButton) findViewById(R.id.buildingTab);
+		buildingButton.setChecked(false);
+		ToggleButton departmentButton = (ToggleButton) findViewById(R.id.departmentTab);
+		departmentButton.setChecked(false);
+		ToggleButton serviceTab = (ToggleButton) findViewById(R.id.serviceTab);
+		serviceTab.setChecked(false);
+		setListAdapter(null);
 	}
 	public void chooseBuildingSearch(View view){
 		searchChooser = 0;
 		searchView.setQueryHint("Search for Building");
+		ToggleButton personButton = (ToggleButton) findViewById(R.id.personTab);
+		personButton.setChecked(false);
+		ToggleButton buildingButton = (ToggleButton) findViewById(R.id.buildingTab);
+		buildingButton.setChecked(true);
+		ToggleButton departmentButton = (ToggleButton) findViewById(R.id.departmentTab);
+		departmentButton.setChecked(false);
+		ToggleButton serviceTab = (ToggleButton) findViewById(R.id.serviceTab);
+		serviceTab.setChecked(false);
+		search(" ");
 	}
 	public void chooseDepartmentSearch(View view){
 		searchChooser = 1;
 		searchView.setQueryHint("Search for Department");
+		ToggleButton personButton = (ToggleButton) findViewById(R.id.personTab);
+		personButton.setChecked(false);
+		ToggleButton buildingButton = (ToggleButton) findViewById(R.id.buildingTab);
+		buildingButton.setChecked(false);
+		ToggleButton departmentButton = (ToggleButton) findViewById(R.id.departmentTab);
+		departmentButton.setChecked(true);
+		ToggleButton serviceTab = (ToggleButton) findViewById(R.id.serviceTab);
+		serviceTab.setChecked(false);
+		search(" ");
 	}
 	public void chooseServiceSearch(View view){
 		searchChooser = 2;
 		searchView.setQueryHint("Search for Service");
+		ToggleButton personButton = (ToggleButton) findViewById(R.id.personTab);
+		personButton.setChecked(false);
+		ToggleButton buildingButton = (ToggleButton) findViewById(R.id.buildingTab);
+		buildingButton.setChecked(false);
+		ToggleButton departmentButton = (ToggleButton) findViewById(R.id.departmentTab);
+		departmentButton.setChecked(false);
+		ToggleButton serviceTab = (ToggleButton) findViewById(R.id.serviceTab);
+		serviceTab.setChecked(true);
+		search(" ");
 	}
 	
 	@SuppressWarnings("deprecation")

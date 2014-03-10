@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.text.Html;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class EmergencyProcedureActivity extends SherlockActivity {
@@ -20,6 +19,7 @@ public class EmergencyProcedureActivity extends SherlockActivity {
 		setContentView(R.layout.activity_emergency_procedure);
 		
 		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setIcon(R.drawable.ic_action_previous_item);
 		
 		//grabs the name from the intent passed from SearchActivity
 		//puts it into set textView:"personInfoHeaderTextView"
