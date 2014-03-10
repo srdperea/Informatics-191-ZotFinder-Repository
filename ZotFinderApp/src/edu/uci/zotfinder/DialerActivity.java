@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 
 public class DialerActivity extends SherlockActivity {
 
@@ -18,6 +19,14 @@ public class DialerActivity extends SherlockActivity {
 		setContentView(R.layout.activity_dialer);
 		
 		getSupportActionBar().setTitle("Emergency Dialer");
+		
+		View commonFooter = findViewById(R.id.footer);
+		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
+		Button emergencyButton = (Button) commonFooter.findViewById(R.id.emergencyLinkButton);
+		Button mapButton = (Button) commonFooter.findViewById(R.id.mapLinkButton);	
+		mapButton.setBackgroundResource(R.drawable.map_icon);
+		emergencyButton.setBackgroundResource(R.drawable.emergency_icon);
+		dialerButton.setBackgroundResource(R.drawable.dialer_icon_pressed);
 	}
 	
 	//Dialer Methods
@@ -32,6 +41,12 @@ public class DialerActivity extends SherlockActivity {
 		intent.setData(Uri.parse("tel:911"));
 		startActivity(intent);	
 	}
+	
+	public void callCSO(View view){
+		Intent intent = new Intent(Intent.ACTION_DIAL);
+		intent.setData(Uri.parse("tel:9498247233"));
+		startActivity(intent);	
+	}
 	 
 	public void callUciPoliceDept(View view) {
 		Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -42,6 +57,12 @@ public class DialerActivity extends SherlockActivity {
 	public void callEmergencyMgmt(View view) {
 		Intent intent = new Intent(Intent.ACTION_DIAL);
 		intent.setData(Uri.parse("tel:9498247147"));
+		startActivity(intent);  
+	}
+	
+	public void callEnvironmentalHealth(View view) {
+		Intent intent = new Intent(Intent.ACTION_DIAL);
+		intent.setData(Uri.parse("tel:9498246200"));
 		startActivity(intent);  
 	}
 	 
@@ -55,12 +76,6 @@ public class DialerActivity extends SherlockActivity {
 		Intent intent = new Intent(Intent.ACTION_DIAL);
 		intent.setData(Uri.parse("tel:9498245301"));
 		startActivity(intent);  
-	}
-	 
-	public void callEmergencyHealthAndSafety(View view) {
-		Intent intent = new Intent(Intent.ACTION_DIAL);
-		intent.setData(Uri.parse("tel:9498246200"));
-		startActivity(intent); 
 	}
 	 
 	public void callFacilitiesMgmtService(View view) {

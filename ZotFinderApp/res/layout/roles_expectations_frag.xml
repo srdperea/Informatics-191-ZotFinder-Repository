@@ -9,46 +9,12 @@
     android:background="@color/holo_dark" >
     
     
-    	<include
-        layout="@layout/commonfooter" />
+    <!-- Footer -->
+    <include
+        android:id="@+id/footer"
+        layout="@layout/commonfooter" /> 
         
-	<!-- HEADER
-   <TableRow
-        android:id="@+id/e_tableRow1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/header_color_blue" >
-        
-     <ImageButton 
-            android:id="@+id/backButton"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-			android:layout_marginLeft="2dp"
-			android:layout_marginTop="3dp"
-			android:layout_marginBottom="3dp"
-			android:padding="1dp"
-			android:gravity="center_horizontal"
-	        android:text="@string/back_button"
-	        android:textSize="12sp"
-	        android:textStyle="bold"
-	        android:background="@android:color/transparent"
-	        android:src="@drawable/ic_action_previous_item"
-	        android:onClick="finishActivity"
-	 
-	                />
-        
-		<TextView
-            android:id="@+id/emergencyInfoHeaderTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="@string/roles_expectations"
-            android:textSize="@dimen/font_size"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white" />
-    </TableRow> 
-     -->
+
    
 	<Button
        android:id="@+id/studentButton"

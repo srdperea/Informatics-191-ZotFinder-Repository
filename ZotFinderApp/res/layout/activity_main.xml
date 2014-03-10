@@ -2,8 +2,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
     
+   	<!-- Footer -->
     <include
-        layout="@layout/commonfooter" />
+        android:id="@+id/footer"
+        layout="@layout/commonfooter" /> 
+        
  	    <!-- This is the button for formatting and Toggling -->
  	    <Button 
  	       android:id="@+id/transparent_button"

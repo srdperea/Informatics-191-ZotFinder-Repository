@@ -15,9 +15,10 @@
 	   android:textColor="@color/white"
 	   android:textSize="@dimen/button_text_size" />
 		   	    
-	<include
-        layout="@layout/commonfooter" />
-		   	    
+    <!-- Footer -->
+    <include
+        android:id="@+id/footer"
+        layout="@layout/commonfooter" />  	    
     
     
     <!-- Top Half of layout -->

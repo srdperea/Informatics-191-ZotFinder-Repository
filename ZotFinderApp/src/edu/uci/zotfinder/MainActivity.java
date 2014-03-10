@@ -23,6 +23,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import android.support.v4.app.FragmentManager;
 
@@ -149,6 +150,14 @@ public class MainActivity extends SherlockFragmentActivity {
 		
 		getSupportActionBar().setTitle("Map");
 		getSupportActionBar().setHomeButtonEnabled(true);
+		
+		View commonFooter = findViewById(R.id.footer);
+		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
+		Button emergencyButton = (Button) commonFooter.findViewById(R.id.emergencyLinkButton);
+		Button mapButton = (Button) commonFooter.findViewById(R.id.mapLinkButton);	
+		mapButton.setBackgroundResource(R.drawable.map_icon_pressed);
+		emergencyButton.setBackgroundResource(R.drawable.emergency_icon);
+		dialerButton.setBackgroundResource(R.drawable.dialer_icon);
 	    
 	    //Initialize Map
 		//Google maps requires the map to be a fragment 

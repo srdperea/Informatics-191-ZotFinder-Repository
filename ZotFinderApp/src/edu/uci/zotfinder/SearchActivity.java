@@ -26,6 +26,7 @@ import android.text.InputFilter.LengthFilter;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -75,6 +76,14 @@ public class SearchActivity extends SherlockListActivity implements SearchView.O
 		
 		getSupportActionBar().setTitle("Search");
 		getSupportActionBar().setHomeButtonEnabled(true);
+		
+		View commonFooter = findViewById(R.id.footer);
+		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
+		Button emergencyButton = (Button) commonFooter.findViewById(R.id.emergencyLinkButton);
+		Button mapButton = (Button) commonFooter.findViewById(R.id.mapLinkButton);	
+		mapButton.setBackgroundResource(R.drawable.map_icon);
+		emergencyButton.setBackgroundResource(R.drawable.emergency_icon);
+		dialerButton.setBackgroundResource(R.drawable.dialer_icon);
 		
 		BuildingDatabase buildingDatabase = new BuildingDatabase(this);
 		DepartmentDatabase departmentDatabase = new DepartmentDatabase(this);

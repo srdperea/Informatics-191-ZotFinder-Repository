@@ -20,8 +20,10 @@
 	   android:textSize="@dimen/button_text_size" />
 		   	    
     
- 	<include
-	        layout="@layout/commonfooter" />   
+    <!-- Footer -->
+    <include
+        android:id="@+id/footer"
+        layout="@layout/commonfooter" /> 
 
     <ScrollView 
 	    android:id="@+id/ScrollLayout"

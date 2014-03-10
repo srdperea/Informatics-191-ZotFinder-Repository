@@ -21,8 +21,10 @@
 	   android:textColor="@color/white"
 	   android:textSize="@dimen/button_text_size" />
 	    
+    <!-- Footer -->
     <include
-	        layout="@layout/commonfooter" />   
+        android:id="@+id/footer"
+        layout="@layout/commonfooter" /> 
 
 	<LinearLayout
 		    android:id="@+id/searchBoxLayout"

@@ -69,7 +69,18 @@
     <string name="fire_title">Fire</string>
     <string name="persons_in_distress_title">Person In Distress</string>
     <string name="utility_failure_title">Utility Failure</string>
-
+    
+    <!-- Dialer -->
+    <string name="community_service_officer">Community Service\r\nOfficer (CSO)</string>
+    <string name="counseling_center">Counseling Center</string>
+    <string name="emergency_management">Emergency\r\nManagement</string>
+    <string name="environmental_health">Environmental\r\nHealth &amp; Safety</string>
+    <string name="facilities_management">Facilities Management\r\nService Desk</string>
+    <string name="oit">Office of Information\r\nTechnology (OIT)</string>
+    <string name="police_department_dispatch">Police Department\r\nDispatch</string>
+    <string name="student_health">Student Health</string>
+    <string name="uci_emergency_info_line">UCI Emergency\r\nInfo. Line</string>
+	<string name="call_911">911</string>
     <!-- Search -->
     <string name="input_text">UCINetID</string>
     <string name="input_hint">Enter a UciNetID</string>
@@ -385,12 +396,6 @@
     </string>
 
     <!-- Dialer Home -->
-    <string name="dialer_header">Emergency Dialer</string>
-    <string name="call_911">911</string>
-    <string name="uci_police_dept">UCI Police Dept</string>
-    <string name="emergency_mgmt">Emergency Mgmt</string>
-    <string name="counseling_center">Counseling Center</string>
-    <string name="student_health">Student Health</string>
     <string name="title_activity_emergency_info">EmergencyInfoActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_dialer">DialerActivity</string>

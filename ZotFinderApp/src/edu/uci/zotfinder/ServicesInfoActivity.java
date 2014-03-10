@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ServicesInfoActivity extends Activity {
@@ -25,6 +26,14 @@ public class ServicesInfoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_services_info);
+		
+		View commonFooter = findViewById(R.id.footer);
+		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
+		Button emergencyButton = (Button) commonFooter.findViewById(R.id.emergencyLinkButton);
+		Button mapButton = (Button) commonFooter.findViewById(R.id.mapLinkButton);	
+		mapButton.setBackgroundResource(R.drawable.map_icon);
+		emergencyButton.setBackgroundResource(R.drawable.emergency_icon);
+		dialerButton.setBackgroundResource(R.drawable.dialer_icon);
 		
 		serviceId = getIntent().getExtras().getInt("SERVICE_ID");
         SQLiteDatabase db = (new ServicesDatabase(this)).getReadableDatabase();

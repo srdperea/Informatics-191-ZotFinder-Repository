@@ -13,6 +13,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class PersonInfoActivity extends Activity {
@@ -25,6 +26,14 @@ public class PersonInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_person_info);
+            
+    		View commonFooter = findViewById(R.id.footer);
+    		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
+    		Button emergencyButton = (Button) commonFooter.findViewById(R.id.emergencyLinkButton);
+    		Button mapButton = (Button) commonFooter.findViewById(R.id.mapLinkButton);	
+    		mapButton.setBackgroundResource(R.drawable.map_icon);
+    		emergencyButton.setBackgroundResource(R.drawable.emergency_icon);
+    		dialerButton.setBackgroundResource(R.drawable.dialer_icon);
             
             Intent intent = getIntent();
             HashMap<String,String> personResults = (HashMap<String, String>) intent.getSerializableExtra("person");

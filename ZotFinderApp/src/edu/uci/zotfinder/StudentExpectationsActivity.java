@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.text.Html;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class StudentExpectationsActivity extends SherlockActivity {
@@ -18,6 +19,14 @@ public class StudentExpectationsActivity extends SherlockActivity {
 		
 		getSupportActionBar().setTitle("Student Role and Expectation");
 		getSupportActionBar().setHomeButtonEnabled(true);
+		
+		View commonFooter = findViewById(R.id.footer);
+		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
+		Button emergencyButton = (Button) commonFooter.findViewById(R.id.emergencyLinkButton);
+		Button mapButton = (Button) commonFooter.findViewById(R.id.mapLinkButton);	
+		mapButton.setBackgroundResource(R.drawable.map_icon);
+		emergencyButton.setBackgroundResource(R.drawable.emergency_icon_pressed);
+		dialerButton.setBackgroundResource(R.drawable.dialer_icon);
 		
 		//creates textView:"ins" that corresponds to textView:"EarthquakeTextView" in file:"activity_earthquake.xml"
 		TextView ins = (TextView)findViewById(R.id.StudentTextView);
