@@ -91,8 +91,8 @@
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:onClick="chooseServiceSearch"
-	            android:textOff="service"
-	            android:textOn="service"/>
+	            android:textOff="Service"
+	            android:textOn="Service"/>
 		</LinearLayout>
 	 </LinearLayout>
 	    
