@@ -195,7 +195,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		        	 mMap.addMarker(new MarkerOptions()
 		        	 	.position(new LatLng(latitude, longitude))
 		        	 	.title(name)
-		        	 	.snippet("Address: " + address +  "Building Number: " + number));
+		        	 	.snippet("Address: " + address))
+		        	 	.showInfoWindow();
 		        	 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
 			         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 			         destinationPoint = new LatLng(latitude, longitude);
@@ -249,11 +250,13 @@ public class MainActivity extends SherlockFragmentActivity {
 			         destinationPoint = new LatLng(latitude, longitude);
 		         }
 	    	 }
-	    	 
-	         //Animates the camera to the LatLng coordinate "UCI" which acts as the center
-	         //initial zoom is set to 15 but this can be changed
-	         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
-	         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);     
+	    	 else
+	    	 {
+	    		 //Animates the camera to the LatLng coordinate "UCI" which acts as the center
+		         //initial zoom is set to 15 but this can be changed
+		         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UCI, 15));
+		         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
+	    	 }
 	     }
 	    	SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
 	 		eaShow = settings.getBoolean("ea", true);
@@ -454,7 +457,7 @@ public class MainActivity extends SherlockFragmentActivity {
 
                 // Adding all the points in the route to LineOptions
                 lineOptions.addAll(points);
-                lineOptions.width(2);
+                lineOptions.width(5);
 
                 // Changing the color polyline according to the mode
                 lineOptions.color(Color.BLUE);

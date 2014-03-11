@@ -1,7 +1,9 @@
 package edu.uci.zotfinder;
 
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 import org.apache.http.HttpEntity;
@@ -39,6 +41,7 @@ public class BuildingInfoActivity extends SherlockActivity {
     protected int buildingId;
     protected float buildingLongitude;
     protected float buildingLatitude;
+    protected String imageUrl;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,7 @@ public class BuildingInfoActivity extends SherlockActivity {
 
 	        buildingNumber = (TextView) findViewById(R.id.buildingNumber);
 	        buildingNumberString = cursor.getString(cursor.getColumnIndex("buildingNumber"));
+	        buildingNumberString = buildingNumberString.replaceAll(" ","");
 	        buildingNumber.setText(buildingNumberString);
 	        
 	        buildingLongitude = Float.valueOf(cursor.getString(cursor.getColumnIndex("buildingLongitude")));
@@ -84,7 +88,7 @@ public class BuildingInfoActivity extends SherlockActivity {
 	        buildingLatitude = Float.valueOf(cursor.getString(cursor.getColumnIndex("buildingLatitude")));
 	        
 	        buildingImage = (ImageView) findViewById(R.id.building_image);
-	        String imageUrl = "https://eee.uci.edu/images/buildings/" + buildingNumberString + ".jpg";
+	        imageUrl = "https://eee.uci.edu/images/buildings/" + buildingNumberString + ".jpg";
 	        Bitmap img = null;
 			try {
 				img = new RetreiveDirectoryResultTask().execute(imageUrl).get();
@@ -129,22 +133,12 @@ public class BuildingInfoActivity extends SherlockActivity {
 		@Override
 		protected Bitmap doInBackground(String... urls) {
 			Bitmap img = null;
-			InputStream is = null;
-			HttpGet httpGet = null;
-			DefaultHttpClient httpClient = null;
-			HttpParams httpParameters = new BasicHttpParams();
-			int timeoutConnection = 3000;
-			int timeoutSocket = 5000;
-			HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
-			HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
 			try{
-				httpClient = new DefaultHttpClient(httpParameters);
-				URI url = new URI(urls[0]);
-				httpGet = new HttpGet(url);
-				HttpResponse httpResponse = httpClient.execute(httpGet);
-				HttpEntity httpEntity = httpResponse.getEntity();
-			    is = httpEntity.getContent();
-			    img = BitmapFactory.decodeStream(is);
+				URL url = new URL(imageUrl);
+				HttpURLConnection connection  = (HttpURLConnection) url.openConnection();
+				connection.setConnectTimeout(5000);
+				InputStream is = connection.getInputStream();
+				img = BitmapFactory.decodeStream(is);
 			} catch (Exception e) {
 					Log.d("Exception while downloading url", e.toString());
 			 	}
