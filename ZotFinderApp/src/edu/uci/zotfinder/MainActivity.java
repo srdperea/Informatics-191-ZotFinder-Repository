@@ -73,8 +73,6 @@ public class MainActivity extends SherlockFragmentActivity {
 	//rrSHow=false - Hide all Restroom Markers
 	protected static boolean rrShow=true;
 	
-	protected SubMenu subMenu1;
-	
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -86,19 +84,19 @@ public class MainActivity extends SherlockFragmentActivity {
 		menu.add("Search")
         .setIcon(R.drawable.ic_search)
         .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-		
-		subMenu1 = menu.addSubMenu("Action Item");
-        subMenu1.add(Menu.NONE, 1, 1, "Blue Phone Posts").setIcon(R.drawable.radio_button_selected);
-        subMenu1.add(Menu.NONE, 2, 2, "Emergency Areas").setIcon(R.drawable.radio_button_selected);
-        subMenu1.add(Menu.NONE, 3, 3, "Restrooms").setIcon(R.drawable.radio_button_selected);
+		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
+		SubMenu subMenu1 = menu.addSubMenu(Menu.NONE, 0, Menu.NONE, "Action Item");
+        subMenu1.add(1, 1, 1, "Blue Phone Posts").setCheckable(true).setChecked(settings.getBoolean("bp", true));
+        subMenu1.add(1, 2, 2, "Emergency Areas").setCheckable(true).setChecked(settings.getBoolean("ea", true));
+        subMenu1.add(1, 3, 3, "Restrooms").setCheckable(true).setChecked(settings.getBoolean("rr", true));
         subMenu1.add(Menu.NONE, 4, 4, "About Us");
+
 
         MenuItem subMenu1Item = subMenu1.getItem();
         subMenu1Item.setIcon(R.drawable.ic_drawer);
         subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        
 
-/*        SubMenu subMenu2 = menu.addSubMenu("Overflow Item");
+/*      SubMenu subMenu2 = menu.addSubMenu("Overflow Item");
         subMenu2.add("These");
         subMenu2.add("Are");
         subMenu2.add("Sample");
@@ -117,29 +115,32 @@ public class MainActivity extends SherlockFragmentActivity {
 		
 		if (itemTitle.equals("Blue Phone Posts")){
 			toggleBluePhone();
-			return true;
+			item.setChecked(bpShow);
+			return false;
 		}
 		if (itemTitle.equals("Emergency Areas")){
 			toggleEmergencyMarker();
-			return true;
+			item.setChecked(eaShow);
+			return false;
 		}
 		if (itemTitle.equals("Restrooms")){
 			toggleRestroom();
-			return true;
+			item.setChecked(rrShow);
+			return false;
 		}
 		if (itemTitle.equals("About Us")){
-			return true;
+			return false;
 		}
 		if(itemTitle.equals("Search")){
 			Intent intent = new Intent(this,SearchActivity.class);
 			startActivity(intent);
-			return true;
+			return false;
 		}
 		if(itemTitle.equals("Directions")){
 			if(destinationPoint!=null){
 				findDirections(destinationPoint);
 			}
-			return true;
+			return false;
 		}
 		return false;
 	};
@@ -586,7 +587,6 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 			bpShow = false;
 			editor.putBoolean("bp", bpShow);
-			subMenu1.findItem(1).setIcon(R.drawable.radio_button_unselected);
 		}
 		//else if bpShow=false
 		else{
@@ -596,7 +596,6 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 			bpShow = true;
 			editor.putBoolean("bp", bpShow);
-			subMenu1.findItem(1).setIcon(R.drawable.radio_button_selected);
 		}
 		editor.commit();
 	}
@@ -612,7 +611,6 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 			eaShow = false;
 			editor.putBoolean("ea", eaShow);
-			subMenu1.findItem(2).setIcon(R.drawable.radio_button_unselected);
 		}
 		//else if eaShow=false
 		else{
@@ -622,7 +620,6 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 			eaShow = true;
 			editor.putBoolean("ea", eaShow);
-			subMenu1.findItem(2).setIcon(R.drawable.radio_button_selected);
 		}
 		editor.commit();
 	}
@@ -638,7 +635,6 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 			rrShow = false;
 			editor.putBoolean("rr", rrShow);
-			subMenu1.findItem(3).setIcon(R.drawable.radio_button_unselected);
 		}
 		//else if 
 		else{
@@ -648,7 +644,6 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 			rrShow = true;
 			editor.putBoolean("rr", rrShow);
-			subMenu1.findItem(3).setIcon(R.drawable.radio_button_selected);
 		}
 		editor.commit();
 	}
