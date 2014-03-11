@@ -73,6 +73,8 @@ public class MainActivity extends SherlockFragmentActivity {
 	//rrSHow=false - Hide all Restroom Markers
 	protected static boolean rrShow=true;
 	
+	protected SubMenu subMenu1;
+	
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,11 +87,11 @@ public class MainActivity extends SherlockFragmentActivity {
         .setIcon(R.drawable.ic_search)
         .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 		
-		SubMenu subMenu1 = menu.addSubMenu("Action Item");
-        subMenu1.add("Blue Phone Posts");
-        subMenu1.add("Emergency Areas");
-        subMenu1.add("Restrooms");
-        subMenu1.add("About Us");
+		subMenu1 = menu.addSubMenu("Action Item");
+        subMenu1.add(Menu.NONE, 1, 1, "Blue Phone Posts").setIcon(R.drawable.radio_button_selected);
+        subMenu1.add(Menu.NONE, 2, 2, "Emergency Areas").setIcon(R.drawable.radio_button_selected);
+        subMenu1.add(Menu.NONE, 3, 3, "Restrooms").setIcon(R.drawable.radio_button_selected);
+        subMenu1.add(Menu.NONE, 4, 4, "About Us");
 
         MenuItem subMenu1Item = subMenu1.getItem();
         subMenu1Item.setIcon(R.drawable.ic_drawer);
@@ -259,23 +261,23 @@ public class MainActivity extends SherlockFragmentActivity {
 	    	 }
 	     }
 	    	SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
-	 		eaShow = settings.getBoolean("ea", true);
 	 		bpShow = settings.getBoolean("bp", true);
+	    	eaShow = settings.getBoolean("ea", true);
 	 		rrShow = settings.getBoolean("rr", true);
-	 		if(!eaShow)
- 			{
-	 			for(Marker m :emergencyAreas)
-					m.setVisible(false);
- 			}
 	 		if(!bpShow)
  			{
-	 			for(Marker m :bluePhones)
-					m.setVisible(false);
+	 			bpShow = true;
+	 			toggleBluePhone();
+ 			}
+	 		if(!eaShow)
+ 			{
+	 			eaShow = true;
+	 			toggleEmergencyMarker();
  			}
 	 		if(!rrShow)
 	 		{
-	 			for(Marker m :restrooms)
-					m.setVisible(false);
+	 			rrShow = true;
+	 			toggleRestroom();
  			}
 	}
 	
@@ -573,30 +575,6 @@ public class MainActivity extends SherlockFragmentActivity {
 		}
 	}
 	
-	public void toggleEmergencyMarker(){
-		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
-		SharedPreferences.Editor editor = settings.edit();
-		//if eaShow=true
-		if(eaShow){
-			//hide all the emergency area markers
-			for(Marker m :emergencyAreas){
-				m.setVisible(false);
-			}
-			eaShow = false;
-			editor.putBoolean("ea", eaShow);
-		}
-		//else if eaShow=false
-		else{
-			//show all the emergency area markers
-			for( Marker m : emergencyAreas){
-				m.setVisible(true);
-			}
-			eaShow = true;
-			editor.putBoolean("ea", eaShow);
-		}
-		editor.commit();
-	}
-	
 	public void toggleBluePhone(){
 		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
 		SharedPreferences.Editor editor = settings.edit();
@@ -608,6 +586,7 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 			bpShow = false;
 			editor.putBoolean("bp", bpShow);
+			subMenu1.findItem(1).setIcon(R.drawable.radio_button_unselected);
 		}
 		//else if bpShow=false
 		else{
@@ -617,6 +596,33 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 			bpShow = true;
 			editor.putBoolean("bp", bpShow);
+			subMenu1.findItem(1).setIcon(R.drawable.radio_button_selected);
+		}
+		editor.commit();
+	}
+	
+	public void toggleEmergencyMarker(){
+		SharedPreferences settings = getSharedPreferences("ZotFinder Preferences", 0);
+		SharedPreferences.Editor editor = settings.edit();
+		//if eaShow=true
+		if(eaShow){
+			//hide all the emergency area markers
+			for(Marker m :emergencyAreas){
+				m.setVisible(false);
+			}
+			eaShow = false;
+			editor.putBoolean("ea", eaShow);
+			subMenu1.findItem(2).setIcon(R.drawable.radio_button_unselected);
+		}
+		//else if eaShow=false
+		else{
+			//show all the emergency area markers
+			for( Marker m : emergencyAreas){
+				m.setVisible(true);
+			}
+			eaShow = true;
+			editor.putBoolean("ea", eaShow);
+			subMenu1.findItem(2).setIcon(R.drawable.radio_button_selected);
 		}
 		editor.commit();
 	}
@@ -632,6 +638,7 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 			rrShow = false;
 			editor.putBoolean("rr", rrShow);
+			subMenu1.findItem(3).setIcon(R.drawable.radio_button_unselected);
 		}
 		//else if 
 		else{
@@ -641,6 +648,7 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 			rrShow = true;
 			editor.putBoolean("rr", rrShow);
+			subMenu1.findItem(3).setIcon(R.drawable.radio_button_selected);
 		}
 		editor.commit();
 	}
