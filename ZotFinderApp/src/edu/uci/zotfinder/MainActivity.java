@@ -217,7 +217,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		        	 mMap.addMarker(new MarkerOptions()
 		        	 	.position(new LatLng(latitude, longitude))
 		        	 	.title(name)
-		        	 	.snippet("Address: " + address));
+		        	 	.snippet("Address: " + address))
+		        	 	.showInfoWindow();
 		        	 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
 			         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 			         destinationPoint = new LatLng(latitude, longitude);
@@ -232,7 +233,9 @@ public class MainActivity extends SherlockFragmentActivity {
 		        	 mMap.addMarker(new MarkerOptions()
 		        	 	.position(new LatLng(latitude, longitude))
 		        	 	.title(name)
-		        	 	.snippet("Office Location: " + officeLocation));
+		        	 	.snippet("Office Location: " + officeLocation))
+		        	 	.showInfoWindow();
+		        	 	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
 		        	 	mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 		        	 	destinationPoint = new LatLng(latitude, longitude);
 		         }
@@ -247,7 +250,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		        	 mMap.addMarker(new MarkerOptions()
 		        	 	.position(new LatLng(latitude, longitude))
 		        	 	.title(name)
-		        	 	.snippet("Address: " + address));
+		        	 	.snippet("Address: " + address))
+		        	 	.showInfoWindow();
 		        	 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
 			         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 			         destinationPoint = new LatLng(latitude, longitude);
