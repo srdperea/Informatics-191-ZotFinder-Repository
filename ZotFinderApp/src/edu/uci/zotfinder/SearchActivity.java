@@ -36,7 +36,6 @@ import android.widget.ToggleButton;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.SearchView;
-import com.example.test2app.R;
 import com.google.android.gms.plus.model.people.Person.Collection;
 
 public class SearchActivity extends SherlockListActivity implements SearchView.OnQueryTextListener {

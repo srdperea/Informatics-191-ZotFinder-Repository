@@ -430,5 +430,14 @@
     <string name="title_activity_emergency">EmergencyActivity</string>
     <string name="title_activity_services_info">ServicesInfoActivity</string>
     <string name="title_activity_fragment_stack_support">FragmentStackSupport</string>
-
+    
+    <!-- About Us -->
+    <string name="title_activity_about_us">About Us</string>
+    <string name="about_us_version">Version 1.0</string>
+    <string name="about_us_sponsors"><b>Sponsors:</b>\r\nAnne Widney\r\n<i>UCIPD Business Continuity Planner</i>\r\n\r\nGregory Gallardo\r\n<i>UCI Facilities Manager - Calit2</i>\r\n\r\nTony Soeller\r\n<i>Computer Support - UCI OIT</i></string>
+    
+    <string name="about_us_team_2x2"><b>Android Version Developed By:</b> \r\nHoriya Ameen\r\nMichael Kunisaki\r\nSheena Perea\r\nDerick Tran</string>
+	<string name="about_us_questions"><b>For questions/comments, select below</b></string>
+	<string name="about_us_general_inquries">General Inquries</string>
+	<string name="about_us_bug_report">Bug Report</string>
 </resources>

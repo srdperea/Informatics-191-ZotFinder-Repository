@@ -4,19 +4,17 @@ import com.actionbarsherlock.app.SherlockActivity;
 
 import android.os.Bundle;
 import android.content.Intent;
-import android.text.Html;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-public class StudentExpectationsActivity extends SherlockActivity {
+public class AboutUsActivity extends SherlockActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_student_expectations);
+		setContentView(R.layout.activity_about_us);
 		
-		getSupportActionBar().setTitle("Student Role and Expectation");
+		getSupportActionBar().setTitle("About Us");
 		getSupportActionBar().setHomeButtonEnabled(true);
 		getSupportActionBar().setIcon(R.drawable.ic_action_previous_item);
 		
@@ -25,13 +23,8 @@ public class StudentExpectationsActivity extends SherlockActivity {
 		Button emergencyButton = (Button) commonFooter.findViewById(R.id.emergencyLinkButton);
 		Button mapButton = (Button) commonFooter.findViewById(R.id.mapLinkButton);	
 		mapButton.setBackgroundResource(R.drawable.map_icon);
-		emergencyButton.setBackgroundResource(R.drawable.emergency_icon_pressed);
+		emergencyButton.setBackgroundResource(R.drawable.emergency_icon);
 		dialerButton.setBackgroundResource(R.drawable.dialer_icon);
-		
-		//creates textView:"ins" that corresponds to textView:"EarthquakeTextView" in file:"activity_earthquake.xml"
-		TextView ins = (TextView)findViewById(R.id.StudentTextView);
-		//sets the text of textview to string found in strings file
-		ins.setText(Html.fromHtml(getString(R.string.student_expectations)));
 	}
 	
 	@Override
@@ -42,6 +35,24 @@ public class StudentExpectationsActivity extends SherlockActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	};
+	
+	public void emailGeneralInquiry(View view)
+	{
+		final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+		emailIntent.setType("play/Text");
+		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"zotfinderl@gmail.com"});
+		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Zotfinder Android: Comment/General Question]");
+		startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+	}
+	
+	public void emailBugReport(View view)
+	{
+		final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+		emailIntent.setType("play/Text");
+		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"zotfinderl@gmail.com"});
+		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Zotfinder Android: Bug Issue]");
+		startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+	}
 	
 	//Footer Methods
 	//method to go to activity: MainActivity

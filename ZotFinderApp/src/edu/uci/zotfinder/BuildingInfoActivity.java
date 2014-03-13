@@ -15,7 +15,6 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 
 import com.actionbarsherlock.app.SherlockActivity;
-import com.example.test2app.R;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,6 +23,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -100,6 +100,8 @@ public class BuildingInfoActivity extends SherlockActivity {
 			
 			if(img!=null)
 				buildingImage.setImageBitmap(img);
+			else
+				buildingImage.setBackgroundResource(R.drawable.uci_campus);
         }
 	}
 	

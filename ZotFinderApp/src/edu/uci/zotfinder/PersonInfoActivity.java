@@ -3,7 +3,6 @@ package edu.uci.zotfinder;
 import java.util.HashMap;
 
 import com.actionbarsherlock.app.SherlockActivity;
-import com.example.test2app.R;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -60,6 +59,11 @@ public class PersonInfoActivity extends SherlockActivity {
     {
                 TextView phoneTextView = (TextView) findViewById(R.id.phoneNumber);
                 phoneTextView.setText(number);    
+    }
+    else
+    {
+    	TextView phoneTextView = (TextView) findViewById(R.id.phoneNumber);
+        phoneTextView.setText("N/A");    
     }
     
     //grabs the email from the intent passed from SearchActivity
@@ -123,12 +127,10 @@ public class PersonInfoActivity extends SherlockActivity {
     
     public void sendEmail(View v)
     {
-    	Intent emailIntent = new Intent(Intent.ACTION_SEND); 
-    	emailIntent.setType("text/plain"); 
-    	emailIntent.putExtra(Intent.EXTRA_EMAIL, email); 
-    	emailIntent.putExtra(Intent.EXTRA_SUBJECT, "my subject"); 
-    	emailIntent.putExtra(Intent.EXTRA_TEXT, "body text"); 
-    	startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+    	final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+		emailIntent.setType("play/Text");
+		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{email});
+		startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
     
     //Back button

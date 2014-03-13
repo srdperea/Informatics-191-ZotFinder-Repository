@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.test2app"
+    package="edu.uci.zotfinder"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -16,17 +16,17 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <permission
-        android:name="com.example.test2app.permission.MAPS_RECEIVE"
+        android:name="edu.uci.zotfinder.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.example.test2app.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="edu.uci.zotfinder.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!--
          The following two permissions are not required to use
-	     Google Maps Android API v2, but are recommended.
+	     Google Maps Android API v2, but are recommended.
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -48,8 +48,8 @@
             android:name="edu.uci.zotfinder.SplashScreenActivity"
             android:clearTaskOnLaunch="true"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,50 +59,50 @@
         <activity
             android:name="edu.uci.zotfinder.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Sherlock" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.DialerActivity"
             android:label="@string/title_activity_dialer"
-            android:theme="@style/Theme.Sherlock" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.SearchActivity"
             android:label="@string/title_activity_search"
-            android:theme="@style/Theme.Sherlock" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.PersonInfoActivity"
             android:label="@string/title_activity_person_info"
-            android:theme="@style/Theme.Sherlock"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.StudentExpectationsActivity"
             android:label="@string/title_activity_student_expectations"
-            android:theme="@style/Theme.Sherlock"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.FacultyExpectationsActivity"
             android:label="@string/title_activity_faculty_expectations"
-            android:theme="@style/Theme.Sherlock" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.DepartmentInfoActivity"
             android:label="@string/title_activity_department_info"
-            android:theme="@style/Theme.Sherlock"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.BuildingInfoActivity"
             android:label="@string/title_activity_building_info"
-            android:theme="@style/Theme.Sherlock"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.DepartmentListItemActivity"
@@ -111,26 +111,32 @@
         </activity>
         <activity
             android:name="edu.uci.zotfinder.PersonListItemActivity"
-            android:label="@string/title_activity_person_list_item" 
-            android:screenOrientation="portrait">
+            android:label="@string/title_activity_person_list_item"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.EmergencyProcedureActivity"
             android:label="@string/title_activity_emergency_procedure"
-            android:theme="@style/Theme.Sherlock" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.EmergencyActivity"
             android:label="@string/title_activity_emergency"
-            android:theme="@style/Theme.Sherlock" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
         </activity>
         <activity
             android:name="edu.uci.zotfinder.ServicesInfoActivity"
-            android:label="@string/title_activity_services_info" 
-            android:theme="@style/Theme.Sherlock"
-            android:screenOrientation="portrait">  
+            android:label="@string/title_activity_services_info"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" >
+        </activity>
+        <activity
+            android:name="edu.uci.zotfinder.AboutUsActivity"
+            android:label="@string/title_activity_about_us"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sherlock" > >
         </activity>
     </application>
 

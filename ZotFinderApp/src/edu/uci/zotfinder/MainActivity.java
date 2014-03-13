@@ -31,7 +31,6 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
-import com.example.test2app.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -95,16 +94,7 @@ public class MainActivity extends SherlockFragmentActivity {
         MenuItem subMenu1Item = subMenu1.getItem();
         subMenu1Item.setIcon(R.drawable.ic_drawer);
         subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-
-/*      SubMenu subMenu2 = menu.addSubMenu("Overflow Item");
-        subMenu2.add("These");
-        subMenu2.add("Are");
-        subMenu2.add("Sample");
-        subMenu2.add("Items");
-
-        MenuItem subMenu2Item = subMenu2.getItem();
-        subMenu2Item.setIcon(R.drawable.ic_compose);*/
-
+        
         return super.onCreateOptionsMenu(menu);
     } 
 	
@@ -129,6 +119,8 @@ public class MainActivity extends SherlockFragmentActivity {
 			return false;
 		}
 		if (itemTitle.equals("About Us")){
+			Intent intent = new Intent(this,AboutUsActivity.class);
+			startActivity(intent);
 			return false;
 		}
 		if(itemTitle.equals("Search")){

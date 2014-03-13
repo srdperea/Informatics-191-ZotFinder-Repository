@@ -1,7 +1,6 @@
 package edu.uci.zotfinder;
 
 import com.actionbarsherlock.app.SherlockActivity;
-import com.example.test2app.R;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -16,7 +15,7 @@ public class DialerActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dialer);
 		
-		getSupportActionBar().hide();
+		getSupportActionBar().setTitle("Emergency Dialer");
 		
 		View commonFooter = findViewById(R.id.footer);
 		Button dialerButton = (Button) commonFooter.findViewById(R.id.dialerLinkButton);
